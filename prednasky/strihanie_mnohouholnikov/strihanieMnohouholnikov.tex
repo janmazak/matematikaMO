@@ -1,0 +1,386 @@
+%% strihanie mnohouholnikov, prednaska na klub a na ESF, april 2006
+%% Mazo
+
+\documentclass[10pt]{article}
+\usepackage{slovak}
+\usepackage{bookman}
+\usepackage{picins}
+\usepackage[dvips]{graphicx}
+\usepackage{amsmath}
+
+\pagestyle{empty}
+\advance\textwidth by 2cm
+\advance\hoffset by -1cm
+\advance\textheight by 5cm
+\advance\voffset by -2cm
+\parindent = 0pt
+\parskip = .4\baselineskip
+
+\let\uhol=\angle
+
+\font\nadpis = csbx10 scaled 1800
+\font\fontkapitola = csbx10 scaled 1400
+
+\newcount\cislokapitoly
+\cislokapitoly = 1
+\def\kapitola#1\par{%
+{\bigskip
+\hskip 1cm {\fontkapitola\number\cislokapitoly. #1}\par}
+\bigskip
+\advance\cislokapitoly by 1}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\def\FIXME{{\nadpis FIXME}}
+
+\newcount\cisloulohy
+\cisloulohy = 1
+
+\def\uloha{%
+\medskip{\bf Úloha \number\cisloulohy . }%
+\advance\cisloulohy by 1%
+}
+
+\newcount\cislohintu
+\cislohintu = 1
+\def\hint{%
+\bigskip{\bf \number\cislohintu . }%
+\advance\cislohintu by 1%
+}
+
+\newcount\cisloriesenia
+\cisloriesenia = 1
+\def\riesenie{%
+\bigskip{\bf \number\cisloriesenia . }%
+\advance\cisloriesenia by 1%
+}
+\def\riesenienieje{%
+\advance\cisloriesenia by 1%
+}
+
+\newcount\cisloprikladu
+\cisloprikladu = 1
+\def\priklad{%
+\bigskip{\bf Príklad \number\cisloprikladu . }%
+\advance\cisloprikladu by 1%
+}
+
+\def\riespr{{\it Riešenie:\/\ }}
+
+\def\poznamka{{\it Poznámka:\/\ }}
+
+\newdimen\sirka
+\setbox 0 = \hbox{$*\,$}
+\sirka = \wd0
+
+\def\tazkauloha{%
+\hskip -\sirka
+$*\,${\bf Úloha \number\cisloulohy . }%
+\advance\cisloulohy by 1%
+}
+
+\newcount\cislootazky
+\cislootazky = 1
+\def\otazka#1\par{%
+\hskip .7cm {\it \number\cislootazky . #1\/}
+\par
+\advance\cislootazky by 1
+}
+
+
+\let\phi=\varphi
+\let\uhol=\angle
+
+
+\newcount\backup
+\backup = \catcode`\@
+\catcode`\@ = 11
+\def\mydispl@y{\global\dt@ptrue \openup\jot \m@th
+  \everycr={\noalign{\ifdt@p \global\dt@pfalse
+              \ifdim\prevdepth>-1000pt \vskip-\lineskiplimit
+                 \vskip\normallineskiplimit \fi
+            \else \penalty\interdisplaylinepenalty \fi}}}
+\def\my@lign{\tabskip=0pt\everycr={}} % restore inside \displ@y
+\newskip\mycentering \mycentering=0pt plus 1000pt minus 1000pt
+\global\def\eqalignno#1{\mydispl@y \tabskip=\mycentering
+  \halign to\displaywidth{\hfil$\my@lign\displaystyle{##}$%
+    \tabskip=0pt &$\my@lign\displaystyle{{}##}$\hfil
+    \tabskip=\mycentering &\llap{$\my@lign##$}\tabskip=0pt \crcr
+    #1\crcr}}
+\catcode`\@ = \backup
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+\centerline{{\Large\bf Dá sa z päuholníka posklada štvorec?}}
+
+\bigskip
+
+Venujte nasledujúcej úlohe aspoò pár minút.
+
+\uloha
+Zoeòte si list papiera a skúste z neho posklada štvorec.
+
+Podarilo sa vám splni úlohu? Pozrite si jej riešenie v poslednej kapitole (aj vtedy, ak ste ju vyriešili, mono sa v òom doèítate nieèo zaujímavé).
+
+Táto úloha sa dala splni ¾ahko, pretoe jej znenie pripúšalo ve¾a rôznych interpretácií. Poïme si upresni, èo vlastne budeme robi. Zaèneme vdy s kusom ideálneho papiera --- to je papier nulovej hrúbky. Keïe takı nezoenieme, skúsime to s obyèajnım. Príliš tenkı papier nie je dobrı, zle sa s ním pracuje. Okrem papiera máme obyèajné rovné nonice. Nonicami môeme kúsky papiera striha na menšie kúsky. A z tıchto nastrihanıch kúskov budeme sklada mnohouholníky. Kúsky papiera sa pri skladaní nesmú prekrıva, ani medzi nimi nesmú by medzery, musia tesne dolieha. Poïme na to.
+
+\uloha
+Zoeòte si list papiera a skúste z neho posklada štvorec.
+
+A teraz? Podarilo sa vám splni úlohu za saenıch podmienok? Mono nie, ale to nevadí. Èo sa dá robi, keï si nevieme rady s úlohou? Poloíme si nieko¾ko správnych otázok\footnote{Ïalšie dobré otázky nájdete v knihe \uv{How to solve it} od Gábora Pólyu.} a skúsime na ne nájs odpovede.
+
+\otazka Videli sme u niekedy nieèo podobné?
+
+Urèite ste sa u stretli s rôznymi vystrihovaèkami, benımi napríklad v škôlke. Napríklad keï preloíme papier pozdå priamky a potom vystrihneme rovnoramennı pravouhlı trojuholník, ktorého prepona leí na našej priamke, po roztvorení papiera v òom bude štvorcová diera. Dajú sa vymyslie ešte všelijaké iné finty. My si však podmienky saíme a všetky podobné finty zakáeme\footnote{Nechávame ich na preskúmanie èitate¾ovi. Zatia¾ si ukáeme, e aj za saenıch podmienok sa dá spravi ve¾a.}. Papier nebudeme ohıba a ak budeme striha pozdå nejakej úseèky, tak budeme striha pozdå celej priamky, na ktorej táto úseèka leí. Toto posledné obmedzenie v skutoènosti nie je obmedzením: iba prestrihneme niektoré kúsky na nieko¾ko èastí, aj keï to nepotrebujeme. Rozmyslite si, e na tom nezáleí --- èo sme vedeli robi s pôvodnımi celımi kúskami, budeme vedie robi aj s ich èasami.
+
+\otazka Èo od nás chcú?
+
+Posklada štvorec. Èo je štvorec? Štvoruholník, ktorého kadé dve susedné strany sú rovnaké a navzájom kolmé. Uvedomte si, e odpoveda môeme aj inak: štvorec je štvoruholník s kolmımi, rovnako dlhımi a navzájom sa rozpo¾ujúcimi uhloprieèkami. Táto druhá odpoveï nám však hovorí málo uitoèného, pretoe pri našom strihaní nás nezaujíma vnútro štvorca, ale strany pozdå obvodu a uhly vo vrcholoch. Preto odpovede na otázky treba formulova s vyuitím pojmov, ktoré sú zaujímavé pre konkrétnu situáciu, ktorú máme pred sebou.
+
+Vieme štvorec nakresli? Áno, uèili nás to v škole, treba k tomu pravítko a kruidlo\footnote{V skutoènosti staèí iba kruidlo, vieme ním spravi všetky konštrukcie, ktoré vieme spravi kruidlom a pravítkom. Toto však prenecháme profesionálom, ktorí poznajú {\it krunicovú inverziu\/}.}. O tieto nástroje teda rozšírime náš arzenál. 
+
+Upresnenie pojmu štvorca dáva tuši, e potrebujeme z nášho listu papiera nastriha nejaké kúsky, ktoré majú pravé uhly.
+
+\otazka Èo máme zadané? Za akıch predpokladov máme nájs, zostroji náš štvorec?
+
+Zaèíname listom papiera. Ak je list papiera nevhodnı, štvorec sa nám z neho posklada nepodarí. Napríklad ak máme papier v tvare kruhu, nezbavíme sa oblúkov. Poèas nášho strihania rozdelíme obvod kruhu na koneènı poèet èastí a oblúky zostanú oblúkmi. Preto je potrebné upresni útvar, z ktorého zaèíname. Dohodneme sa, e zaèneme listom papiera v tvare mnohouholníka. Napríklad obdånikom.
+
+Pri strihaní môeme pouíva nonice, pri pomocnıch konštrukciách ceruzku, pravítko a kruidlo.
+
+Teraz je jasné, èo môeme robi, ale od vyriešenia úlohy sme stále ïaleko.
+
+\otazka Vieme vyrieši úlohu aspoò èiastoène? Vieme vymyslie jednoduchšiu úlohu, ktorá súvisí s touto a jej riešenie by nám mohlo pomôc?
+
+Zjednoduši sa úloha dá z dvoch strán: zosilníme predpoklady (zavedieme nejaké podmienky obmedzujúce na poèiatoènı list papiera) alebo budeme poadova nieèo jednoduchšie ne štvorec. Skúsme posklada aspoò obdånik. Ak zaèíname obdånikom, tak niet èo rieši. Ale èo ak nie?
+
+\uloha
+Danı je trojuholník. Poskladajte z neho obdånik.
+
+Mono je úloha stále priaká. Akı trojuholník je súèasou obdånika? Nu, obdånik je uhloprieèkou rozdelenı na dva zhodné pravouhlé trojuholníky. Vieme aspoò z {\it pravouhlého} trojuholníka spravi obdånik? Polome náš pravouhlı trojuholník tak, aby jeho pravı uhol leal vpravo dole. Oznaème zvyšné dva vrcholy trojuholníka písmenami $A$, $B$. Uhly pri vrcholoch $A$, $B$ vytvoria pravı uhol, ak sa priloia k sebe (preèo?). Odstrihnime teda kus trojuholníka pri vrchole $A$ a prilome ho k vrcholu $B$. Po troche snahy prídeme na to, e sa to dá spravi tak, aby vznikol obdånik.
+
+Poslednú úlohu by sme si u¾ahèili, keby sme namiesto skutoèného strihania kreslili na štvorèekovı papier. Vyskúšajte si to, riešenie tam hneï vidno (ak si nakreslíme poèiatoènı trojuholník, ktorı má strany párnych dåok, strany tvorené priamkami štvorcovej siete a vrcholy v mreovıch bodoch).
+
+Teraz si vezmime ostrouhlı trojuholník. Nakreslime ho na štvorèekovı papier. Vieme nejako vyui predošlú úlohu? Keby sme vedeli náš trojuholník rozdeli na pravouhlé trojuholníky, z kadého z nich sa dá posklada obdånik\dots{} Ale ešte by potom bolo treba da tie obdåniky dokopy. Ale to niè, skúsme to. Èo rozdelí trojuholník na dva pravouhlé trojuholníky? Kde sme to u videli? (Opä prvá otázka.) Áno, vıška. A je jasné, e dva obdåniky, ktoré takto dostaneme, budú ma jednu stranu rovnako dlhú (ak sme správne priloili èasti), preto keï ich priloíme k sebe, vytvoria jeden obdånik.
+
+Netreba zabudnú na tupouhlé trojuholníky. Dá sa tupouhlı trojuholník striha a sklada spôsobom popísanım v predošlom odstavci? Áno, staèí zobra vıšku z vrchola, pri ktorom je tupı uhol. Tım sme úlohu 3 úplne vyriešili. Všimnite si, ako sme vyuili v druhej èasti vısledok riešenia jednoduchšej úlohy s pravouhlım trojuholníkom. Namiesto vısledku môeme poui metódu --- pravouhlı trojuholník sme rozrezali pozdå strednej prieèky, pretoe potom vieme priloi menší kúsok k väèšiemu tak, aby sa dostali k sebe uhly vytvárajúce pravı uhol.
+
+\uloha
+Danı je trojuholník. Rozrete ho na dve èasti, z ktorıch sa dá zloi rovnobeník. Z toho rovnobeníka potom poskladajte obdånik, opä rozrezaním na dve èasti.
+
+Po vyriešení poslednej úlohy u máme dva rôzne spôsoby, ako z trojuholníka posklada obdånik. Porovnanie tıchto postupov nás privádza k nasledujúcej úlohe:
+
+\uloha
+Na najmenej ko¾ko èastí treba rozreza trojuholník, aby sa z tıch èastí dal posklada obdånik?
+
+Samozrejme, odpoveï závisí od tvaru trojuholníka. Pravouhlı staèí rozreza na dve èasti, ako sme sa u presvedèili. Pri riešení úlohy pre všeobecnı trojuholník (nie rovnoramennı ani pravouhlı) pravdepodobne u odpoveï nebude závisie od konkrétneho tvaru. Nezabudnite na to, e v otázke úlohy sú skryté dve èasti: treba ukáza, e na nájdenı poèet èastí vieme rozreza {\it kadı} trojuholník tak, aby sa z nich dal posklada štvorec a navyše treba dokáza, e existuje trojuholník, ktorı nestaèí rozreza na menej èastí. 
+
+Na nasledujúcich úlohách si môete precvièi to, s èím sme sa zatia¾ oboznámili. Pri riešení vám pomôu otázky, ktoré sme si kládli pri riešení predošlıch úloh.
+
+\uloha
+Danı je lichobeník. Poskladajte z neho obdånik.
+
+\uloha
+Danı je trojuholník. Poskladajte z neho pravouhlı trojuholník.
+
+Vidíme, e z kadeèoho vieme posklada obdånik. Predstavme si, e chceme spravi z trojuholníka štvorec. Z trojuholníka vieme spravi obdånik. Ak vieme spravi štvorec z obdånika, tak ho vieme spravi aj z trojuholníka. Ako? Uvidíme. Rozmyslite si, e pri ïalšej konštrukcii nám nevadí, e obdånik, z ktorého budeme zaèína, je u nejako rozstrihanı (poskladali sme ho z kúskov trojuholníka). Môeme sa tvári, e je nezranenı a jednoliaty.
+
+Poïme si upresni, ako bude vyzera štvorec, ktorı vznikne poskladaním z daného obdånika. Bez oh¾adu na postup skladania to musí by vdy takı istı štvorec, pretoe papiera máme nejaké mnostvo a nikde sa nám nestratí, ani nepribudne. Inak povedané, štvorec bude ma rovnakı obsah (plochu), ako má náš obdånik na zaèiatku. Z toho vieme zisti aj ve¾kos strany štvorca. Tımto sa úloha trocha líši od predošlıch: doteraz sme skladali (napríklad) z trojuholníka {\it nejakı} obdånik, nevedeli sme presne, ako bude vyzera. Teraz skladáme konkrétny štvorec.
+
+Naèrtli sme postup, ako zisti stranu skladaného štvorca. V praxi by sa tento postup realizoval tak, e odmeriame strany daného obdånika, vypoèítame obsah a potom z neho vypoèítame stranu štvorca. Ak obdånik má strany s dåkami $a$, $b$, tak obsah štvorca je $ab$ a jeho strana $\sqrt{ab}$. Takéto ininierske riešenie nám však nestaèí: pri meraní sa dopustíme istej chyby a pritom my chceme vedie vısledok {\it presne}. Inak povedané, stranu nášho štvorca potrebujeme zostroji pomocou kruidla a pravítka (bez stupnice) z daného obdånika.
+
+\uloha
+Dané sú úseèky s dåkami $a$, $b$. Zostrojte úseèku s dåkou $\sqrt{ab}$.
+
+Naèo je dobré, e vieme zostroji stranu skladaného štvorca? Po narezaní obdånika na kúsky sa niektoré kúsky vyskytnú pozdå strany štvorca, a preto súèet dåok ich strán bude rovnı dåke strany štvorca, ktorú sme vypoèítali. To nám pomôe pri konštrukcii: budeme reza obdånik na vhodné kúsky. A èím menej kúskov, tım lepšie, lebo sa nám s tım bude ¾ahšie pracova.
+
+\uloha
+Danı je obdånik. Poskladajte z neho štvorec.
+
+Tak, štvorec sme poskladali. Sklada nieèo z trojuholníka mono nebolo ¾ahké, ale stále to bola príjemná hra. S väèšími mnohouholníkmi je to horšie. Skúste si pred èítaním ïalšieho textu samostatne vyrieši nasledujúcu úlohu.
+
+\uloha
+Danı je štvoruholník. Poskladajte z neho obdånik.
+
+Dalo by sa poveda, e úlohu za nás vyriešia správne otázky. {\it Videli sme u niekedy nieèo podobné?\/} Áno, skladali sme obdåniky z trojuholníkov. {\it Vieme rozdeli úlohu na nieko¾ko ¾ahšie zvládnute¾nıch èastí?\/} Ako môeme vyui to, e vieme posklada obdånik z trojuholníka? Najprv treba nájs v situácii nejaké trojuholníky. Zadanı štvoruholník je uhloprieèkou rozdelenı na dva trojuholníky (aj vtedy, keï je nekonvexnı). Z oboch tıchto trojuholníkov vieme známym spôsobom spravi obdåniky. Na dokonèenie úlohy staèí z tıch dvoch obdånikov posklada jedinı obdånik. Ak majú rovnakú stranu, tak je to jasné. Vieme tie obdåniky posklada tak, aby mali jednu stranu rovnakú? Zaèíname z trojuholníkov, ktoré majú jednu stranu rovnakú. Túto vlastnos vieme prípadnou úpravou postupu prenies aj na obdåniky a sme hotoví. Skúste to sami, ak vám to nepôjde, pozrite si riešenie vzadu. Nasledujúca úloha súvisí s riešením tejto.
+
+\uloha
+Danı je štvoruholník $ABCD$. Stredy strán $AB$, $BC$, $CD$, $DA$ oznaèíme v tomto poradí $K$, $L$, $M$, $N$. Nakreslite si presnı obrázok. Èo viete poveda o štvoruholníku $KLMN$? Je to tak vdy?
+
+Vráme sa ešte k problému spojenia dvoch obdånikov do jedného. Èo vieme posklada z obdånikov? Štvorce. A vieme dva štvorce spoji do jedného?
+
+\uloha
+Dané sú dva štvorce. Rozrete ich na nieko¾ko kúskov tak, aby sa z kúskov dal zloi jedinı štvorec.
+
+Keï poskladáme vısledky predošlıch úvah dokopy, vidíme, e z dvoch danıch trojuholníkov vieme posklada štvorec. A nielen z dvoch, z ¾ubovo¾ného koneèného poètu: vezmeme prvé dva, spravíme štvorec, pridáme ïalší trojuholník, z ktorého poskladáme štvorec, a takto pokraèujeme, kım sa nám neminú trojuholníky. Toto nám umoòuje nasledovné:
+
+\uloha
+Dokáte, e z kadého mnohouholníka vieme posklada štvorec.
+
+Predstavme si teraz, e máme dané dva mnohouholníky s rovnakım obsahom. Z prvého z nich poskladáme štvorec. Aj z druhého poskladáme štvorec. Tieto dva štvorce budú zhodné, kadı z nich je nejakımi rezmi rozdelenı na èasti. Èo sa stane, keï vezmeme novı jedinı štvorec a spravíme v òom všetky rezy, ktoré sú v tıch dvoch štvorcoch? Zo vzniknutıch kúskov budeme vedie posklada kadı z mnohouholníkov, z ktorıch sme zaèínali. Inak povedané, vieme z jedného daného mnohouholníka posklada ¾ubovo¾nı inı, ktorı má rovnakı obsah!
+
+\uloha
+Dokáte, e z kadého mnohouholníka sa dá posklada obdånik, ktorého jedna strana musí ma dåku rovnú danej úseèke.
+
+Predošlá úloha popisuje trocha inı postup preskladania mnohouholníka na inı mnohouholník (ak majú rovnakı obsah). Z oboch mnohouholníkov poskladáme obdånik, ktorého strana je rovná danej úseèke. Tieto obdåniky musia by zhodné kvôli rovnosti obsahov. A teda vieme z daného mnohouholníka urobi obdånik a z tohto obdånika druhı danı mnohouholník rovnakého obsahu (obrátením postupu).
+
+Tento problém nezávisle od seba vyriešili F. Bolyai (1833) a Gerwin (1835). Predstavte si, e namiesto mnohouholníkov budeme reza a sklada mnohosteny. Tento problém je neporovnate¾ne aší a patril medzi 23 problémov, ktoré Hilbert v roku 1900 predloil svetovej matematickej komunite ako zdroj podnetov pre vıskum v dvadsiatom storoèí. Problém úspešne vyriešil M. Dehn, ktorı dokázal, e nie je moné z mnohostenu posklada ¾ubovo¾nı inı mnohosten s rovnakım objemom.
+
+Na záver nieko¾ko úloh, na ktorıch si môete vyskúša delenie mnohouholníkov\footnote{Titu Andreescu, Razvan Gelca: Mathematical Olympiad Challenges, kapitola Dissections of Polygonal Surfaces}. Otvorene si povedzme, e tieto úlohy sú aké. Strávi nad niektorımi z nich pár hodín je primeranı èas; ve¾a sa pri tom nauèíte.
+
+\uloha
+Ktoré trojuholníky sa dajú bezo zvyšku rozreza na lichobeníky so stranami dåky $2$, $1$, $1$, $1$ (v centimetroch)?
+
+\uloha
+Ktorımi pravidelnımi mnohouholníkmi sa dá vydládi rovina?
+
+\uloha
+Pravidelnı osemuholník rozreeme na rovnobeníky. Dokáte, e medzi tımito rovnobeníkmi sa nachádza obdånik.
+
+\uloha
+Zistite, pre ktoré prirodzené èísla $n$ sa dá rovnostrannı trojuholník rozdeli na $n$ rovnostrannıch trojuholníkov (nie nutne zhodnıch).
+
+\uloha
+Dané sú tri štvorce so stranami dåok 2, 3, 6 cm. Spravte dva rezy a zo vzniknutıch 5 kúskov zlote štvorec. (Pod rezom rozumieme lomenú èiaru, ktorá rozdelí mnohouholník na dve súvislé èasti.)
+
+\uloha
+Dokáte, e kadı štvorec sa dá rozdeli na rovnoramenné lichobeníky, ktoré nie sú pravouhlé.
+
+\uloha
+Dokáte, e kadı tetivovı štvoruholník sa dá rozdeli na $n$ tetivovıch štvoruholníkov pre kadé prirodzené èíslo $n\ge 4$.
+
+\uloha
+Zistite, pre ktoré prirodzené èísla $n$ sa dá štvorec rozdeli na $n$ štvorcov (nie nutne zhodnıch).
+
+\uloha
+Šachovnicu $n\times n$ rozreeme na jednotlivé políèka a kadé políèko prereeme po uhloprieèke na polovicu. Je jasné, e zo vzniknutıch kúskov sa dá posklada pôvodná šachovnica. (Ako?) Zistite, èi sa dá posklada z tıchto kúskov štvorec ve¾kosti pôvodnej šachovnice tak, aby to nebola šachovnica, teda aby na mieste aspoò jedného pôvodného šachovnicového políèka neboli dva kúsky (trojuholníky) priloené preponou k sebe.
+
+\uloha
+Dokáte, e kocka sa dá rozdeli na $n$ kociek (nie nutne rovnakıch) pre kadé $n\ge 55$.
+
+\uloha
+Ktoré konvexné mnohouholníky sa dajú rozdeli na rovnobeníky?
+
+\uloha
+Vnútri konvexného mnohouholníka je danıch $2n$ rôznych bodov. Dokáte, e tento mnohouholník vieme rozdeli na $n+1$ konvexnıch mnohouholníkov tak, aby tıch danıch $2n$ bodov lealo na stranách mnohouholníkov.
+
+\uloha
+Nech v ostrouhlom trojuholníku je jeden vnútornı uhol $n$-násobkom druhého. Dokáte, e takıto trojuholník vieme rozdeli na rovnoramenné trojuholníky, ktorıch ramená sú všetky zhodné.
+
+\uloha
+Dokáte, e ak sa nejakı obdånik dá rozdeli na zhodné obdåniky jemu podobné, tak sa tieto obdåniky v rozdelení dajú preusporiada tak, e ich zhodné strany budú všetky rovnobené.
+
+\uloha
+Pravidelnı $4n$-uholník je rozdelenı na rovnobeníky. Dokáte, e medzi tımito rovnobeníkmi je aspoò jeden pravouholník. Nájdite súèet obsahov všetkıch pravouholníkov.
+
+\uloha
+Nájdite všetky moné hodnoty najväèšieho uhla trojuholníka, ktorı sa dá rozdeli na $5$ trojuholníkov jemu podobnıch. Svoju odpoveï zdôvodnite.
+
+
+\bigskip
+
+\centerline{{\Large Riešenia úloh}}
+
+\riesenie
+Vezmite si ¾ubovo¾nı štvorec, ktorı celı leí vnútri daného listu papiera (papier nemusí ma obdånikovı tvar, môe to by trebárs päuholník). Ak nejaká èas papiera trèí mimo nášho štvorca, túto èas vieme prehnú pozdå jednej zo strán štvorca tak, e sa zmenší plocha trèiacej èasti. Po chví¾ke takéhoto prekladania netrèí mimo nášho štvorca niè.
+
+¼ahko sa o tom presvedèíme na konkrétnom liste papiera, ašie je však zdôvodni to vo všeobecnosti. Predstavte si, e prvım prehnutím sa zbavíme polovice prebytoènej (trèiacej) èasti. Druhım prehnutím sa zbavíme polovice trèiaceho zvyšku, teda štvrtiny èasti, ktorá trèala mimo na zaèiatku. Ïalším prehnutím sa zbavíme zase polovice trèiaceho zvyšku po predošlom prehnutí. A takto postupujeme ïalej. Pritom však stále zostane nejaká trèiaca èas a nikdy sa jej úplne nezbavíme.
+
+Preto potrebujeme v dôkaze správnosti nášho postupu zdôvodni, e situácia popísaná v predošlom odstavci nenastane. Skúste to; postaèí spresni postup prehıbania?
+
+Nepríjemná situácia s prehıbaním pripomína jeden zo Zenónovıch paradoxov (apórií) o nemonosti pohybu. Ak sa chceme niekam dosta, najprv sa musíme dosta do poloviènej vzdialenosti. Ale aby sme sa dostali do polovice, najprv sa potrebujeme dosta do štvrtiny. Ale aby sme sa dostali do štvrtiny\dots{} Take sa nemôeme dosta vôbec nikam. Nespochybnite¾ná úvaha? Ale veï staèí spravi krok a posunuli sme sa\dots{}
+
+\riesenienieje
+
+\riesenienieje
+
+\riesenie
+Rozreeme trojuholník pozdå niektorej zo strednıch prieèok a vzniknuté dva kúsky vhodne priloíme k sebe.
+Rovnobeník rozreeme tak, aby vznikol pravouhlı trojuholník a pravouhlı lichobeník.
+
+\parpic[r]{{\includegraphics{strihanie_mnohouholnikov.1}}}
+\riesenie
+Kadı trojuholník staèí rozreza na tri èasti, pozrite si obrázok. Na druhej strane dve èasti sú vo všeobecnosti málo. Vezmime si nejakı trojuholník, ktorı nie je rovnoramennı ani nemá pravı uhol (tieto prípady vyluèujeme kvôli tomu, e pre spomínané trojuholníky staèia dve èasti). Predpokladajme, e ho vieme rozdeli na dve èasti, z ktorıch sa dá zloi obdånik. Staèí nájs jedinı trojuholník, pre ktorı dostaneme spor. Preto môeme tento trojuholník h¾ada medzi ostrouhlımi trojuholníkmi. Náš trojuholník nemá ani jeden vnútornı uhol pravı. Máme jedinı rez. Ak tento rez nie je kolmı na iadnu zo strán trojuholníka, dostaneme aspoò jeden kúsok, ktorı má tupı uhol. Pre vrchol tohto tupého uhla máme tri monosti: buï bude po poskladaní obdånika vnútri, alebo vo vrchole, alebo na obvode mimo vrchola. Prvé dve monosti vylúèime ¾ahko. Tretia môe nasta len vtedy, keï druhı kúsok (nie ten, ktorı obsahuje vrchol s diskutovanım tupım uhlom) má uhol doplnkovı k nášmu tupému (aby spolu vytvorili priamy uhol). Nakreslite si to a vylúète aj túto monos.
+
+Take náš rez je kolmı na jednu zo strán. Potom buï prechádza vrcholom neleiacim na tejto strane, alebo ním neprechádza. ¼ahko vylúèime obe tieto monosti. Take sme našli trojuholník (ostrouhlı, nie rovnoramennı), ktorı sa nedá rozdeli na dva kúsky, z ktorıch by sa dal zloi obdånik.
+
+Všimnite si, e dokáza, e nieèo sa nedá, je ove¾a ašie, ako nájs konkrétny postup pre úlohu, ktorú je moné vykona. Je to tak kvôli tomu, e musíme vylúèi všetky moné postupy, niekedy bez toho, aby sme ich vôbec poznali. Uvedomte si, e diskusia, ktorú robíme pri tom dôkaze sporom, musí by naozaj dôsledná a nesmieme vynecha iaden prípad, inak nám dôkaz nefunguje.
+
+\riesenie
+Vezmime si kratšiu základòu. Tá je stranou obdånika. Z lichobeníka navyše ostanú dva pravouhlé trojuholníky, z ktorıch vieme (rezom cez strednú prieèku) spravi obdåniky so stranou zhodnou s vıškou lichobeníka.
+
+\riesenie
+Z trojuholníka sa dá spravi obdånik. Obdånik rozdelíme na štyri zhodné trojuholníky (rozreeme napoly a potom kadú polovicu po uhloprieèke) a z tıchto štyroch trojuholníkov zloíme trojuholník s nimi podobnı, ale so stranou dvakrát väèšou.
+
+\riesenie
+Táto konštrukcia sa preberá v škole. Ale mono ste sa s òou ešte nestretli, preto si ukáeme, ako sa dá objavi. Potrebujeme interpretova odmocninu geometricky.
+
+Chceme zostroji úseèku s dåkou $x=\sqrt{ab}$, teda má plati $x^2=ab$. Èo? Súèin $a\cdot b$? Èo je to? Kde sme sa stretli so súèinom dåok? Áno, obsahy, ale teraz zostrojujeme vzdialenosti, nie obsahy. Nedá sa to len tak mieša: nevieme zostroji úseèku, ktorej dåka vyjadrená ako èíselná hodnota je rovná èíselnej hodnote nejakého obsahu, navyše takéto porovnanie nemá ve¾kı zmysel (v akıch jednotkách to robíme?).
+
+Nieko¾ko ïalších moností: podobnos, mocnos bodu ku krunici\dots{} Ale pozrime sa presne na náš vzah: $x^2=ab$. Áno, presne ako Euklidova veta. A to u ponúka monos konštrukcie, èi u sa na to dívame ako Euklidovu vetu o odvesne alebo o prepone. Rozmyslite si obe konštrukcie.
+
+Nech body $A$, $P$, $B$ leia na priamke v tomto poradí tak, e $|AP| = a$, $|BP|=b$. Nech $S$ je stred úseèky $AB$. Oznaème $M$ prieseèník Tálesovej krunice nad priemerom $AB$ (má stred $S$, polomer $|AS|$) s kolmicou na priamku $AB$ v bode $P$. Potom úseèka $MP$ má dåku $\sqrt{ab}$.
+
+\riesenie
+Máme danı obdånik $ABCD$ ($|AB| > |BC|$) a poznáme stranu $s$ štvorca, ktorı chceme z obdånika posklada. Hodil by sa kúsok, ktorı má jednu stranu rovnú strane štvorca, ktorı skladáme. Tak si takıto kúsok vytvorme. Spravme krunicu so stredom $A$ a polomerom $s$, tá pretne úseèku $CD$ v bode $E$. Z trojuholníka $ADE$ vieme posklada obdånik, ktorého jedna strana je rovná $s$. Ostal nejakı päuholník. Z rovnobeníka, ktorı má jednu stranu rovnú $s$, vieme posklada obdånik, ktorı má jednu stranu rovnú $s$. Tak teda veïme bodom $C$ rovnobeku s priamkou $AE$, dostaneme na strane $AB$ bod $F$. Trojuholník $BFC$ je zhodnı s trojuholníkom $ADE$, ostáva popísa, ako spravíme elanı obdånik so stranou $s$ z rovnobeníka $AFCE$. Pokia¾ kolmica z bodu $E$ na priamku $FC$ padne dovnútra úseèky $FC$, je to jasné (u sme to robili). Ale èo ak nie? No niè, nareeme náš rovnobeník priamkami rovnobenımi s priamkou $AE$ na dostatoène ve¾a menších rovnobeníkov, z ktorıch kadı má stranu dåky $s$. A z tıch narobíme obdåniky so stranou dåky $s$. Nakoniec všetky obdåniky so stranou $s$ priloíme k sebe a dostaneme práve štvorec (dôvodom je rovnos obsahov pred strihaním a po òom).
+
+
+\parpic[r]{{\includegraphics{strihanie_mnohouholnikov.2}}}
+
+\riesenie
+Riešenie je na obrázku.
+
+\riesenie
+V predošlej úlohe vyuívame, e stredná prieèka $ML$ v trojuholníku $BDC$ je rovnobená so stranou $BD$. Ale aj stredná prieèka $NK$ v trojuholníku $BDA$ je rovnobená so stranou $BD$. Take priamky $ML$, $NK$ sú rovnobené. Analogicky priamky $KL$, $MN$, $AC$ sú rovnobené. Preto útvar $KLMN$ je rovnobeník. Rozmyslite si, kedy je to kosoštvorec a kedy pravouholník. Akı obsah má rovnobeník $KLMN$, ak štvoruholník $ABCD$ má obsah $S$?
+
+\riesenie
+Z dvoch štvorcov tretí? Take obsah tretieho štvorca je súètom obsahov prvıch dvoch. {\it Kde sme to u videli?\/} Áno, Pytagorova veta. Tá umoòuje ¾ahko zostroji ten tretí štvorec. Ostáva napcha doò tie dva dané. Nakreslite si to: pravouhlı trojuholník s odvesnami $a < b$ a preponou $c$ a všetky tri štvorce nad stranami trojuholníka, oznaème ich $A$, $B$, $C$ pod¾a dåky strany. Ve¾kı štvorec $C$ má stranu dåky $c$, take bude vhodné, keï niektorı kúsok bude ma stranu dåky $c$. Takıto kúsok sa dá vytvori len zo štvorca $B$ (rozmyslite si, preèo). Odreme zo štvorca $B$ jednım rezom trojuholník so stranami dåok $a$, $b$, $c$ a umiestnime ho do štvorca $C$. Keby sme takéto trojuholníky umiestnili do štvorca $C$ štyri, tak v strede ostane miesto na štvorec so stranou dåky $b-a$. Zo štvorca $B$ ešte ostal päuholník, ktorého jedna strana má dåku $b-a$. Nech táto strana je stranou toho štvorca, ktorı bude v strede štvorca $C$. Potom sa nám zo zvyšku štvorca $B$ podarí odreza ešte jeden trojuholník so stranami $a$, $b$, $c$ a ostane zvyšok rozmerov $a\times (b-a)$. Tento priloíme k štvorcu $A$ a vzniknutı obdånik rozreeme na dva zhodné trojuholníky.
+
+Všetko toto sa dá dobre reprezentova obrázkom. Ten som sa však rozhodol nenakresli, pretoe nie je dôleité samotné riešenie, ale spôsob, akım sa naò dá prís. A to je jasné pri èítaní tohto textu a kreslení si vlastnıch obrázkov.
+
+\riesenienieje
+
+\riesenie
+Riešenie získame zovšeobecnením riešenia úlohy 9.
+
+\vfill
+
+Riešenia ïalších úloh neuvádzam, sú to problémy urèené na vyriešenie a málokto by bol dos trpezlivı, aby si nepreèítal riešenie priskoro.
+
+\vfill
+\eject
+
+\centerline{{\Large Ako poui tento materiál}}
+
+\bigskip
+
+Jedna monos je samoštúdium: èítame si text a priebene riešime úlohy. To by sme mali spravi aj v prípade, e si chceme spravi prednášku na túto tému alebo komuko¾vek o nej rozpráva. Úlohy treba rieši samostatne, aby sme sami vedeli, nako¾ko sú aké. Riešenia na konci sú najmä na to, e mnohé úlohy sa dajú rieši viacerımi spôsobmi, take získame monos porovna svoj postup s tım uvedenım vzadu a budeme lepšie pripravení na nápady poslucháèov na prednáške.
+
+Pre akú vekovú kategóriu je skladanie mnohouholníkov vhodné?
+Stredoškoláci by nemali ma problém zvládnu text celı. Vınimku tvoria úlohy na konci, ktoré sú naozaj aké aj pre tıch najlepších. Prednáška pre stredoškolákov (boli medzi nimi zastúpené všetky roèníky SŠ) trvala necelú hodinu, k závereènému tvrdeniu (odstavec za úlohou 13) sme sa dostali asi za 40 minút. Pokladám za vhodné vynecha minimalizaèné úlohy (5), takisto som ani nespomenul úlohy 7 (¾ahká a nepotrebná, stredoškolákom je dostatoène jasné, èo robíme) a 11, ktorá ve¾mi nesúvisí s podstatou. Idea triangulácie mnohouholníka (rozdelenie na trojuholníky) je stredoškolákom blízka, prišli s òou ihneï a vısledok \uv{z päuholníka vieme posklada štvorec} ihneï zovšeobecnili.
+
+Na druhej strane som odbehol trocha ïalej pri zdôvodòovaní, preèo je dôleité uvaova o dåkach strán kúskov, s ktorımi pracujeme, vyriešili sme nasledovnú úlohu: Zistite, èi sa pre nejaké prirodzené èíslo $n$ dá úseèka dåky $n\sqrt 3$ rozdeli na úseèky s dåkami $\sqrt 2$ a $1$. Zvyšnı èas prednášky sme riešili úlohu 17, ktorá sa (z poh¾adu detí) ukázala pekná, zaujímavá a trocha prekvapivá.
+
+Skladanie mnohouholníkov je dobré aj niekedy v deviatom roèníku základnej školy na preopakovanie geometrie. Stretávame sa tu s pojmami mnohouholníka, obsahu, obvodu, s trojuholníkmi a štvoruholníkmi, so strednımi prieèkami a vıškou v trojuholníku, s geometrickımi konštrukciami, s Euklidovou a Pytagorovou vetou. Myslím, e sa tu nevyskytuje iadna idea, ktorá by nebola prístupná ôsmakom èi deviatakom. Nie je však vhodné prejs celı materiál naraz, pretoe na samostatné vyriešenie úloh treba necha iakom dostatok èasu (je to vhodné ako domáca úloha). Navyše predsa len dosta sa k poslednému nápadu (skladáme z mnohouholníka obdånik s pevnou stranou) vyaduje dostatoènú prípravu a nadobudnutie skúseností (separované a univerzálne modely), inak je táto idea abstraktná a nepochopite¾ná.
+
+Úloha 12 je ve¾mi dobrá ako motivaèná k Pytagorovej vete. Šikovnejší iaci môu túto vetu dokonca sami objavi, ak ich vhodne usmerníme. (Akı ve¾kı bude štvorec, ktorı skladáme? Nech naše dva štvorce sú rovnaké. Potom sa dajú rozreza po uhloprieèkach a tie kúsky sú také pravouhlé trojuholníky, polovièné oproti trojuholníku, ktorı má tie dva rovnaké štvorce nad odvesnami. Treba to vhodne nakresli. Dá sa z úseèiek s dåkami strán našich troch štvorcov zostavi trojuholník? Kedy to nejde?)
+
+Niektoré èasti sa dajú poui aj v niších roèníkoch. Závereèné tvrdenie (z mnohouholníka vieme posklada ¾ubovo¾nı inı) však deti nedokáu pochopi v dostatoènej håbke, ani oceni jeho krásu. Je jednoducho príliš všeobecné a abstraktné. Navyše budú natešené aj z toho, e vedia z kadeèoho spravi obdånik. Skúšal som to so šiestakmi (seminár, tri pokraèovania, kadé necelú hodinu) a páèilo sa im hra sa s trojuholníkmi a štvoruholníkmi. Úlohy pre nich treba rozdeli na jednoduché kroky, napríklad nesklada priamo štvoruholník, ale najprv rovnobeník, potom lichobeník, deltoid, \dots{}
+
+Úloha 3 je propedeutickou prípravou k pojmu vıška v trojuholníku, tupı uhol a ku klasifikácii trojuholníkov (pravouhlé, ostrouhlé, tupouhlé). K tımto pojmom sa dostávame poèas riešenia úlohy prirodzene, vidíme skutoènı rozdiel, napríklad konštrukcie nefungujú pre tupouhlı trojuholník.
+Úloha 4 zase vedie k pojmu strednej prieèky.
+
+Úloha 5 nie je ve¾mi vhodná pre menšie deti, pretoe je technicky nároèná, u samotná idea dôkazu sporom nie je jednoduchá. Navyše deti mnohé veci povaujú za oèividné a je pre ne aké zdôvodòova ich, keï k tomu vôbec nemajú potrebu, predsa je \uv{jasné}, e na dve èasti nestaèí trojuholník rozreza. (A niektorıch nepresvedèí ani príklad pravouhlého èi rovnoramenného trojuholníka, lebo ten ostrouhlı je predsa \uv{inı}.)
+
+Úlohy od 8 ïalej u nie sú pre malé deti vhodné, pretoe vyadujú poznatky, s ktorımi sa ešte nestretli. Dajú sa však zjednoduši, napr. nakreslením konkrétneho trojuholníka èi štvoruholníka (ktorého nejaká vlastnos u¾ahèuje riešenie).
+
+Pri riešení úloh pomáha kladenie vhodnıch otázok. Všimnite si otázky, pouité v texte (väèšinou sú zvıraznené šikmım fontom). Tieto otázky sú {\it všeobecné} a zodpovedajú základnım myšlienkovım pochodom pri riešení akejko¾vek úlohy. Keï sa ich budeme pıta dostatoène èasto, deti sa nauèia klás si takéto otázky samé od seba (mono nie na vedomej úrovni). A potom u budú vedie rieši samostatne. To sa samozrejme nedá dosiahnu za krátky èas, trvá to roky. 
+
+Urèite dokáete vymyslie aj ïalšie vhodné otázky, buïte však opatrní. Rozoberme si ako príklad otázku \uv{Kde môeš poui Pytagorovu vetu?} Táto otázka vôbec nespåòa úèel popísanı v predošlom odstavci a navyše je škodlivá. Vezmime si iaka, ktorı úlohu nedokáe sám vyrieši. Èo sa stane, keï poèuje túto otázku? Prvé, èo ho zarazí, je, e odkia¾ na to uèite¾ prišiel. Aká mágia za tım je? Preèo práve Pytagorova veta a nie Tálesova, Euklidova\dots{}? iak nevidí súvis medzi úlohou a Pytagorovou vetou, preto ani nabudúce nepríde na to, e treba poui Pytagorovu vetu. Ak iak Pytagorovu vetu dobre pozná, mal dostatok èasu úlohu rieši a nedokázal tú vetu poui, tak ani teraz nebude vedie, èo s òou. Ak iak Pytagorovu vetu dobre nepozná, tak mu uèite¾ova \uv{pomoc} aj tak nepomôe, pretoe jeho poznatok je nedostatoènı (alebo formálny --- potrebuje vidie trojuholník so stranami $a$, $b$, $c$, aby mohol poui vzorec $a^2+b^2=c^2$). Inak povedané, otázka mu nepomohla úlohu vyrieši. Tento príklad ilustruje, preèo treba opatrnos pri kladení otázok a pomáhaní iakom.
+
+Témy z tohto materiálu sa dajú ïalej rozvíja, napríklad smerom k obsahom, ich vıpoètu, odhadu, vhodné je kreslenie na štvorèekovanı papier ako propedeutika k pojmu obsah mnohouholníka pre menšie deti.
+
+
+\end{document}
