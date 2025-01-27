@@ -1,0 +1,225 @@
+\documentclass[a4paper, 11pt]{article}
+
+\usepackage[slovak]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+\usepackage{url}
+
+\def\tema#1{{\it #1\/}}
+\let\pr = \relax
+\def\ciara{\medskip\hrule\medskip}
+
+\parindent = 0pt
+\parskip = 3 mm
+\advance\textwidth by 2 cm
+\advance\hoffset by -1 cm
+\advance\textheight by 4 cm
+\advance\voffset by -2 cm
+\pagestyle{empty}
+
+\begin{document}
+
+% \centerline{\large\bf Matematická indukcia}
+
+% \medskip
+
+% \centerline{\sc Ján Mazák}
+
+% \bigskip
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Čo je matematická indukcia?}
+
+\emph{Indukcia} --- zovšeobecňovanie z malého počtu prípadov. V matematike vhodné na vytváranie hypotéz (s nejasnou platnosťou: skúste z malých prípadov zistiť, či $n^2 + n + 41$ je prvočíslo). \emph{Matematická indukcia} (MI) --- garantujeme pravdivosť na úrovni matematického dôkazu.
+
+Základná verzia: dokážeme $T(n_0)$ aj $\forall n\ge n_0: T(n)\Rightarrow T(n+1)$ (zväčša $n_0\in \{0, 1\}$).
+Platnosť pre ľubovoľné $n\ge n_0$ je ako domino: v rade kociek niektorú zhodíme a padnú potom aj všetky nasledujúce.
+Predpokladu na ľavej strane implikácie v 2. kroku hovoríme indukčný predpoklad (IP).
+
+MI možno využiť na dôkaz rovností. [Ako to zapísať? IP, $n\Rightarrow n+1$ vs. $k\Rightarrow k+1$]
+\begin{itemize}
+\item Pre každé prirodzené $n$ platí $1+2+\dots+n = n(n+1)/2$.
+\item Pre každé prirodzené $n$ platí $1^2+2^2+3^2+\cdots+n^2={1\over 6}n(n+1)(2n+1)$.
+\end{itemize}
+
+MI možno využiť na dôkaz nerovností. [Ako to zapísať?]
+\begin{itemize}
+\item Pre každé celé $n\ge 0$ platí $2^n > n$.
+\item Pre každé celé $n\ge 4$ platí $2^n > n^2$. [Dvojitá indukcia.]
+\item Existuje prirodzené $n_0$ také, že pre ľubovoľné celé $n\ge n_0$ platí $3^n > 7n+8$.
+\end{itemize}
+
+Oba indukčné kroky sú potrebné. Nájdite tvrdenie, pre ktoré funguje druhý, ale nefunguje prvý krok indukcie.
+[Napr. $3^n>5\cdot 3^n$; $9\mid 4^n+6n$.]
+
+\emph{Chybný dôkaz:} všetky čísla sú rovnaké (v druhom kroku uvažujeme $(n-1)$-tice rovnakých čísel $x_1$ až $x_{n-1}$, $x_2$ až $x_n$).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Úplná indukcia}
+
+Niekedy si s indukčným predpokladom zahŕňajúcim len jeden predošlý člen nevystačíme.
+Úplná indukcia: dokážeme $T(n_0)$ a
+$$
+    \forall n\ge n_0: [T(0)\wedge T(1)\wedge\dots\wedge T(n-1)]\Rightarrow T(n),
+$$
+resp. $[\forall k < n\ T(k)]\Rightarrow T(n)$.
+Indukciu možno robiť aj s podivnými skokmi hore-dole. Príklad: pri dôkaze nerovnosti medzi aritmetickým a geometrickým priemerom v druhom kroku $n \rightarrow 2n$, $n\rightarrow n-1$.
+
+V ďalšom texte využívame Fibonacciho postupnosť definovanú ako $F_0=0$, $F_1=1$, $F_n = F_{n-1}+F_{n-2}$ pre $n\ge 2$.
+\begin{itemize}
+\item Každé prirodzené číslo má rozklad na prvočísla. (Nezaujímame sa o jednoznačnosť rozkladu.)
+\item Máme $4$- a $7$-centové mince (hocikoľko). Dokážte, že nimi vieme vyplatiť ľubovoľnú sumu nad 1 euro (bez vydávania).
+    [Začiatok indukcie sa dá posunúť podľa potreby.]
+\item Pre každé celé $n\ge 0$ platí $F_n < 2^n$.
+\item Pre každé celé $n\ge 3$ platí $F_n > 1.1^n$.
+\item Pre ľubovoľné nezáporné celé $m$, $n$ platí $F_mF_n+F_{m+1}F_{n+1}=F_{m+n+1}$. [Dá sa indukciou podľa $n$, alebo $m+n$.]
+\item Máme tabuľku čokolády tvaru $1\times n$. Lámeme ju pozdĺž jednotlivých línií, chceme kúsky $1\times 1$. Koľko najmenej lámaní budeme potrebovať?
+\item Máme tabuľku čokolády tvaru $m\times n$. Lámeme ju pozdĺž jednotlivých línií, chceme kúsky $1\times 1$. Koľko najmenej lámaní budeme potrebovať?
+    [MI podľa $mn$, čiže veľkosti čokolády, ale šlo by aj podľa $m+n$. Dôkaz cez invariant však odhalí viac o podstate problému ako MI.]
+\item Určte maximálny počet uhlopriečok konvexného $n$-uholníka, ktoré nemajú žiadne spoločné vnútorné body.
+\item Súčet uhlov konvexného $n$-uholníka je $(n-2)\cdot 180^\circ$.
+\end{itemize}
+
+Pozorovanie: silnejší indukčný predpoklad pomáha v 2. indukčnom kroku. Použitie úplnej indukcie miesto \uv{základnej} zosilní indukčný predpoklad úplne zadarmo, bez zmeny pravej strany implikácie, ktorú v 2. kroku dokazujeme. Neraz sa však oplatí zvýšiť silu indukčného predpokladu aj za cenu, že sa na pravej strane zjaví silnejšie tvrdenie --- čiže dokazovaním silnejšieho tvrdenia (z ktorého to pôvodné vyplýva). Ukážky:
+\begin{itemize}
+\item Súčet $S_n=1^3+2^3+3^3+\cdots+n^3$ je pre každé $n$ druhou mocninou prirodzeného čísla. [Dokazujeme MI, že $S_n=(n(n+1)/2)^2$. Pri pôvodnom tvrdení sa zasekneme, po použití IP chceme ukázať, že $x^2 + n^3$ je štvorec, čo však pre všeobecné $x$ neplatí.]
+\item Fibonacciho postupnosť nie je zhora ohraničená. [Dokazujeme napr., že je rastúca, teda pre každé $n\ge 1$ platí $F_{n+1} > F_n$ a $F_n>0$.
+    Alebo pre $n\ge 3$ platí $F_n > 1.1^n$.]
+\item Dokážte, že nekonečne veľa členov Fibonacciho postupnosti je párnych. [MI: zvyšky po delení $2$ sa periodicky opakujú: $0, 1, 1, 0, 1, 1\dots$]
+\item V postupnosti danej predpisom \[
+    a_{n+2} = -a_{n+1} - a_n, \quad a_0 = 1, \quad a_1 = 0
+\]
+je len konečne veľa rôznych hodnôt. [Dok., že je periodická: $1, 0, -1, 1, 0, -1, \dots$.]
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Čo sa indukciou dokázať nedá}
+
+Pri dôkaze implikácie v druhom kroku vôbec nemusíme využiť IP. Príklad: $\forall n\forall x: nx^2\ge 0$, MI podľa $n$.
+Vtedy je síce dôkaz zapísaný ako MI, ale v skutočnosti robíme v 2. kroku priamo dôkaz pôvodného tvrdenia.
+V tomto zmysle vieme každé tvrdenie dokázať MI (stačí pred neho pridať $\forall k$ pre novú celočíselnú premennú $k$ a robiť indukciu podľa $k$).
+Zamerajme sa však na situácie, kde indukcia nepomáha: keď záver v implikácii v druhom kroku je silnejší ako IP (a implikácia je pravdivá akosi len zato, že z pravdy vždy vyplýva pravda).
+
+\begin{itemize}
+\item Pre každé prirodzené číslo $n$ platí $\displaystyle 1+{1\over 2}+{1\over 4}+\cdots+{1\over 2^n} < 2$. [Fix: silnejšie tvrdenie, presný súčet ĽS.]
+\item Pre každé prirodzené číslo $n$ platí $\displaystyle 1+{1\over 2^2}+{1\over 3^2}+\cdots+{1\over n^2} < 2$. [Fix: silnejšie tvrdenie, ĽS $\ \le 2-1/n$.]
+\end{itemize}
+
+MI tiež neumožňuje spraviť prechod od \emph{ľubovoľne veľkej konečnej množiny} k \emph{nekonečnej množine}.
+\begin{itemize}
+\item Ľubovoľná neprázdna podmnožina $M$ prirodzených čísel má najväčší prvok. [Platí len pre konečné $M$, dá sa dokázať MI.]
+\item Ľubovoľná neprázdna podmnožina $M$ prirodzených čísel má najmenší prvok. [Pre nekonečné $M$: keďže $M$ je neprázdna, má nejaký prvok p, uvažujme podmnožinu $M$ s prvkami nie väčšími ako $p$, tá musí byť konečná a preto má najmenší prvok.]
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Dokázať vs. pochopiť podstatu}
+
+MI možno využiť v teórii čísel.
+\begin{itemize}
+\item Číslo $5^{n+1}+6^{2n-1}$ je násobkom $31$ pre každé prirodzené číslo $n$.
+\item Pre každé celé $n\ge 0$ platí $9\mid 4^n+6n-1$.
+\item Dokážte, že ak $a$ a $n$ sú nepárne kladné celé čísla, tak $2^{n+1}$ delí $a^{2^n}-1$. (Pozor: $x^{y^z} = x^{(y^z)}$.)
+\end{itemize}
+Všimnite si rozdiel: kým v poslednom prípade indukciou získame pochopenie štruktúry výrazu (rozklad na súčin), v ostatných dvoch síce tvrdenie dokážeme, ale nevidíme hlbšie dôvody, prečo platí (napr. súvis medzi $4^n$ a $6n$ z hľadiska deliteľnosti $9$). Napr. pri postupnostiach indukcia zvyčajne priamo adresuje podstatu; pri deliteľnosti zriedka --- na hlbšie pochopenie treba napr. sledovať zvyšky po delení.
+
+
+Niekedy možno zachrániť dodatočným predpokladom 2. krok, ktorý \uv{nevychádza}.
+\begin{itemize}
+\item Pre ľubovoľné prirodzené číslo $n$ a reálne čísla $a_1,a_2,\dots,a_n$ platí
+$$
+(a_1+a_2+\cdots+a_n)^2\le n(a_1^2+a_2^2+\cdots+a_n^2).
+$$
+\end{itemize}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Postupnosti}
+
+Indukcia prirodzene funguje na postupnostiach, najmä definovaných rekurentne.
+\begin{itemize}
+\item Postupnosť spĺňa $a_0=1.01$, $a_{n+1} = a_n^2-a_n+1$. Dokážte, že $a_n\ge 1$ pre všetky $n$.
+\item Dokážte, že $F_1^2+F_2^2+\cdots+F_n^2$ sa dá vyjadriť ako súčin dvoch Fibonacciho čísel.
+\item Algoritmus pri usporiadaní $n$ čísel spraví $T(n)$ krokov, pričom $T(0) = 1$ a $T(n) = 2T(n/2) + n$. Dokážte, že $T(n)\le An^k+B$ pre vhodné konštanty $A$, $B$ a $k = 2$. Pre ktoré hodnoty $k$ možno nájsť vhodné konštanty $A$, $B$?
+\item Dokážte, že
+$$
+    F_n =\frac{1}{\sqrt{5}} \left( \left( \frac{1 + \sqrt{5}}{2} \right)^n - \left( \frac{1 - \sqrt{5}}{2} \right)^n \right).
+$$
+[Zaujímavé je, že hocijako pochybne sme uhádli takýto vzorec, indukciou sa dá ľahko dokázať jeho správnosť. V kombinatorickej analýze je viacero techník s otáznou matematickou korektnosťou, napr. použitie súčtov nekonvergentných nekonečných radov.]
+\end{itemize}
+
+V niektorých situáciách žiadna postupnosť zadaná nie je, ale z konečnej množiny objektov ju vieme vytvoriť.
+\begin{itemize}
+\item V rovine leží niekoľko priamok a rozdeľujú ju na oblasti. Dokážte, že vieme zafarbiť oblasti bielou a čiernou farbou tak, aby ľubovoľné dve susedné oblasti mali rôzne farby. [Priamky pridávame postupne a zakaždým zmeníme v jednej polrovine farby.]
+\item Na najviac koľko častí rozdelí rovinu $n$ priamok?
+\end{itemize}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Stromy a grafy}
+
+Indukcia dobre funguje na grafoch (vrcholy spojené hranami). Najprv krátky úvod: graf, súvislosť, cesta, kružnica, strom.
+MI bežne robíme podľa počtu vrcholov alebo hrán grafu (IP je, že pre menšie grafy tvrdenie platí).
+
+Ukážka oboch spôsobov: Súčet stupňov vrcholov je v každom grafe párny.
+
+Dôkaz robíme tak, že z daného grafu \emph{odoberieme} vrchol či hranu a na zvyšok použijeme IP.
+Nie tak, že čosi pridávame ku grafu, pre ktorý tvrdenie platí podľa IP.
+Pozor: ak máme tvrdenie s požiadavkami na graf (napr. že je súvislý), musíme overiť, že tie menšie grafy spĺňajú tieto požiadavky.
+
+\emph{Chybný dôkaz cez pridávanie vrcholov}: V každom súvislom grafe s minimálnym stupňom 2 leží každá hrana na kružnici.
+
+\begin{itemize}
+\item Každý súvislý graf má \emph{kostru} (podgraf, ktorý obsahuje všetky vrcholy, ale žiadnu kružnicu).
+\item Každý strom má list. [Je ľahšie indukciou dokazovať, že každý strom má listy aspoň dva. Bez indukcie: aspoň $\Delta$ listov.]
+\item Graf bez kružnice na $n$ vrcholoch má nanajvýš $n-1$ hrán. (Kedy nastáva rovnosť?)
+\item V skupine detí má každý aspoň jedného kamaráta. Dokážte, že vieme deti rozdeliť na volejbalový turnaj a matematickú olympiádu tak, že každý má kamaráta,
+    ktorý sa zúčastnil aktivity, ktorej sa nezúčastnil on sám.
+\item Ak na tenisovom turnaji (žiadne remízy) hral každý hráč s každým, vieme usporiadať hráčov do postupnosti tak, že prvý vyhral nad druhým, druhý nad tretím atď. až po výhru predposledného nad posledným.
+
+\end{itemize}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Ďalšie diskrétne štruktúry a aplikácie}
+
+\begin{itemize}
+\item Logika: Indukciou možno definovať pravdivostnú hodnotu zložitého výroku, predstavíme si operátorový strom s logickými spojkami, a hodnota v danom vrchole je určená príslušnou logickou spojkou a hodnotou pravého a ľavého podstromu.
+\item Množiny: Počet podmnožín danej množiny s $n$ prvkami je $2^n$.
+\item Informatika: Čo sa dá odvodiť pomocou danej sady pravidiel? Napr. pravidlá $A\to a$, $A\to Aa$, $B\to b$, $B\to Bb$, $Z\to AB$, aké slová z písmen $a$, $b$ odvodíme zo $Z$? [Popíšeme formu slova po $n$ krokoch výpočtu a MI kopíruje výpočet pri dôkaze, opäť treba silnejšie tvrdenie než podobu záverečného slova.]
+\item Vlastnosti algoritmu: Na vyriešenie problému hanojských veží treba aspoň $2^n-1$ krokov.
+\item Správnosť algoritmu: BFS nájde vzdialenosť v neohodnotenom grafe.
+\end{itemize}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Ďalšie úlohy}
+
+\begin{itemize}
+\item Dokážte, že pre ľubovoľné kladné celé čísla $k$, $n$ je $F_{kn}$ násobkom $F_n$.
+\item Číslo $a^{5^n}-a$ je násobkom čísla $5$ pre každé prirodzené číslo $n$.
+\item Rozhodnite, či pre ľubovoľné prirodzené $n$ platí $33\mid 5^{2n+1}+11^{2n+1}+17^{2n+1}$.
+\item Súčet všetkých nepárnych čísel od $1$ po $2n-1$ je druhou mocninou celého čísla.
+\item Zistite, koľkými spôsobmi možno vyjsť na schodisko s $n$ schodmi, ak každým krokom stúpneme o $1$ alebo $2$ schody.
+\item Nech $x\ge -1$. Dokážte, že pre každé kladné celé $n$ platí $(1+x)^n\ge 1+nx$. Kedy nastáva rovnosť?
+\item Nech $n$ je prirodzené číslo a $a_1<a_2<\cdots<a_{2n+1}$ sú kladné reálne čísla. Dokážte, že platí
+$$
+(a_1-a_2+a_3-a_4+\cdots-a_{2n}+a_{2n+1})^{1/n}\ge a_1^{1/n}-a_2^{1/n}+a_3^{1/n}-\cdots-a_{2n}^{1/n}+a_{2n+1}^{1/n}.
+$$
+(Návod: oddeľte počet čísel $a_i$ od exponentov v nerovnosti tým, že niektoré $n$ nahradíte $m$ a potom skúsite MI podľa $m$ či $n$.)
+\item Šachovnica s rozmermi $2^n \times 2^n$, z ktorej je odstránené jedno ľubovoľné pole, sa dá vždy úplne pokryť dlaždicami tvaru L pokrývajúcimi tri polia.
+\item Každý graf s párnym počtom hrán vieme rozdeliť na cesty dĺžky $2$.
+\item Graf s $n$ vrcholmi bez trojuholníkov má najviac $n^2/4$ hrán.
+\item Ak pre kladné reálne $x_1, x_2, \dots, x_n$ platí $x_1x_2\dots x_n = 1$, tak $x_1+x_2+\cdots+x_n \ge n$.
+\end{itemize}
+
+
+Literatúra:
+\begin{itemize}
+\item {\small \url{https://dml.cz/handle/10338.dmlcz/404193}}
+\item {\small \url{https://dml.cz/handle/10338.dmlcz/403889}}
+\end{itemize}
+
+
+\end{document}
