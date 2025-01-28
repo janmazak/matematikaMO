@@ -1,0 +1,354 @@
+======================================== Výrok vs. formula =========================================
+
+Čo je výrok? "oznamovacia veta, ktorej sa dá priradiť pravdivostná hodnota"
+Nedostatky tejto pracovnej definície, na príkladoch:
+
+1. Nech x je kladné reálne číslo. Potom x^2 > 0.
+--- Čo z týchto dvoch viet je výrok? Nič (ak zahodíme "nech" a "potom", boli by to výrokové formy), musíme to brať ako celok, je to implikácia (s implicitným všeob. kvantifikátorom).
+--- Ako máme vedieť, koľko viet treba "spojiť dokopy"?
+
+2. Predstavme si, že p, q sú výroky. Je "p or not p" výrok?
+--- Áno, je to vždy pravda.
+--- Ale čo "p or not q"? Na jednej strane p aj q sú výroky, preto nejakú pravdivostnú hodnotu by mali mať, a teda aj "p or not q" by ju malo mať. Ale nevieme ju určiť, kým nevieme viac o p a q. Je to v rozpore s prac. definíciou?
+--- Situácia sa zhorší ešte viac, keď pridáme kvantifikátory: dá sa dokázať, že neexistuje algoritmus, ktorý zistí pravdivosť výrazu s kvantifikátormi! Možno potom hovoriť o výrokoch? Pritom matematika bez kvantifikátorov je dosť o ničom a naša definícia výroku by nezachytávala reálnu matematickú prácu.
+
+3. Jednoduchý výrok = neobsahuje logické spojky.
+--- Je výrok "číslo 7 je kladné a druhá mocnina čísla 7 je kladná" jednoduchý alebo zložený?
+--- Alternatívne, môžeme povedať "nech P(x) je taká vlastnosť čísla x, že x > 0 a x^2 > 0; číslo 7 má vlastnosť P / platí P(7)". Je výrok "číslo 7 má vlastnosť P" jednoduchý alebo zložený?
+--- Toto bežne v matematike robievame, napr. "x delí y" je skrátený zápis pre "existuje číslo k také, že k je prirodzené a y = kx" --- a zrazu je logická spojka aj tam, kde nebola.
+--- Máme dôvod rozlišovať medzi jednoduchými a zloženými výrokmi? Áno, lebo chceme nejako uchopiť zložitosť výrokov a vlastnosti logických spojok. Lenže naša pracovná definícia výroku neumožňuje jasné určiť rozdelenie na výroky jednoduché a zložené.
+
+4. Mimo Zeme žijú niekdajší obyvatelia Atlantídy.
+--- Vyzerá ako výrok, lebo je to pravda alebo nie, hoci to nevieme dostupnými prostriedkami zistiť.
+--- Ale teória relativity a kvantová teória naznačujú, že pojmy ako "miesto" a "čas" nie vždy fungujú, ako sme zvyknutí. Napríklad nemožno presne povedať, kde je konkrétny elektrón (ten jeden v atóme vodíka), máme len pravdepodobnostné rozdelenie a matematické rovnice. A keď sa človek na elementárnu časticu pozrie, zmení jej stav. Čiže niektoré pravdivostné hodnoty nemožno zistiť --- keď to skúsime spraviť, pravdivostná hodnota sa zmení!
+
+5. Zajtra bude pršať.
+--- Má význam baviť sa o pravdivostnej hodnote? [Ak nie, čo potom robia meteorológovia? Fuzzy logika?]
+--- Výrok je neúplný v tom, že nehovoríme, kde bude pršať. Navyše jeho znenie je každý deň iné. Upravené znenie: 26. 5. 2024 v Žiline prší.
+--- Stačí počkať do zajtra a zistíme, či je to pravda, alebo nie --- stane sa naša veta výrokom až zajtra? Na rozhodnutie o pravdivosti veľkej Fermatovej vete sme čakali viac ako 300 rokov.
+--- A čo "odteraz až navždy bude každý deň pršať"?
+
+6. Každé párne číslo je súčtom dvoch prvočísel. (Goldbachova hypotéza)
+--- Dokázané pre čísla po 10^18. Predstavme si, že túto hranicu posunieme na tak veľké čísla, že sa nedajú už ani len reprezentovať v pamäti počítača, ktorý vieme zostrojiť zo všetkého materiálu dostupného vo vesmíre. Inak povedané, to číslo nikdy nestretneme. Dá sa toto tvrdenie prehlásiť za pravdu? Pre väčšinu ľudí je takéto vnímanie pravdivosti "good enough" --- bežne napr. očakávame, že keď ideme autom na cestu, tak dôjdeme do cieľa, a pritom to nie je vždy pravda.
+--- Toto je nejaké aritmetické tvrdenie (o prirodzených číslach). Čo ak nikdy nebudeme vedieť rozhodnúť o jeho pravdivosti? Čo ak sa to *nedá*? [algoritmická neriešiteľnosť diofantovskych rovníc; hypotéza kontinua je nezávislá od ZFC]
+
+7. Postupnosť 0,1,2,3,4,5,6,\dots je rastúca.
+--- Je to výrok?
+--- Ako vieme, ako bude postupnosť pokračovať? Aký je význam troch bodiek ako symbolu?
+--- Možno použiť vo výroku ľubovoľný symbol?
+--- Môže byť výrok nekonečne dlhý?
+
+8. Bu bayonot emas.
+--- Znamená "toto nie je výrok" v uzbečtine. Aký jazyk je prípustný?
+--- Môže výrok hovoriť o sebe? Môže viesť k paradoxom: Zoberme množinu X všetkých množín, ktoré neobsahujú samé seba. Je X svojim prvkom?
+--- Je veta "X patrí do X" výrok? Nemôže to byť ani pravda, ani nepravda, pritom to vyzerá ako úplne korektné matematické vyjadrenie.
+
+Sumarizácia problémov: 
+(a) Pravdivosť je veľmi ťažké uchopiť.
+(b) Výrok v sebe nesie odkazy na reálny svet, ktoré nesúvisia s logikou a ťažko sa vyhodnocujú.
+(c) Potrebujeme nejaké obmedzenia na použité symboly a ich prípustné kombinovanie.
+ 
+Riešenie: definovať výroky tak, aby
+(1) sme sa vyhli pojmu pravdivosti (a pravdivosť výroku definujeme až následne, keď budeme vedieť, čo výrok je);
+(2) logická štruktúra výroku (spojky, kvantifikátory) bola oddelená od sveta, ktorý výrok popisuje;
+(3) symboly, z ktorých výrok pozostáva, patrili do nejakej fixnej abecedy a ich použitie podliehalo jasným syntaktickým/gramatickým pravidlám.
+
+*Formula* --- postupnosť symbolov s jasne danými pravidlami (dobre uzátvorkovaná, logické spojky majú správny počet operandov, za kvantifikátorom nasleduje premenná atď.). Okrem logických symbolov pribudnú konštanty, predikáty a premenné (aby bolo čo kvantifikovať). *Konštanty* zastupujú konkrétne objekty popisovaného sveta. 
+*Predikáty* zastupujú nejaké vlastnosti popisovaného sveta, logike je úplne jedno, aké vlastnosti to sú. Tiež je užitočné pridať logický symbol pre rovnosť (ale logika sa dá vybudovať aj bez toho). Príklady formúl:
+0 = 1
+\A x (x \neq 0 => x = 1).
+\A x \E y [P(x) and Q(x, y)].
+P(x) => not Q(7) --- tzv. otvorená formula, zodpovedá výrokovej forme
+
+Ďalší kľúčový aspekt: chceme, aby sme vedeli algoritmicky rozhodovať o tom, ktorá postupnosť symbolov je formula?
+Pre všetky praktické účely áno. Potom však musíme mať jasné algoritmické pravidlá pre logické symboly. To nie je nič ťažké, stačí si uvedomiť, že zložitejšie formuly vznikajú z jednoduchších tým, že tie jednoduchšie spájame spojkami alebo pred ne pridávame kvantifikátor. Formuly si tak vieme predstaviť ako stromy a ich zložitosť možno exaktne merať (napr. ako hĺbku stromu).
+-> nakresliť ten strom pre \E y [P(x) and Q(x, y)] a dobrovoľník nech spraví strom pre \A x ((not x = 0) => x = 1).
+
+Z uvedeného vidíme, že "logika" nie je len jedna. Existuje hocikoľko rôznych formálnych logických jazykov, ktoré niečo popisujú --- líšia sa o.i. v mimologických symboloch. Napr. ak popisujeme aritmetiku, hodí sa nám mať 0 a 1 ako konštanty, ale pre teóriu množín nás skôr bude zaujímať konštanta pre prázdnu množinu. Rozdiel môže tiež byť v povolených logických symboloch, napr. môžeme zakázať alebo povoliť použitie kvantifikátorov alebo vyradiť niektoré logické spojky.
+
+Úloha: ako zapísať ekvivalenciu A a B, ak môžeme použiť len and, or, not?
+
+Keď popisujeme svet, je výhodné mať k dispozícii veľa rôznych symbolov. Naopak, keď skúmame principiálne vlastnosti logiky, chceme čo najjednoduchšie formuly (aby sa ľahko dokazovali ich vlastnosti) a preto používame minimálnu sadu symbolov (napr. pri logických spojkách si vystačíme so sadou not, implies --- dokážte si doma, že to stačí). Aj preto notácia v knihách o logike je výrazne nejednotná (na rozdiel od konsenzu pre zapisovanie aritmetických operácií).
+
+
+======================================== Pravdivosť =========================================
+
+Kedy povieme, že výrok P(alf) je pravdivý? Jeho pravdivosť závisí od P a od toho, čo je konštanta alf. Preto na debatu o pravdivosti potrebujeme pridať *interpretácie* pre všetky mimologické symboly: konštanty budú prvky nejakej domény D, predikát P(x) je pravdivý pre nejakú podmnožinu D, P(x, y) je pravdivý pre vybrané dvojice prvkov domény atď. Kvantifikované premenné nadobúdajú hodnoty z domény: \E x P(x) vyjadruje, že v doméne sa nachádza prvok d, pre ktorý platí P(d).
+
+Úloha: uvažujme formulu \A x (x = c0 or x = c1).
+Nájdite doménu a interpretáciu konštánt, pre ktoré je táto formula
+(a) pravdivá,    [D = {0, 1}, c0 = 0, c1 = 1], alebo [D = {0}, c0 = c1 = 0]
+(b) nepravdivá.    [D = {0, 1, 2}, c0 = 0, c1 = 1]
+
+Interpretácie sú úzko späté s databázami. Bežná databáza obsahuje tabuľky, v ktorých sú zoznamy objektov spĺňajúcich predikáty. Napr. tabuľka s dvojicami (meno, rodné číslo) popisuje predikát s dvomi argumentmi. Databázy sa potom pýtame otázky v podobe "nájdi mi všetky x, ktoré spĺňajú nejakú formulu vyjadrujúcu požadovanú vlastnosť x".
+Napr. "rodné čísla ľudí, ktorí sa volajú Jozef".
+Úloha:
+kope(x, j, y) --- človek x kope jamu j človeku y
+padol(x, j) --- človek x padol do jamy j
+Ako vyzerá formula popisujúca ľudí, ktorí druhému kopú jamu, ale sami do nej nepadli?
+    [\E j \E y (kope(x, j, y) and not (x = y) and not padol(x, j)) --- volna premenna x]
+
+Pri návrhu databázového systému potrebujeme presne popísať, aké formuly je povolené použiť v dotazoch. Čím zložitejšie formuly, tým viac nimi možno vyjadriť, ale zároveň sa ťažšie vyhodnocujú. Aj preto sa dotazy píšu v špeciálnych jazykoch ako SQL, nie v C či Pythone.
+
+Vidíme, že pravdivosť formuly závisí od domény a interpretácie. Pre danú štruktúru (doménu + interpretáciu) je formula pravdivá alebo nepravdivá.
+Formula môže byť    [-> nech nájdu príklady]
+(a) nesplniteľná (nemá *model*),
+(b) splniteľná (má aspoň jeden model),
+(c) tautológia/platná (je pravdivá v každom modeli).
+
+Zväčša nás nezaujíma vymýšľanie interpretácií, ale vzťah medzi formulami --- logické vyplývanie. Množinu formúl voláme *teória*. Typická otázka je, či z teórie T vyplýva formula F. Napr. keď ako teóriu T vezmeme aritmetiku a pýtame sa, či platí F = "súčet dvoch prvočísel je vždy párny". Toto sa dá úplne presne definovať: je pravda, že každý model T je modelom F? Inak: je pravda, že v každom svete, v ktorom sú splnené všetky formuly z T, je splnená aj F?
+
+Úloha: Nech A, B sú formuly [uzavreté]. Je pravda, že z "A or not B" a "B" vyplýva "A"?
+[vieme spraviť rozbor tabuľkou: pre daný model máme zafixovanú pravdivosť A aj B, stačí preveriť 4 kombinácie]
+
+
+======================================== Dokázateľnosť =========================================
+
+V riešení predošlej úlohy sme uvažovali o pravdivosti, a čosi sme *dokázali* rozborom možností. Ale čo je dôkaz? Vo všeobecnosti postupnosť viet / výrokov.
+Kedy úvahu nazveme dôkazom?
+(a) Vety sú formuly.
+(b) Každá formula v dôkaze je buď axióma (pokladá sa za akceptovanú pravdu; je súčasťou teórie, v rámci ktorej uvažujeme), alebo "dôsledok" predošlých formúl.
+(c) Dôkazy sú ľahko overiteľné, krok po kroku.
+Kvôli požiadavke (c) žiadame, aby "dôsledok" fungoval na základe jednoduchých algoritmických pravidiel, nie na základe pravdivosti. (Ako by sme overovali, že pre každý model čosi platí, keď modelov je nekonečne veľa?) Ukážky pravidiel:
+	- modus ponens: z formúl A a A->B je možné odvodiť formulu B
+	- Leibniz law: ak sa dva výrazy rovnajú, môžeme vo formule jeden nahradiť druhým
+	- špecializácia: vo formule so všeobecným kvantifikátorom za kvantifikovanú premennú dosadíme hocijaký výraz
+
+Samozrejme, dôkazy by boli nanič, ak by nesúviseli s pravdivosťou. Vyžadujeme preto korektnosť: ak formulu F vieme dokázať z teórie T, musí byť F logickým dôsledkom T (každý model T je modelom F). Toto je vlastnosť odvodzovacích pravidiel: každé jedno z nich musí byť korektné, a zároveň ak sú, už je všetko OK.
+Úloha: dokážte, že rezolvencia (A or C, B or not C // A or B) je korektné pravidlo.
+
+Ukážka: dôkaz Q proves 0+2 = 2; Robinsonova aritmetika Q má jazyk "0, S, +, x, =, kvantifikatory a premenne" a axiómy na str. 35, dôkaz 0+2=2 je na str. 31 v Godel without too many tears
+
+Problém tohto prístupu k dôkazom: sú neľudské. Aj dôkazy jednoduchých tvrdení môžu mať tisíce krokov a ľuďom sú nezrozumiteľné, nevieme sa z nich nič naučiť, zovšeobecniť ich, ... Preto naďalej môžete vo svojich dôkazoch uvažovať o pravdivosti, a využívať bežné skratky ako dôkaz sporom a vetu o dedukcii :)
+Je však možné zostavovať automatické dokazovače a skúmať vhodné sady pravidiel, ktoré vedú ku krátkym či ľahko objaviteľným dôkazom. Občas sa podarí počítačom dokázať aj nejakú otvorenú hypotézu.
+
+Vo všeobecnosti hľadáme nejaký rozumný kompromis medzi počtom axióm a počtom odvodzovacích pravidiel. Existujú logické systémy, ktoré majú veľa axióm a jediné pravidlo modus ponens, aj systémy, kde nie sú žiadne axiómy, ale veľa odvodzovacích pravidiel. Kľúčová je idea spoločná pre všetky dokazovacie systémy: sú mechanické, algoritmické, realizovateľné na počítači, bez akýchkoľvek úvah o tom, čo je pravda či pre ktoré interpretácie je formula pravdivá.
+
+
+TODO: na zaver nieco o AI, rozdiel medzi blackbox AI a automated reasoning --- auditable in the classic sense of the word, could be made transparent
+
+
+======================================== Úplnosť =========================================
+
+Za predpokladu korektných pravidiel sú všetky dokázateľné tvrdenia pravdivé. Sú však všetky pravdivé tvrdenia dokázateľné?
+1. Ak zakážeme kvantifikátory a ponecháme len logické spojky (výroková logika), áno. (Dôkaz nespravíme, ale je relatívne ľahký.)
+2. Ak povolíme kvantifikátory cez prvky domény (logika 1. rádu), áno. (Dôkaz je ťažký.)
+3. Ak povolíme aj kvantifikátory cez predikáty (logika 2. rádu), nie. Opäť: väčšia vyjadrovacia sila jazyka, ale prináša to problémy.
+
+Pozor: je rozdiel medzi "dôkaz existuje" a "dôkaz vieme algoritmicky nájsť".
+1. Algoritmus existuje (predstavte si kompletný rozbor pravdivosti pre výrokovú logiku).
+2. Algoritmus neexistuje. Časť problému spočíva v tom, že pre modely s nekonečnou doménou je ťažké vyhodnotiť kvantifikátor (dokonca pre veľmi veľkú doménu ani len nevieme postupne vymenovať jej prvky). Dôkaz neexistencie algoritmu: redukcia na problém zastavenia (modely vypočítateľnosti vs. Turingove stroje, zastavenie programu, rozdiel medzi jednotlivými vstupmi / všeob. algoritmom pre programy bez reštrikcií --- napr. databázové jazyky umožňujú napísať len programy, ktoré vždy skončia, kým v C napíšeme aj nekonečný).
+Pre zaujímavosť: ak zakážeme predikáty s viac ako 1 argumentom, už bude existovať algoritmus; dôvod: ak existuje model, existuje konečný model ohraničenej veľkosti.
+3. Algoritmus neexistuje (implied by 2).
+
+Ako je možné, že pre prvorádovú logiku existujú automatizované dokazovače, keď neexistuje algoritmus na hľadanie dôkazu? V konkrétnych prípadoch môžeme vedieť dôkaz nájsť. Napríklad môžeme prechádzať všetky možné postupnosti formúl postupne od krátkych po dlhé a pre každú overiť, či je to požadovaný dôkaz, alebo nie. Ak áno, našli sme ho, ak nie, ideme ďalej. Kým sme dôkaz nenašli, nevieme povedať, či existuje.
+
+
+======================================== Neúplnosť =========================================
+
+Negačne neúplná teória T: existuje formula F taká, že z T nemožno dokázať ani F, ani not F.
+[Ak je teória úplná v zmysle "všetko pravdivé sa dá dokázať", stále môžu existovať formuly, ktorých pravdivosť nesúvisí s T, hoci sú vyjadrené v jazyku T --- proste z nej ani nevyplývajú, ani s ňou nie sú v rozpore. Nie je pravda, že úplnosť implikuje negačnú úplnosť.]
+Úloha: popíšte nejakú negačne neúplnú teóriu T a príslušnú formulu F.    [napr. T = {A or B}, F = {A}; alebo ZF a C, t.j. teória množín a axióma výberu --- príklad axiómy v ZF: \A X \A Y ((\A z(z in X <=> z in Y)) => X = Y)]
+
+Hilbertov program z 1900: poďme kompletne axiomatizovať matematiku, čiže nájsť takú sadu axióm, že pre každú formulu vieme dokázať F alebo not F (tj. chceme negačne úplnú teóriu). Čosi podobne sa podarilo Euklidovi s planimetriou: na základe 5 axióm dokázal platnosť všetkých podstatných planimetrickych tvrdení známych Grékom. (Neskôr sa ukázalo, že axióm potrebuje asi 20, lebo potichu používal pojmy ako obsah, ktoré poriadne nedefinoval.)
+
+Godel cca 1930: nemožno axiomatizovať ani len aritmetiku. Presnejšie, nemožno nájsť teóriu T, ktorá má zároveň nasledujúce vlastnosti:
+(a) T je prvého rádu a je korektná [ak nie, pravdivosť nebude totožná s dokázateľnosťou],
+(b) z T nevyplýva nepravda [ak by vyplývala, tak z tejto nepravdy už vyplýva čokoľvek, čiže T je nanič],
+(c) T je efektívne axiomatizovateľná [ak by nie, nevieme algoritmicky ani len rozhodnúť, čo je formula či dôkaz],
+(d) T obsahuje aritmetiku (sčítanie, násobenie, prirodzené čísla),
+(e) T je negačne úplná (pre každú formulu vyjadriteľnú v jazyku T máme jej dôkaz alebo vyvrátenie).
+
+Idea dôkazu: Godelovo tvrdenie G = "toto je veta, ktorá sa nedá dokázať".
+
+Ak by sa G dalo dokázať, je nepravdivé, ale to je spor s korektnosťou (dokázať vieme len pravdy). Preto G je pravdivé, teda G sa nedá dokázať. Tvrdenie not G je nepravdivé, a teda sa tiež nedá dokázať (korektnosť). Čiže T je negačné neúplná, lebo nevieme dokázať ani G, ani not G.
+
+Akú úlohu hrá aritmetika? G sa vzťahuje na seba, nie je to formula. Godel zostrojil ozajstnú formulu, ale aby formula mohla hovoriť niečo o sebe, treba nám aritmetiku. Idea: zakódujeme formuly do prirodzených čísel cez exponenty prvočísel v rozklade, a dôkazy opäť cez exponenty prvočísel ako postupnosti formúl. Toto kódovanie a dekódovanie vyžaduje, aby T bola efektívne axiomatizovateľná (a tento pojem treba spresniť na primitívnu rekurzívnosť). Dokázateľnosť možno potom zapísať formulou, ktorá má jednu voľnú premennú, za ktorú dosádzame kód formuly. Táto formula je veľmi dlhá, ale v princípe jednoduchá (nevyskytujú sa v nej dlhé postupnosti vnorených kvantifikátorov).
+
+Na rozdiel od dokázateľnosti pravdivosť nemožno zapísať formulou (Tarského veta).
+
+Konzistentnosť systému: nemožno dokázať F a zároveň not F.
+Druhá Godelova veta: Nech S je efektívne axiomatizovatelny a obsahuje aritmetiku. Konzistentnosť S nemožno dokázať v rámci S.
+Konzistentnosť Peanovej aritmetiky nevieme dokázať v rámci nej. Dá sa to spraviť v rámci väčšieho systému, ale potom zase nevieme dokázať jeho konzistentnosť...
+
+
+[Ak zostane čas, tak tablá --- ako systematický rozbor možností pri dôkaze sporom a tiež dôkaz vety o úplnosti pre výrokovú logiku.]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+======================================== Vyrok vs. formula =========================================
+
+Co je vyrok? "oznamovacia veta, ktorej sa da priradit pravdivostna hodnota"
+Nedostatky tejto pracovnej definicie, na prikladoch:
+
+1. Nech x je kladne realne cislo. Potom x^2 > 0.
+--- Co z tychto dvoch viet je vyrok? Nic (ak zahodime "nech" a "potom", boli by to vyrokove formy), musime to brat ako celok, je to implikacia (s implicitnym vseob. kvantifikatorom).
+--- Ako mame vediet, kolko viet treba "spojit dokopy"?
+
+2. Predstavme si, ze p, q su vyroky. Je "p or not p" vyrok?
+--- Ano, je to vzdy pravda.
+--- Ale co "p or not q"? Na jednej strane p aj q su vyroky, preto nejaku pravdivostnu hodnotu by mali mat, a teda aj "p or not q" by ju malo mat. Ale nevieme ju urcit, kym nevieme viac o p a q. Je to v rozpore s prac. definiciou?
+--- Situacia sa zhorsi este viac, ked pridame kvantifikatory: da sa dokazat, ze neexistuje algoritmus, ktory zisti pravdivost vyrazu s kvantifikatormi! Mozno potom hovorit o vyrokoch? Pritom matematika bez kvantifikatorov je dost o nicom a nasa definicia vyroku by nezachytavala realnu matematicku pracu.
+
+3. Jednoduchy vyrok = neobsahuje logicke spojky.
+--- Skusme vyrok "cislo 7 je kladne a druha mocnina cisla 7 je kladna". Alternativne, mozeme povedat "nech P(x) je taka vlastnost cisla x, ze x > 0 a x^2 > 0; cislo 7 ma vlastnost P / plati P(7)". Je vyrok "cislo 7 ma vlastnost P" jednoduchy alebo zlozeny?
+--- Toto bezne v matematike robievame, napr. "x deli y" je skrateny zapis pre "existuje cislo k take, ze k je prirodzene a y = kx" --- a zrazu je logicka spojka aj tam, kde nebola.
+--- Mame dovod rozlisovat medzi jednoduchymi a zlozenymi vyrokmi? Ano, lebo chceme nejako uchopit zlozitost vyrokov a vlastnosti logickych spojok. Lenze nasa pracovna definicia vyroku neumoznuje jasne urcit rozdelenie na vyroky jednoduche a zlozene.
+
+4. Mimo Zeme ziju niekdajsi obyvatelia Atlantidy.
+--- Vyzera ako vyroky, lebo je to pravda alebo nie, hoci to nevieme dostupnymi prostriedkami zistit.
+--- Ale teoria relativity a kvantova teoria naznacuju, ze pojmy ako "miesto" a "cas" nie vzdy funguju, ako sme zvyknuti. Napriklad nemozno presne povedat, kde je konkretny elektron (ten jeden v atome vodika), mame len pravdepodobnostne rozdelenie a matematicke rovnice. A ked sa clovek na elementarnu casticu pozrie, zmeni jej stav. Cize niektore pravdivostne hodnoty nemozno zistit --- ked to skusime spravit, prav. hodnota sa zmeni!
+
+5. Zajtra bude prsat.
+--- Ma vyznam bavit sa o pravdivostnej hodnote? [Ak nie, co potom robia meteorologovia? Fuzzy logika?] Podla niektorych ludi toto vyrok nie je, podla inych ano.
+--- Alternativne znenie vyroku: 26. 5. 2024 v Ziline prsi. Staci pockat do zajtra a zistime, ci je to pravda, alebo nie --- stane sa nasa veta vyrokom az zajtra? Na rozhodnutie o pravdivosti velkej Fermatovej vete sme cakali viac ako 300 rokov.
+--- A co "odteraz az navzdy bude kazdy den prsat"?
+
+6. Kazde parne cislo je suctom dvoch prvocisel. (Goldbachova hypoteza)
+--- Dokazane pre cisla po 10^18. Predstavme si, ze tuto hranicu posunieme na tak velke cisla, ze sa nedaju uz ani len reprezentovat v pamati pocitaca, ktory vieme zostrojit z materialu dostupneho vo vesmire. Inak povedane, to cislo nikdy nestretneme. Da sa toto tvrdenie prehlasit za pravdu? Pre vacsinu ludi je taketo vnimanie pravdivosti "good enough" --- bezne napr. ocakavame, ze ked ideme autom na cestu, tak dojdeme do ciela, a pritom to nie je vzdy pravda.
+--- Toto je nejake aritmeticke tvrdenie (o prirodzenych cislach). Co ak nikdy nebudeme vediet rozhodnut o jeho pravdivosti? Co ak sa to *neda*? [algoritmicka neriesitelnost diofantovskych rovnic, hypoteza kontinua]
+
+7. Postupnost 0,1,2,3,4,5,6,\dots je rastuca.
+--- Je to vyrok?
+--- Ako vieme, ako bude postupnost pokracovat?
+--- Aky je vyznam troch bodiek ako symbolu? Mozno pouzit vo vyroku lubovolny symbol?
+--- Moze byt vyrok nekonecne dlhy?
+
+8. Bu bayonot emas.
+--- Znamena "toto nie je vyrok" v uzbectine. Aky jazyk je pripustny?
+--- Moze vyrok hovorit o sebe? Moze viest k paradoxom: Zoberme mnozinu X vsetkych mnozin, ktore neobsahuju same seba. Je X svojim prvkom?
+--- Je veta "X patri do X" vyrok? Nemoze to byt ani pravda, ani nepravda, pritom to vyzera ako uplne korektne matematicke vyjadrenie.
+
+Sumarizacia problemov: 
+(a) Pravdivost je velmi tazke uchopit.
+(b) Vyrok v sebe nesie odkazy na realny svet, ktore nesuvisia s logikou a tazko sa vyhodnocuju.
+(c) Potrebujeme nejake obmedzenia na pouzite symboly a ich pripustne kombinovanie.
+ 
+Riesenie: definovat vyroky tak, aby
+(1) sme sa vyhli pojmu pravdivosti (a pravdivost vyroku definujeme az nasledne, ked budeme vediet, co vyrok je);
+(2) logicka struktura vyroku (spojky, kvantifikatory) bola oddelena od sveta, ktory vyrok popisuje;
+(3) zaviest povolenu abecedu a syntakticke/gramaticke pravidla na pouzitie symbolov.
+
+*Formula* --- postupnost symbolov s jasne danymi pravidlami (dobre uzatvorkovana, logicke spojky maju spravny pocet operandov, za kvantifikatorom nasleduje premenna atd.). Okrem logickych symbolov pribudnu konstanty, predikaty a premenne (aby bolo co kvantifikovat). *Konstanty* zastupuju konkretne objekty popisovaneho sveta. 
+*Predikaty* zastupuju nejake vlastnosti popisovaneho sveta, logike je uplne jedno, ake vlastnosti to su. Tiez je uzitocne pridat logicky symbol pre rovnost (ale logika sa da vybudovat aj bez toho). Priklady formul:
+0 = 1
+\A x (x \neq 0 => x = 1).
+\A x \E y [P(x) and Q(x, y)].
+P(x) => not Q(7) --- tzv. otvorena formula, zodpoveda vyrokovej forme
+
+Dalsi klucovy aspekt: chceme, aby sme vedeli algoritmicky rozhodovat o tom, ktora postupnost symbolov je formula?
+Pre vsetky prakticke ucely ano, hoci z filozofickeho hladiska to nie je nutne. Ak ano, tak musime mat jasne algoritmicke pravidla pre logicke symboly. To nie je nic tazke, staci si uvedomit, ze zlozitejsie formuly vznikaju z jednoduchsich tym, ze tie jednoduchsie spajame spojkami alebo pred ne pridavame kvantifikator. Formuly si tak vieme predstavit ako stromy a ich zlozitost mozno exaktne merat (napr. ako hlbku stromu).
+-> nakreslit ten strom pre \E y [P(x) and Q(x, y)] a dobrovolnik nech spravi strom pre \A x (x \neq 0 => x = 1).
+
+Z uvedeneho vidime, ze "logika" nie je len jedna. Existuje hocikolko roznych formalnych logickych jazykov, ktore nieco popisuju --- lisia sa o.i. v mimologickych symboloch. Napr. ak popisujeme aritmetiku, hodi sa nam mat 0 a 1 ako konstanty, ale pre teoriu mnozin nas skor bude zaujimat konstanta pre prazdnu mnozinu. Rozdiel moze tiez byt v povolenych logickych symboloch, napr. mozeme zakazat alebo povolit pouzitie kvantifikatorov alebo vyradit niektore logicke spojky.
+
+Uloha: ako zapisat ekvivalenciu A a B, ak mozeme pouzit len and, or, not?
+
+Ked popisujeme svet, je vyhodne mat k dispozicii vela roznych symbolov. Naopak, ked skumame principialne vlastnosti logiky, chceme co najjednoduchsie formuly (aby sa lahko dokazovali ich vlastnosti) a preto pouzivame minimalnu sadu symbolov (napr. pri logickych spojkach si vystacime so sadou not, implies --- dokazte si doma, ze to staci). Aj preto notacia v knihach o logike je vyrazne nejednotna (na rozdiel od konsenzu pre zapisovanie aritmetickych operacii).
+
+======================================== Pravdivost =========================================
+
+Kedy povieme, ze vyrok P(alf) je pravdivy? Jeho pravdivost zavisi od P a od toho, co je konstanta alf. Preto na debatu o pravdivosti potrebujeme pridat *interpretacie* pre vsetky mimologické symboly: konstanty budu prvky nejakej domeny D, predikat P(x) je pravdivy pre nejaku podmnozinu D, P(x, y) je pravdivy pre vybrane dvojice prvkov domeny atd.
+
+Uloha: uvazujme formulu \A x (x \neq c0 => x = c1).
+Najdite domenu a interpretaciu konstant, pre ktore je tato formula
+(a) pravdiva,    [D = {0, 1}, c0 = 0, c1 = 1], alebo [D = {0}, c0 = c1 = 0]
+(b) nepravdiva.    [D = {0}]
+
+Interpretacie su uzko spate s databazami. Bezna databaza obsahuje tabulky, v ktorych su zoznamy objektov splnajucich predikaty. Napr. tabulka s dvojicami (meno, rodne cislo) popisuje predikat s dvomi argumentmi. Databazy sa potom pytame otazky v podobe "najdi mi vsetky x, ktore splnaju nejaku formulu vyjadrujucu pozadovanu vlastnost x".
+Uloha:
+kope(x, j, y) --- clovek x kope jamu j cloveku y
+padol(x, j) --- clovek x padol do jamy j
+Ako vyzera formula popisujuca ludi, ktori druhemu kopu jamu, ale sami do nej nepadli?    [kope(x, j, y) and not (x = y) and not padol(x, j)]
+
+Pri navrhu databazoveho systemu potrebujeme presne popisat, ake formuly je povolene pouzit v dotazoch. Cim zlozitejsie formuly, tym viac nimi mozno vyjadrit, ale zaroven sa tazsie vyhodnocuju. Aj preto sa dotazy pisu v specialnych jazykoch ako SQL, nie v C ci Pythone.
+
+Vidime, ze pravdivost formuly zavisi od domeny a interpretacie. Formula moze byt    [-> nech najdu priklady]
+(a) nesplnitelna (nema *model*),
+(b) splnitelna (ma aspon jeden model),
+(c) tautologia/platna (je pravdiva v kazdom modeli).
+
+Zvacsa nas nezaujima vymyslanie interpretacii, ale vztah medzi formulami --- logicke vyplyvanie. Mnozinu formul volame *teoria*. Typicka otazka je, ci z teorie T vyplyva formula F. Napr. ked ako teoriu T vezmeme aritmetiku a pytame sa, ci plati F = "sucet dvoch prvocisel je vzdy parny". Toto sa da uplne presne definovat: je pravda, ze kazdy model T je modelom F? Inak: je pravda, ze v kazdom svete, v ktorom su splnene vsetky formuly z T, je splnena aj F?
+
+Uloha: Nech A, B su formuly [uzavrete]. Je pravda, ze z "A or not B" a "B" vyplyva "A"?
+[vieme spravit rozbor tabulkou: pre dany model mame zafixovanu pravdivost A aj B, staci preverit 4 kombinacie]
+
+
+======================================== Dokazatelnost =========================================
+
+V rieseni predoslej ulohy sme uvazovali o pravdivosti, a cosi sme *dokazali* rozborom moznosti. Ale co je dokaz? Vo vseobecnosti postupnost viet, vyrokov, formul.
+Kedy uvahu nazveme dokazom?
+(a) Vety su formuly.
+(b) Kazda formula v dokaze je bud axioma (poklada sa za akceptovanu pravdu; je sucastou teorie, v ramci ktorej uvazujeme), alebo "dosledok" predoslych formul.
+(c) Dokazy su lahko overitelne, krok po kroku.
+Kvoli poziadavke (c) ziadame, aby "dosledok" fungoval na zaklade jednoduchych algoritmickych pravidiel, nie na zaklade pravdivosti. (Ako by sme overovali, ze pre kazdy model cosi plati, ked modelov je nekonecne vela?) Typickym pravidlom povolenym pri dokazovani je modus ponens: z formul A a A->B je mozne odvodit formulu B.
+
+Vo vseobecnosti hladame nejaky rozumny kompromis medzi poctom axiom a poctom odvodzovacich pravidiel. Existuju logicke systemy, ktore maju vela axiom a jedine pravidlo modus ponens, aj systemy, kde nie su ziadne axiomy, ale vela odvodzovacich pravidiel. Klucova je idea spolocna pre vsetky dokazovacie systemy: su mechanicke, algoritmicke, realizovatelne na pocitaci, bez akychkolvek uvah o tom, co je pravda ci pre ktore interpretacie je formula pravdiva.
+
+Samozrejme, dokazy by boli nanic, ak by nesuviseli s pravdivostou. Vyzadujeme preto korektnost: ak formulu F vieme dokazat z teorie T, musi byt F pravdiva v ramci T (kazdy model T je modelom F). Toto je vlastnost odvodzovacich pravidiel: kazde jedno z nich musi byt korektne, a zaroven ak su, uz je vsetko OK.
+Uloha: dokazte, ze modus ponens je korektne pravidlo.
+
+Problem tohto pristupu k dokazom: su neludske. Aj dokazy jednoduchych tvrdeni mozu mat tisice krokov a ludom su nezrozumitelne, nevieme sa z nich nic naucit, zovseobecnit, ... Preto nadalej mozete vo svojich dokazoch uvazovat o pravdivosti :)
+Je vsak mozne zostavovat automaticke dokazovace a skumat vhodne sady pravidiel, ktore vedu ku kratkym ci lahko objavitelnym dokazom. Obcas sa podari pocitacom dokazat aj nejaku otvorenu hypotezu.
+
+
+======================================== Uplnost =========================================
+
+Teraz vieme, ze vsetky dokazatelne tvrdenia su pravdive. Su vsak vsetky pravdive tvrdenia dokazatelne?
+1. Ak zakazeme kvantifikatory a ponechame len logicke spojky, ano. (Dokaz nespravime, ale je relativne lahky.)
+2. Ak povolime kvantifikatory cez prvky domeny (logika 1. radu), ano. (Dokaz je tazky.)
+3. Ak povolime aj kvantifikatory cez predikaty (logika 2. radu), nie. Opat: vacsia vyjadrovacia sila jazyka, ale prinasa to problemy.
+
+Pozor: je rozdiel medzi "dokaz existuje" a "dokaz vieme algoritmicky najst".
+1. Algoritmus existuje (predstavte si kompletny rozbor pravdivosti pre vyrokovu logiku).
+2. Algoritmus neexistuje. Cast problemu spociva v tom, ze pre modely s nekonecnou domenou je tazke vyhodnotit kvantifikator (dokonca pre velmi velku domenu ani len nevieme vymenovat jej prvky). Dokaz neexistencie algoritmu: redukcia na problem zastavenia (modely vypocitatelnosti vs. Turingove stroje, zastavenie programu, rozdiel medzi jednotlivymi vstupmi / vseob. algoritmom pre programy bez restrikcii --- napr. databazove jazyky umoznuju napisat len programy, ktore vzdy skoncia, kym v C napiseme aj nekonecny).
+Pre zaujimavost: ak zakazeme predikaty s viac ako 1 argumentom, uz bude existovat algoritmus; dovod: ak existuje model, existuje konecny model ohranicenej velkosti.
+3. Algoritmus neexistuje (implied by 2).
+
+Ako je mozne, ze pre prvoradovu logiku existuju automatizovane dokazovace, ked neexistuje algoritmus na hladanie dokazu? V konkretnych pripadoch mozeme vediet dokaz najst. Napriklad mozeme prechadzat vsetky mozne postupnosti formul postupne od kratkych po dlhe a pre kazdu overit, ci je to pozadovany dokaz, alebo nie. Ak ano, nasli sme ho, ak nie, ideme dalej. Kym sme dokaz nenasli, nevieme povedat, ci existuje.
+
+
+======================================== Neuplnost =========================================
+
+Negacne neuplna teoria T: existuje formula F taka, ze z T nemozno dokazat ani F, ani not F.
+[Ak je teoria uplna v zmysle "vsetko pravdive sa da dokazat", stale mozu existovat formuly, ktore ]
+
+Hilbertov program z 1900: podme kompletne axiomatizovat matematiku, cize najst taku sadu axiom, ze pre kazdu formulu vieme dokazat F alebo not F (tj. chceme negacne uplnu teoriu). Cosi podobne sa podarilo Euklidovi s planimetriou: na zaklade 5 axiom dokazal platnost vsetkych podstatnych planimetrickych tvrdeni znamych Grekom. (Neskor sa ukazalo, ze axiom potrebuje asi 20, lebo potichu pouzival pojmy ako obsah, ktore poriadne nedefinoval.)
+
+Godel cca 1930: nemozno axiomatizovat ani len aritmetiku. Presnejsie, nemozno najst teoriu T, ktora ma zaroven nasledujuce vlastnosti:
+(a) T je prveho radu a je korektna [ak nie, pravdivost nebude totozna s dokazatelnostou],
+(b) z T nevyplyva nepravda [ak by vyplyvala, tak z tejto nepravdy uz vyplyva cokolvek, cize T je nanic],
+(c) T je efektivne axiomatizovatelna [ak by nie, nevieme algoritmicky ani len rozhodnut, co je formula ci dokaz],
+(d) T obsahuje aritmetiku (scitanie, nasobenie, prirodzene cisla),
+(e) T je negacne uplna (pre kazdu formulu vyjadritelnu v jazyku T mame jej dokaz alebo vyvratenie).
+
+Idea dokazu: Godelovo tvrdenie G = "toto je veta, ktora sa neda dokazat".
+
+Ak by sa G dalo dokazat, je nepravdive, ale to je spor s korektnostou (dokazat vieme len pravdy). Preto G je pravdive, teda G sa neda dokazat. Tvrdenie not G je nepravdive, a teda sa tiez neda dokazat (korektnost). Cize T je negacne neuplna, lebo nevieme dokaat ani G, ani not G.
+
+Aku ulohu hra aritmetika? G sa vztahuje na seba, nie je to formula. Godel zostrojil ozajstnu formulu, ale aby formula mohla hovorit nieco o sebe, treba nam aritmetiku. Idea: zakodujeme formuly do prirodzenych cisel cez exponenty prvocisel v rozklade, a dokazy opat cez exponenty prvocisel ako postupnosti formul. Toto kodovanie a dekodovanie vyzaduje, aby T bola efektivne axiomatizovatelna (a tento pojem treba spresnit na primitivnu rekurzivnost). Dokazatelnost mozno potom zapisat formulou, ktora ma jednu volnu premennu, za ktoru dosadzame kod formuly. Tato formula je velmi dlha, ale v principe jednoducha (nevyskytuju sa v nej dlhe postupnosti vnorenych kvantifikatorov).
+
+Na rozdiel od dokazatelnosti pravdivost nemozno zapisat formulou (Tarskeho veta).
+
+Konzistentnost systemu: nemozno dokazat F a zaroven not F.
+Druha Godelova veta: Nech S je efektivne axiomatizovatelny a obsahuje aritmetiku. Konzistentnost S nemozno dokazat v ramci S.
+Konzistentnost Peanovej aritmetiky nevieme dokazat v ramci nej. Da sa to spravit v ramci vacsieho systemu, ale potom zase nevieme dokazat jeho konzistentnost...
+
+
+[Ak zostane cas, tak tabla --- ako systematicky rozbor moznosti pri dokaze sporom a tiez dokaz vety o uplnosti pre vyrokovu logiku.]
+
