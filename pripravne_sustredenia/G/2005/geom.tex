@@ -1,0 +1,197 @@
+
+\input slovak.sty
+
+\nopagenumbers
+\parindent = 0pt
+\parskip = .5\baselineskip
+
+\advance\hsize by 10pt
+\advance\vsize by 2cm
+\advance\voffset by -1cm
+
+\newcount\cisloprikladu
+\cisloprikladu = 1
+\def\pr{\medskip{\bf\number\cisloprikladu. }\advance\cisloprikladu by 1}
+
+
+\def\R{{\bf R}}
+\def\Rplus{{\bf R}^{{}^+}}
+
+\font\fontnadpis = csbx12 scaled 1200
+\font\fontsc = cscsc10
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\centerline{{\fontnadpis Prípravné sústredenie pred IMO 2005, Mexiko}}
+\medskip
+\centerline{ {\fontsc 16. 6. 2005, Ján Mazák}}
+
+%% mocnost, usekove uhly, vlastnosti osi uhla %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\pr
+Nech $ABC$ je trojuholník so štandardnım oznaèením strán, nech $L$ je prieseèník osi uhla $BAC$ s so stranou $BC$;
+$R$ je polomer opísanej krunice a $v_c$ ve¾kos vıšky na stranu $C$. Dokáte, e $ab=2Rv_c$ a $|AL|^2=bc(1-a^2/(b+c)^2)$.
+Vyjadrite ve¾kosti jeho aníc pomocou ve¾kostí strán. Akı obsah má trojuholník, ktorého strany majú rovnaké ve¾kosti ako anice
+trojuholníka $ABC$ (existuje vdy takıto trojuholník)?
+%% Geometry revisited, str. 10-11
+Dokáte, e ak má trojuholník dve rovnako dlhé osi uhlov, tak je rovnoramennı.
+%% Steiner-Lehmus theorem
+
+\pr
+Krunice $k$, $\ell$ sa pretínajú v bodoch $M$, $N$. Nech $AB$ je priamka dotıkajúca sa tıchto kruníc po poradí v bodoch $A$, $B$ tak,
+e bod $M$ leí k $AB$ blišie ne bod $N$. Nech $CD$ je priamka rovnobená s $AB$ prechádzajúca cez bod $M$,
+prièom $C$ leí na $k$ a $D$ leí na $\ell$.
+Priamky $AC$ a $BD$ sa pretínajú v~bode~$E$; priamky $AN$ a $CD$ sa pretínajú v~bode $P$;
+priamky $BN$ a $CD$ sa pretínajú v bode $Q$. Dokáte, e $EP=EQ$.
+Dokáte, e priamka $NE$ je osou uhla $CND$.  
+%% shortlist IMO 2000, G2
+
+\pr
+V rovine sú dané dve krunice pretínajúce sa v bodoch $X$ a $Y$. Dokáte, e existujú štyri body s~nasledujúcou vlastnosou:
+Pre kadú krunicu dotıkajúcu sa danıch kruníc v bodoch $A$ a $B$ a pretínajúcu priamku $XY$ v bodoch $C$ a $D$ kadá z priamok 
+$AC$, $AD$, $BC$, $BD$ prechádza jednım z tıch štyroch bodov.
+%% shortlist IMO 2000, G1
+
+\pr
+Krunica $k$ má stred $O$ a priemer $BC$. Nech $A$ je bod krunice $k$ takı, e $|\angle AOB|<120^\circ$. Nech $D$ je stred toho 
+oblúka $AB$, ktorı neobsahuje bod $C$. Priamka prechádzajúca bodom $O$ rovnobená s $DA$ pretína priamku $AC$ v bode $I$.
+Os úseèky $OA$ pretína krunicu $k$ v bodoch $E$ a $F$. Dokáte, e $I$ je stred krunice vpísanej do trojuholníka $CEF$.
+%% shortlist IMO 2002, G3
+
+\pr
+Nech $ABC$ je ostrouhlı trojuholník a $T$ jeho vnútornı bod takı, e $|\angle ATB|=|\angle BTC|=|\angle CTA|$. Nech $M$, $N$, $P$
+sú kolmé priemety bodu $T$ po rade na strany $BC$, $CA$, $AB$. Krunica opísaná trojuholníku $MNP$ pretína priamky
+$BC$, $CA$, $AB$ druhıkrát po rade v bodoch $M'$, $N'$, $P'$. Zistite vnútorné uhly trojuholníka $M'N'P'$.
+%% MO Challenges, 1.2/11 (str. 9)
+
+\pr
+iadne tri z bodov $A$, $B$, $C$, $D$ nie sú kolineárne. Priamky $AB$ a $CD$ sa pretínajú v bode $E$, priamky $BC$ a $DA$ sa pretínajú
+v~bode~$F$. Dokáte, e krunice s priemermi $AC$, $BD$, $EF$ sa buï pretínajú v spoloènom bode alebo iadne dve z nich nemajú spoloènı bod.
+%% MO Challenges, 1.3/6 (str. 12)
+
+\pr
+Daná je krunica $k$ a na nej tri rôzne body $A$, $B$, $C$.
+Zostrojte na krunici $k$ bod $D$ tak, aby sa štvoruholníku
+$ABCD$ dala vpísa krunica.
+%% IMO 1962/5
+
+
+%% Cevova veta %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\pr
+V rovnobeníku $ABCD$ na stranách $AB$ a $BC$ sú po rade body $E$ a $F$ tak, e $|AE|=|CF|$. Dokáte, e prieseèník priamok $AF$ a $CE$
+leí na osi uhla $ADC$.
+%% Fonod, Maxian: Geometricke perlicky, str. 43
+
+\pr
+Nech $A_1$ je stred štvorca vpísaného do ostrouhlého trojuholníka tak, e dva jeho vrcholy leia na strane $BC$.
+Body $B_1$, $C_1$ sú definované podobne. Dokáte, e priamky $AA_1$, $BB_1$, $CC_1$ prechádzajú jednım bodom.
+%% shortlist IMO 2001, G1
+
+\pr
+Danı je trojuholník $ABC$ a body $X$, $Y$, $Z$ také, e $|\angle ABZ|=|\angle XBC|$, $|\angle BCX|=|\angle YCA|$,
+$|\angle CAY|=|\angle ZAB|$. Dokáte, e priamky $AX$, $BY$, $CZ$ prechádzajú jednım bodom.
+%% Kiran Kedlaya: Notes on Euclidean Geometry, problem 2.1/6
+
+\pr
+Nech $ABC$ je trojuholník a $D$, $E$, $F$ sú po rade body na jeho stranách $BC$, $CA$, $AB$ také, e ceviány $AD$, $BE$, $CF$
+prechádzajú jednım bodom. Nech $M$, $N$, $P$ sú body na úseèkách $EF$, $FD$, $DE$ (v tomto poradí). Dokáte, e priamky $AM$, $BN$, $CP$
+prechádzajú jednım bodom práve vtedy, keï priamky $DM$, $EN$, $FP$ prechádzajú jednım bodom.
+%% Kiran Kedlaya: Notes on Euclidean Geometry, problem 2.1/2
+
+\pr
+Nech $O$ je stred opísanej krunice a $H$ ortocentrum ostrouhlého trojuholníka $ABC$.
+Dokáte, e existujú body $D$, $E$, $F$ po rade na stranách $BC$, $CA$, $AB$ tak,
+e $OD+DH=OE+EH=OF+FH$ a priamky $AD$, $BE$, $CF$ prechádzajú jednım bodom.
+%% shortlist IMO 2000, G3
+
+
+%% Ptolemaiova veta %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\pr
+Nech $M$ je vnútornı bod strany $AB$ trojuholníka $ABC$. Dokáte, e platí (Stewartova veta)
+$$
+AB\cdot (MC^2+BM\cdot AM)=BC^2\cdot AM + AC^2\cdot BM.
+$$
+%% Stewartova veta
+
+\pr
+Vrcholy štvoruholníka $ABCD$ leia na krunici s polomerom $1$. Pre dåky jeho strán platí $|AB|\cdot |BC|\cdot |CA|\cdot |AD|\ge 4$.
+Dokáte, e štvoruholník $ABCD$ je štvorec.
+%% Fonod, Maxian: Geometricke perlicky, str. 53
+
+\pr
+Dokáte, e v rovine existuje nekoneèná mnoina bodov taká, e iadne tri body tejto mnoiny nie sú kolineárne a vzdialenos
+medzi ¾ubovo¾nımi dvoma z tıchto bodov je racionálne èíslo.
+%% http://www.cms.math.ca/Competitions/MOCP/98-99/ps-1.html, problem 5
+
+\pr
+Nech $ABC$ je trojuholník, pre ktorı existuje vnútornı bod $F$ takı, e $\angle AFB=\angle BFC=\angle CFA$. Priamky $BF$ a $CF$ pretínajú
+strany $AC$ a $AB$ v bodoch $D$ a $E$ (v tomto poradí). Dokáte, e $AB+AC\ge 4DE$. Kedy nastáva rovnos?
+%% shortlist IMO 2002, G2
+
+\pr
+Nech $A_1A_2\dots A_n$ je konvexnı mnohouholník, $n\ge 4$. Dokáte, e $A_1A_2\dots A_n$ je tetivovı práve vtedy,
+keï ku kadému vrcholu $A_j$ vieme priradi dvojicu $(b_j, c_j)$ reálnych èísel tak, e 
+$$
+A_iA_j = b_jc_i-b_ic_j \qquad {\rm pre\ všetky\ } i, j\ {\rm také,\ e\ } 1\le i< j \le n\,.
+$$
+%% shortlist IMO 2000, G4
+
+\pr
+Nech $ABC$ je trojuholník s aiskom $G$. Nájdite takı bod $P$ v rovine trojuholníka $ABC$, e vıraz
+$AP\cdot AG+BP\cdot BG+ CP\cdot CG$ má minimálnu hodnotu. Vyjadrite túto hodnotu pomocou strán trojuholníka $ABC$.
+%% shortlist IMO 2001, G3
+
+\pr
+Nájdite takı bod $P$ v rovine konvexného štvoruholníka $ABCD$, e súèet $AP$+$BP$+$CP$+$DP$ je minimálny.
+%% zname
+
+%% Obsahy %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\pr
+Nech $ABC$ je ostrouhlı trojuholník. Nech $DAC$, $EAB$, $FBC$ sú rovnoramenné trojuholníky leiace mimo trojuholníka
+$ABC$, prièom $DA=DC$, $EA=EB$, $FB=FC$ a $\angle ADC=2\angle BAC$, $\angle BEA=2\angle ABC$, $\angle CFB=2\angle ACB$.
+Nech $D'$ je prieseèník priamok $DB$ a $EF$, $E'$ je prieseèník $EC$ a $DF$, $F'$ je prieseèník $FA$ a $DE$. Nájdite hodnotu vırazu 
+$$
+{DB\over DD'}+{EC\over EE'}+{FA\over FF'}\,.
+$$
+%% shortlist IMO 2001, G5
+
+\pr
+Nech $ABC$ je trojuholník a $P$ jeho vonkajší bod (v rovine trojuholníka). Nech $AP$, $BP$, $CP$ pretínajú
+strany (resp. ich predåenia) $BC$, $CA$, $AB$ v bodoch $D$, $E$, $F$. Predpokladajme, e obsahy trojuholníkov 
+$PBD$, $PCE$, $PAF$ sú rovnaké. Dokáte, e potom sú všetky rovné obsahu trojuholníka $ABC$.
+%% shortlist IMO 2001, G6
+
+%%%%%%%%%%%%%% misc
+
+% 2002 / G5  afinna transformacia, obsahy, minimalizacia...
+% 2002 / G7  heronov vzorec, vpis. kruz, vypoctove ries.
+
+\pr
+Danı je dotyènicovı štvoruholník. Dokáte, e úseèky, ktoré spájajú dotykové body oproti leiacich strán s vpísanou krunicou, prechádzajú
+prieseèníkom uhloprieèok. 
+%% Vybrane ulohy z MO, kat. A + MMO, str. 20/65
+
+\pr
+V priestore je daná taká koneèná mnoina bodov, e kadá priamka prechádzajúca dvomi jej bodmi obsahuje ešte aspoò jeden ïalší bod tejto mnoiny. Dokáte, e všetky body takejto mnoiny leia na jednej priamke.
+%% Vybrane ulohy z MO, kat. A + MMO, str. 21/71
+
+\pr
+V rovine je danıch $n\ge 3$ bodov, prièom tieto body neleia na jednej priamke. Potom mono nájs krunicu, ktorá obsahuje aspoò tri z danıch bodov, prièom ani jeden z danıch bodov neleí vnútri tejto krunice.
+%% Vybrane ulohy z MO, kat. A + MMO, str. 17/46
+
+\pr
+V rovine je daná mnoina $n\ge 3$ bodov, kadé dva z nich sú spojené úseèkou. Oznaème $d$ dåku najdlhšej z tıchto úseèiek. {\it Priemerom\/} danej mnoiny nazveme kadú z tıchto úseèiek, ktorá má dåku $d$. Zistite, ko¾ko najviac môe ma mnoina priemerov. 
+%% Vybrane ulohy z MO, kat. A + MMO, str. 17/47
+
+\pr
+Dané sú kladné èísla $a$, $b$, $c$, $d$ ako dåky strán $AB$, $BC$, $CD$, $DA$ štvoruholníka $ABCD$. Zostrojte takı štvoruholník $ABCD$, e jeho obsah je èo najväèší.
+%% Vybrane ulohy z MO, kat. A + MMO, str. 20/63
+
+\pr
+Vnútri strán $AB$, $BC$, $CA$ trojuholníka $ABC$ zvolíme v tomto poradí ¾ubovo¾né body $K$, $L$, $M$. Dokáte, e obsah aspoò jedného z trojuholníkov $MAK$, $KBL$, $LCM$ je menší alebo rovnı štvrtine obsahu trojuholníka $ABC$.
+%% Vybrane ulohy z MO, kat. A + MMO, str. 20/61
+
+
+\end

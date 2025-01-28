@@ -1,0 +1,155 @@
+\input slovak.sty
+
+\nopagenumbers
+\parindent = 0pt
+\parskip = .5\baselineskip
+
+\advance\hsize by 10pt
+\advance\vsize by 1cm
+%\advance\voffset by -1cm
+
+\newcount\cisloprikladu
+\cisloprikladu = 1
+\def\pr{\medskip{\bf\number\cisloprikladu. }\advance\cisloprikladu by 1}
+
+
+\def\R{{\bf R}}
+\def\Rplus{{\bf R}^{{}^+}}
+
+\font\fontnadpis = csbx12
+\font\fontsc = cscsc10
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\centerline{{\fontnadpis Prípravné sústredenie pred MEMO a IMO 2008}}
+\bigskip
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\pr
+Nech $n\ge 5$ je dané prirodzené èíslo. Urète najväèšie prirodzené èíslo $k$, pre ktoré existuje mnohouholník s $n$ vrcholmi, ktorı má $k$ vnútornıch pravıch uhlov.
+% shortlist 2003, C3
+
+\pr
+Nech $D_1, D_2, \dots, D_n$ sú kruhy v rovine. Kadı z bodov tejto roviny je obsiahnutı v nanajvıš $2008$ kruhoch $D_i$. Dokáte, e existuje kruh $D_k$, ktorı má spoloènı bod s nanajvıš $7\cdot 2008-1$ kruhmi $D_i$.
+% shortlist 2003, C2
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%A. Trojuholnikova nerovnost
+% kedy nastava rovnost
+
+\pr
+a) Ak existuje trojuholník so stranami dåok $a$, $b$, $c$, existuje aj trojuholník so stranami dåok $\sqrt{a}$, $\sqrt{b}$, $\sqrt{c}$. Platí obrátené tvrdenie?\hfil\break
+b) Nech $a$, $b$, $c$, $d$, $e$ sú úseèky také, e sa z kadıch troch z nich dá zostroji trojuholník. Dokáte, e aspoò jeden z takto zostrojenıch trojuholníkov je ostrouhlı.
+
+\pr
+Dokáte, e ak v trojuholníku pre dåku anice z vrchola $A$ platí $2t_a > a$, tak uhol pri vrchole $A$ je ostrı.
+
+\pr
+Nech $t_a, t_b, t_c$ sú dåky aníc z vrcholov $A$, $B$, $C$ trojuholníka $ABC$ s obvodom $o$ a obsahom $S$.\hfil\break
+a) Dokáte, e vieme zostroji trojuholník s dåkami strán $t_a, t_b, t_c$. Vyjadrite jeho obsah pomocou $S$.\hfil\break
+b) Dokáte, e platí $3o/4 < t_a+t_b+t_c < o$.
+
+\pr
+Nech $a_1, a_2,a_3,a_4,a_5$ sú dåky strán konvexného päuholníka a $d_1,d_2,d_3,d_4,d_5$ sú dåky jeho uhloprieèok. Dokáte, e
+$1 <(d_1+d_2+d_3+d_4+d_5)/(a_1+a_2+a_3+a_4+a_5) < 2$.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%B. Nerovnosti pre strany trojuholníka
+%a, b, c vs. x, y, z
+%$OI^2 =R^2-2Rr\ge 0$ (ale vyplyva to z Feuerb. kruz. tiez lacno)
+
+\pr
+Nech $a$, $b$, $c$ sú kladné reálne èísla spåòajúce vzah $a^2+b^2-ab=c^2$. Dokáte, e $(a-b)(b-c)\le 0$.
+
+\pr
+Dokáte, e ak $a$, $b$, $c$ sú ve¾kosti strán trojuholníka s obsahom $S$, platia nasledujúce nerovnosti.
+$$(a+b-c)(b+c-a)(c+a-b)\le abc$$
+$$2(a^2b^2+b^2c^2+c^2a^2)\ge a^4+b^4+c^4$$
+$$4\sqrt{3}S\le {9abc\over a+b+c}$$
+% Inequalities, 2.4.6
+
+\pr
+V trojuholníku $ABC$ oznaèíme $I$ stred vpísanej krunice a $L$, $M$, $N$ prieseèníky osí vnútornıch uhlov pri vrcholoch $A$, $B$, $C$ (v tomto poradí) s proti¾ahlımi stranami. Dokáte, e
+$$
+{1\over 4}<{AI\over AL}{BI\over BM}{CI\over CN}\le {8\over 27}.
+$$
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%C. Ptolemaiova nerovnost.
+%dokaz cez komplexne cisla, inverziu a simsonovu priamku, kedy nastava rovnost?
+
+\pr
+Vrcholy štvoruholníka $ABCD$ leia na krunici s polomerom $1$. Pre dåky jeho strán platí $|AB|\cdot |BC|\cdot |CD|\cdot |DA|\ge 4$.
+Dokáte, e štvoruholník $ABCD$ je štvorec.
+%% Fonod, Maxian: Geometricke perlicky, str. 53
+
+\pr
+Dokáte, e v rovine existuje nekoneèná mnoina bodov taká, e iadne tri body z tejto mnoiny nie sú kolineárne a vzdialenos medzi ¾ubovo¾nımi dvoma bodmi tejto mnoiny je racionálne èíslo.
+%% http://www.cms.math.ca/Competitions/MOCP/98-99/ps-1.html, problem 5
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%E. Ulohy.
+
+\pr
+Let $ABCD$ be a convex quadrilateral. A circle passing through the points $A$ and $D$ and a circle passing through the points $B$ and $C$ are externally tangent at a point $P$ inside the quadrilateral. Suppose that $\angle PAB+\angle PDC\le 90^\circ$ and $\angle PBA+\angle PCD\le 90^\circ$. Prove that $AB+CD\ge BC+AD$.
+%% shortlist IMO 2006, G8
+
+\pr
+Nájdite takı bod $P$ v rovine konvexného štvoruholníka $ABCD$, e súèet $AP+BP+CP+DP$ je minimálny.
+%% zname
+
+\pr
+Nech $a$, $b$, $c$ sú kladné reálne èísla, z ktorıch $c$ je najmenšie. Pomocou geometrickej interpretácie aj bez nej dokáte, e
+$$
+\sqrt{c(a-c)}+\sqrt{c(b-c)}\le \sqrt{ab}.
+$$
+% Inequalities, 2.6.4
+
+\pr
+Nech $ABC$ je rovnostrannı trojuholník a bod $T$ leí na oblúku $AB$ krunice opísanej trojuholníku $ABC$ (tom, na ktorom neleí bod $C$). Ukáte, e $|TC|=|TA|+|TB|$. Nájdite aspoò dva rôzne dôkazy.
+
+
+\pr
+Dokáte, e pre kladné reálne èísla $a$, $b$, $c$ platí
+$$
+\sqrt{a^2+ac+c^2}\le \sqrt{a^2-ab+b^2}+\sqrt{b^2-bc+c^2}.
+$$
+
+\pr
+Nech $a$, $b$, $c$ sú dåky strán trojuholníka, $t_a, t_b, t_c$ dåky jeho aníc a $R$ polomer opísanej krunice.
+Dokáte, e platia nerovnosti\hfil\break
+$$
+t_a(bc-a^2)+t_b(ca-b^2)+t_c(ab-c^2)\ge 0,\qquad\qquad
+{a^2+b^2\over t_c}+{b^2+c^2\over t_a}+{c^2+a^2\over t_b}\le 12R.
+$$
+
+\pr
+Vnútri kadej strany jednotkového štvorca si zvolíme jeden bod. Tieto body vytvoria štvoruholník so stranami dåok $a, b, c, d$.
+Dokáte, e platia nerovnosti
+$$
+2\le a^2+b^2+c^2+d^2\le 4, \qquad\qquad 2\sqrt2\le a+b+c+d\le 4.
+$$
+% Inequalities, 2.54
+
+\pr 
+V ostrouhlom trojuholníku $ABC$ je $AP$ vıška a $O$ stred opísanej krunice. Navyše $\gamma\ge \beta+30^\circ$. Dokáte, e uhol s ve¾kosou $|\angle BAC|+|\angle COP|$ je ostrı.
+% shortlist IMO 2001, G2
+
+\pr
+Nech $c>b$ v trojuholníku $ABC$. Dokáte, e platí $c-b < 2(t_b-t_c) < 3(c-b)$.
+
+\pr
+Nech $ABC$ je trojuholník, pre ktorı existuje vnútornı bod $F$ takı, e $\angle AFB=\angle BFC=\angle CFA$. Priamky $BF$ a $CF$ pretínajú
+strany $AC$ a $AB$ v bodoch $D$ a $E$ (v tomto poradí). Dokáte, e $AB+AC\ge 4DE$. Kedy nastáva rovnos?
+%% shortlist IMO 2002, G2
+
+\pr 
+V rovine je daná taká koneèná mnoina bodov, e kadá priamka prechádzajúca dvomi jej rôznymi bodmi obsahuje ešte aspoò jeden ïalší bod tejto mnoiny. Dokáte, e všetky body tejto mnoiny leia na jednej priamke.
+
+
+\end

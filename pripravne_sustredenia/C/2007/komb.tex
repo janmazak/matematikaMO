@@ -1,0 +1,200 @@
+\input slovak.sty
+\input amssym
+
+\nopagenumbers
+\parindent = 0pt
+\parskip = .5\baselineskip
+
+\advance\hsize by 10pt
+\advance\vsize by 2cm
+\advance\voffset by -1cm
+
+\newcount\cisloprikladu
+\cisloprikladu = 1
+\def\pr{\medskip{\bf\number\cisloprikladu. }\advance\cisloprikladu by 1}
+
+
+\def\R{{\bf R}}
+\def\Rplus{{\bf R}^{{}^+}}
+
+\font\fontnadpis = csbx12
+\font\fontsc = cscsc10
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\centerline{{\fontnadpis Prípravné sústredenie pred IMO 2007 Vietnam}}
+\medskip
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%A. enumeracia
+%sucet, sucin, komplement, bijekcia: sucet parnych a neparnych komb. cisel je taky isty
+%kombinacne cisla, permutacia, pasc. trojuholnik, trapne ulohy, polynomicka veta
+%pocet kostier, stavovce, povykosy
+%inkluzia a exkluzia, fi(n)
+%pocet grafov na n vrcholoch s m hranami ako generujuca funkcia
+
+\pr
+Máme $n$ rôznych objektov. Ko¾kımi spôsobmi sa dajú rozdeli do nerozlíšite¾nıch škatuliek tak, aby $a_i$ škatuliek obsahovalo
+$i$ objektov pre $i=1,2,\dots,n$ a iadna škatu¾ka nebola prázdna?
+
+\pr
+Zistite poèet podmnoín mnoiny $\{1,2,3\dots,2n\}$, ktoré majú rovnakı poèet párnych a nepárnych prvkov.
+% Winning solutions, 144/3.2
+
+\pr
+Dokáte, e pre kadé prirodzené èíslo $n$ platí
+$$
+\sum_{k=0}^n {n\choose k}2^k = 3^k,\qquad\qquad \sum_{k=0}^n k{n\choose k}^2 = {n\over 2}{2n\choose n}.
+$$
+
+\pr
+Ko¾ko je postupností z $n$ èísel $1$ a $n$ èísel $-1$ takıch, e kadı ich èiastoènı súèet je nezápornı?
+% Winning solutions, 145/3.6
+
+\pr
+Pri stole sedia štyria rytieri. Vstanú, popresúvajú sa a opä sa posadia. Ko¾kımi spôsobmi sa môu posadi tak, aby rytieri $A$ a $B$ nesedeli na pôvodnıch miestach?
+% malynar
+
+\pr
+Ko¾ko je permutácií $n$ prvkov bez pevnıch bodov?
+
+\pr
+Rozde¾me $n\ge 1$ oznaèenıch gu¾ôèok medzi devä osôb $A$, $B$, $C$, $D$, $E$, $F$, $G$, $H$, $I$. Ko¾kımi spôsobmi to vieme spravi, ak osoba $A$ má dosta rovnakı poèet gu¾ôèok ako osoby $B$, $C$, $D$, $E$ dokopy?
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%B. rekurencie
+%prevod lin. rekurencie do expl. tvaru
+%permutacie bez pevneho bodu splnaju $D_{n+1} = n(D_n+D_{n-1})$, z toho dokazat tu sumu
+
+\pr
+Máme šachovnicu $2\times n$. Ko¾kımi spôsobmi je moné vydládi ju dominovımi kockami ve¾kosti $2\times 1$? (Šachovnicu neotáèame.)
+
+\pr
+Uvaujme slová nad abecedou $\{a,b,c\}$. Nech $A_n$ je mnoina slov dåky $n$ takıch, e neobsahujú tri po sebe idúce rovnaké èísla.
+Nech $B_n$ je mnoina slov dåky $n$ neobsahujúcich dve po sebe idúce písmená $a$. Dokáte, e $|A_{n+1}|=3|B_n|$.
+% IMC 2005
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%C. Dirichletov princip
+
+\pr
+V obdåniku $4\times 3$ je šes bodov. Dokáte, e nejaké dva z nich sú od seba vzdialené nanajvıš $\sqrt5$.
+
+\pr
+iadny z deviatich úèastníkov vedeckého sympózia neovláda viac ako tri jazyky. Aspoò dvaja z kadıch troch úèastníkov ovládajú spoloènı jazyk. Dokáte, e existuje jazyk, ktorım hovoria aspoò traja úèastníci.
+
+\pr
+Na stretnutí je $2n$ ¾udí. Dokáte, e vieme zvoli dvoch z nich tak, e aspoò $n-1$ z ostatnıch $2n-2$ ¾udí buï pozná oboch zvolenıch, alebo ani jedného z nich.
+% Winning solutions 191/3.36
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%D. grafy
+
+\pr
+Zistite, ko¾ko najviac hrán môe ma graf bez trojuholníkov.
+
+\pr
+V miestnosti je $9$ ¾udí. Z kadej trojice sa aspoò jedna dvojica pozná (známosti sú symetrické). Dokáte, e v miestnosti vieme nájs štyroch ¾udí takıch, e sa kadí dvaja z nich poznajú.
+
+\pr
+Nech $k$-klika je mnoina $k$ ¾udí, z ktorıch sa kadí dvaja poznajú. O istom stretnutí vieme poveda toto: kadé dve $3$-kliky majú aspoò jedného èloveka spoloèného a neexistujú iadne $5$-kliky. Dokáte, e na stretnutí sú nejakí nanajvıš dvaja ¾udia, po odchode ktorıch neostane iadna $3$-klika.
+% shorlist 2001?
+
+\pr
+Na koneènom grafe môeme robi nasledovnú operáciu: zvolíme si ¾ubovo¾nú hranu ¾ubovo¾ného $4$-cyklu tohto grafu (ak existuje) a zvolenú hranu odstránime.
+Pre dané $n\ge 4$ nájdite najmenší monı poèet hrán grafu, ktorı vznikne z kompletného grafu $K_n$ nieko¾konásobnım opakovaním tejto operácie.
+% shorlist 2004, C3
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%E. kombinatoricka geometria
+
+\pr
+V rovine je danıch $n\ge 3$ bodov, prièom tieto body neleia na jednej priamke. Potom mono nájs krunicu, ktorá obsahuje aspoò tri z danıch bodov, prièom ani jeden z danıch bodov neleí vnútri tejto krunice.
+%% Vybrane ulohy z MO, kat. A + MMO, str. 17/46
+
+\pr
+Minulı piatok školskú kninicu navštívilo ve¾a študentov. Kadı prišiel a odišiel iba raz. Ak si vezmeme ¾ubovo¾nú trojicu študentov, aspoò jedna dvojica z nich bola v kninici prítomná súèasne. Dokáte, e vieme zvoli dva okamihy tohto dòa tak, e kadı študent bol v kninici prítomnı poèas aspoò jedného z nich.
+% kanada
+
+\pr
+Nech $D_1, D_2, \dots, D_n$ sú kruhy v rovine. iaden bod tejto roviny nie je obsiahnutı vo viac ako $2003$ kruhoch $D_i$. Dokáte, e existuje kruh $D_k$, ktorı má neprázdny prienik s nanajvıš $7\cdot 2003$ kruhmi $D_i$.
+% shorlist 2003, C2
+
+\pr
+V priestore je daná taká koneèná mnoina bodov, e kadá priamka prechádzajúca dvomi jej bodmi obsahuje ešte aspoò jeden ïalší bod tejto mnoiny. Dokáte, e všetky body takejto mnoiny leia na jednej priamke.
+%% Vybrane ulohy z MO, kat. A + MMO, str. 21/71
+
+\pr
+V rovine je daná mnoina $n\ge 3$ bodov, kadé dva z nich sú spojené úseèkou. Oznaème $d$ dåku najdlhšej z tıchto úseèiek. {\it Priemerom\/} danej mnoiny nazveme kadú z tıchto úseèiek, ktorá má dåku $d$. Zistite, ko¾ko najviac môe ma mnoina priemerov.
+%% Vybrane ulohy z MO, kat. A + MMO, str. 17/47
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%F. Ulohy.
+
+\pr
+Nájdite poèet podmnoín mnoiny $\{1,2,\dots,n\}$ takıch, e ich najväèší prvok je nepárne èíslo, ich druhı najväèší prvok párne èíslo, a takto striedavo ïalej.
+% Winning solutions 151/3.10
+
+\pr
+Dokáte, e pre ¾ubovo¾né prirodzené èísla $m$, $n$ spåòajúce vzah $n\ge m$ platí
+$$
+\sum_{k=m}^n {n\choose k}{k\choose m}={n\choose m}2^{n-m}.
+$$
+
+\pr
+Ko¾ko slov dåky $n$ vieme vytvori nad abecedou $\{0,1,2,3,4\}$, ak sa kadé dve susedné èíslice v slove líšia presne o $1$?
+% Winning solutions 186/4
+
+\pr
+Nech $n$ je prirodzené èíslo. Kadı bod $(x,y)$ v rovine, kde $x$ a $y$ sú nezáporné celé èísla s vlastnosou $x+y<n$, je zafarbenı èervenou alebo modrou tak, aby bola splnená nasledujúca podmienka: ak bod $(x,y)$ je èervenı, tak sú èervené aj všetky body $(x',y')$, kde $x'<x$ a $y'<y$. Nech $A$ je poèet spôsobov vo¾by $n$ modrıch bodov s rôznou $x$-ovou súradnicou a $B$ je poèet spôsobov vo¾by $n$ modrıch bodov s rôznou $y$-ovou súradnicou. Dokáte, e $A=B$.
+% shortlist 2002, C1
+
+\pr
+Nech $p$ je nepárne prvoèíslo. Nájdite poèet $p$-prvkovıch podmnoín $A$ mnoiny $\{1,2,\dots,2p\}$ takıch, e súèet všetkıch prvkov v $A$ je delite¾nı $p$.
+% IMO 1995, Winning solutions, 175/3.26
+
+\pr
+Na reálnej osi máme zvolenıch $n^2+1$ intervalov. Dokáte, e alebo vieme nájs $n+1$ intervalov takıch, e pre kadú dvojicu intervalov jeden z dvojice je vnorenı do druhého, alebo vieme nájs $n+1$ intervalov takıch, e iaden z nich nie je obsiahnutı v iadnom z ostatnıch $n$ intervalov.
+% kanada
+
+
+%mala ferm. veta
+%eulerova veta
+
+\pr
+Nech $p$ je prvoèíslo tvaru $4k+3$. Dokáte, e ak $p\mid x^2+y^2$, tak $p\mid x$.
+
+\pr
+Dokáte, e kadé èíslo, ktoré má v prvoèíselnom rozklade len prvoèísla tvaru $4k+1$, sa dá zapísa ako súèet dvoch štvorcov. Dokáte, e existuje nekoneène ve¾a prirodzenıch èísel, ktoré sa nedajú zapísa ako súèet troch štvorcov.
+
+\pr
+Dokáte, e $n$ je prvoèíslo práve vtedy, keï $n \mid (n-1)!+1$.
+
+\pr
+Dokáte, e $n$ je prvoèíslo práve vtedy, keï pre všetky celé èísla $a$ a $x$ platí
+$$
+(x+a)^n\equiv x^n+a\pmod n.
+$$
+
+\pr
+Nech $a$ je prirodzené èíslo. Zloené èíslo $n$ sa nazıva Fermatovo pseudoprvoèíslo pri báze $a$, ak platí $n\mid a^n-a$. Zloené èíslo $n$ spåòajúce $n\mid a^n-a$ pre kadé prirodzené èíslo $a$ sa nazıva Carmichaelovo.\hfil\break
+a) Dokáte, e existuje nekoneène ve¾a Fermatovıch pseudoprvoèísel pre ¾ubovo¾nú bázu $a$. (Návod: uvaujte o èísle $(a^{2p}-1)/(a^2-1)$.)\hfil\break
+b) Dokáte, e èíslo $n$ je Carmichaelovo práve vtedy, keï pre kadé prvoèíslo $p$ platí, e ak $p\mid n$, tak $p^2\nmid n$ a $p-1\mid n-1$.
+Overte, e èíslo $561$ je Carmichaelovo.\hfil\break
+
+\pr
+Nech $p$ je prvoèíslo väèšie ako $5$. Nech $\displaystyle n = {4^p+1\over 4+1}$. Dokáte, e èíslo $n$ je zloené a e preò platí $2^{n-1}\equiv 1\pmod n$.
+
+\pr
+Nech $d_k$ je najmenší spoloènı násobok èísel $1,2,3,\dots,k$. Dokáte, e $d_k\ge 2^{k-2}$.
+
+
+\end
