@@ -1,0 +1,175 @@
+\documentclass[a4paper]{article}
+
+\usepackage[slovak]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{url}
+
+\advance\textwidth by 3 cm
+\advance\hoffset by -1.5 cm
+
+
+\begin{document}
+
+\centerline{\LARGE\bf Topológia}
+\bigskip
+\centerline{{\sc Ján Mazák}, {\tt mazo@kms.sk}}
+\vskip .7 cm
+
+Tento materiál predstavuje tri populárne prednášky, ktoré sa snažia priblížiť stredoškolákom zaujímavé výsledky a metódy využívané v topológii.
+Prednášky na seba mierne nadväzujú. Text je miestami dosť zhustený, vyžaduje vlastnú prácu čitateľa; nie je to presný návod na to, ako materiál podávať poslucháčom.
+Hlavnými zdrojmi sú knihy R. Courant, H. Robbins: What is mathematics? (existuje i ruský preklad) a  K. Ueno, K. Shiga, S. Morita: A mathematical gift I.
+
+\section*{Prednáška 1: Úvod}
+
+Akého najstaršieho matematika poznáte? (Konkrétne meno, najskôr to bude nejaký Grék: Táles, Pytagoras alebo Euklides.)
+Grécka matematika vyvrcholila Euklidovým dielom Základy. Gréci pristupovali k matematike z pohľadu filozofov. Pytagorejci mali filozofiu sveta založenú na pomeroch celých čísel. Ukázalo sa však, že takto sa svet popísať nedá --- uhlopriečka štvorca má dĺžku, ktorú ako pomer dvoch celých čísel nezapíšeme. Zmena pohľadu na svet: geometria ako popisný nástroj. Toto vedie k tomu, že sa málo rozvíjajú iné oblasti matematiky, napríklad riešenie rovníc; súvisí to aj s chýbajúcim efektívnym symbolickým systémom na zapisovanie vzťahov typu rovnice. (A bez nuly je priam nemožné uvažovať o algebraických štruktúrach typu grupa.)
+
+Gréci boli v geometrii naozaj dobrí. Vyriešili napríklad Apollóniove úlohy a našli všetkých päť platónskych (pravidelných) telies. Na druhej strane nedokázali vyriešiť kvadratúru kruhu, trisekciu uhla, zdvojenie kocky; ani dokázať, že žiadne iné platónske telesá neexistujú.
+
+Zhrnutie školskej geometrie. V čom je podstata euklidovskej geometrie? Skúma zhodné zobrazenia a ich invarianty, teda dĺžky, uhly, pomery\dots{}
+Descartes: súradnicový prístup, prevedie geometrické problémy na riešenie rovníc. Napríklad pri trisekcii uhla je to podstatný pokrok.
+Perspektíva: pokusy nakresliť veci tak, ako sa javia oku. V 11. storočí iránsky fyzik publikoval dielo o~optike, kde vysvetľuje podstatu vnímania okom; k umelcom sa však matematika dostala až neskôr. Ako nakresliť tri páry koľajníc (prečo musia ležať priesečníky jednotlivých párov na priamke)? Euklidovská geometria nie je vhodný nástroj (čo ukazuje aj historický vývoj v prvom tisícročí: všetci vedia o zhodných zobrazeniach, ale nik nevie kresliť verné obrázky trojrozmerných vecí).
+
+Ukážeme si niekoľko problémov, kde bežná školská geometria veľmi nepomôže.
+
+1. Platónske telesá. (Vymenovať všetkých päť, vyjasniť zadanie.)
+
+2. Studne a domy. Máme tri studne a tri domy, chceme vybudovať od každého domu ku každej studni cestu tak, aby sa nekrížili (žiadne nadjazdy a pod.).
+Dá sa to? Ak nie, prečo a na koľko najmenej krížení to vieme?
+
+3. Uzly. Nakreslíme na tabuľu trefoil knot, jeho zrkadlový obraz a krúžok. Je to to isté? Nie je? (Pre nás nie, pre mravca chodiaceho pozdĺž uzlov áno --- vníma ich ako pokrivené kružnice.) Ak nie, prečo sa nedá z jedného dostať deformovaním druhý? A ako to rozhodnúť pre podstatne komplikovanejšie obrázky? (Tento problém nevyriešime; geometria a algebra, ktoré skrýva, sú príliš zložité na krátku prednášku. Ale s uzlami sa dá hrať aj na úrovni žiakov, napríklad je zaujímavé vymyslieť systém kódovania uzla nakresleného na obrázku pomocou čísel tak, aby s uzlom vedel trebárs pracovať počítač.)
+
+4. Máme politickú mapu sveta (súvislé štáty, za susedné pokladáme tie, ktoré majú spoločných nekonečne veľa bodov). Koľko farieb stačí na zafarbenie štátov, aby dva susedné mali rôznu farbu?
+
+5. Česanie gule. (Len zadanie: máme chlpatú guľu, v každom bode vyrastá jeden vlas; cieľ je učesať ju tak, aby účes bol v každom bode hladký, čiže žiadne cestičky a podobne. Viac o tomto probléme v tretej prednáške.)
+
+6. Hrnček. (Len stručné zadanie, budeme sa mu venovať na konci: \url{http://www.math.hmc.edu/funfacts/ffiles/20001.1-2-7.shtml}.)
+
+Ani jeden z týchto problémov nie je ľahký; ukážeme si, ako matematici pristupujú k problémom, s ktorými na prvý pohľad nevedia pohnúť.
+
+\subsection*{1. Platónske telesá}
+
+Obmedzíme sa na konvexné telesá.
+
+Ako rozlíšiť jedno teleso od druhého, napríklad kocku od štvorstena? Áno, má iný počet vrcholov, hrán, stien. Takže môžeme chvíľu experimentovať s počtom hrán, stien a vrcholov pre pravidelné telesá. Čo si môžeme všimnúť: napríklad počet hrán je vždy najväčší. Platí to aj pre nepravidelné telesá? Napríklad prizma (trojboký hranol). Vieme to dokázať pre nekonečnú triedu telies? (Napr. pre hranoly alebo pyramídy alebo dvojpyramídy.) \dots Skrátime experimentálnu fázu; možno si všimnúť, že $v + s - h = 2$. A to aj pre nepravidelné telesá. To je tak zaujímavé, že to dokážeme, aj keď nevieme, ako to pomôže hľadať pravidelné telesá. (Dá sa však tušiť, že to bude užitočné --- v čom spočíva pravidelnosť? Rovnaké počty hrán z vrchola, rovnako veľké steny.)
+
+Všimnime si geometriu, ktorá sa za tým skrýva. Čo sa stane s číslami $v$, $s$, $h$, ak telesu vydujem stenu alebo jemne pokrivím hranu? Nič. Čiže spojitá deformácia to nepokazí (ak neskrížim hrany a pod.). Cieľ je zdeformovať teleso tak, aby sa dalo nakresliť do roviny; umožní to pracovať aj s~veľkými telesami, ktoré si inak nevieme predstaviť. Spravíme do jednej steny dieru a zvyšok telesa roztiahneme a narovnáme do roviny, dostaneme obrázok zachytávajúci vrcholy, hrany a steny.
+
+Skúsime tento obrázok jemne modifikovať: pridáme vrchol a pospájame ho s niekoľkými inými (bez kríženia hrán), zachová sa hodnota $v+s-h$? A čo iné modifikácie, napr. pridať alebo ubrať hranu? \dots Dôkaz sa dá spraviť indukciou podľa počtu stien.\footnote{Pozor: indukciu robíme tak, že z telesa s $n+1$ stenami odoberieme hranu spoločnú pre dve steny, čím jedna stena ubudne a môžeme použiť indukčný predpoklad. Keby sme to robili tak, že k obrázku s $n$ stenami chceme pridať hranu a vytvoriť obrázok s $n+1$ stenami, musíme navyše dokazovať, že týmto spôsobom vieme vytvoriť každý možný obrázok s $n+1$ stenami. Pri prvom spôsobe tento problém nemáme.} Prvý krok spravíme indukciou podľa počtu vrcholov.\footnote{Opäť: vrcholy nepridávame, ale odoberáme. Na to treba ukázať, že existuje vrchol, z ktorého ide iba jedna hrana; to vyplýva z toho, že v našom obrázku už nie sú žiadne kružnice: ak by tam bola kružnica, budú steny aspoň dve, my však už máme len jednu stenu.} [Stačí to povedať neformálne, indukciu spomenúť až na konci. Všimnime si, ako sa indukcia dá robiť až na všeobecnom tvrdení, nie pre pôvodné teleso: z neho sa mi nie vždy podarí odobrať hranu alebo inú časť tak, aby mi vzniklo menšie teleso. Podobne sa indukcia robí lepšie pre nerovnosti (je ťažké priamo dokázať nerovnosť medzi aritmetickým a geometrickým priemerom pre osem členov, ale indukciou to ide ľahko: z platnosti tvrdenia pre $n$ členov vyplýva platnosť pre $2n$ členov) a v teórii čísel (dokážte, že ak $p$ je prvočíslo, tak $p\mid 3^p-3$ --- keď trojku nahradíme celočíselnou premennou, môžeme podľa nej robiť indukciu).]
+
+Eulerova charakteristika sféry ($v+s-h = 2$ pre ľubovoľný obrázok) a obdĺžnika ($v+s-h=1$ pre ľubovoľný obrázok, ktorý vznikne rozdelením obdĺžnika na mnohouholníky).
+
+A čo nám to pomohlo pri hľadaní pravidelných telies? Nech naše pravidelné teleso má vrcholy, z~ktorých ide $m$ hrán a steny, ktoré sú pravidelnými $n$-uholníkmi.
+Spočítame dvomi spôsobmi počet hrán (raz cez steny, potom cez vrcholy), dostaneme $2h = ns$ a $2h = mv$. Vyjadríme $s$ a $v$, dosadíme do Eulerovej vety a vyjadríme $h$, čo musí vyjsť celé číslo. Vyhovujúcich dvojíc $(m,n)$ je len konečne veľa, ku každej existuje teleso, ktorého počet vrcholov, hrán a stien vieme vypočítať.
+
+\subsection*{2. Studne a domy}
+
+Nahliadneme do geometrickej štruktúry problému. Cesty nemusia byť rovné. Záleží na tom, ako sú rozmiestnené domy a studne? Predstavme si to na gumenej podložke, postupná spojitá deformácia umožní dosiahnuť ľubovoľné rozmiestnenie domov a studní a nespôsobí križovanie ciest.
+
+Minule sme videli, že sa nám problém ľahšie riešil, keď bol všeobecnejší a bez zbytočných komplikácií. Prečo dva druhy objektov? Skúsme mať iba domy, chceme spojiť každý s každým. Najviac koľko domov takto vieme poprepájať? Pre tri domy je to jasné, pre štyri raz-dva nakreslíme. Koľkými spôsobmi sa to dá spraviť? Principiálne iba jedným. Ak chceme pridať piaty dom, musí ležať v jednej zo stien, ale nikdy to nefunguje. Takýmto spôsobom vieme vyriešiť aj tri domy, tri studne: do vrcholov štvorca dom, studňa, dom, studňa; potom vieme pridať ďalší dom, ale studňu už nie.
+
+Takéto rozoberanie možností však nie je veľmi vhodné pre komplikovanejšie situácie. Čo ak máme napr. po desať domov, studní a obchodov, a máme spojiť každý dom s aspoň dvomi studňami a~aspoň dvomi obchodmi a každý obchod s aspoň jednou studňou? \dots Dôvod, pre ktorý sa niektoré situácie tohto druhu nedajú realizovať, je ten, že je tam \uv{priveľa} hrán a keby sme ich nakreslili všetky, začnú sa krížiť. Skúsme zistiť, koľko najviac hrán sa dá nakresliť do obrázka s $v$ vrcholmi.
+
+Obrázky, ktoré kreslíme, vyzerajú tak ako obrázky telies. Preto pre ne platí Eulerova veta. Čo však s naším problémom majú spoločné steny? Keď máme pri danom počte vrcholov nakreslený najväčší možný počet hrán, ako vyzerajú steny? Áno, sú to trojuholníky. Preto $3s = 2h$. Dosadíme do Eulerovej vety, vyjde $h = 3v-6$. Preto vo všeobecnosti je $h\le 3v-6$; navyše do ľubovoľného obrázka vieme dokresliť hrany tak, aby nastala rovnosť. Pomôže to pre päť domov? Áno. Pre tri domy a tri studne? Nie! Ako to? Pre domy a studne sa nemôže stať, že bude nejaká stena trojuholníková. Zopakujeme úvahu pre grafy bez trojuholníkov (tie majú pri maximálnom počte hrán štvor- a päťuholníkové steny), dostaneme $h\le 2v-4$. A to už stačí.
+
+\medskip
+\noindent[3. Neriešime.]
+
+\smallskip
+\noindent[4. Spomenieme stručne históriu problému, prvý dôkaz počítačom. Veta o 5 farbách na neskoršej prednáške, ak sa stihne.]
+
+\smallskip
+\noindent[5. Teraz nič, neskôr.]
+
+\subsection*{6. Hrnček}
+Rozdáme hrnčeky, necháme čas na pokusy. Po pár minútach komentár: z podstaty veci vyplýva, že hrček sa musí otočiť párny počet ráz. (Bez dôkazu.) Necháme hrnčeky verejne prístupné, nech sa bavia vo voľnom čase.
+
+
+\section*{Prednáška 2: Ako rozlíšiť tvar asteroidu}
+
+Predstavme si, že sme pristáli na neznámom asteroide. Chceme rozlíšiť, či jeho povrchom je rovina (resp. disk), sféra, tórus, prípadne niečo iné.
+Lokálne vidíme všade okolo seba len rovinu (podobne ako na Zemi). Treba nájsť nejaký postup, ako rozhodnúť o tvare povrchu. Nebudú nás zaujímať drobné deformácie, ale principiálny tvar; napríklad povrch gule a zemiaka pokladáme za rovnaký.
+
+Jednou z možností je vybrať sa a ísť stále rovnakým smerom. Ak prídeme na okraj, sme na disku (alebo na niečom zložitejšom, každopádne to má okraj, tak to nebude sféra ani tórus). Ak sa vrátime, nemôžeme byť v rovine, mohli by sme byť na sfére alebo na pneumatike (tóruse). Ako sa rozhodnúť? Môžeme sa vybrať smerom kolmým na ten predošlý. Ak sme na sfére, určite časom stretneme vlastnú stopu. Na tóruse je možné vrátiť sa na pôvodné miesto bez toho, aby sme vlastnú stopu stretli (predstavte si to). Problém je v udržiavaní smeru: pri druhej ceste sa nám aj na tóruse môže stať, že vlastnú stopu stretneme. Preto si najmeme armádu mravcov a necháme ich chodiť dovtedy, kým sa niektorému nepodarí spraviť druhú cestu tak, aby nestretol stopu z prvej\dots{} A~popri čakaní skúsime vymyslieť inú metódu.
+
+Z prvej prednášky vieme, že do roviny (ani na sféru) sa nedá bez križovatiek nakresliť päť domov pospájaných cestičkami systémom každý s každým. Šlo by to na pneumatike?
+Po chvíli si uvedomíme, že áno; vieme využiť to, že v rovine vieme tých päť domov nakresliť s jednou križovatkou. Pridaním mosta odstránime križovatku a zmeníme sféru na tórus. Samozrejme, keby sme toto chceli použiť ako rozlišovacie kritérium, nemôžeme si most položiť tam, kam chceme, ale musíme kresliť na vopred daný povrch. Ak nemáme trojrozmerný model, môžeme kresliť akurát tak na papier. Ako reprezentovať tórus na papieri?
+
+Keď rozrežeme tórus (len na jednej strane, prierezom bude kružnica), dostaneme po narovnaní rúru. Rúra sa dá rozrezať a rozvinúť do obdĺžnika. To je fajn, ostáva nezabudnúť na to, že vieme prechádzať z bodu na strane tohto obdĺžnika do zodpovedajúceho bodu na protiľahlej strane. Vyskúšajte do takéhoto povrchu nakresliť päť domov s cestičkami. A čo šesť domov? S trochou námahy sa dá aj to.
+Tu je vhodné si všimnúť, ako vyzerajú hranice oblastí. Aj keď máme len päť či šesť vrcholov, môžeme mať oblasti, na hranici ktorých je aj osem hrán. Preto je tam aj osem vrcholov, čiže niektoré vrcholy tam budú viackrát. Toto je pomerne prekvapujúce zistenie; toto však nie je vlastnosťou tórusu, takéto obrázky ľahko nakreslíme aj v rovine (vyskúšajte si).
+
+Dokonca aj sedem domov sa podarí nakresliť, najlepšie tak, že začneme nakreslením šiestich domov vytvárajúcich šesťuholník, do ktorého už nebudeme kresliť. Viac ako sedem domov aj s~cestičkami sa bez križovatiek nakresliť nedá, metóda dôkazu je podobná ako pre päť domov v rovine (ešte sa k tomu vrátime).
+
+Keď už máme armádu mravcov, môžeme ju využiť i inak. Vyšleme mravce do terénu a necháme ich rozparcelovať celú plochu na záhradky v tvare mnohouholníkov rozumnej veľkosti --- aby bolo možné jedným pohľadom obsiahnuť celú záhradku a všimnúť si, že na nej nie je žiadna rúčka. Keď takto rozdelíme celý povrch, môžeme porátať hrany, vrcholy a steny podobne ako v rovine. Vyskúšajte si to na doteraz nakreslených obrázkoch, pre tórus vyjde $v+s-h = 0$. Toto teraz dokážeme.
+
+Vezmime si tórus, teda sféru s rúčkou. Okolo rúčky musí viesť uzavretá postupnosť striedavo vrcholov a hrán (inak by rúčka ostala v niektorej záhradke). Pozdĺž tejto kružnice rúčku rozrežeme. Vrcholy a hrany na tomto reze sa \uv{rozdvoja}, to však nezmení hodnotu $v+s-h$, lebo pribudne rovnako veľa vrcholov ako hrán a žiadne steny. Keď zvyšky rúčky \uv{zatlačíme} na úroveň našej sféry, dostaneme vlastne obrázok nakreslený na sfére, z ktorého sú dve oblasti vyrezané. Preto hodnota $v+s-h$ je o $2$ menšia ako pre sféru, čiže $0$. Takýto postup funguje aj pre povrchy s iným počtom rúčok; pre povrch s $g$ rúčkami (rodu $g$) platí $v+s-h=2-2g$.
+Môžeme to využiť na odlíšenie povrchov rôzneho rodu i na dôkaz toho, že viac ako sedem domov s cestičkami sa na povrch tórusu bez križovatiek nakresliť nedá.\footnote{Tento dôkaz si samostatne spravte; ak vám to nejde, asi ešte nie ste pripravení na prednášku.}
+
+Vráťme sa späť k tomu, ako z obdĺžnika zostrojíme tórus: identifikáciou protiľahlých hrán. Takýmto spôsobom vieme vytvoriť aj iné povrchy: napríklad identifikáciou dvoch protiľahlých hrán obdĺžnika $ABCD$ v opačnom smere (napríklad $AD$ s $CB$) dostaneme M\"obiov pásik. Ten je zaujímavý tým, že nie je orientovateľný. Má taktiež mnoho iných atraktívnych vlastností, ktoré tu nebudeme rozoberať; dajú sa nájsť v iných materiáloch (dostupných napríklad na internete). Identifikáciou protiľahlých hrán obdĺžnika vieme vytvoriť taktiež Kleinovu fľašu a projektívnu rovinu. Vyskúšajte si určiť Eulerovu charakteristiku niektorej neorientovateľnej plochy; pre povrch, ktorý dostaneme prilepením $g$ M\"obiových pásikov ku sfére s $g$ vyrezanými diskami (okraj disku i pásika je kružnica, čiže sa dajú bod po bode stotožniť, aj keď túto operáciu nevieme fyzicky realizovať v~trojrozmernom priestore), platí $v+s-h = 2-g$.
+
+
+\section*{Prednáška 3: Ako učesať guľu}
+
+Cieľom tejto prednášky je na intuitívnej úrovni dokázať Poincarého-Hopfovu vetu o česaní povrchov; budeme sa zaoberať iba sférou, ale dôkaz sa dá ľahko upraviť aj pre orientovateľné povrchy iného rodu. (Táto prednáška je dosť obsiahla, je vhodné rozdeliť ju na dve časti alebo niektoré časti vynechať.)
+Začneme intuitívnym pojmom spojitosti funkcie a využitia tejto vlastnosti funkcií pri riešení rovníc.
+
+Predstavme si takúto rovnicu: $\sqrt{x+1}+\sqrt{x+2}+\sqrt{x+3}=100$. Čo vieme povedať o počte jej riešení? Má aspoň jedno? Hodnota ľavej strany pre $x=0$ je menej ako $100$. Pre $x=10000$ je určite viac ako $100$. Pritom funkcia na ľavej strane je spojitá (graf sa dá nakresliť jednou čiarou), preto niekde jej hodnota musí byť presne $100$. Navyše je ľavá strana súčtom troch rastúcich funkcií, čiže je tiež rastúca. Preto naša rovnica nemá viac ako jedno riešenie. (Môžeme nechať poslucháčov vyriešiť niekoľko úloh tohto typu.)
+
+\subsection*{Veta o pevnom bode}
+
+Vezmime si teraz interval $[0,1]$. Pozdĺž neho natiahneme gumičku. Gumičku jemne zdeformujeme pozdĺž intervalu tak, aby konce netrčali von. Môže sa to podariť tak, aby žiaden bod gumičky neostal na pôvodnom mieste? (Počkáme si na tipy publika.) Formalizujeme problém: máme spojitú funkciu, ktorá zobrazí interval $[0,1]$ do $[0,1]$. Musí mať táto funkcia pevný bod? Čiže existuje $x$ také, že $f(x)=x$? Graf funkcie leží vo štvorci so stranou dĺžky $1$, a je jasné, že keď prepojím ľavú stranu tohto štvorca s pravou (bod $[0, f(0)]$ s bodom $[1,f(1)]$), musí spojnica aspoň raz pretínať uhlopriečku. Preto má funkcia $f$ vždy pevný bod.
+
+Podobne to funguje v dvoch či troch rozmeroch. Keď v niektorom mieste na Slovensku položíme na zem mapu, existuje na mape bod, ktorý zobrazuje presne bod, ktorý leží pod ním. Toto platí aj v prípade, keď je mapa nepresná, napríklad keď pomery vzdialeností na mape nezodpovedajú pomerom skutočných vzdialeností. Jediné, čo potrebujeme, je spojitosť zobrazenia skutočnosti do mapy: nesmieme nič roztrhnúť. Iný príklad: máme vodu v pohári a pomiešame ju. Ak je voda v~tom istom priestore, ktorý zaberala pred pomiešaním, musí sa v nej nachádzať bod, ktorý zostal na pôvodnom mieste. Toto nie je samozrejmá vlastnosť: napríklad ak máme vodu v duši od pneumatiky, môžeme ju pomiešať tak, aby žiaden bod neostal na pôvodnom mieste; stačí pootočiť všetku vodu okolo osi symetrie duše kolmej na rovinu, v ktorej duša leží.
+
+Najprv dvomi spôsobmi dokážeme vetu o pevnom bode v dvoch rozmeroch. Túto vetu sformulujeme takto: Ak $f$ je spojité zobrazenie kruhu $K$ do seba, musí mať $f$ pevný bod.
+
+Keďže žiaden bod neostal na svojom mieste, vieme ku každému bodu $P$ nášho kruhu nakresliť šípku do jeho obrazu $P'$; táto šípka bude reprezentovať nenulový vektor.
+Vezmime si nejaký bod $P_0$ na obvode kruhu a obchádzajme obvod kruhu proti smeru hodinových ručičiek. V každom bode, do ktorého prídeme, smeruje šípka kamsi dovnútra kruhu. Pritom pri maličkom pohybe sa ani smer šípky veľmi nezmení, lebo zobrazenie je spojité. Predstavme si, že šípku v tomto bode posunieme tak, aby začínala v strede ciferníka hodín. Potom pri našom pohybe pozdĺž obvodu kruhu bude šípka spojito ukazovať body na ciferníku. To, čo nás zaujíma, je počet otáčok proti smeru hodinových ručičiek, ktoré vykoná šípka. Presnejšie, šípka môže chodiť tam i späť, ale predstavme si, že koniec šípky kreslí čiaru a šípka sa v čase jemne predlžuje (aby žiadne dva body nakreslenej čiary neboli totožné). Po obehnutí obvodu celého kruhu a návrate do bodu $P_0$ dostaneme čiaru s dvomi koncami. Predstavme si, že je to povrázok, a nie čiara. Keď potiahneme konce povrázka, záhyby sa vyrovnajú a povrázok zostane niekoľkokrát obtočený okolo ciferníka. Počet obtočení povrázka okolo ciferníka je presne to číslo, ktoré nás zaujíma: počet otáčok ručičky; tomuto číslu treba dať správne znamienko podľa toho, či je povrázok natočený v smere hodinových ručičiek (záporné znamienko) alebo proti nemu.
+Tento počet otáčok sa nazýva v angličtine winding number a slovenská terminológia pre algebraickú topológiu na to určite tiež má nejaký pojem; my si vystačíme s pojmom počet otáčok.
+
+Teraz preskúmame, aký môže byť počet otáčok v našom prípade pre pohyb z $P_0$ po obvode kruhu. Vezmime si dotykové vektory v jednotlivých bodoch na obvode (v každom bode otočíme vektor v tom smere, v ktorom ideme po obvode). Keby sme merali počet otáčok pre tieto dotykové vektory, vyjde nám akurát $1$. Pritom naše šípky zostrojené zo zobrazenia $f$ smerujú vždy kamsi dovnútra kruhu, nikdy nie v smere dotykového vektora, ale \uv{vľavo} od neho (s odchýlkou menšou ako priamy uhol). Keď necháme dotykový vektor obiehať ciferník, spraví presne jednu otáčku. Môžu naše šípky spôsobiť obehnutie o iný počet otáčok? Ani nie: ak by sme dostali viac otáčok, musel by náš vektor niekde predbehnúť dotykový vektor, to sa však nemôže stať, lebo sú vždy rôzne. Podobne nemôžeme spraviť ani menej otáčok, vtedy by zase dotykový vektor musel predbehnúť náš. Takže počet otáčok je presne $1$ aj v prípade, že šípky boli zostrojené zo zobrazenia $f$.
+
+Vezmime si teraz maličkú kružnicu so stredom v strede kruhu $K$. Ak vezmeme dostatočne malú kružnicu, budú všetky šípky z jej bodov smerovať približne rovnakým smerom (zobrazenie je spojité). Takže počet otáčok, ktoré šípka spraví, keď budeme obiehať pozdĺž tejto kružnice, musí byť nula (na ciferníku by ručička smerovala vždy približne tým istým smerom, len by robila malé pohyby do strán). Zväčšme teraz o troška zvolenú kružnicu so stredom v $K$. Zobrazenie je spojité, a preto počet otáčok pozdĺž väčšej kružnice musí byť tiež $0$. Takto budeme postupne zväčšovať kružnicu až po obvod kruhu; keďže zobrazenie je spojité, nemôže sa počet otáčok skokovo zmeniť z $0$ na iné celé číslo. No a dostávame spor, predsa vieme, že počet otáčok pre obvod je $1$. Preto náš predpoklad o tom, že v každom bode existuje šípka (nenulový vektor) do jeho obrazu, musel byť nepravdivý a zobrazenie $f$ teda má pevný bod.
+
+Druhý dôkaz je založený na tom, že kruh sa nedá spojito zobraziť na svoj obvod tak, že body obvodu ostanú na svojom mieste. (Tomuto sa dá intuitívne uveriť: kruh by sa musel kdesi vnútri roztrhnúť. Dobrým cvičením pre intuíciu o spojitých zobrazeniach je nájsť spojité surjektívne zobrazenie kruhu na svoj obvod, pri ktorom nemusia body obvodu ostať na pôvodnom mieste; takéto zobrazenie existuje.)
+
+Nech teda ku každému bodu $P$ kruhu $K$ existuje od neho rôzny obraz $P'$. Označme $P^\star$ bod, v~ktorom polpriamka $P'P$ pretína obvod kruhu $K$. Čo za zobrazenie $P\mapsto P^\star$ sme takto zostrojili? V prvom rade, je spojité (dvom blízkym bodom zodpovedajú šípky približne rovnakým smerom a~teda blízke body na obvode). Navyše body z obvodu kruhu sa zobrazili na seba. No a to je spor s~tvrdením z predchádzajúceho odseku.
+
+Vyskúšajte si využitie vety o pevnom bode či úvah z jej dôkazu pri dôkaze nasledujúcich tvrdení.\hfil\break
+\hbox{}\hskip 1 cm 1. Na Zemi sa nachádzajú dve miesta s rovnakou teplotou.\hfil\break
+\hbox{}\hskip 1 cm 2. Na Zemi sa nachádzajú dve miesta zároveň s rovnakou teplotou i vzdušnou vlhkosťou.
+
+\subsection*{Česanie gule}
+
+Predstavme si chlpatú guľu. Presnejšie, to, čo nás zaujíma, je len sféra (povrch gule), na ktorom v každom bode vyrastá vlas. Naším cieľom je učesať túto guľu tak, aby v každom bode bol účes hladký, spojitý. Napríklad nechceme žiadnu cestičku: pri nej idú vlasy od hocijakého bodu do dvoch smerov, čiže každý bod cestičky je zlý. Chceme účes, ktorý má čo najmenej bodov nespojitosti.
+
+[Nasleduje experimentálna fáza. Mala by trvať minimálne dovtedy, kým nebude guľa učesaná na dva zlé body aspoň dvomi spôsobmi. Napríklad ako glóbus od pólu k pólu alebo pozdĺž rovnobežiek. Potom je vhodné naznačiť, že pneumatika sa dá česať lepšie, dokonca bez zlých bodov. Aj rovina. Nedala by sa aj tá guľa akosi?]
+
+Guľa sa dá učesať na jediný zlý bod. Spomíname si, ako sme zistili, že kresliť obrázky do roviny je viacmenej to isté, ako kresliť ich na sféru? Jednou z možností, ako to ukázať, je stereografická projekcia: položíme priesvitnú sféru na rovinu a vo vrchnom bode sféry umiestnime svetelný zdroj. Každý bod sféry (okrem vrchného) sa premietne do roviny. Aj naopak: vieme si predstaviť takéto premietanie z roviny do sféry. No a rovina sa dá učesať, preto aj guľa sa dá pekne učesať, stačí učesanie roviny takto premietnuť na sféru. Jediným zlým bodom bude bod, v ktorom je stred premietania. Nasledujúca podstatná časť prednášky je venovaná dôkazu toho, že guľa sa nedá učesať bez zlých bodov.
+
+Vezmime si učesanie sféry, ktoré má len konečne veľa zlých bodov. Toto si vieme predstaviť tak, že v každom bode sféry máme nakreslenú šípku, ktorá udáva smer vlasu v tomto bode. Pre nejaký bod $X$ (či už dobrý alebo zlý) tejto sféry vieme nájsť malú kružnicu $k$ so stredom v $X$ tak, aby všetky zlé body rôzne od $X$ ležali zvonku tejto kružnice. Keď budeme pozdĺž tejto kružnice obiehať podobne ako pri vete o pevnom bode, vieme spočítať počet otáčok, ktoré vykoná šípka. Tento počet otáčok nazveme indexom bodu $X$. Všimnime si, že tento pojem je dobre definovaný: keby sme si vzali inú kružnicu so stredom v $X$ (povedzme, že menšiu), dá sa spojito zmeniť na kružnicu $k$; pri tejto spojitej deformácii kružnica sa bude spojito meniť aj počet otáčok, lebo všetky ostatné zlé body sú mimo našich kružníc. Preto index bude rovnaký pre hociktorú malú kružnicu so stredom v $X$. Navyše vidíme, že ak $X$ je dobrý bod (učesanie je v ňom spojité), bude index $X$ rovný nule.
+
+Pojem indexu si treba precvičiť na príkladoch. Vezmime si doteraz známe učesania gule a spočítajme indexy zlých bodov. Napríklad pre učesanie od pólu k pólu dostaneme indexy oboch pólov rovné $1$. Pre učesanie s jediným zlým bodom má tento bod index $2$. Dajú sa nakresliť aj učesania, kde index niektorého bodu je $2$, $3$, či $-4$? Áno; skúste si to.\footnote{Ak sa vám nedarí, príklady obrázkov nájdete napr. v dokumentoch\hfil\break
+\url{http://jdc.math.uwo.ca/M9052/vector-fields.pdf},\hfil\break
+\url{http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.83.2967&rep=rep1&type=pdf}.}
+
+To, čo dokážeme, znie takto: pre sféru je súčet indexov zlých bodov vždy $2$. Vo všeobecnosti: pre povrch $S$ rodu $g$ bude súčet indexov zlých bodov rovný Eulerovej charakteristike povrchu $S$, čiže $2-2g$ (Poincaré-Hopf). (Uvažujeme len o učesaniach s konečným počtom zlých bodov.) Z tohto napríklad vyplýva, že jediný orientovateľný povrch, ktorý sa dá učesať, je tórus, teda pneumatika (má rod, čiže \uv{počet dier}, jedna).
+
+Vezmime si všetky zlé body sféry. Okolo každého máme kružnicu, pri obehu ktorej sa šípka otočí toľkokrát, koľko je index zlého bodu. Nie je podstatné, že sú to presne kružnice, môžeme ich zdeformovať na iné spojité uzavreté krivky. A takouto deformáciou vieme dosiahnuť, aby pre dva zlé body tieto krivky mali spoločný bod. Potom ich však môžeme spojiť do jednej: začneme z~toho spoločného bodu a najprv obehneme jednu krivku, potom druhú. Celkový počet otočení bude súčtom indexov tých dvoch zlých bodov (obe krivky obiehame proti smeru hodinových ručičiek). Takýmto postupom vieme ukázať, že keď obehneme všetky zlé po nejakej spojitej uzavretej krivke, otočí sa šípka presne toľkokrát, koľko je súčet indexov týchto zlých bodov. (Kreslite si obrázky.)
+
+Vezmime si teraz dve rôzne učesania sféry (nakreslite si pod sebou dve kópie tejto sféry). Spojitou deformáciou učesania vieme dosiahnuť, že zlé body oboch týchto učesaní budú blízko pri sebe niekde \uv{vpravo} (na našom obrázku), oddelené od zvyšku sféry kružnicou $k$. Chceme ukázať, že počet otočení šípky pozdĺž kružnice $k$ bude v oboch prípadoch rovnaký. Využijeme, že vľavo od $k$ vyzerá situácia rovnako: máme nejaké spojité učesanie sféry.
+
+[Prichádza najabstraktnejšia časť dôkazu, pre mnoných nepríjemne ťažká na pochopenie.]
+
+\let\phi = \varphi
+
+Vezmime si nejaký bod $P$ na hornej sfére, tento bod vieme nájsť aj na dolnej sfére. V prvom učesaní smeruje šípka v $P$ nejakým smerom, v druhom možno iným. To, čo budeme skúmať, je rozdiel smerov týchto šípok (veľkosť uhla nimi zovretého); označme ho $\varphi(P)$. Keď bodom $P$ pohneme len o~málo, šípky v prvom i druhom učesaní sa zmenia len o~málo, preto sa aj $\phi(P)$ zmení len o~málo. Čiže funkcia $\phi$ je spojitá. Vezmime si bod $P_0$ ako \uv{najľavejší} bod sféry (polohu popisujeme vzhľadom na obrázok spomínaný na začiatku predošlého odseku) a malú kružnicu $\ell$ okolo neho. Keďže učesania sú spojité, budú šípky z bodov na tejto kružnici smerovať zhruba rovnakým smerom v prvom učesaní i v druhom učesaní. Preto hodnota $\varphi(P)$ pre body $P$ na tejto kružnici nemôže byť veľmi odlišná od hodnoty $\varphi(P_0)$. Keď si hodnotu $\phi(P)$ predstavíme ako uhol na ciferníku hodín určený ako uhol medzi ručičkou a zvolenou neutrálnou polohou ručičky (napr. o dvanástej), môžeme merať počet otáčok, ktoré spraví ručička zobrazujúca $\phi(P)$, keď bod $P$ prebieha pozdĺž kružnice $\ell$. Pritom hodnoty $\phi(P)$ pre body na kružnici $\ell$ sú približne rovnaké, preto výsledný počet otáčok bude nula.
+
+Sme skoro hotoví: kružnicu $\ell$ vieme postupne posúvať smerom doprava až ku kružnici $k$. Pri tomto spojitom posúvaní sa nemôže meniť ani počet otáčok, lebo je to vždy celé číslo a to sa vie zmeniť len skokom. No a keď počet otáčok pre $\phi(P)$ pre $P$ bežiaci pozdĺž $k$ je nula, znamená to, že počet otáčok šípky udávajúcej smer vlasu v prvom učesaní pri pohybe pozdĺž $k$ je taký istý ako počet otáčok šípky pozdĺž $k$ v druhom učesaní (lebo rozdiel týchto počtov otáčok je počet otáčok $\phi(P)$, čo je nula). Inak povedané, súčet indexov zlých bodov v prvom učesaní je taký istý ako súčet indexov v druhom učesaní. Stačí spočítať indexy pre jedno konkrétne učesanie sféry; ľahko overíme, že je to $2$. No a preto tam aspoň jeden zlý bod musí byť (index dobrého bodu je vždy nula).
+
+Spomenuli sme vyššie, že súčet indexov zlých bodov je rovný práve Eulerovej charakteristike povrchu, čo je počet vrcholov plus počet stien mínus počet hrán pre hocijaký obrázok slušne nakreslený na tomto povrchu (hrany sa nekrížia, steny/oblasti sa dajú spojito deformovať na kruhy). To nie je náhoda, ukážeme si učesanie, v ktorom to bude jasne vidno. Vezmime si akúkoľvek trianguláciu nášho povrchu (teda všetky oblasti sú trojuholníkové). Nakreslime do každého z týchto trojuholníkov ťažnice a učešme vlasy smerom od vrcholov a smerom do ťažísk. V stredoch strán trojuholníkov bude fúkanie taktiež zlé. Pritom index ťažísk je $1$, index vrcholov $1$, index stredov hrán $-1$ a vo všetkých ostatných bodoch sa dá zobrazenie dodefinovať spojito. Celkovo tak je súčet indexov akurát rovný Eulerovej charakteristike.
+
+Nakoniec, ostáva nám ukážka aplikácie dokázaného tvrdenia v meteorológii. Vezmime si vietor na Zemi, presnejšie, vietor v horizontálnom smere. Skoro všade fúka spojito, môže sa však stať aj to, že niekde máme bezvetrie alebo tornádo (bod, v ktorom vzduch ide prudko nahor a je vťahovaný z~okolia). Ak si nebudeme všímať situáciu absolútneho bezvetria v každom bode (fyzikálne nemožné kvôli rozdielom teplôt), dostaneme prúdenie v každom bode sféry. Pritom sme dokázali, že ak hocijako orientujeme šípky, bude na sfére aspoň jeden zlý bod, v ktorom je prúdenie nespojité. Takéto body sú dvoch druhov: tornáda a cyklóny (pokojné oko v strede a prudko prúdiaci vzduch dookola). Inak povedané, počasie na zemi nemôže byť všade dobré. Tento záver je fascinujúci: počasie nemôže byť dobré už len preto, že planéta je guľatá! Keby mala tvar tórusu, mohol by vietor elegantne fúkať spojito. [Samozrejme, toto nemá veľký význam z fyzikálneho hľadiska, o. i. preto, že spomínaný cyklón môže mať zanedbateľnú veľkosť; taktiež neberieme do úvahy vertikálne prúdenie: napríklad v miestnosti s radiátorom môže vzduch celkom dobre prúdiť aj bez tornád.]
+
+\end{document}
