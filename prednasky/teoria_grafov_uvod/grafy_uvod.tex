@@ -1,0 +1,267 @@
+%% prednaska o grafoch z TMM, na ESF, august 2006
+%% Mazo
+
+\documentclass{article}
+\usepackage{slovak}
+%\usepackage{palatino}
+%\usepackage{picins}
+\usepackage[dvips]{graphicx}
+\usepackage{amsmath}
+
+\pagestyle{empty}
+\advance\textwidth by 2cm
+\advance\hoffset by -1cm
+\advance\textheight by 4cm
+\advance\voffset by -2cm
+\parindent = 0pt
+\parskip = .4\baselineskip
+
+\let\uhol=\angle
+
+\font\nadpis = csbx10 scaled 1800
+\font\fontkapitola = csbx10 scaled 1400
+
+\newcount\cislokapitoly
+\cislokapitoly = 1
+\def\kapitola#1\par{%
+{\bigskip
+\hskip 1cm {\fontkapitola\number\cislokapitoly. #1}\par}
+\bigskip
+\advance\cislokapitoly by 1}
+
+\def\komentar#1{\relax}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\def\FIXME{{\nadpis FIXME}}
+
+\newcount\cisloulohy
+\cisloulohy = 1
+
+\def\uloha{%
+\medskip{\bf Úloha \number\cisloulohy . }%
+\advance\cisloulohy by 1%
+}
+
+\newcount\cislohintu
+\cislohintu = 1
+\def\hint{%
+\bigskip{\bf \number\cislohintu . }%
+\advance\cislohintu by 1%
+}
+
+\newcount\cisloriesenia
+\cisloriesenia = 1
+\def\riesenie{%
+\bigskip{\bf \number\cisloriesenia . }%
+\advance\cisloriesenia by 1%
+}
+
+\newcount\cisloprikladu
+\cisloprikladu = 1
+\def\priklad{%
+\bigskip{\bf Príklad \number\cisloprikladu . }%
+\advance\cisloprikladu by 1%
+}
+
+\def\riespr{{\it Riešenie:\/\ }}
+
+\def\poznamka{{\it Poznámka:\/\ }}
+
+\newdimen\sirka
+\setbox 0 = \hbox{$*\,$}
+\sirka = \wd0
+
+\def\tazkauloha{%
+\hskip -\sirka
+$*\,${\bf Úloha \number\cisloulohy . }%
+\advance\cisloulohy by 1%
+}
+
+\let\phi=\varphi
+\let\uhol=\angle
+
+
+\newcount\backup
+\backup = \catcode`\@
+\catcode`\@ = 11
+\def\mydispl@y{\global\dt@ptrue \openup\jot \m@th
+  \everycr={\noalign{\ifdt@p \global\dt@pfalse
+              \ifdim\prevdepth>-1000pt \vskip-\lineskiplimit
+                 \vskip\normallineskiplimit \fi
+            \else \penalty\interdisplaylinepenalty \fi}}}
+\def\my@lign{\tabskip=0pt\everycr={}} % restore inside \displ@y
+\newskip\mycentering \mycentering=0pt plus 1000pt minus 1000pt
+\global\def\eqalignno#1{\mydispl@y \tabskip=\mycentering
+  \halign to\displaywidth{\hfil$\my@lign\displaystyle{##}$%
+    \tabskip=0pt &$\my@lign\displaystyle{{}##}$\hfil
+    \tabskip=\mycentering &\llap{$\my@lign##$}\tabskip=0pt \crcr
+    #1\crcr}}
+\catcode`\@ = \backup
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+\centerline{\nadpis Úvod do teórie grafov}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\kapitola Úvod
+
+Teória grafov patrí medzi oblasti matematiky úplne zanedbané v základoškolskıch a stredoškolskıch osnovách. Pritom je to dnes jedna z najdynamickejšie sa rozvíjajúcich oblastí matematiky a ponúka mnohé praktické aplikácie. Samotné tvrdenia i dôkazy teórie grafov sú väèšinou elementárne a dostupné u základoškolákom.
+
+Rozhodol som sa, e túto oblas priblíim deom na matematickom tábore urèenom pre budúcich prvákov na gymnáziu. Budova abstraktnú formálnu teóriu nemá v tomto veku vıznam. Lepšie je ukáza si, ako sa mnohé úlohy dajú rieši tım, e si nakreslíme obrázok. Deti si tak vytvoria zásobu separovanıch a univerzálnych modelov, ktoré sa im zídu pri vıuèbe algoritmov a riešení kombinatorickıch úloh.
+
+Deti na tábore mali vek 13 a 16 rokov a všetky mali ukonèenı aspoò siedmy roèník základnej školy. Nie je to dôleité, pretoe k prednáške nepotrebujeme niè z toho, èo sa preberá na základnej škole. Dôleité je však abstraktné myslenie, ktoré sa u detí vyvíja a v takomto veku.
+
+V ïalších kapitolách popíšem obsah prednášky, teda to, èo rozprávame deom, spolu s~komentármi pre prednášate¾a. (V zátvorkách.)
+
+Nie je nutné stihnú všetko poèas jediného stretnutia. Treba necha deti, nech idú vlastnım tempom. Radšej spravíme pre záujemcov dodatoènú prednášku alebo seminár.
+
+Naraz by na prednáške nemalo by prive¾a detí, pretoe sa s nimi potom nedá pracova. Na tábore bolo 28 detí, rozdelili sme ich na dve rovnako poèetné skupiny pod¾a veku a~vedomostí.
+
+\kapitola Mapy a plány
+
+Urèite ste sa u stretli s mapou. Skúsme vyrieši takúto úlohu: Máme automapu Slovenska. Chceme ís autom z Košíc do Komárna. Aká je najkratšia cesta? Je nám jasné, e z mapy nepotrebujeme všetky informácie (napr. o pohoriach), staèí vedie, odkia¾ kam vedie cesta a aká je táto cesta dlhá. (Kreslíme na tabu¾u nieko¾ko slovenskıch miest a prepojenia medzi nimi. Vhodné pre uplatnenie detí znalıch geografie, odhadujeme spolu s nimi vzdialenosti medzi mestami a píšeme ich na tabu¾u.) Keïe nakreslená mapa je jednoduchá, vieme ¾ahko nájs najkratšiu cestu.
+
+Okrem mapy štátu máme plán mesta. Celkom dobre je tvar mesta vystihnutı mestskou hromadnou dopravou. Doprava chodí tam, kde ¾udia ijú a pracujú, teda tam, kde sú budovy, kde je mesto. Ako sú navrhnuté zastávky MHD? Pribline rovnomerne. Sú samozrejme aj vınimky, ale budeme predpoklada, e sú od seba zastávky rovnako vzdialené. (Toto som ilustroval dvoma príkladmi z Košíc, väèšina detí toto mesto poznala. Keï je v KE medzinárodnı maratón mieru, nechodia elektrièky a treba chodi pešo. Odkrokoval som si teda elektrièkové zastávky a sú od seba vzdialené asi 300 metrov. Druhá vec: bıvam v dedine pri meste a posledná zastávka je asi štyrikrát taká dlhá, ako normálna vzdialenos medzi zastávkami MHD. Take túto vzdialenos môeme rozdeli na 4 èasti fiktívnymi zastávkami, kde autobus v skutoènosti nestojí. Tım vieme dosiahnu, e sie MHD má naozaj vlastnosti, ktoré od nej poadujeme.)
+
+Poznámka k terminológii. Dríme sa pomenovaní, ktoré sa hodia ku konkrétnej úlohe, ktorou sa zaoberáme. Všímame si, ako èasti grafu nazıvajú deti a pouívame názvy, ktoré sú im blízke. ¼ahko sa stane, e niekto zo iakov sa u stretol so štandardnou terminológiou a~pouíva napríklad pojem hrana. Vtedy sa treba dohodnú na jednotnom pomenovaní hrán. Ak je takı vyspelı iak jeden-dvaja, nech pouíva to, èo ostatní. (Ak ich je väèšina, prednáška nie je celkom vhodne zvolená.) Takıchto vyspelıch iakov treba èasto poveri osobitnımi úlohami, lebo tieto úvodné u poznajú. Zásobu takıchto úloh si treba pripravi vopred, dajú sa poui úlohy uvedené na konci tohto materiálu.
+
+V ïalšom texte budeme pouíva nieko¾ko pojmov z teórie grafov, ktoré teraz definujeme. V~prípade hlbšieho záujmu alebo nejasností odporúèam pozrie sa na internete. Napríklad na {\tt www.math.uni-hamburg.de/home/diestel/books/graph.theory/GraphTheoryIII.pdf} si môete zadarmo stiahnu knihu o základoch teórie grafov. V slovenèine môete skúsi {\tt http://daloo1.szm.sk/dmm1b/dmm1b.pdf}. 
+
+{\it Cesta\/} je postupnos vrcholov taká, e kadé dva susedné vrcholy v nej sú spojené hranou a iaden vrchol sa v nej nevyskytuje viac ako raz. {\it Vzdialenos \/} dvoch vrcholov grafu je dåka najkratšej cesty medzi nimi. {\it Excentricita\/} vrchola je maximálna zo vzdialeností z~tohto vrchola do ostatnıch vrcholov grafu. {\it Centrum\/} grafu je mnoina vrcholov s minimálnou excentricitou. {\it Krunica\/} je cesta, ktorá zaèína a konèí v tom istom vrchole. (Toto nie je dobrá definícia, keïe sme povedali, e v ceste sa vrchol neopakuje, ale je to ¾ahko pochopite¾né. Skúste poriadnu definíciu spravi sami.)
+
+Dobre, máme sie MHD s popísanımi vlastnosami. (Nakreslíme nejakı neohodnotenı graf na tabu¾u. Vhodnı je graf, ktorı má centrum obsahujúce aspoò dva vrcholy, zíde sa to neskôr.) Kam by sme umiestnili poiarnickú stanicu? (Dohodneme sa, èo je najvıhodnejšie: \uv{aby nikam nebolo ïaleko}.) Deti najprv tipujú jednu zo strednıch zastávok, treba od nich poadova zdôvodnenie. Rıchlo objavia algoritmus, ako miesto pre poiarnikov nájs: pre kadú zastávku zrátame excentricitu. (Samozrejme, exaktné pojmy ako excentricita pred demi nepouívame, píšem ich sem, aby bolo jasné, èo presne myslím. Navyše mi samé prichádzajú na jazyk\dots{} Pozor pred demi.) Tento algoritmus zároveò dokazuje existenciu aspoò jedného miesta pre poiarnikov. Máme také miesta aspoò dve (lebo sme takı graf nakreslili na zaèiatku), take môeme postavi aj nemocnicu. Viete nájs mesto, kde je len jedno jediné miesto pre poiarnikov? A èo mesto, kde môe poiarnická stanica stá hocikde? (Necháme deti, nech sa hrajú a h¾adajú.)
+
+\kapitola Stromy
+
+Sú prázdniny, víkend, sviatok. Naèo by chodilo to¾ko autobusov? Staèí, keï sa budeme vedie dosta hocikam. Dopravnı podnik sa preto rozhodol zruši všetky zbytoèné linky. (Chví¾ka dohadovania, zbytoèné linky sú tie, ktoré sú súèasou krunice.) Ako to má spravi, aby musel prevádzkova èo najmenej liniek? Treba èo najviac liniek zruši. Tento nároènı problém na chví¾ku odloíme a pozrieme sa na èosi jednoduchšie. 
+
+Niektoré zastávky sú špeciálne. Sú to koneèné zastávky, napríklad tam, kde sa otáèajú elektrièky. Samozrejme, takáto zastávka je drahšia ne obyèajná. Najmenej ko¾ko koneènıch zastávok môe by v meste s redukovanou MHD? (Èas pre deti, ak si niekto nekreslí, treba ho k~tomu primä.) Dve. Zaèiatok a koniec. Lebo keby nie, tak zaèneme, a vdy sa dá pokraèova, take nakoniec dostaneme okruh, a to nemôe by.
+
+Èo sa stalo s poiarnikmi? Ko¾ko najvıhodnejších miest pre poiarnikov môeme ma teraz? Kto nájde mesto, v ktorom ich je èo najviac? (Na tabu¾u píšeme hodnoty, ktoré deti našli. Raz-dva sa tam objavia èísla 1 a 2, avšak iadne ïalšie. Toto teraz dokáeme.) No, tak ani tri sa nám nedarí spravi, nieto viac. Skúsme predpoklada, e máme tri zastávky najvıhodnejšie pre poiarnikov. Ako vyzerá zvyšok mesta? ¼ahšie sa nám bude pracova, ak dáme tie tri zastávky ved¾a seba (spojené hranami), oznaème ich $A$, $B$, $C$. Môe by medzi $A$ a $C$ cesta? Zo zastávok idú nejaké vetvy. (Kreslíme na tabu¾u vlnitou èiarou nieko¾ko vetiev z jednotlivıch zastávok.) Môu by tieto vetvy prepojené? (Deti: nie, lebo potom by sme mali okruh.) Take nás vlastne nezaujíma, ako vetvy vyzerajú, staèí vedie dåku najdlhšej. Oznaème $x$, $y$, $z$ maximálne dåky vetiev z $A$, $B$, $C$. Potom excentricita zastávky $A$ je maximum z~$x$, $y+1$, $z+2$. Analogicky pre $B$, $C$. (Píšeme na tabu¾u.) Teraz máme pre kadı vrchol tri monosti. Ko¾ko moností bude treba rozobra? Prinajhoršom $27$. Ale skúsime to robi lepšie. (Toto si skúste spravi dopredu, lebo pri tabuli sa môete zamota. Najprv porovnáme krajné zastávky $A$, $C$ a potom postupne pokraèujeme ïalej, a dostaneme spor. Niektoré deti sa pravdepodobne v tıch nerovnostiach stratia, aj keï prikyvujú\dots{} Nemal som èas to presne zisti, dá sa to však, ak je úèastníkov napríklad do pä. Tak èi tak, pochopenie všetkıch detailov rozboru nie je podstatou prednášky a netreba ho pre pokraèovanie.) Dobre, vieme zdôvodni, e nemôu by ved¾a seba tri miesta pre poiarnikov. (Mono nejaká vsuvka o~dôkaze sporom na jednoduchšom konkrétnom príklade, ak deti neakceptujú toto ako dôkaz.) Èo ak by boli ïalej od seba? No, budú ma nejaké vzdialenosti $a$, $b$ a môeme zopakova celı postup s nerovnosami, len namiesto $1$, $1$ bude $a$, $b$.
+
+Dobre. A teraz sa vrátime k tomu, ako zruši v meste èo najviac liniek (hrán). Vezmime si mesto, ktoré má 10 zastávok. Nakreslite si svoje vlastné a nech je v òom dostatok liniek, aby bolo èo ruši. Niekto skúste aj mesto s málo linkami. Skúste zruši èo najviac liniek, na tabu¾u budeme písa, èo sa nám podarilo dosiahnu. (Chví¾a práce, na tabu¾u píšeme do troch ståpcov poèet liniek na zaèiatku, poèet zrušenıch liniek a poèet liniek, ktoré ostali. Postupne pribúdajú vısledky pre rôzne poèty hrán na zaèiatku, na konci ostane vdy 9 liniek. Objavia sa aj chybné vısledky, tie treba skontrolova. Väèšinou je chyba v zlom spoèítaní poètu hrán na zaèiatku.)
+
+Vyzerá to tak, e vdy ostane 9 liniek. Preèo? (Teraz je èas necha deti premıš¾a. Existuje ve¾a rôznych dôkazov, popíšem tu dva, na ktoré sme prišli na prednáške.)
+
+Vezmime si hada s desiatimi zastávkami. Zrejme má 9 hrán. Majme teraz inı strom, vezmime nejakú cestu v òom a prehlásme ju za hada. Had má prívesky a tie postupne poprepájame na jeho zaèiatok èi koniec, èím hada predlujeme. Raz skonèíme a poèet hrán sa zachoval.
+
+Druhı dôkaz. Máme tu gu¾ôèky a palièky. Chceme ukáza, e palièiek je o jedna menej, ne gu¾ôèok. Ku kadej gu¾ôèke patrí palièka, take nám to staèí rozdeli na dvojice. (Deti nejasne popisovali, ako to delia. Zaviedol som plesòovú terminológiu a deom sa páèila: máme pleseò a z nej trèia hlavièky.) Nech je tam 10 hlavièiek a $x$ palièiek. Vieme, e nejaké hlavièky pleseò ma musí, lebo to je ako s tımi koneènımi zastávkami, vdy aspoò dve. Tak odreme z plesne dve hlavièky, zároveò ubudli dve palièky. Ostalo 8 hlavièiek a $x-2$ palièiek. (Zapisujeme do tabu¾ky a kreslíme rezy na konkrétnom grafe.) Takto pokraèujeme, a ostanú dve hlavièky a medzi nimi jedna palièka. Ale vieme, e tıch palièiek má by $x-8$. Take $x-8=1$ a $x=9$. 
+
+
+\kapitola Mnohosteny
+
+(Nakreslíme na tabu¾u kocku, ako sa bene kreslí.) Èo sme vlastne nakreslili? Vrcholy a~hrany, vrcholov je 8 a hrán 12. Steny sú také štvoruholníky. A èo štvorsten? Vieme nakresli štvorsten? Áno, vieme. Ale aha, prekrıvajú sa mu hrany. Dá sa nakresli bez prekrıvania? (Deti na to prídu hneï.) A èo kocka? Vieme bez prekrıvania hrán nakresli kocku? (Toto je u ašie a úlohu nevyriešia všetky deti, s dobrım nápadom príde chytrejší jednotlivec. Nieko¾ko detí bude treba presvedèi, e ten malı štvorec vo ve¾kom naozaj predstavujú kocku: má 8 vrcholov, 12 hrán a 6 štvoruholníkovıch stien.)
+
+Odtia¾to pochádzajú iné pomenovania pre zastávky a linky. Máme vrcholy a hrany. A sie MHD sa nazıva graf. Ako nazveme redukovanú MHD? Niektorım pripomína strom, má vetvy a listy. (Ujasníme pojmy.) Tak, a teraz máme stromy, jeden, druhı, tretí\dots{} Èo je to? (Deti: les.) Presne tak, ve¾a stromov tvorí les. (Ja som sa s nimi ešte chví¾ku porozprával o lesoch, ktoré neobsahujú iadne stromy. e v takom lese je kadı strom jabloò. A zároveò kadı strom je slivka. To aby neboli zmätení, keï sa stretnú s prázdnou mnoinou a~kvantifikátormi.)
+
+
+\kapitola Vzahy medzi ¾uïmi
+
+Èo sa dá ešte kresli pomocou grafov? Vzahy medzi ¾uïmi. Vezmime si èloveka (vrchol). A~jeho spoluiaka. Vzah medzi nimi môeme zakresli tak, e ich spojíme a pridáme písmenko popisujúce druh vzahu. (K hrane pripíšeme S.) Ten má kamaráta, ktorı je zároveò jeho spoluiakom. (K hrane K, S.) A ten má rodièov (R). A tak ïalej, vieme zakresli hocijakı vzah medzi {\it dvoma\/} ¾uïmi. Nevieme však zakresli napríklad to, e títo traja ¾udia chodia spolu do triedy, musíme len medzi kadımi dvoma nakresli, e sú spoluiaci.
+
+Máme šes ¾udí, kadí dvaja z nich sa navzájom buï poznajú, alebo nepoznajú. Je pravda, e nejakí traja sa navzájom poznajú alebo nejakí traja sa navzájom nepoznajú?
+
+Toto je jedna z najznámejších úloh o vzahoch medzi ¾uïmi. Neèakal som však, e by ju niekto z detí poznal. (Správne oèakávanie. Na samostatné vyriešenie je dos aká, preto treba rieši spolu s demi. Nieko¾ko minút treba venova ujasneniu zadania, najmä dokazovaného tvrdenia, ktoré je zloité. Deti nevedia pracova so spojkou alebo: akceptujú a tvrdenie v~podobe \uv{buï tam sú traja, èo sa poznajú, alebo traja, èo sa nepoznajú, alebo sú tam aj takí, aj takí}.)
+
+Skúsme si to nakresli. (¼ubovo¾nı graf na šiestich vrcholoch. Overíme platnos tvrdenia. Potom dáme kadému nakresli si vlastnı graf a overi platnos.) Ako súvisia èísla $6$ a $3$ v~zadaní? No, keby sme mali jedného, dvoch èi troch ¾udí, tvrdenie nemusí plati. A keby boli štyria? (Deti samostatne h¾adajú protipríklad.) A ak sú piati? (Toto u je ašie, existuje jedinı protipríklad, a to krunica s $5$ vrcholmi. Niektorí ju nedokáu objavi. Môeme ilustrova h¾adanie na tabuli a pri tom ukáza bené postupy: nech najdlhšia cesta má dåku $3$, potom\dots{} A keï má dåku $4$, potom\dots Vysvetlíme úvahy typu \uv{bez ujmy na všeobecnosti}.)
+
+A teraz si predstavme, e máme milión ¾udí. Toto je prvı. (Jeden vrchol hore, ostatné v~jednom riadku. Pomocou troch bodiek ukáeme, ako vyjadri sto èi milión bez toho, aby sme museli vypisova všetky èísla: $1,2,3,\dots,100,101,\dots,1\,000\,000$.) Ko¾kıch pozná prvı? No, môeme si tıch v druhom riadku zoradi. Najprv dáme tıch, èo ich prvı pozná, potom ostatnıch. (Nakreslíme, prvı pozná aspoò $5$ ¾udí.) Ako kreslíme, e sa dvaja nepoznajú? (Vlnkovaná èiara. Pomenovali sme si vzahy na èierne (poznajú sa) a oranové (nepoznajú sa), kreslené obyèajnou a vlnkovanou èiarou.)
+
+Teraz druhı èlovek. Môe pozna tretieho? (Nie, lebo by sme mali èierny trojuholník.) A~štvrtého? Tie nie, ani piateho\dots Ale o tıch, èo prvı nepozná, nevieme poveda niè, druhı ich môe pozna aj nepozna. A teraz z poh¾adu tretieho. Môe pozna štvrtého? Nie. Piateho? Nie. (Niekedy v tejto chvíli si ktosi všimol, e u máme oranovı trojuholník tvorenı druhım, tretím a štvrtım. Celı dôkaz zopakujeme ešte raz, aby si to všetci ujasnili. A vrátime sa k~pôvodnému zadaniu so $6$ ¾uïmi, funguje táto úvaha aj pre tak málo ¾udí?)
+
+\kapitola Farbenia máp a grafov
+
+Politická mapa, kadı štát je súvislı, nie ako Aljaška a USA. Chceme mapu zafarbi tak, aby susedné štáty (hranou, nestaèí vrchol!) mali rôznu farbu. Ko¾ko farbièiek si vezmeme? (Chví¾a hry, deti si kreslia. Treba ich vyzva, aby našli mapu, na ktorú treba èo najviac farbièiek. Nájdu takú, e treba $4$ farby. Opä môeme upozorni na to, e vlastne netreba vníma tvar štátov, ale farbíme {\it planárny\/} graf. Vrcholmi sú štáty a hrany zodpovedajú susednosti.)
+
+Tak, a teraz nejdeme farbi mapu, ale naozajstné štáty. Tie neleia v~rovine, ale na guli. Zmení sa nieèo? Treba viac èi menej farieb?
+
+Cie¾om tejto èasti je porozpráva sa s demi, nie formálne dôkazy. Ako rozlíšime, èi sme v~rovine alebo na guli? Veï sami viete, e ve¾ká gu¾a Zem vyzerá pri poh¾ade z jej povrchu ako rovina. Toto sa dá poui aj v intuitívnom dôkaze toho, e poèet farieb na guli a v rovine je rovnakı. Ak by sme mali štáty len na polguli, tak tú ¾ahko vyrovnáme do roviny. V rovine máme okolie štátov, ktoré sme doteraz akosi povaovali za more, ale môeme ho prehlási za jeden neohranièenı štát. A ten vieme priradi štátu na guli a potom odreza z tohto štátu malı vrchlík a celı zvyšok gule deformova do roviny iba naahovaním bez rezania. Toto sa dá ïalej rozvíja k topológii, napríklad ko¾ko farieb treba na pneumatike (tóruse)?
+
+%Iná monos je stereografická projekcia. Táto idea sa pouíva v dôkaze toho, e kadému konvexnému mnohostenu vieme priradi planárny graf. Z toho zase vieme dokáza, e existuje iba $5$ pravidelnıch mnohostenov. Viac k tejto téme sa dá nájs na internete èi v~kninici.
+
+
+%\kapitola Koneènostavové automaty
+
+%Na jednej strane rieky je prievozník s dvojmiestnym èlnom, vlk, koza a kapusta. Ak prievozník nestrái vlka, vlk zoerie kozu. Ak prievozník nestrái kozu, koza zoerie kapustu. Môe prievozník previez všetko na druhú stranu rieky?
+
+%Úlohy tohto typu sa dajú rieši takto: celá situácia je urèená tım, èo je na ¾avom brehu. Máme 32 moností pre objekty na ¾avom brehu (aj èln treba ráta), take je iba 32 situácií, to budú vrcholy grafu (stavy koneèného automatu). Medzi dvoma situáciami je hrana, ak sa z jednej dá dosta do druhej plavbou èlna. Hrany sú v tomto prípade neorientované. Poèiatoèná situácia: všetko je na ¾avom brehu. Cie¾ová situácia: niè nie je na ¾avom brehu. Staèí preh¾ada vzniknutı graf, ¾ahko nájdeme cestu z poèiatku do cie¾a.
+
+%Analogická úloha s dvoma kapustami èi dvoma kozami u nemá riešenie, ukáeme to opä preh¾adaním grafu. (Nie je súvislı, zaèiatok a koniec sú v rôznych komponentoch.)
+
+%Skúste si tımto spôsobom vyrieši nasledujúce úlohy.
+
+%\uloha
+%Na brehu rieky sú traja misionári, traja kanibali a dvojmiestny èln. Ak je na niektorom brehu viac kanibalov ako misionárov, tak ich zoerú. Je moné, aby sa skupina prepravila na druhı breh bez ujmy na zdraví?
+
+%\uloha
+%Máme tri poháre otoèené dnom nahor. Chceme ma tri poháre otoèené dnom nadol. Môeme chyti dva poháre a otoèi ich naopak. Dá sa takımito krokmi dosiahnu cie¾?
+
+%\uloha
+%Máme $9$ mincí otoèenıch lícom nahor. Môeme naraz $5$ z nich otoèi naopak. Vieme takımito krokmi dosiahnu, aby boli všetky mince otoèené rubom nahor?
+
+%Táto kapitola je vlastne námetom na samostatnú prednášku, alebo sa dá poui ako èas seminára. Riešenia netreba deom prezrádza. Úlohu o vlkovi, koze a kapuste vyriešia aj bez grafov, avšak pri úlohe o misionároch po 15 minútach zhodne tvrdili, e úloha nemá riešenie. A po nakreslení grafu (a nieko¾kıch opravách chıb) riešenie objavili. iakov treba nabáda, aby si sami kreslili obrázky a reprezentovali situáciu tak, ako im je blízke. (Nikto pri prvıch pokusoch nebral do úvahy èln, to je však pri úlohe o misionároch nutné.)
+
+\vfil\eject
+
+\kapitola Úlohy za èokoládu
+
+Chcel som necha deom nejaké úlohy na riešenie, avšak aby si ich vôbec pozreli, potrebujú motiváciu. Preto som sa rozhodol, e dostanú èokoládu. (Keï oznámime na konci prednášky, e bude za úlohu èokoládu, zrazu skoro všetci pripravia zošity a perá a sústredene poèúvajú zadania úloh.) Za kadú z tıchto úloh (priamo nadväzujúcich na odprednášané veci o~stromoch a vzahoch medzi ¾uïmi) je jedna èokoláda a kadı, kto úlohu vyrieši do jedného dòa, dostane svoj diel z èokolády. Viac ako jeden-dva dni na úlohy netreba, zbytoène by sa to naahovalo, na tábore je dostatok vo¾na na riešenie aj poèas jedného dòa.
+
+Zadania treba poriadne vysvetli, hoci aj pomocou alternatívnych pojmov (zastávky, linky, oranové hrany\dots). Riešenia jednej úlohy sa odovzdávajú jednému èloveku, aby bol jednotnı meter pre hodnotenie riešení. Od iakov vyadujeme podrobné zdôvodnenie, pıtame sa ich, nech vysvetlia jednotlivé kroky v riešení, nech si uvedomia, kde pouívajú predpoklady zo zadania. 
+
+\uloha
+Kadé dve najdlhšie cesty v strome majú spoloènı vrchol.
+
+\uloha
+Máme $17$ ¾udí, ktorí si dopisujú o troch rôznych témach (kadá dvojica o práve jednej téme). Dokáte, e vieme nájs trojicu, ktorá si dopisuje o tej istej téme.
+
+
+
+\kapitola Ïalšie úlohy
+
+\uloha
+Turnaja vo futbale sa zúèastnilo 18 tímov. V kadom kole hrá kadı tím práve jeden zápas. Odohralo sa zatia¾ osem kôl. Dokáte, e existujú tri tímy, z ktorıch iadne dva spolu ešte nehrali.
+
+\uloha
+Na stretnutie prišlo $2002$ ¾udí, medzi nimi pán
+Abdul. Okrem nich je tam aj jeden novinár, ktorı
+h¾adá pána Abdula. Novinár vie, e pán Abdul
+pozná kadého, ale pána Abdula nepozná nikto.
+(Koneène príklad, v~ktorom známosti nie sú
+vzájomné.) Novinár môe ukáza na nejakého
+èloveka a spıta sa niekoho iného, èi pozná
+toho, na koho práve ukazuje a~ten pravdivo odpovie áno alebo
+nie.
+\newline
+a) Zistite, èi dokáe novinár za~kadıch okolností nájs Abdula
+na~menej ako $2002$ otázok.
+\newline
+b) Ko¾ko najmenej otázok by
+potreboval novinár na nájdenie Abdula, ak by mal obrovské šastie?
+
+\uloha
+V~spoloènosti nazıvame niekoho bojazlivım, ak má
+maximálne troch známych. (Známosti sú vzájomné, t.j.
+ak Janko pozná Ferka, tak aj Ferko pozná Janka.) V~istej
+spoloènosti pozná kadı aspoò troch bojazlivıch
+¾udí. Ukáte, e sú všetci v~tejto
+spoloènosti bojazliví. Ko¾ko èlenov môe
+ma táto spoloènos?
+
+\tazkauloha
+Na pingpongovej súai sa hralo systémom
+kadı s~kadım práve raz. Súaiaci $A$
+dostal cenu, ak kadého súpera $B$ buï porazil,
+alebo porazil niekoho, kto vyhral nad $B$. Ukáte, e ak
+iba jeden súaiaci dostal cenu, tak porazil
+kadého hráèa.
+
+\tazkauloha
+V krajine je nieko¾ko miest a medzi nimi obojsmerné letecké linky (medzi kadımi dvoma mestami nanajvıš jedna). Medzi kadımi dvoma mestami sa dá letecky prepravi tak, e vyuijeme nanajvıš $d$ liniek. Najkratšia okruná cesta, ktorá sa dá podniknú, prechádza cez práve $2d+1$ miest. (Táto veta hovorí, e obvod grafu je $2d+1$.) Dokáte, e z kadého mesta v krajine vychádza rovnakı poèet liniek.
+%% F. Harary: Graph Theory, 24/2.11, autor tvrdenia je Singleton
+
+\end{document}
