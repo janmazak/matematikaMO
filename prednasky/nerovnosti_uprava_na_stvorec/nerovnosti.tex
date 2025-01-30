@@ -1,0 +1,843 @@
+
+% prednaska o nerovnostiach, urcena pre ucitelov
+% na ESF projekt www.ucmeradi.sk
+ 
+
+\nopagenumbers
+\parindent = 0pt
+\parskip = 0 pt % .2\baselineskip
+
+\input slovak.sty
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\font\fontnadpis = csr12 scaled 1500
+\font\fontmalynadpis = csbx12 scaled 1200
+
+\def\nadpis#1{\centerline{\fontnadpis #1}\bigskip\bigskip}
+\def\malynadpis#1{\centerline{\fontmalynadpis #1}\bigskip}
+
+\def\FIXME{{\fontnadpis FIXME}}
+
+\def\myproclaim #1. #2\par{%
+\medbreak
+\noindent{\bf#1.\enspace}{\sl#2\par}%
+\ifdim\lastskip<\medskipamount \removelastskip
+\penalty55\medskip\fi
+}
+
+\newcount\prikladcount
+\prikladcount=1
+
+\def\priklad#1\par{%
+\bigskip
+\ifnum\prikladcount=1{\removelastskip}\fi
+{\bf Príklad \number\prikladcount . }%
+\advance\prikladcount by 1%
+#1\par
+}
+
+\def\ries#1{%
+\medskip
+\par [#1]
+}
+
+\def\riesenie{%
+\medskip
+{\it Riešenie: }%
+}
+
+\def\navod{%
+\medskip
+{\it Návod: }%
+}
+
+
+\newcount\vetacount
+\vetacount=1
+
+\def\veta#1\par{%
+\myproclaim Veta \number\vetacount. #1\par%
+\advance\vetacount by 1%
+}
+
+\def\dosledok#1\par{%
+\myproclaim Dôsledok \number\vetacount. #1\par%
+\advance\vetacount by 1%
+}
+
+\def\definicia#1\par{%
+\myproclaim Definicia \number\vetacount. #1\par%
+\advance\vetacount by 1%
+}
+
+\def\dokaz{%
+{\it Dôkaz: }%
+}
+
+\def\induction#1#2{%
+\parindent = 20pt
+\smallskip
+\item{$1^\circ$} #1
+\smallskip
+\item{$2^\circ$} #2
+\smallskip
+\parindent = 0pt
+}
+
+\let\uhol=\angle
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\nadpis{Nerovnosti a úprava na štvorec}
+
+\malynadpis{Ako pouíva tento materiál}
+
+Nerovnosti sú èasou matematiky, ktorej sa na strednıch školách venuje málo pozornosti. 
+Mono je to tım, e sú to úlohy akosi v princípe dôkazové. Drvivá väèšina dôkazov nerovností
+konèí redukciou na u známu a dokázanú nerovnos; zvyèajne postupujeme tak, e sa snaíme
+zbavi rôznych \uv{nadbytoènıch èastí} (väzby, poiadaviek na minimalizáciu nejakej konštanty, zápornıch èísel, \dots{}) pomocou dosádzania, substitúcie, odhadov zo známych nerovností, ekvivalentnımi úpravami a nakoniec dospejeme k nejakej nerovnosti ekvivalentnej s pôvodnou, ktorú sme u kedysi dokázali (alebo to spravil niekto inı). 
+
+Úprava na štvorec sa v škole vyskytuje len pri odvodzovaní vzorca na riešenie kvadratickıch rovníc. Sila tejto metódy zostáva nevyuitá a iaci prichádzajú o ïalšie jej zaujímavé aplikácie. Niektoré z nich, tıkajúce sa nerovností, demonštrujeme v tomto èlánku.
+
+Metódy tu ukázané nevedú zaruèene k cie¾u. Toto je dobré si uvedomi, prezentované úlohy nie sú technickımi cvièeniami, ktoré vieme rieši stále tou istou zaruèenou efektívnou metódou, ako napríklad sústavy lineárnych rovníc. Èasto pri riešení zistíme, e sme v slepej ulièke a treba sa o nieko¾ko krokov vráti. Preto je vhodné vèas rozpozna, èi úvaha môe vies k cie¾u; to nejde bez dostatoènej praxe v riešení úloh. Keïe dôkazy nerovností zvyèajne konèia redukciou na známu nerovnos, mnostvo preriešenıch úloh je dôleité a prax nenahradite¾ná.
+
+Obtianos prezentovanıch príkladov postupne stúpa a v ïalších sa bene vyuívajú riešenia predošlıch èi metódy v nich pouité, preto zaèa úlohou zo stredu bez predchádzajúcej prípravy môe by neúspešné a frustrujúce. Takáto gradácia umoòuje ku koncu zaradi aj úlohy naozaj nároèné, obtianosou presahujúce aj úlohy v najvyššej kategórii A slovenskej matematickej olympiády.
+
+Dôrazne upozoròujem, e riešenie tıchto úloh si vyaduje èas. Nie sú to písomkové príklady, ktorıch zriešime $10$ za hodinu. ašie z nich aj pre skúsenıch riešite¾ov matematickej olympiády predstavujú vızvu na nieko¾kohodinovı boj.
+
+Skôr, ne niektorú úlohu prezentujeme iakom, by sme si ju mali prepoèíta sami. A aj keï sa nám to nepodarí, budeme sa lepšie vyzna v úlohe, cíti, kde je zákerná, v èom spoèíva jej obtianos a kde môu iaci ma problémy. A po dostatoène dlhom èase venovanom vlastım pokusom si pozrieme riešenie; to je vhodné, aj ak sme úlohu zrátali, mono máme iné riešenie ne je tu uvedené. 
+
+Nie je nutné prejs so iakmi všetky úlohy, väèšinou sa vyskytujú v sériách -- pribudne nejakı novı prvok v zadaní èi nová metóda na riešenie a potom nasleduje nieko¾ko úloh na jej precvièenie. Ïalšie úlohy je moné èerpa z roèeniek matematickej olympiády, z odbornıch publikácií (ŠMM atï.) èi skúsi vlastnú tvorbu.
+
+Ove¾a dôleitejšie, ne vyriešenie samotnıch úloh, je nauèi iakov rozlišova, èo je dôkaz, èo iba nejasná úvaha; vopred odhadnú, èi metóda môe vies k cie¾u alebo nie; nako¾ko prácny je zvolenı postup a èi sa neoplatí radšej nájs vıhodnejší, ne zotrva pri tomto. Toto sú veci, ktorım sa v škole venuje pramálo èasu a pritom sú uitoèné vo všetkıch oblastiach matematiky i ivota.
+
+
+\bigskip
+\malynadpis{Základy}
+
+Na zaèiatku si zopakujeme základné znalosti o reálnych èíslach. 
+Reálne èísla vieme usporiada pod¾a ve¾kosti a teda aj kadé dve èísla vieme porovna.
+Kadé reálne èíslo je buï kladné, rovné 0 alebo záporné.
+Súètom dvoch kladnıch èísel je opä kladné èíslo, súètom dvoch
+zápornıch èísel je èíslo záporné. Súèin dvoch èísel rovnakého znamienka je kladné èíslo.
+Analogicky súèin dvoch nezápornıch èísel je nezáporné èíslo. Z tıchto tvrdení vyplıva, 
+e druhá mocnina reálneho èísla je nezáporná, navyše je rovná 0 iba vtedy, keï je rovné 0 samotné èíslo, ktoré umocòujeme. Toto vieme aj pre súèet nieko¾kıch druhıch mocnín:
+$$
+x_1^2+x_2^2+\cdots+x_n^2\ge 0,
+$$
+prièom rovnos nastáva práve vtedy, keï $x_1=x_2=\dots =x_n=0$.
+Toto tvrdenie vyzerá jednoducho, je však ve¾mi silnım prostriedkom 
+pri dokazovaní nerovností.
+
+Uvedomme si rozdiel medzi nerovnosou a nerovnicou. Napríklad \uv{rieši nerovnicu $2x+1>x$} znamená nájs všetky reálne èísla $x$, pre ktoré je splnená nerovnos $2x+1>x$ (a dokáza, e sme našli všetky èísla s touto vlastnosou). V ïalšom sa budeme venova dokazovaniu nerovností. 
+
+Ako dobre vieme, pripoèítanie rovnakého èísla k obom stranám nerovnosti je ekvivalentnou úpravou, takisto vynásobenie oboch strán kladnım èíslom. Pri násobení zápornım èíslom treba otoèi znamienko nerovnosti. Toto budeme odteraz pouíva bez ïalšieho komentára.
+
+Väèšinu èasu budeme pracova s vırazom $(x+y)^2$ v roznásobenom tvare, zaveïme si preto nieko¾ko pojmov. Volajme èleny $x^2$ a $y^2$ v rozvoji $(x+y)^2=x^2+2xy+y^2$ krajnımi,
+èlen $2xy$ nech je strednı.
+
+\bigskip
+\malynadpis{Úlohy}
+
+V tejto èasti sú zadania všetkıch úloh, bez riešení, aby èitate¾ mal monos skúsi si ich zrieši sám a aby mal celkovı preh¾ad o príkladoch vyskytujúcich sa v tomto texte.
+
+\bigskip
+\priklad
+Pre ¾ubovo¾né reálne èísla $x,y$ platí $(x+y)^2\ge 4xy$, dokáte. Kedy nastáva rovnos?
+
+\priklad
+Riešte rovnicu $x^2-x+1=0$ v reálnych èíslach.
+
+\priklad
+Riešte v reálnych èíslach rovnice:
+\hskip 1cm a) $2x^2=x^4+1$, 
+\hskip 1cm b) $4m^6+1=4m^3$.
+
+\priklad
+Dokáte, e pre reálne èísla $x,y,z$ platí $x^2+y^2+z^2\ge xy+yz+zx$.
+
+\priklad 
+Dokáte, e pre reálne èísla $a$, $b$, $c$ platí $a^4+b^4+c^4\ge a^2bc+ab^2c+abc^2$.
+
+\priklad
+Dokáte, e pre reálne èísla $a,b,c$ platí $a^4+b^4+c^4\ge a^3b+b^3c+c^3a$.
+
+\priklad
+Urète všetky èísla $a,b$, pre ktoré platí
+$$
+(a^2+b^2)^3\ge (a^3+b^3)^2\,.
+$$
+Pre aké èísla nastane rovnos?
+
+\priklad
+Nech $a,b,c$ sú ¾ubovo¾né reálne èísla. Potom èíslo 
+$$
+x=4(a^2+b^2+c^2)-\left((a+b)^2+(b+c)^2+(c+a)^2\right)
+$$
+je nezáporné; dokáte. Kedy platí $x=0$?
+
+\priklad
+Dokáte, e pre reálne èísla $a,b,c$ platí $a^2+b^2+c^2+a^2b^2+b^2c^2+c^2a^2\ge 6abc$.
+
+\priklad
+Nájdite najväèšie reálne èíslo $K$ tak, e pre všetky kladné reálne èísla 
+$a$, $b$, $c$ platí nerovnos 
+$$
+Kabc(a+b+c)\le a^2b^2+b^2c^2+c^2a^2.
+$$
+
+\priklad
+Dokáte, e pre kladné reálne èísla $a$, $b$, $c$ platí $a^3+b^3+c^3\ge a^2c+b^2a+c^2b$.
+
+\priklad
+Dokáte, e pre nezáporné reálne èísla $a,b$ platí $(a+b)(a^4+b^4)\ge (a^2+b^2)(a^3+b^3)$.
+
+\priklad
+Dokáte, e pre všetky reálne èísla $a,b$ platí
+$$
+a^2+b^2-ab-a+b+1>0\,.
+$$
+
+\priklad
+Dokáte, e funkcia $f(x)=x^3+x^2+x$ je rastúca.
+
+\priklad
+Zistite, ko¾ko riešení má sústava rovníc 
+$$
+\eqalign{
+x^3-y^2=z^2-x,\cr
+y^3-z^2=x^2-y,\cr
+y^3-x^2=y^2-z,\cr 
+}
+$$
+v obore reálnych èísel.
+
+\priklad
+Nech $f$ je funkcia definovaná na obore kladnıch reálnych èísel taká, e
+$f(x)-x^3$ aj $f(x)-3x$ sú rastúce funkcie. Zistite, èi funkcia $f(x)-x^2-x$
+je monotónna. 
+
+\priklad
+Zistite, èi existujú reálne èísla $a,b$ také, e $8a^2+17b^2=20ab$.
+
+\priklad
+Dokáte, e ak sa prirodzené èísla $A$, $B$ dajú zapísa v tvare súètu dvoch štvorcov celıch èísel, tak aj ich súèin $AB$ sa dá zapísa v tomto tvare.
+
+\priklad
+Dokáte Cauchyho-Schwarzovu nerovnos, t.$\,$j. platnos nerovnosti
+$$
+(x_1^2+x_2^2+\cdots+x_n^2)(y_1^2+y_2^2+\cdots+y_n^2)\ge(x_1y_1+x_2y_2+\cdots+x_ny_n)^2
+$$
+pre ¾ubovo¾né reálne èísla $x_1,x_2,\dots,x_n,y_1,y_2,\dots,y_n$. Kedy nastáva rovnos?
+
+\priklad
+Zistite, èi polynóm $x^4-3x^3+3x^2+2$ má reálny koreò.
+
+\priklad
+Dokáte, e pre všetky reálne èísla $a$, $b$, $c$ spåòajúce nerovnos $a^2+c^2\le 4b$
+a pre všetky reálne èísla $x$ platí
+$$
+x^4+ax^3+bx^2+cx+1\ge 0.
+$$
+
+\priklad
+Nájdite minimálnu hodnotu vırazu $V = a^6+b^2+2b+1-2a^3b-2a^3$, kde $a$, $b$ sú reálne èísla.
+
+\priklad
+Nech $a$, $b$, $c$ sú nezáporné reálne èísla také, e $a+b+c=1$. Nájdite maximum vırazu
+$$
+V = a^2+b^2+c^2+\sqrt{12abc}.
+$$
+
+\priklad
+Dokáte pre kladné èísla $a$, $b$ spåòajúce $a^5+b^5=a^3+b^3$ platnos nerovnosti
+$$
+a^2+b^2\le 1+ab.
+$$
+
+\bigskip
+\malynadpis{Riešenia}
+
+V tejto kapitole sa nachádzajú okrem zadaní úloh aj ich riešenia. Väèšinou je uvedené úplné riešenie, niekedy dokonca aj s nevydarenımi pokusmi; inde je aspoò návod, ako úlohu rieši.
+V prípade úloh ve¾mi podobnıch predchádzajúcim riešenie úplne chıba, keïe neobsahuje iadne nové prvky.
+
+\prikladcount = 1
+
+\bigskip
+\priklad
+Pre ¾ubovo¾né reálne èísla $x,y$ platí $(x+y)^2\ge 4xy$, dokáte. Kedy nastáva rovnos?
+
+\riesenie
+Skúsme nerovnos ekvivalentne upravi:
+$$
+\eqalign{
+(x+y)^2 &\ge 4xy\cr
+x^2+2xy+y^2 &\ge 4xy\cr
+x^2-2xy+y^2 &\ge 0\cr
+(x-y)^2 &\ge 0\cr
+}
+$$
+Posledná nerovnos je však špeciálnym prípadom tvrdenia z úvodu, teda je pravdivá. Preto
+je pravdivá aj dokazovaná nerovnos, ktorá je s òou ekvivalentná.
+
+Uvedené úpravy nie sú náhodné: èasto pomôe, keï si všetko prehodíme na jednu
+stranu a vzniknutı vıraz porovnávame s nulou. Posledná úprava zase
+smeruje k tomu, aby sme vyuili nejakú známu nerovnos a z nej dokázali
+tú pôvodnú.
+
+\priklad
+Riešte rovnicu $x^2-x+1=0$ v reálnych èíslach.
+
+\riesenie
+Skúsme doplni ¾avú stranu na štvorec.
+$$
+x^2-x+1=x^2-x+\left({1\over 2}\right)^2-\left({1\over 2}\right)^2+1=
+\left(x-{1\over 2}\right)^2+{3\over 4}\ge {3\over 4} > 0,
+$$
+preto ¾avá strana je vdy väèšia ako pravá a rovnica nemá iadne riešenie.
+
+\priklad
+Riešte v reálnych èíslach rovnice:
+\hskip 1cm a) $2x^2=x^4+1$, 
+\hskip 1cm b) $4x^6+1=4x^3$.
+
+\priklad
+Dokáte, e pre reálne èísla $x,y,z$ platí $x^2+y^2+z^2\ge xy+yz+zx$.
+
+\riesenie
+Na pravej strane sú vırazy v tvare $xy$, na ¾avej strane štvorce. Vieme nejako odhadnú
+takıto vıraz zhora pomocou štvorcov? Áno, pod¾a jedného z predošlıch príkladov. Alebo aj inak,
+štvorce by mohli by krajnımi èlenmi a $2xy$ strednım èlenom. Vieme, e $(x-y)^2\ge 0$, preto aj $x^2+y^2\ge 2xy$. Toto je pribline to, èo chceme. Len treba upravi konštantu $2$.
+Sèítaním nerovností $(x-y)^2\ge 0$, $(y-z)^2\ge 0$, $(z-x)^2\ge 0$ dostávame
+po predelení dvoma a drobnej úprave dokazovanú nerovnos.
+
+Treba da pozor, aby iaci pochopili vıznam sèítania nerovností, zdôrazni rozdiel, kedy má vıznam nieèo sèíta a kedy je to nezmysel, napr. nerovnosti musia by rovnako orientované. Èo sa stane so znamienkom, keï sèítame ostrú a neostrú nerovnos? Môeme nerovnosti násobi? Za akıch podmienok? A dajú sa niekedy deli? V tomto musí ma uèite¾ jasno a mal by k úvahám o tıchto otázkach povzbudi aj iakov. 
+
+\priklad 
+Dokáte, e pre reálne èísla $a$, $b$, $c$ platí $a^4+b^4+c^4\ge a^2bc+ab^2c+abc^2$.
+
+\riesenie
+Na pravej strane máme nejaké vırazy, ktoré by sme mohli prehodi na ¾avú stranu
+a potom skúsi podobnú metódu ako v predošlom príklade. Bude vhodné vynásobi celú nerovnos dvomi, ako sme sa presvedèili minule.
+
+Skúsme napríklad $b^4-2a^2bc$ doplni na štvorec. Nech ¾avı krajnı èlen je $b^4$
+a strednı èlen je $-2a^2bc$. Potom odmocnina z ¾avého krajného èlena je $b^2$ a tá by mala by obsiahnutá v strednom èlene, podobne ako $x$ je obsiahnuté v $2xy$ v rozvoji
+$(x+y)^2=x^2+2xy+y^2$. Ale strednı èlen $-2a^2bc$ obsahuje iba prvú mocninu $b$, nie druhú. Take takto to nepôjde.
+
+Z dôvodov popísanıch v predošlom odstavci bude lepšie skúsi doplni $a^4-2a^2bc$.
+To sa nám podarí, \hbox{$a^4-2a^2bc+b^2c^2=(a^2-bc)^2$}. Problém je, e pouívame èlen $b^2c^2$,
+ktorı nemáme na ¾avej strane. Mono to nevadí, skúsme pokraèova ïalej.
+
+Sèítaním nerovností
+$(a^2-bc)^2\ge 0$, $(b^2-ca)^2\ge 0$, $(c^2-ab)^2\ge 0$ dostaneme
+$$
+a^4+b^4+c^4+a^2b^2+b^2c^2+c^2a^2\ge 2(a^2bc+ab^2c+abc^2)\,.
+$$
+Pokia¾ vieme dokáza, e 
+$$
+\eqalignno{
+a^4+b^4+c^4 &\ge a^2b^2+b^2c^2+c^2a^2, & (1)\cr
+}
+$$
+tak platí aj
+$$
+2(a^4+b^4+c^4)\ge (a^4+b^4+c^4)+(a^2b^2+b^2c^2+c^2a^2)\ge 2(a^2bc+ab^2c+abc^2)
+$$
+a sme hotoví. Pozrime sa teda na nerovnos ($1$).
+
+Všetky mocniny v tejto nerovnosti sú párne, preto sa ponúka substitúcia $x=a^2$, $y=b^2$, $z=c^2$. Po prepísaní pomocou novıch premennıch zistíme, e je to vlastne nerovnos z predošlého príkladu, ktorú sme u dokázali.
+
+Dôleité je, aby uèite¾ dal iakom èas na premyslenie, aby na èo najviac nápadov prišli sami. Odhali riešenie skôr, ne iak pochopil vıznam problému a jeho podstatu, nie je ve¾mi uitoèné, neprospieva lepšiemu zapamätaniu a pripraví iakov o rados z vyriešenia problému.
+
+\priklad
+Dokáte, e pre reálne èísla $a,b,c$ platí $a^4+b^4+c^4\ge a^3b+b^3c+c^3a$.
+
+\riesenie 
+Pouijeme metódu z predošlého príkladu a doplníme $a^4-2a^3b$ na štvorec $(a^2-ab)^2$. Z nerovností
+$$
+\eqalign{
+0\le (a^2-ab)^2+(b^2-bc)^2+(c^2-ca)^2 &= a^4+b^4+c^4+a^2b^2+b^2c^2+c^2a^2-2(a^3b+b^3c+c^3a),\cr
+a^4+b^4+c^4 &\ge a^2b^2+b^2c^2+c^2a^2\cr
+}
+$$
+vyplıva dokazované tvrdenie. Rozmyslite si, èi vieme doplni na štvorec $a^4-b^3c$.
+Preèo? A vedie to niekam?
+
+Všimnime si naše zápisy vırazov. Všetky sú cyklické, preto by sa dalo ušetri miesto, keby sme pouili inú formu zápisu. Napríklad súèet štvrtıch mocnín môeme zapísa takto:
+$a^4+b^4+c^4=\sum a^4$. Samozrejme, treba si pamäta, e tá sumácia je cyklicky cez $a$, $b$, $c$. Pozor, nesumujeme cez všetky permutácie premennıch, ale iba cyklicky zamieòame $a$ za $b$, $b$ za $c$ a $c$ za $a$, take takáto suma cez $k$ premennıch bude ma $k$ èlenov, nie $k!$. Skúsme takto prepísa nieko¾ko ïalších vırazov:
+$$
+\eqalign{
+a^r+b^r+c^r &= \sum a^r,\cr
+ab+bc+ca    &= \sum ab,\cr
+a^2b^2+b^2c^2+c^2a^2 &= \sum a^2b^2,\cr
+a^3b+b^3c+c^3a &= \sum a^3b.\cr
+}
+$$
+Ako si èitatelia iste všimli, tieto sumy popisujeme len vo¾ne a neformálne. Dal by sa samozrejme vybudova úplnı a presnı popis, ale to nepovaujeme za potrebné, pretoe takéto sumy sú hlavne pracovnım prostriedkom na urıchlenie úpravy vırazov a zníenie rizika chyby pri ruènom rátaní. 
+
+Pre poèítanie s takımito sumami platí nieko¾ko jednoduchıch pravidiel, ktoré nám umonia zostruèòova vıpoèty, napríklad:
+$$
+\eqalign{
+\sum (a+b)^2 &= \sum a^2+2ab+b^2=2\sum a^2 + 2\sum ab,\cr
+2\sum (a+b)(a+c)-\sum (a+b)^2 &= 2\sum a^2 + 6\sum ab-2\sum a^2-2\sum ab = 4\sum ab.\cr
+}
+$$
+Opä nemá zmysel formálne popisova sadu pravidiel, keïe tieto pravidlá iba zachytávajú jednoduché úvahy pri roznásobovaní.
+
+Skúste si prepísa dôkaz pôvodného tvrdenia, dokáza z Herónovho vzorca v roznásobenom tvare nezápornos obsahu trojuholníka èi roznásobi nejakú nerovnos s komplikovanımi menovate¾mi.
+
+Tento príklad nového zápisu ukazuje, e èasto na vo¾be notácie ve¾mi záleí. Vhodná vo¾ba môe ušetri mnoho èasu a zvıši preh¾adnos. Príkladom inej netradiènej (v škole neuèenej)
+notácie je oznaèi $s=\sin x$, $c=\cos x$, potom píšeme napr. $s^2+c^2=1$. Keï vieme, e budeme dve èísla pouíva a do konca riešenia, je lepšie oznaèi ich $a$, $b$ alebo $x$, $y$
+namiesto $x_1$, $x_2$ a ušetríme si kopu indexov.
+
+\priklad
+Urète všetky èísla $a,b$, pre ktoré platí
+$$
+(a^2+b^2)^3\ge (a^3+b^3)^2\,.
+$$
+Pre aké èísla nastane rovnos?
+
+\priklad
+Nech $a,b,c$ sú ¾ubovo¾né reálne èísla. Potom èíslo 
+$$
+x=4(a^2+b^2+c^2)-\left((a+b)^2+(b+c)^2+(c+a)^2\right)
+$$
+je nezáporné; dokáte. Kedy platí $x=0$?
+
+\priklad
+Dokáte, e pre reálne èísla $a,b,c$ platí $a^2+b^2+c^2+a^2b^2+b^2c^2+c^2a^2\ge 6abc$.
+
+\navod
+Dobre by bolo zachova symetriu a pravú stranu rozdeli na súèet troch rovnakıch sèítancov,
+potom prehodi do¾ava a skúsi upravi na štvorec. Vıraz $2abc$ je stupòa $3$ (ako polynóm).
+Ak toto má by strednı èlen nášho štvorca (lebo má záporné znamienko), tak aspoò jeden z polynómov, ktoré umocòujeme, musí ma stupeò aspoò $2$ a jeho druhá mocnina teda má stupeò aspoò $4$. Take skúsime $a^2b^2-2abc$ doplni na štvorec. Zvyšok zvládnete aj sami.
+
+\priklad
+Nájdite najväèšie reálne èíslo $K$ tak, e pre všetky kladné reálne èísla 
+$a$, $b$, $c$ platí nerovnos 
+$$
+Kabc(a+b+c)\le a^2b^2+b^2c^2+c^2a^2.
+$$
+
+\riesenie
+Najprv si rozmyslime, èo od nás chcú. Èo znamená nájs najväèšie $K$? Treba toto $K$ nájs, dokáza, e vyhovuje (t.$\,$j. platí tá nerovnos pre toto $K$ a všetky kladné reálne èísla $a$, $b$, $c$) a navyše dokáza, e ak zvolíme ¾ubovo¾né $K'$ väèšie ako nájdené $K$, tak u nebude plati nerovnos zo zadania. Teda e pre toto $K'>K$ vieme nájs èísla $a$, $b$, $c$, tak, e skúmaná nerovnos plati nebude.
+
+Zvo¾me $a=b=c=1$, po dosadení tıchto hodnôt do našej nerovnosti dostaneme $K\le 1$.
+Staèí dokáza, e $K=1$ vyhovuje. Èím bola motivovaná naša vo¾ba hodnôt pre $a,b,c$?
+Tım, e naša nerovnos je {\it homogénna}, inak povedané, ak platí pre nejaké $a,b,c$,
+tak platí aj pre $ka,kb,kc$, kde $k$ je kladné reálne èíslo -- proste po dosadení hodnôt
+$ka,kb,kc$ do našej nerovnosti má $k$ vo všetkıch èlenoch na oboch stranách rovnakı exponent a môeme jeho mocninou ekvivalentne vydeli nerovnos. V homogénnych nerovnostiach èasto nastáva rovnos práve
+vtedy, keï sa hodnoty všetkıch premennıch rovnajú. Overte si to na doteraz dokázanıch nerovnostiach.
+
+A èo dôkaz nerovnosti pre $K=1$? Po roznásobení ¾avej strany si môeme všimnú, e 
+\hbox{$a^2bc=ab\cdot ac$}, èo vedie k substitúcii $x=ab$, $y=bc$, $z=ca$ a redukcii dokazovanej nerovnosti na u známu. Prehliadnutie tejto substitúcie nevadí, funguje metóda popísaná v predošlıch príkladoch a podarí sa nám to poupravova na súèet troch štvorcov, napríklad
+$0\le (ab-bc)^2+(bc-ca)^2+(ca-ab)^2$.
+
+Úvaha zo zaèiatku riešenia je dôleitá. iaci majú èasto problémy s pochopením vıznamu kvantifikátorov (aj keï tu nie sú formálne zapísané), napríklad ignorujú ich poradie. Preto majú ve¾ké akosti s funkcionálnymi rovnicami, nedokáu prija takto zadanı problém.
+
+\priklad
+Dokáte, e pre kladné reálne èísla $a$, $b$, $c$ platí $a^3+b^3+c^3\ge a^2c+b^2a+c^2b$.
+
+\riesenie
+Tu narazíme pri pokusoch o úpravu na štvorec na problém. Všetky vırazy na ¾avej strane majú nepárne exponenty, preto priamo nemôu by súèasou roznásobeného štvorca. Ako tomu pomôeme?
+Nu, zrejme $a^3=(\sqrt a)^6$ a to u má párny exponent, aj keï dvakrát väèší. Keïe s odmocninami sa pracuje nepríjemne, zavedieme si substitúciu $x=\sqrt a$, $y=\sqrt b$, $z=\sqrt c$. Potom u všetko funguje tak, ako sme zvyknutí a ¾ahko dokáeme, e
+$$
+2\sum x^6\ge \sum x^6+\sum x^3z^3\ge 2\sum x^4z^2.
+$$
+
+\priklad
+Dokáte, e pre nezáporné reálne èísla $a$, $b$ platí $(a+b)(a^4+b^4)\ge (a^2+b^2)(a^3+b^3)$.
+
+\priklad
+Dokáte, e pre všetky reálne èísla $a$, $b$ platí
+$$
+a^2+b^2-ab-a+b+1>0\,.
+$$
+
+\navod
+Pozerajme sa na $b$ ako na konštantu; potom dostaneme vıraz tvaru $a^2+ka$ pre nejaké
+$k$ a ten sa dá doplni na štvorec.
+
+\priklad
+Dokáte, e funkcia $f(x)=x^3+x^2+x$ je rastúca.
+
+\riesenie
+Funkcia $f$ je z definície rastúca práve vtedy, keï pre ¾ubovo¾né reálne èísla $x$, $y$ také,
+e $x<y$, platí $f(x)<f(y)$. Nech teda $x<y$, máme dokáza nerovnos $x^3+x^2+x<y^3+y^2+y$.
+Prehoïme všetko na ¾avú stranu a skúsme to rozloi na súèin.
+$$
+\eqalign{
+x^3-y^3+x^2-y^2+x-y &< 0\cr
+(x-y)(x^2+xy+y^2)+(x-y)(x+y)+(x-y) &< 0\cr
+}
+$$
+Z predpokladu $x-y<0$, teda naša nerovnos je ekvivalentná s 
+$$
+\eqalign{
+x^2+xy+y^2+x+y+1 &> 0.
+}
+$$
+Ako sme videli doteraz, je dobre, keï strednı èlen v štvorci má koeficient $2$, ¾ahšie sa potom pracuje s vırazmi a navyše niektoré veci vidno na prvı poh¾ad. Vynásobme preto nerovnos dvoma a skúsme vytvori štvorce.
+$$
+\eqalign{
+2x^2+2xy+2y^2+2x+2y+2 &> 0\cr
+(x^2+2x+1)+(y^2+2y+1)+(x^2+2xy+y^2) &> 0\cr
+(x+1)^2 + (y+1)^2 + (x+y)^2 &> 0\cr
+}
+$$
+Nerovnos platí ostro, keïe pre $x=y=-1$ je $x+y=-2\neq 0$.
+Mono táto úloha vyzerá samoúèelne, ale èasto sa nieèo podobné vyskytne napríklad pri riešení sústav nelineárnych rovníc.
+
+\priklad
+Zistite, ko¾ko riešení má sústava rovníc 
+$$
+\eqalign{
+x^3-y^2=z^2-x,\cr
+y^3-z^2=x^2-y,\cr
+y^3-x^2=y^2-z,\cr 
+}
+$$
+v obore reálnych èísel.
+
+\navod
+Sústava je naozaj {\it nesymetrická}, v zadaní nie je preklep. Po nieko¾kıch úpravách 
+dostaneme nerovnos z predošlého príkladu. Treba da pozor na benú chybu iakov, keï z nerovnosti $y^2+y=z^2+z$ usúdia, e $y=z$ (napr. na základe falošnej analógie s predošlım príkladom). 
+
+\priklad
+Nech $f$ je funkcia definovaná na obore kladnıch reálnych èísel taká, e
+$f(x)-x^3$ aj $f(x)-3x$ sú rastúce funkcie. Zistite, èi funkcia $f(x)-x^2-x$
+je monotónna. 
+
+\riesenie
+Na skúmanie priebehu funkcií máme v matematickej analıze mnoho uitoènıch metód, avšak v našom príklade sa poui nedajú. O funkcii $f$ nevieme takmer niè. Nemusí by spojitá, diferencovate¾ná\dots{} Dokonca môe by spojitá a pritom môe nema v iadnom bode svojho definièného oboru deriváciu (aj také funkcie existujú). Preto prístupy vyuívajúce skúmanie derivácie funkcie $f(x)-x^2-x$ nevedú k cie¾u.
+
+Rastúcos funkcie môeme prepísa priamo z definície; funkcia $f$ je rastúca práve vtedy, keï pre kadé $x$, $y$ z jej definièného oboru platí, e ak $x<y$, tak $f(x)<f(y)$.
+
+Po chví¾ke hry s funkciou $f(x)-x^2-x$ zistíme, e je rastúca. (Hra by mala zahàòa vo¾bu konkrétnych funkcií namiesto $f$ a dosádzanie konkrétnych hodnôt za $x$.) Toto tvrdenie dokáeme. Presnejšie, nech $a$, $b$ sú dve kladné reálne èísla s vlastnosou $a>b$. Dokáeme,
+e $f(a)-a^2-a>f(b)-b^2-b$, inak napísané $f(a)-f(b)>a^2 + a - b^2 - b$.
+
+Z predpokladov v zadaní vieme, e pre naše $a$, $b$ platí 
+$$
+f(a)-a^3 > f(b) - b^3\qquad {\rm a\ tie}\qquad f(a)-3a > f(b) - 3b.
+$$
+Take pre rozdiel $f(a)-f(b)$ máme dva dolné odhady;
+$$
+f(a)-f(b) > a^3 - b^3, \qquad \qquad \qquad f(a)-f(b) > 3a - 3b.
+$$
+Chceme ukáza, e aspoò jedno z èísel $a^3 - b^3$ a $3a - 3b$, ktorımi sme odhadli rozdiel $f(a)-f(b)$, je väèšie ako $a^2 + a - b^2 - b = (a-b)(a+b+1)$. Spravíme teda nieko¾ko porovnaní.
+$$
+3a - 3b \ge (a-b)(a+b+1) \iff 3\ge a+b+1 \iff a+b\le 2
+$$ 
+Take staèí dokáza, e pre $a+b>2$ platí nerovnos
+$$
+\eqalign{
+a^3 - b^3 &\ge (a-b)(a+b+1)\cr
+a^2 + ab + b^2 &\ge a+b+1\cr
+2a^2 + 2ab + 2b^2 - 2a - 2b - 2 &\ge 0\cr
+(a-1)^2 + (b-1)^2 + (a+b)^2 - 4 &\ge 0\cr
+}
+$$
+Posledná nerovnos je pravdivá, lebo $a+b>2$ a štvorce sú nezáporné. Všimnite si, ako sme k nej dospeli; cie¾om úprav bolo získa na ¾avej strane štvorce a na pravej nulu.
+
+\priklad
+Zistite, èi existujú reálne èísla $a,b$ také, e $8a^2+17b^2=20ab$.
+
+\riesenie
+Jedna monos je díva sa na to ako na kvadratickú rovnicu $8a^2-20ba+17b^2$
+s neznámou $a$, jej diskriminant je $D=400b^2-4\cdot 8\cdot 17b^2=-144b^2\le 0$, take
+riešenie má táto rovnica iba pre $b=0$ a vtedy $a=0$.
+
+Iná monos je skúsi upravi $8a^2-20ba+17b^2$ na súèet dvoch štvorcov. 
+Nasledujúci postup nezaruèuje nájdenie riešenia, je iba heuristikou. Ako sa ukáe, postaèujúcou.
+
+Tá sedemnástka by sa dala rozdeli na súèet dvoch štvorcov ako $17=1+16=1^2+4^2$,
+teda skúsime rozloi ¾avú stranu do tvaru $(1\cdot b-ka)^2+(4\cdot b-\ell a)^2$. Preèo práve takto? H¾adáme také štvorce, ktoré budú obsahova po umocnení iba konštantné násobky $a^2$, $b^2$ a $ab$, práve pouité naozaj také sú. Staèí nájs vhodné konštanty $k$, $\ell$.
+Tieto si buï tipneme ($k=l=2$), alebo ich môeme doráta zo sústavy rovníc
+$$
+\eqalign{
+k^2+l^2 &= 8,\cr
+2k+8l &= 20.\cr
+}
+$$
+Odkia¾ máme sústavu? Z porovnania koeficientov; chceme toti rovnos
+$$
+8a^2-20ab+17b^2=(b-ka)^2+(4b-\ell a)^2=(k^2+\ell^2)a^2-(2k+8l)ab+17b^2.
+$$
+
+Na precvièenie by sa mohlo hodi nieko¾ko ïalších príkladov s inımi konštantami. 
+
+\priklad
+Dokáte, e ak sa prirodzené èísla $A$, $B$ dajú zapísa v tvare súètu dvoch štvorcov celıch èísel, tak aj ich súèin $AB$ sa dá zapísa v tomto tvare.
+
+\riesenie
+Máme dokáza, e $AB=(a^2+b^2)(c^2+d^2)=a^2c^2+a^2d^2+b^2c^2+b^2d^2$ sa dá zapísa ako súèet dvoch štvorcov. Máme štyri vırazy, ktoré by mohli by krajnımi èlenmi dvoch roznásobenıch štvorcov. Teda od strednıch èlenov našich štvorcov oèakávame, e budú rovnaké a na znamienko a navzájom sa zrušia. Niè nám síce nezaruèuje, e toto sa dá dosiahnu, ale ak sa nám to podarí, sme hotoví. Po chví¾ke skúmania a preberania moností zistíme, e to naozaj ide a e $(a^2+b^2)(c^2+d^2)=(ac+bd)^2+(ad-bc)^2$.
+
+Toto je úvaha (a identita) èasto pouívaná v teórii èísel.
+
+\priklad
+Dokáte Cauchyho-Schwarzovu nerovnos, t.$\,$j. platnos nerovnosti
+$$
+(x_1^2+x_2^2+\cdots+x_n^2)(y_1^2+y_2^2+\cdots+y_n^2)\ge(x_1y_1+x_2y_2+\cdots+x_ny_n)^2
+$$
+pre ¾ubovo¾né reálne èísla $x_1,x_2,\dots,x_n,y_1,y_2,\dots,y_n$. Kedy nastáva rovnos?
+
+\riesenie
+V¾avo máme vırazy tvaru $x_i^2y_j^2$, vpravo $x_iy_ix_jy_j$ pre všetky $i$, $j$ z mnoiny $\{1,2,\dots,n\}$. Skúsime to nejako usporiada do štvorcov, kadı èlen z pravej strany bude strednım èlenom nejakého roznásobeného štvorca a dva vırazy z ¾avej strany jeho krajnımi èlenmi.
+Vieme, e 
+$$
+x_i^2y_j^2-2\cdot x_iy_j\cdot x_jy_i+x_j^2y_i^2=(x_iy_j-x_jy_i)^2\ge 0.
+$$
+Sèítaním $n^2$ takıchto nerovností (pre všetky moné hodnoty $i$, $j$) dostaneme dvojnásobok
+dokazovanej nerovnosti. Skontrolujte si to.
+
+Rovnos nastáva jedine vtedy, keï nastane rovnos vo všetkıch sèítanıch nerovnostiach,
+teda keï 
+$$
+\eqalignno{
+x_iy_j&=x_jy_i \qquad{\rm pre\ všetky\ } i, j\in\{1,2,\dots,n\}. & (2)
+}
+$$
+Pre nenulové ypsilony sa (2) dá prepísa do podielu, $x_i/y_i=x_j/y_j$. Vo¾bou pevného $i=1$
+dostávame, e toto nastáva práve vtedy, keï pre nejaké reálne èíslo $k$ platí $x_i/y_i=k$
+pre všetky prípustné $i$. Túto úvahu si rozmyslite, na prvé preèítanie môe vyzera mätúco.
+
+A èo, ak nejaké $y_i=0$? Záver z predchádzajúceho odstavca zostáva v platnosti, rozmyslite si, preèo. Môe vám pomôc nasledujúca úvaha.
+
+Bez ujmy na všeobecnosti môeme predpoklada, e aspoò jedno z èísel $x_i, y_i$ je nenulové pre všetky $i$. Èo fráza \uv{bez ujmy na všeobecnosti} znamená? Asi to¾ko, e keï predpokladáme opak, neutrpíme iadnu ujmu a naša úvaha bude fungova; v tomto konkrétnom prípade to znamená, e ak pre nejaké $i$ je $x_i=y_i=0$, tak sa môeme tvári, e túto dvojicu tam vôbec nemáme a akoby sme pracovali len s $n-1$ dvojicami èísel.
+
+Ukáeme si inı prístup k dôkazu tejto nerovnosti. Prehoïme všetky vırazy na jednu stranu;
+$$
+(x_1y_1+x_2y_2+\cdots+x_ny_n)^2-(x_1^2+x_2^2+\cdots+x_n^2)(y_1^2+y_2^2+\cdots+y_n^2)\le 0.
+$$
+Èo nám to pripomína? Vıraz v tvare $a^2-bc$\dots{} Mohol by by diskriminantom nejakej kvadratickej rovnice. Platnos našej nerovnosti je ekvivalentná s neexistenciou riešenia tejto rovnice (okrem prípadu, keï nastáva rovnos). Vieme takúto rovnicu nájs? (Skúste to sami, zaènite preskúmaním pre malé $n$.)
+
+Budeme ju h¾ada v takom tvare, aby sme ¾ahko vedeli dokáza, e nemá iadne riešenia, okrem prípadu rovnosti. Rovnos nastáva pre netriviálne hodnoty premennıch, èo nám pomôe zostavi h¾adanú rovnicu. Pomerne ¾ahko zistíme, kedy nastáva rovnos pre $n=1$ èi $n=2$. Potom môeme pre tieto malé $n$ skúsi zostavi rovnicu. Experimentovanie nechávame na èitate¾a,
+uvedieme si len tú rovnicu v definitívnej forme: $(x_1-xy_1)^2+\cdots+(x_n-xy_n)^2=0$, neznáma je $x$.
+
+Táto nerovnos je jednou zo základnıch, ktoré by mal úèastník matematickıch súaí pozna.
+Má aj názornú geometrickú reprezentáciu (skalárny súèin v rovine, t.$\,$j. pre $n=2$).
+
+\priklad
+Zistite, èi polynóm $x^4-3x^3+3x^2+2$ má reálny koreò.
+
+\riesenie
+Ako riešime polynomické rovnice? Kvadratické riešime štandardnou metódou cez diskriminant. Aj pre rovnice štvrtého stupòa existujú vzorce, sú však ve¾mi zloité. Keby náš polynóm mal racionálny koreò, vieme vyskúša nieko¾ko moností a nájs ho (aké monosti skúšame tu teraz nebudeme rozobera, pozrite si to v nejakej uèebnici matematiky pre gymnáziá). Ani toto nám však iadne vısledky neprinesie; tento polynóm racionálne korene nemá. Jeho derivácia je tretieho stupòa a ak nemá racionálne korene, tak ani o lokálnych extrémoch takto niè nezistíme. Vyskúšajme nieko¾ko hodnôt $x$. Polynóm dá všetky hodnoty kladné. Preto stojí za pokus dokáza, e je kladnı pre ¾ubovo¾né reálne èíslo $x$. Ako?
+
+Problémom sú èleny, ktoré môu nadobúda záporné hodnoty; v našom prípade je to $-3x^3$, ostatné sú zrejme nezáporné. Vieme pomocou ostatnıch èlenov vyvái tento èlen? Nu\dots{}
+Priamo nie. Mohol by to by strednı èlen nejakého roznásobeného štvorca? Ak áno, jeden z krajnıch èlenov tohto štvorca musí ma aspoò takı exponent ako strednı èlen, teda môeme skúsi doplni $x^4-3x^3$ na štvorec. Navyše by bolo úplne skvelé, keby druhı krajnı èlen tohto štvorca mal párny exponent; v tom prípade toti zostávajúci polynóm bude ma nenulové koeficienty iba pri èlenoch s párnym exponentom a vieme stupeò tohto polynómu zmenši na polovicu jednoduchou substitúciou. 
+
+Strednı èlen by mal ma koeficient delite¾nı dvomi, aby sa nám ¾ahšie pracovalo, vynásobme náš mnohoèlen dvomi a skúmajme vıraz 
+$$
+P = 2x^4-6x^3+6x^2+4.
+$$
+Za krajnı èlen štvorca nie je ve¾mi dobre bra $2x^4$, lebo by sme museli pracova s iracionálnymi èíslami. Konkrétne s $\sqrt 2$, èo by nemuselo by na škodu, ale ako sa môete presvedèi, neviedlo by to k dôkazu, ktorı sa snaíme spravi a s iracionálnymi koeficientmi sa pracuje horšie (neváhajte a vyskúšajte si to na práve spomenutom príklade). Navyše by sme tım stratili vıhodu získanú vynásobením polynómu dvomi. 
+
+Skúsme teda iba $x^4$; platí $x^4-6x^3+9x^2=x^2(x-3)^2$ a preto
+$$
+P = x^4+(x^4-6x^3+9x^2)-3x^2+4=x^2(x-3)^2+x^4-3x^2+4\ge x^4-3x^2+4.
+$$
+Staèí dokáza $x^4-3x^2+4\ge 0$ a to po substitúcii $y=x^2\ge 0$
+dorazíme èímko¾vek, napr. $y^2-3y+4\ge y^2-4y+4=(y-2)^2\ge 0$ (všimnite si, e potrebujeme nezápornos ypsilonu pre predposlednú nerovnos; pri zavádzaní substitúcie si treba dáva pozor, aby sme nezahodili nejakú informáciu, mono dôleitú pre ïalší postup).
+Sme hotoví? Nie, ešte sme nevylúèili, e vo všetkıch pouitıch odhadoch nastane pre nejaké $x$ rovnos.
+V takom prípade by však muselo plati $0=y$ a súèasne $2=y$ (všimnite si posledné dva odhady), èo nie je moné. 
+
+\priklad
+Dokáte, e pre všetky reálne èísla $a$, $b$, $c$ spåòajúce nerovnos $a^2+c^2\le 4b$
+a pre všetky reálne èísla $x$ platí
+$$
+x^4+ax^3+bx^2+cx+1\ge 0.
+$$
+
+\riesenie
+Èo nám robí problém na ¾avej strane? Èleny s nepárnym exponentom, teda $ax^3$ a $cx$.
+Skúsme sa na ne díva ako na strednı èlen nejakého roznásobeného štvorca a rozdeli zvyšné nezáporné èleny medzi štyri potrebné krajné èleny tıchto dvoch roznásobenıch štvorcov.
+Ak $x^4$ je krajnım èlenom, tak strednı obsahuje $x$ s exponentom aspoò $2$, preto $x^4$
+nemôeme poui pri odhadovaní $cx$ ako stredného èlena. Podobne ak by sme pri odhade stredného èlena $ax^3$ pouili èlen $1$ ako krajnı èlen, tak druhı krajnı èlen musí ma exponent $x$ aspoò $6$ (rozmyslite si, preèo), èo nie je moné, také vysoké exponenty nemáme.
+Záver: ideme dopåòa na štvorec vırazy $x^4+ax^3$ a $1+cx$.
+$$
+\eqalign{
+x^4+ax^3 &= (x^2)^2+2\cdot x^2\cdot {a\over 2}x+ \left({a\over 2}x\right)^2-\left({a\over 2}x\right)^2 = \left(x^2+{a\over 2}x\right)^2-{a^2\over 4}x^2\cr
+1+cx &= 1^2+2\cdot 1\cdot {c\over 2}x+\left({c\over 2}x\right)^2-\left({c\over 2}x\right)^2
+= \left(1+{c\over 2}x\right)^2-{c^2\over 4}x^2\cr
+}
+$$
+Toto dosadíme do nerovnosti, ktorú máme dokáza, pouijeme nezápornos štvorcov a predpoklad zo zadania.
+$$
+\eqalign{
+x^4+ax^3+bx^2+cx+1 &= \left(x^2+{a\over 2}x\right)^2-{a^2\over 4}x^2+bx^2+\left(1+{c\over 2}x\right)^2-{c^2\over 4}x^2\ge\cr
+&\ge bx^2-{a^2\over 4}x^2-{c^2\over 4}x^2=x^2\cdot {4b-a^2-c^2\over 4}\ge 0
+}
+$$
+
+\priklad
+Nájdite minimálnu hodnotu vırazu $V = a^6+b^2+2b+1-2a^3b-2a^3$, kde $a$, $b$ sú reálne èísla.
+
+\riesenie
+O hodnotách, ktoré môe náš vıraz nadobúda, nám nepovedali v zadaní niè. Preto o nich nieèo skúsime zisti. Ako? Môeme dosádza za $a$, $b$ konkrétne hodnoty. Môeme zafixova jednu premennú a skúma funkciu tej druhej. Môeme poui nám dostupné prostriedky matematickej analızy. Keï zafixujeme $a$, dostaneme kvadratickú funkciu premennej $b$ a minimum nájdeme u ukázanımi metódami, napr. doplnením na štvorec. Ukáeme si iné riešenie.
+
+Dosádzaním zistíme, e skúmanı vıraz asi nadobúda vdy kladné hodnoty. Nie je homogénny, take dosadením $a=b$ asi ve¾a nezískame. Skúsme $a=0$. Potom $V=b^2+2b+1=(b+1)^2$, èo je nezáporné a rovné nule iba pre $b=-1$. Nech $b=0$; potom $V=a^4-2a^2+1=(a^3-1)^2\ge 0$
+s rovnosou pre $a=1$. Nu, keï si myslíme, e náš vıraz je nezápornı, skúsme ho upravi na štvorec èi súèet nieko¾kıch štvorcov. Spravíme nieko¾ko pokusov:
+$$
+\eqalign{
+V &= (a^3-b)^2+1+2b-2a^2,\cr
+V &= (a^3-1)^2+b^2-2b-2a^3b,\cr
+V &= (b+1)^2+a^6-2a^2b-2a^3.\cr
+}
+$$
+Tieto pokusy sú neúspešné z principiálnych dôvodov; vırazy, ktoré nám zvıšili, môu nadobúda ¾ubo\-vo¾ne ve¾kú zápornú hodnotu a teda sa na súèet štvorcov upravi nedajú.
+Štvorec však nemusíme vytvára umocnením dvoch èlenov, funguje to aj s tromi èi viacerımi,
+$$
+(x+y+z)^2=x^2+y^2+z^2+2xy+2yz+2zx
+$$
+pre všetky reálne èísla $x$, $y$, $z$.
+Po porovnaní pravej strany tohto s naším vırazom $V$ jasne vidíme, ktoré èleny sú štvorcami
+a ktoré sú násobkami èísla $2$. Zrejme $V=(a^3-b-1)^2\ge 0$ a sme hotoví.
+
+\priklad
+Nech $a$, $b$, $c$ sú nezáporné reálne èísla také, e $a+b+c=1$. Nájdite maximum vırazu
+$$
+V = a^2+b^2+c^2+\sqrt{12abc}.
+$$
+
+\riesenie
+Táto úloha je aká, bola pouitá na vıberovom sústredení pred medzinárodnou olympiádou. Sme však dobre pripravení a preto ju zdoláme. Všimnite si, e úloha nie je jednokroková ako mnoho predošlıch; toto je jedna z vlastností akıch úloh -- musíme spravi nieko¾ko krokov, o ktorıch si nie sme dopredu istí, èi povedú k cie¾u. Vyaduje si to vytrvalos a aj dôveru vo vlastné schopnosti.
+
+V zadaní tejto úlohy sa vyskytol novı prvok, {\it väzba}. Èísla $a$, $b$, $c$ u nemôeme 
+voli ¾ubovo¾ne, ale musia spåòa vzah $a+b+c=1$. Ako sa riešia takéto úlohy?
+
+Jedna monos je vyjadri si $c=1-a-b$ a dosadi túto hodnotu všade, kam treba. Nesmieme zabudnú, e z obmedzenia $c\ge 0$ vyplıva, e pre hodnoty $a$, $b$ musí plati $a+b\le 1$.
+Bez tohto obmedzenia by skúmanı vıraz mohol strati pôvodné vlastnosti, napríklad ohranièenos zhora. Tu sa nám to nestane kvôli tomu, e musíme ma definovanı vıraz pod odmocninou, ale po umocnení vırazu (ak h¾adáme maximum kladného vırazu, rovnako dobre môeme h¾ada maximum jeho druhej èi vyššej mocniny) by nám mohlo toto obmedzenie chıba.
+
+Dosádzanie väzby má nieko¾ko slabín. Ani jedna z premennıch nemusí by z väzby vyjadrite¾ná v rozumnom tvare (napr. pre väzbu $a^4+b^4=1+a^5b^5$). Aj keï jednu z premennıch vyjadríme, po dosadení môe vzniknú nezvládate¾nı, príliš komplikovanı vıraz. A navyše dosadením väzby stratíme symetriu premennıch, ktorá nám v minulosti u mnohokrát pomohla.
+
+Preskúmajme najprv okrajové prípady pre prípustné hodnoty $a$, $b$, $c$. Jeden je $a=b=c=1/3$,
+vtedy $V = 3a^2+2\sqrt{3a^3}=1/3+2/3=1$. Pre $a=1$, $b=c=0$ (symetria, staèí skúsi jednu monos z troch) je $V=1$. 
+
+Skúsme vyrieši jednoduchšiu úlohu, mono nájdené maximum bude aj maximom vo všeobecnom prípade. Nech $c=0$. Potom pre nezáporné èísla $a$, $b$ so súètom $a+b=1$ chceme 
+maximalizova vıraz $T=a^2+b^2$. Nu, $T=a^2+b^2=(a+b)^2-2ab=1-2ab\le 1$, môe nasta aj rovnos (tento odhad je motivovanı tım, e vieme hodnotu súètu $a$+$b$, nu sa ju tam snaíme nejako napasova). Tımto sme našu èiastoènú úlohu vyriešili. 
+
+Z práve povedaného máme ve¾mi dobrú hypotézu pre h¾adané maximum, skúsme dokáza, e
+$$
+V= a^2+b^2+c^2+\sqrt{12abc}\le 1.
+$$
+Mono by pomohla úprava pouitá pri dôkaze našej jednoduchšej úlohy? Vo verzii pre tri premenné je $a^2+b^2+c^2=(a+b+c)^2-2(ab+bc+ca)$, po dosadení do dokazovanej nerovnosti a úprave dostávame ekvivalentnú nerovnos
+$$
+\sqrt{12abc}\le 2(ab+bc+ca).
+$$
+Teraz nasleduje nieko¾ko samozrejmıch krokov; zbavenie sa odmocniny a vykrátenie.
+$$
+3abc\le (ab+bc+ca)^2
+$$
+Platí takáto nerovnos? Spravme rıchly test, nech $a=b=c$, potom by malo by
+$3a^3\le 9a^4$, èo pre dostatoène malé $a$ neplatí. Ako to? Pomılili sme sa? Nie.
+Iba sme zabudli na to, e stále máme väzbu; tá v tomto prípade hovorí $a\ge 1/3$
+a pre takéto $a$ nerovnos platí.
+
+Pokraèujeme v dôkaze. Ako vidíme, väzbu nemôeme ignorova, bez nej nerovnos neplatí. Ale radi by sme sa jej zbavili. Preto {\it zhomogenizujeme} nerovnos tak, e na vhodné miesta dosadíme väzbu: namiesto èísla $1$ budeme písa $a+b+c$.
+$$
+\eqalign{
+3abc = 3abc\cdot (a+b+c) = 3(a^2bc+ab^2c+abc^2)\le(ab+bc+ca)^2\cr
+}
+$$
+Posledná nerovnos je homogénna a platí u pre všetky nezáporné èísla
+$a$, $b$, $c$. Je ¾ahké ju dokáza niektorou z doteraz pouitıch metód. (Návod: umocníme pravú stranu a odèítame od oboch strán rovnaké vırazy.)
+
+Všimnite si, ako nám pomohlo, e sme vyriešili jednoduchšiu úlohu (s redukovanım poètom premennıch a jednoduchším vırazom na minimalizáciu). Nie triviálnu, zostal v nej prvok, ktorı bol aj v pôvodnej úlohe: väzbu (resp. jej druhú mocninu) dosádzame za jednotku (tipnuté maximum) na pravej strane. Toto treba zdôrazni aj iakom, aby sa nebáli so zadaním manipulova, aby si stanovili ¾ahší problém a inšpirovali sa jeho vısledkom èi metódou pri riešení pôvodného problému. Niekedy pomáha problém si zovšeobecni, napr. oznaèi záhadné konštanty písmenkami a parametrizova úlohu -- èasto sa ukáu súvislosti, ktoré predtım nebolo vidie.
+
+\priklad
+Dokáte pre kladné èísla $a$, $b$ spåòajúce $a^5+b^5=a^3+b^3$ platnos nerovnosti
+$$
+a^2+b^2\le 1+ab.
+$$
+
+\navod
+Upravíme nerovnos tak, aby všetky èleny na ¾avej strane mali exponent 2 a všetky èleny na pravej strane exponent 0; potom prenásobíme nerovnos vırazom $a^3+b^3$ a na pravú stranu za tento vıraz dosadíme z väzby $a^5+b^5$. Dostaneme homogénnu nerovnos, ktorá platí aj bez väzby.
+
+\end
+
+
+
+
+
+
+
+
+
+
+Pri nerovnostiach sa èasto stretneme s nieko¾kımi pojmami, na ktoré sa teraz pozrieme blišie.
+Nerovnos sa nazıva {\it symetrická vzh¾adom na vımenu $x$ a $y$}, ak sa pri vımene hodnôt
+$x$ a $y$ nezmení hodnota ¾avej ani pravej strany. (Podobne hovoríme o symetrickıch vırazoch,
+to sú tie, ktoré pri vımene premennıch nezmenia hodnotu.)
+Ak môeme zameni ¾ubovo¾né dve z premennıch, ktoré sa v nerovnosti vyskytujú, nazıvame ju 
+{\it symetrická}. Príklady takıchto nerovností nájdeme v príkladoch 1, 2, 3.
+Na druhej strane v {\it nesymetrickıch} nerovnostiach nemôeme hocijako zamieòa premenné,
+napríklad v nerovnosti z príkladu 11 èi v nerovnosti $x^2y+y^2\ge x-y$.
+Niektoré nerovnosti nie sú úplne symetrické, ale môeme v nich aspoò cyklicky posunú premenné,
+teda namiesto $x_2$ bude $x_1$, namiesto $x_3$ dáme $x_2$,\dots, namiesto $x_1$ dáme $x_n$
+a nerovnos sa nám nezmení. Príkladom takej nerovnosti je
+${x_1\over x_2}+{x_2\over x_3}+\cdots+{x_n\over x_1}\ge n$.
+
+Naèo je to celé uitoèné? Ak vieme zameni ¾ubovo¾né dve premenné, tak môeme bez ujmy
+na všeobecnosti predpoklada, e $x_1\ge x_2\ge\cdots\ge x_n$, teda e tie èísla, pre ktoré 
+dokazujeme nerovnos, sú usporiadané. Ak by neboli, tak ich vymieòame dovtedy, kım nebudú 
+usporiadané. Podobne ak nerovnos je aspoò cyklicky symetrická, môeme o ¾ubovo¾nej premennej
+vyhlási, e je najväèšia. Rozmyslite si to, bude sa to hodi za chví¾u.
+
+Ïalší príklad nie je a takı akı, ako by ste mohli súdi z dåky riešenia, ale ukáeme si 
+na òom ve¾a prístupov uitoènıch pri dokazovaní nerovností.
+
+\priklad
+Dokáte, e pre kladné reálne èísla $x_1,x_2,\dots,x_n$ platí
+$$
+{x_1\over x_2}+{x_2\over x_3}+\cdots+{x_n\over x_1}\ge n\,.
+$$
+
+\riesenie
+Skôr, ne zaèneme nerovnos dokazova, je dobre sa s òou zoznámi. Èo hovorí táto?
+Odhadujeme zdola súèet podielov poètom tıchto podielov. Kedy nastáva rovnos?
+Ak sú všetky èísla rovnaké, tak áno. A niekedy inokedy? Naèo je v zadaní predpoklad,
+e èísla $x_1,\dots,x_n$ sú kladné? Platila by nerovnos aj bez neho? Pre záporné 
+$x_1,\dots,x_n$ platí. Ale vo všeobecnosti nie, skúste si nájs protipríklad.
+Èo táto nerovnos hovorí pre dve èísla? Vyskúšajme.
+$$
+\eqalign{
+{a\over b}+{b\over a} &\ge 2\cr
+{a^2+b^2\over ab} &\ge 2 \quad\big|\cdot ab; \quad ab>0\cr
+a^2+b^2\ge 2ab\cr
+}
+$$ 
+Toto sme u kdesi videli (kde?) a platí to, preto platí aj skúmaná nerovnos pre dve èísla.
+Tá nám však niè nehovorí o štruktúre všeobecnej nerovnosti, nevieme, preèo by tá mala 
+plati: nedá sa upravi na štvorec (ako sa nám to podarilo pre $n=2$).
+Preto sa pozrieme ïalej, èo tri èísla?
+$$
+\eqalign{
+{a\over b}+{b\over c}+{c\over a} &\ge 3 \quad\big|\cdot abc; \quad abc>0\cr
+a^2c+b^2a+c^2b &\ge 3abc\cr
+}
+$$ 
+
+FIXME: skusit pouzit nerovnost pre n=2, najprv symetricky (nevyjde?), potom 
+len pre jeden zo zlomkov
+da sa dokazat, ked si povieme a>b>c a potom pouzijeme substituciu, aby sme
+sa tohto predpokladu zbavili
+
+Ako by sme ju dokázali? 
+FIXME: indukciou...
+
+Ïalším dôleitım pojmom je homogénnos. Nerovnos sa nazıva {\it homogénna}, ak z platnosti 
+tejto nerovnosti pre èísla $a,b,c$ vieme odvodi platnos tejto nerovnosti pre èísla $ka,kb,kc$,
+kde $k$ je kladné reálne èíslo. (Toto odvodenie je väèšinou triviálne; staèí predeli
+obe strany nerovnosti vhodnou mocninou èísla $k$, èím dostaneme ekvivalentnú nerovnos.)
+Toto je samozrejme len príklad, premenné, ktoré sa v nerovnosti vyskytujú, sa môu vola inak.
+Príkladmi homogénnych nerovností sú nerovnosti z príkladov 5, 6, èi 8; naopak, nerovnosti
+v príkladoch 9 a 11 homogénne nie sú. 
+Ak je nerovnos homogénna, môeme si prida ïalší predpoklad o premennıch. Napríklad
+$a=1, abc=1, a+b+c=1$ alebo èoko¾vek iné, èo sa nám hodí. Rozmyslite si dôkladne, preèo
+to môeme spravi.
+
+FIXME: v nejakej IMO pred par rokmi bol dobry priklad na netrivialnu vazenu AG
+
+
+\end

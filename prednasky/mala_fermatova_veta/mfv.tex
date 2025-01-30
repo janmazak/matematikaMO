@@ -1,0 +1,305 @@
+
+\input slovak.sty
+\input amssym
+
+\magnification\magstep 1
+
+\nopagenumbers
+\parindent = 0pt
+\parskip = .5\baselineskip
+
+\advance\hoffset by -.5cm
+\advance\hsize by 1cm
+\advance\voffset by -1cm
+\advance\vsize by 4cm
+
+\newcount\cisloprikladu
+\cisloprikladu = 1
+\def\pr{\medskip{\bf\number\cisloprikladu. }\advance\cisloprikladu by 1}
+
+\def\mod#1 {\ ({\rm mod}\ #1)}
+\font\nadpis=csbx12 at 14 pt
+\font\sc=cscsc10
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\centerline{\nadpis Malá Fermatova veta}
+
+\medskip
+
+\centerline{\sc Ján Mazák, verzia 1.87}
+
+\bigskip
+
+Vezmime si postupnos èísel $2,2^2,2^3,2^4,\dots,2^k,\dots$ a všímajme si jej zvyšky po delení $7$.
+Vieme objavi nejakú pravidelnos èi zákonitos? Postupnos tıchto zvyškov je $2,4,1,2,4,1,2,4,1,\dots$
+a vyzerá to tak, e je periodická s periódou $3$. Je ¾ahké to dokáza: po zvyšku $1$ nasleduje zvyšok $2$,
+po zvyšku $2$ zvyšok $4$ a po zvyšku $4$ zvyšok $1$ (rozpíšte si to, po èísle tvaru $7k+4$ nasleduje
+$2\cdot (7k+4)=14k+8=7(2k+1)+1$).
+
+Podobnı záver vieme sformulova pre všetky prvoèísla $p$ a ani na tej dvojke nie je niè špeciálne.
+Majme prirodzené èíslo $a$ nesúdelite¾né s $p$, potom postupnos zvyškov èísel $a, a^2, a^3,\dots, a^k, \dots$
+po delení $p$ je periodická. Zrejme monıch zvyškov v tejto postupnosti je $p-1$ (zvyšok $0$ sa tam nevyskytuje),
+preto keï vezmeme $p$ za sebou idúcich èlenov, nejakı sa tam zopakuje dvakrát. Jeho dva najblišie vıskyty urèujú periódu
+postupnosti. 
+
+Ïalšie zaujímavé vısledky sú sformulované v nasledujúcich vetách a úlohách. Ešte predtım si však zavedieme uitoèné oznaèenie:
+budeme písa $a\equiv b \pmod n$ (a hovori $a$ je kongruentné s $b$ modulo $n$), ak $n\mid a-b$. Inak povedané, èísla $a$ a $b$ dávajú rovnakı zvyšok po delení $n$,
+èie sú v istom zmysle rovnaké. Môeme si to predstavi trebárs ako hodiny s $n$ èíslami od $0$ do $n-1$, ktoré reprezentujú zvyšky;
+$(n+1)$-vá hodina je vlastne totoná s prvou atï.
+
+\medskip
+
+{\bf Veta (malá Fermatova).} {\it Nech $p$ je prvoèíslo a nech $a$ je prirodzené èíslo nesúdelite¾né
+s èíslom $p$.
+Potom èíslo $a^{p-1}-1$ je delite¾né èíslom $p$.}
+
+{\it Dôkaz.} (Euler)
+Vezmime si èísla $a, 2a, \dots, (p-1)a$. Ani jedno z tıchto èísel nie je delite¾né
+èíslom $p$. Tieto èísla dávajú navzájom rôzne zvyšky
+po delení èíslom $p$, toto dokáeme sporom. Ak by èísla $ia$ a $ja$ dávali rovnaké
+zvyšky, tak ich rozdiel $(i-j)a$ je delite¾nı èíslom $p$. Ale $p$ je prvoèíslo, preto
+$p\mid a$ alebo $p\mid(i-j)$. Ani jedna z tıchto moností nemôe nasta, pretoe
+èísla $a$ a $p$ sú nesúdelite¾né a $1\le i-j\le p-2)$. Preto spomínané
+èísla dávajú (v nejakom poradí) zvyšky $1,2,\dots,p-1$ a platí
+$$
+\eqalign{
+a\cdot 2a\cdot 3a\cdots (p-1)a &\equiv 1\cdot 2\cdot 3\cdots (p-1) \mod p \qquad{\rm a}\cr
+(p-1)!\cdot a^{p-1}&\equiv (p-1)!\mod p \,.
+}
+$$
+Keïe èísla $p$ a $(p-1)!$ sú nesúdelite¾né, dostávame 
+$$
+a^{p-1}\equiv 1\mod p \,.
+$$
+
+{\it Inı dôkaz.} 
+Pointou tohto dôkazu je, e nako¾ko nevieme zatia¾ pracova s premennou v exponente, tak ju 
+binomickou vetou prehodíme do nejakého súètu, kde u v exponente vystupova nebude.
+Dobre to vidno pre $a=2$, to je najmenšie $a$, pre ktoré tvrdenie neplatí triviálne.
+Zrejme $2^p=(1+1)^p$ a rozvinutím tohto dostaneme súèet, s ktorım si u vieme poradi.
+
+Matematickou indukciou pod¾a èísla $a$ dokáeme, e $a^p\equiv a\mod p $.
+Pre $a=1$ tvrdenie zrejme platí.
+Nech tvrdenie platí pre nejaké $a$, ukáeme, e platí aj pre $a+1$. Umocnime pouitím binomickej
+vety èíslo $a+1$:
+$$
+(a+1)^p=a^p+pa^{p-1}+{p \choose 2}a^{p-2}+\cdots+pa+1\equiv a^p+1\equiv a+1\mod p \,.
+$$
+Najprv sme vyuili, e $p\mid {p\choose k}$ pre prvoèíslo $p$ a všetky
+celé èísla $k$ spåòajúce $1\le k\le p-1$ a potom indukènı predpoklad.
+Z práve dokázaného tvrdenia a nesúdelite¾nosti $a$ a $p$ vyplıva tvrdenie vety.
+
+{\it Inı dôkaz.} 
+Majme $a$ farieb a z kadej farby $p$ gu¾ôèok. Ko¾ko existuje náhrdelníkov zloenıch 
+z $p$ gu¾ôèok aspoò dvoch rôznych farieb, ak dva náhrdelníky sú rovnaké, ak vieme jeden dosta pootoèním druhého?
+Rozviòme si náhrdelník do radu. Poèet radov, ktoré obsahujú gu¾ôèky aspoò dvoch farieb,
+je $a^p-a$. Pre kadı náhrdelník spåòajúci poadované podmienky máme $p$ moností, ako ho 
+rozvinú do radu. Tieto rozvinutia sú navzájom rôzne. (Ak by nejaké dve boli rovnaké, tak
+pre nejaké $r$ dostaneme pootoèením náhrdelníka o $1\le r<p$ gu¾ôèok rovnakı náhrdelník.
+Keïe $p$ a $r$ sú nesúdelite¾né, zvyšky èísel $r,2r,\dots,pr$ po delení èíslom $p$ sú rôzne a preto
+pootoèenia o tieto èísla sú vdy rôzne. Všímajme si konkrétnu pozíciu. Na tejto pozícii sa
+pri tıchto pootoèeniach vystriedajú všetky gu¾ôèky a preto sú všetky rovnaké, èo je spor.)
+Preto h¾adanı poèet náhrdelníkov (to je celé èíslo) je $(a^p-a)/p$.
+Platí $p\mid a(a^{p-1}-1)$ a keïe èísla $a$ a $p$ sú nesúdelite¾né, platí $p\mid (a^{p-1}-1)$.
+
+\medskip 
+
+Nasledujúca veta je zovšeobecnením malej Fermatovej vety. Skôr, ako si ju uvedieme, potrebujeme
+istú funkciu, pomerne dôleitú pri práci v oblasti teórie èísel. Volá sa Eulerova funkcia a zvyèajne
+sa oznaèuje $\varphi$. Jej hodnotou v prirodzenom èísle $n$ je poèet èísel z mnoiny $\{1,2,\dots,n\}$, ktoré
+sú nesúdelite¾né s $n$. V prípade, e poznáme prvoèíselnı rozklad èísla $n=p_1^{\alpha_1} p_2^{\alpha_2} \cdots p_k^{\alpha_k}$,
+môeme vypoèíta hodnotu $\varphi(n)$
+pod¾a vzorca
+$$
+\varphi(n)=p_1^{\alpha_1-1} p_2^{\alpha_2-1} \cdots p_k^{\alpha_k-1}\cdot (p_1-1)(p_2-1)\cdots (p_k-1).
+$$
+Vzorec si môete dokáza napr. pouitím princípu zapojenia a vypojenia.
+
+\medskip
+
+{\bf Veta (Eulerova).} Nech $a$ je prirodzené èíslo nesúdelite¾né s $n$. Potom
+$a^{\varphi(n)}\equiv 1\pmod n$.
+
+Dôkaz tejto vety ponechávame na èitate¾a, skúste upravi niektorı z uvedenıch dôkazov malej Fermatovej vety.
+V nasledujúcej vete sformulujeme vlastnos prvoèísel tvaru $4k+3$, ktorá je obèas uitoèná pri riešení úloh.
+
+\medskip
+
+{\bf Veta (bez mena).} Nech $p$ je prvoèíslo tvaru $4k+3$ a nech $a$, $b$ sú ¾ubovo¾né celé èísla.
+Potom ak $p\mid a^2+b^2$, tak $p\mid a$ a súèasne $p\mid b$.
+
+{\it Dôkaz.} 
+Ak $p$ delí $a$, tak potom $p$ delí $b^2$ a teda aj $b$. Zostáva nám prípad, keï $a$ je nesúdelite¾né s $p$.
+Zrejme v tomto prípade aj $p$ a $b$ sú nesúdelite¾né. Vynásobme kongruenciu $a^2\equiv -b^2\pmod p$ èíslom $b^{p-3}$.
+Pod¾a malej Fermatovej vety potom platí
+$$
+a^2b^{p-3}\equiv -b^2\cdot b^{p-3} = -b^{p-1} \equiv -1\pmod p\,.
+$$
+Èíslo $p-3$ je párne, preto èíslo 
+$
+c = a\cdot b^{{p-3\over 2}}
+$
+je celé a nesúdelite¾né s $p$. Preto $c^2=a^2b^{p-3}\equiv -1\pmod p$. Ak túto kongruenciu
+umocníme na nepárne èíslo $(p-1)/2$, dostaneme 
+$$
+c^{p-1}\equiv (-1)^{p-1}\equiv -1\pmod p.
+$$
+Ale pod¾a malej Fermatovej vety je $c^{p-1}\equiv 1\pmod p$, take $-1\equiv 1\pmod p$ a dostávame spor.
+
+\bigskip
+\bigskip
+
+\centerline{\nadpis Úlohy}
+
+\bigskip
+
+V úlohách sa vám môu hodi doteraz uvedené vety, metódy ich dôkazov alebo tvrdenia èi metódy z predchádzajúcich úloh.
+Keï niektorú úlohu neviete vyrieši, vráte sa k nej neskôr, prípadne mi napíšte ({\tt mazo@kms.sk}).
+
+\pr
+Zistite zvyšky èísel $2^{10}, 2^{100}, 2^{1000}$ po delení siedmimi a èísel $2^{1000}$, $2^{2^{1000}}$ po delení $41$.
+%% Mazo
+
+\pr
+Nech $k$ je prirodzené èíslo. Akı zvyšok môe dáva èíslo $2^{10^k}$ po delení èíslami $7$, $8$, $9$?
+%% Mazo
+
+\pr
+Dokáte, e pre ¾ubovo¾né dve rôzne prvoèísla $p$, $q$ platí 
+$pq\mid p^{q-1}+q^{p-1}-1.$
+%% Metody reseni matematickych uloh I., 223/3.14 (ii) 
+
+\pr
+Ak $p$ a $q$ sú dve navzájom rôzne prvoèísla, tak $p^q+q^p\equiv p+q\pmod {pq}$. Dokáte.
+% Cincurove skripta z TC
+
+\pr
+Dokáte, e $2730\mid a^{13}-a$. Dokáte, e $341\mid 2^{341}-2$.
+Zistite, èi platí aj $341\mid 3^{341}-3$.
+%% Metody reseni matematickych uloh I., 225/3.15 (iii)-(iv)
+
+\pr
+Aké zvyšky môu dáva sté mocniny prirodzenıch èísel po delení $125$?
+%% Metody reseni matematickych uloh I., 225/3.15 (i) 
+
+\pr
+Dokáte, e pre ¾ubovo¾né prvoèíslo $p$, prirodzené èíslo $n$ a celé èíslo $a$
+platí $p\mid a^{n(p-1)+1}-a$.
+%% Metody reseni matematickych uloh I., 225/3.15 (ii)
+
+\pr
+Dokáte, e pre ¾ubovo¾né celé èísla $a$, $b$ také, e $(a,65)=(b,65)$
+\footnote{$^1$}{$(x,y)$ je najväèší spoloènı delite¾ èísel $x$, $y$},
+je èíslo $a^{12}-b^{12}$ násobkom $65$.
+%% Metody reseni matematickych uloh I., 223/3.14 (i) 
+
+\pr
+Nech $p$ je prvoèíslo a $a$ prirodzené èíslo. Pre ktoré prirodzené èísla $n$ platí $a^{p^n}\equiv a \pmod p$?
+% Mazo
+
+\pr
+Nájdite všetky prvoèísla $p$, pre ktoré $p\mid 5^{p^2}+1$.
+%% Metody reseni matematickych uloh I., 223/3.14 (iii) 
+
+\pr
+Nájdite všetky riešenia rovnice $2^m-3^n = 1$ v obore prirodzenıch èísel.
+% Cincurove skripta z TC
+
+\pr
+Nech $p$ je prvoèíslo a $a$ prirodzené èíslo nesúdelite¾né s $p$.
+Nech $k$ je najmenšie prirodzené èíslo také,
+e $p\mid a^k - 1$. Dokáte, e potom $k\mid p-1$.
+%% Mazo
+
+\pr
+Nech $p$ je prvoèíslo a $n$ kladné celé èíslo. Ak $n\equiv 1\pmod {p^\alpha}$, tak $n^p\equiv 1\pmod {p^{\alpha+1}}$. Dokáte.
+% skripta TC, Martin Sleziak
+
+\pr
+Rozhodnite, èi $7^3 \mid 2^{147}-1$.
+% skripta z TC, Martin Sleziak
+
+\pr
+Nájdite najväèší spoloènı delite¾ èísel z mnoiny $\{n^{13}-n\mid n\in {\Bbb Z}\}$.
+% Cincurove skripta z TC
+
+\pr
+Nájdite nekoneène ve¾a prirodzenıch èísel $n$ takıch, e $2^{2^n}+3$ je zloené èíslo.
+%% Metody reseni matematickych uloh I., 223/3.14 (vii)
+
+\pr
+Dokáte, e pre ¾ubovo¾né prvoèíslo $p$ existuje nekoneène ve¾a násobkov $p$ tvaru $2^n-n$ ($n\in{\Bbb N}$).
+%% Metody reseni matematickych uloh I., 225/3.15 (xiii)
+
+\pr
+Nájdite všetky dvojice celıch èísel $x$, $y$, pre ktoré platí $x^2+y^2=2001(x-y)$.
+% Mazo
+
+\pr
+Nájdite všetky trojice prvoèísel $p$, $q$, $r$, pre ktoré platí $p^2+q^2+r^2=4422$.
+% Mazo
+
+\pr
+a) Akı zvyšok môe dáva desiata mocnina prirodzeného èísla po delení $11$?\hfil\break
+b) Vyriešte rovnicu $x_1^{10}+x_2^{10}+\cdots+x_7^{10}=2009^{2009}$.\hfil\break
+c) Vyriešte rovnicu $x_1^{12}+x_2^{12}+\cdots+x_7^{12}=2009^{2009}$.\hfil\break
+d) Vyriešte rovnicu $x_1^4+x_2^4+\cdots+x_7^4=2009^{2009}$.
+% Cincurove skripta z TC + Mazo
+
+\pr
+Dokáte, e ak $n$ je nesúdelite¾né s $10$, tak existuje násobok $n$, ktorého zápis v desiatkovej sústave pozostáva zo samıch deviatok.
+% Cincurove skripta z TC
+
+\pr
+Dôkaz \uv{vety bez mena} je dos umelı. Prirodzenejší dôkaz sa dá spravi tak, e si uvedomíme, e ak prvoèíslo $p$ nedelí $b$,
+musí existova èíslo $d$ také, e $bd\equiv 1\pmod p$ (dokáte).
+V kongruencii $a^2\equiv -b^2$ potom vieme dosta iba jedno písmenko miesto dvoch,
+staèí ju prenásobi èíslom $d^2$ a spravi vhodnú substitúciu. Skúste dokonèi dôkaz.
+% Mazo
+
+\pr
+Dokáte, e èísla $2^{2^{4n+1}}+7$, $2^{2^{6n+2}}+13$, $2^{2^{10n+1}}+19$, 
+$(2^{2\cdot 3^{6n+3}+4}+1)^2+2^2$ sú zloené pre všetky prirodzené èísla $n$.
+%% Metody reseni matematickych uloh I., 225/3.15 (v)-(x)
+
+\pr
+Nech $P(n)$ je ¾ubovo¾nı polynóm s celoèíselnımi koeficientmi. Dokáte, e postupnos èísel
+$$
+P(1)^1, P(2)^2,\dots,P(n)^n,\dots
+$$
+je periodická.
+%% Mazo, bolo v letnej serii 32. rocnika STROMu
+
+\pr
+Dokáte, e medzi èíslami tvaru $10^n+3$ ($n\in {\Bbb N}$) je nekoneène mnoho zloenıch.
+%% Metody reseni matematickych uloh I., 225/3.15 (xi)
+
+\pr
+Nájdite všetky prirodzené èísla $n$, pre ktoré èíslo $n^{n^3}-n^n$ nie je násobkom piatich.
+% Polsko, Oboz naukowy OM
+
+\pr
+Nech $a$ je prirodzené èíslo. Ak èíslo $n$ spåòa vzah $a^n\equiv a\pmod n$, nazıvame ho {\it pseudoprvoèíslom pri báze $a$}.
+Dokáte, e ak $n$ je nepárne pseudoprvoèíslo pri báze $2$, tak aj èíslo $2^n-1$ je pseudoprvoèíslo pri báze $2$.
+Overte, e èíslo $561$ je pseudoprvoèíslo pri ¾ubovo¾nej báze.
+% skripta z TC, Martin Sleziak
+
+\pr
+Nájdite všetky kladné celé èísla nesúdelite¾né s kadım èlenom postupnosti $(a_n)_{n=1}^\infty$,
+$$
+a_n=2^n+3^n+6^n-1.
+$$
+% IMO 2005 Mexico / Problem 4
+
+\pr
+a) Ukáte, e pre nesúdelite¾né prirodzené èísla $a$ a $b$ platí $\varphi(ab)=\varphi(a)\cdot \varphi(b)$.
+\hfil\break(Funkciám s touto vlastnosou sa hovorí {\it multiplikatívne\/}.)\hfil\break
+b) Dokáte, e pre kadé prirodzené èíslo $n$ platí $\displaystyle \sum_{d\mid n} \varphi(d) = n$.
+% skripta z TC, Martin Sleziak
+
+
+
+\end
+
+

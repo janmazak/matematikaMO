@@ -1,0 +1,168 @@
+\documentclass[a4paper]{article}
+
+\usepackage{url}
+
+\usepackage[slovak]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+\advance\textwidth by 4 cm
+\advance\hoffset by -2 cm
+\advance\textheight by 6 cm
+\advance\voffset by -4 cm
+
+
+\title{Pravítko, kružidlo a origami}
+\author{Ján Mazák}
+
+\newcount\problemNumber
+\problemNumber = 1
+\def\pr{
+    \smallskip
+    \noindent {\bf \the\problemNumber.}
+    \advance\problemNumber by 1
+}
+
+\begin{document}
+
+\vskip -1cm
+\vskip -1cm
+
+\maketitle
+
+Prednáška pozostáva z niekoľkých sérií gradovaných úloh; uvedený materiál vystačí aj na tri hodiny.
+Cieľom prednášky je porovnať silu kružidla, pravítka a origami, teda skladania papiera.
+Presnejšie, sú známe tieto fakty:
+
+\begin{itemize}
+\item[A.] Všetko, čo sa dá zostrojiť kružidlom a pravítkom, sa dá zostrojiť samotným kružidlom (samozrejme, s výnimkou samotných priamok; pre účely kružidlových konštrukcií pokladáme priamku za zostrojenú, ak máme zostrojené dva jej body). [Mohr-Mascheroni]
+
+\item[B.] Samotným pravítkom nie je možné zostrojiť stred danej kružnice. [Steiner]
+
+\item[C.] Ak máme danú jednu kružnicu a jej stred, vieme pravítkom zostrojiť všetko, čo kružidlom a pravítkom. [Steiner]
+
+\item[D.] Kružidlom a pravítkom nie je možné spraviť trisekciu uhla.
+
+\item[E.] Pomocou origami vieme spraviť trisekciu uhla.
+\end{itemize}
+
+
+\section{Kružidlo}
+
+Geometrické konštrukcie využívajúce pravítko a kružidlo pozostávajú zo štyroch základných operácií: konštrukcie kružnice s daným stredom a polomerom,
+prieniku dvoch kružníc, prieniku priamky a kružnice, prieniku dvoch priamok.
+Ak máme iba kružidlo, obtiažne sú evidentne posledné dve konštrukcie. Postupne ukážeme, ako ich realizovať. (Niektoré úlohy nie sú potrebné k výslednej konštrukcii.)
+
+\pr
+Zostrojte úsečku dva, tri, štyri razy takú dlhú ako daná úsečka (poznáme len jej krajné body).
+
+\pr
+Zostrojte obraz daného bodu $C$ v osovej súmernosti podľa danej priamky $AB$.
+
+\pr
+Daná je kružnica $k$, jej stred $O$ a body $A$, $B$ také, že priamka $AB$ neprechádza bodom $O$.
+Zostrojte priesečníky priamky $AB$ s kružnicou $k$.
+
+\pr
+Dané sú dva body $A$, $B$; zostrojte bod $C$ tak, aby $AC\perp AB$.
+
+\pr
+Rozhodnite, či dané tri body $A$, $B$, $C$ ležia na priamke.
+
+\pr
+Dané sú vrcholy trojuholníka $ABC$. Zostrojte bod $D$ tak, aby $ABCD$ bol rovnobežník.
+
+\pr
+Daná je kružnica $k$ so stredom $O$ a na nej body $A$, $B$. Zostrojte stredy oboch oblúkov $AB$.\footnote{Dá sa očakávať, že stredy oboch oblúkov nájdeme naraz, podobne, ako sme našli naraz priesečníky danej kružnice s danou priamkou neprechádzajúcou stredom. Hľadané stredy oblúkov dostaneme ako priesečníky kružníc, ktorých stredy ležia na rovnobežke s $AB$ prechádzajúcej bodom $O$. Označme $C$ a $D$ také body, že $ACOB$ a $AODB$ sú rovnobežníky. Nech $E$ je priesečník kružníc so stredmi $C$ a $D$ so zhodným polomerom $|AD|$. Kružnice so stredmi $C$ a $D$ a polomerom $|OE|$ sa pretínajú v hľadaných stredoch oblúkov. Dôkaz: cez Pytagorovu vetu.}
+
+\pr
+Zostrojte priesečníky danej priamky $AB$ s danou kružnicou $k$ (s daným stredom $O$).
+
+\pr
+Zostrojte štvorec so stranou $AB$.
+
+\pr
+Dané sú úsečky s dĺžkami $a$, $b$, $c$. Zostrojte úsečku s dĺžkou $ab/c$.\footnote{Využite mocnosť bodu ku kružnici.}
+
+\pr
+Zostrojte priesečník dvoch daných priamok $AB$ a $CD$.
+
+\pr
+Zostrojte úsečku dva, tri, štyrikrát kratšiu ako $AB$.
+
+\pr
+Zostrojte stred danej kružnice.
+
+\section{Pravítko}
+
+Pomocou vhodného projektívneho zobrazenia ukážeme, že samotným pravítkom nezostrojíme stred danej kružnice.
+Myšlienka dôkazu je jednoduchá: projektívne zobrazenia zobrazujú priamky na priamky, preto ak v nejakej rovine našla naša konštrukcia stred kružnice, tak aj v každom obraze našej roviny v projektívnom zobrazení musí konštrukcia nájsť stred kružnice. Ak toto projektívne zobrazenie zobrazí stred kružnice mimo stredu jej obrazu, vyhrali sme: naša konštrukcia našla v jednej rovine stred a v inej zase bod, ktorý neleží v strede kružnice; máme spor.
+
+Ostáva nájsť vhodné projektívne zobrazenie. Vezmime si klasickú strechu domu v tvare $A$, jej dve plochy určujú roviny, ktoré nie sú rovnobežné. Priesečnicu týchto rovín označíme $p$ (prechádza najvyššími bodmi strechy). Nakreslime do jednej z týchto rovín kružnicu $k$ so stredom $S$ a zostrojme jej obraz $k'$ v súmernosti $f$ podľa roviny súmernosti našej strechy obsahujúcej priamku $p$. Označme $AB$ priemer kružnice $k$ taký, že $AB\perp p$.
+Nech $A'$, $B'$ sú obrazy bodov $A$, $B$ v súmernosti $f$. Vezmime si projektívne zobrazenie, v ktorom stred projekcie je priesečník úsečiek $AB'$ a $BA'$. V tomto zobrazení sa kružnica $k$ zobrazí na $k'$, avšak jej stred $S$ sa nezobrazí do stredu $k'$.
+
+Ukážeme si, ako sa dá pravítko využívať, ak máme danú kružnicu. (Kompletný dôkaz faktu C však uvádzať nebudeme, je pomerne komplikovaný.)
+
+Pred pokusmi o konštrukcie je vhodné pripomenúť si nasledovný fakt.
+
+F. Uvažujme lichobežník $ABCD$ so základňami $AB$ a $CD$. Označme postupne $P$ a $Q$ priesečníky dvojíc priamok $AC$, $BD$ a $AD$, $BC$. Ďalej nech $R$ a $S$ sú stredy základní $AB$ a $CD$. Body $P$, $Q$, $R$, $S$ ležia na priamke.\footnote{Dôkaz sa dá spraviť cez podobnosť dvojíc vhodných trojuholníkov. Dôkaz je oveľa kratší, ak poznáme rovnoľahlosť: úsečky $AB$ a $CD$ sú rovnobežné, preto existujú dve rovnoľahlosti, ktoré zobrazia jednu na druhú; ich stredmi sú body $P$ a $Q$. Pritom obe tieto rovnoľahlosti zobrazujú $R$ na $S$.}
+
+\pr
+Daná je úsečka $AB$ a jej stred $S$. Zostrojte rovnobežku s $AB$ cez daný bod $C$.
+
+\pr
+Dané sú body $A$, $B$ a priamka rovnobežná s $AB$ neprecházajúca bodom $A$. Zostrojte stred úsečky~$AB$.
+
+\pr
+Dané sú dve rovnobežky $p$, $q$ a bod $A$. Zostrojte rovnobežku s p prechádzajúcu bodom $A$.
+
+\pr
+Dané sú body $A$, $B$ a priamka rovnobežná s $AB$ neprechádzajúca bodom $A$. Zostrojte obraz bodu $A$ v stredovej súmernosti so stredom v $B$.
+
+\pr
+Daný je rovnobežník, priamka $p$ a bod $A$. Zostrojte rovnobežku s priamkou $p$ prechádzajúcu bodom~$A$.
+
+\pr
+Daná je kružnica a jej stred, priamka $p$ a bod $A$. Zostrojte rovnobežku s priamkou $p$ prechádzajúcu bodom $A$.
+
+\pr
+Dané sú dve pretínajúce sa kružnice. Zostrojte ich stredy.\footnote{Označme $K$ a $L$ priesečníky daných kružníc. Zvoľme si na jednej z nich ľubovoľné body $X$ a $Y$. Označme $A$, $B$, $A'$, $B'$ priesečníky kružnice neobsahujúcej body $X$, $Y$ s priamkami $YL$, $XL$, $XK$, $YK$ (v tomto poradí). Uhly $ALB$ a $A'KB'$ majú rovnakú veľkosť, preto $ABB'A'$ je rovnoramenný lichobežník. Stred kružnice neobsahujúcej body $X$, $Y$ leží na priamke $PQ$ precházajúcej stredmi základní lichobežníka $ABB'A'$.}
+
+
+\section{Origami}
+
+Veľmi pekne je trisekcia uhla s využitím origami vysvetlená na stránke \url{http://www.math.lsu.edu/~verrill/origami/trisect/}.
+Vzhľadom na to, že najlepší popis je obrázkový, neuvádzam ho tu.
+
+Pomocou origami je tiež možné vyriešiť problém zdvojenia kocky (prípadne riešiť kubické rovnice vo všeobecnosti);
+viac nájdete na internete, napr. \cite{6}.
+
+\section{Skúsenosti, komentáre}
+
+V prednáške sa stretneme skoro so všetkým, čo sa z planimetrie preberá v škole: vlastnosti priamok a kružníc, obvodové uhly, podobnosť trojuholníkov,
+mocnosť bodu ku kružnici, zobrazenia (súmernosti, rovnoľahlosť), Pytagorova veta\dots{} Väčšinu úloh vyriešia geometricky zdatní poslucháči samostatne a rýchlo, s ostatnými im treba pomôcť, aby sme sa pohli ďalej.
+
+
+\begin{thebibliography}{99}
+
+\bibitem{1}
+A. Bogomolny, \url{http://www.cut-the-knot.org/do_you_know/compass.shtml}
+
+\bibitem{2}
+A. Bogomolny, \url{http://www.cut-the-knot.org/impossible/straightedge.shtml}
+
+\bibitem{3}
+R. Courant and H. Robbins, What is Mathematics?, Oxford University Press, 1996
+
+\bibitem{6}
+Thomas Hull, Project origami: activities for exploring mathematics, \url{http://books.google.sk/books?id=HlT6Vt3CnDUC&pg=PA47&lpg=PA47&dq=angle+trisection+origami&source=bl&ots=FMXXMMWFac&sig=CSZMNOdFZ1bikxcYm2vJUyA4_4Q&hl=sk&ei=hN68S5X1FY-NOI_U1Y4I&sa=X&oi=book_result&ct=result&resnum=6&ved=0CCYQ6AEwBQ#v=onepage&q=angle%20trisection%20origami&f=false}
+
+\bibitem{4}
+\url{http://poncelet.math.nthu.edu.tw/chuan/ruler-only/ruler-only.html}
+
+\bibitem{5}
+\url{http://www.math.lsu.edu/~verrill/origami/trisect/}
+
+\end{thebibliography}
+
+\end{document}
