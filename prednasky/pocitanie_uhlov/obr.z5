@@ -1,0 +1,79 @@
+%!PS
+%%BoundingBox: -4 -10 142 65 
+%%Creator: MetaPost
+%%CreationDate: 2005.04.20:1201
+%%Pages: 1
+%*Font: cmmi10 9.96265 9.96265 41:fe
+%%EndProlog
+%%Page: 1 1
+ 0 0.5 dtransform truncate idtransform setlinewidth pop [] 0 setdash
+ 1 setlinecap 1 setlinejoin 10 setmiterlimit
+newpath 141.73225 0 moveto
+0 0 lineto
+127.69658 61.49532 lineto stroke
+ 0 1.2 dtransform truncate idtransform setlinewidth pop
+newpath 0 0 moveto
+56.69203 0 lineto stroke
+newpath 52.99655 -1.53076 moveto
+56.69203 0 lineto
+52.99655 1.53076 lineto
+ closepath
+gsave fill grestore stroke
+newpath 56.69203 0 moveto
+92.03891 44.32352 lineto stroke
+newpath 90.93161 40.47987 moveto
+92.03891 44.32352 lineto
+88.53802 42.38869 lineto
+ closepath
+gsave fill grestore stroke
+newpath 92.03891 44.32352 moveto
+127.38579 0 lineto stroke
+newpath 123.8849 1.93483 moveto
+127.38579 0 lineto
+126.27849 3.84364 lineto
+ closepath
+gsave fill grestore stroke
+newpath 127.38579 0 moveto
+114.77074 55.27075 lineto stroke
+newpath 117.08543 52.00851 moveto
+114.77074 55.27075 lineto
+114.10066 51.32727 lineto
+ closepath
+gsave fill grestore stroke
+newpath 114.77074 55.27075 moveto
+102.15569 0 lineto stroke
+newpath 101.48561 3.94348 moveto
+102.15569 0 lineto
+104.47038 3.26224 lineto
+ closepath
+gsave fill grestore stroke
+newpath 102.15569 0 moveto
+51.07784 24.59775 lineto stroke
+newpath 55.07153 24.37352 moveto
+51.07784 24.59775 lineto
+53.7432 21.61519 lineto
+ closepath
+gsave fill grestore stroke
+newpath 51.07784 24.59775 moveto
+-0.00002 0 lineto stroke
+newpath 2.66534 2.98256 moveto
+-0.00002 0 lineto
+3.99368 0.22423 lineto
+ closepath
+gsave fill grestore stroke
+-3.73601 -9.8078 moveto
+(A) cmmi10 9.96265 fshow
+52.66373 -9.8078 moveto
+(B) cmmi10 9.96265 fshow
+82.10582 46.42351 moveto
+(C) cmmi10 9.96265 fshow
+123.12329 -9.8078 moveto
+(D) cmmi10 9.96265 fshow
+104.74214 57.37074 moveto
+(E) cmmi10 9.96265 fshow
+98.26057 -9.8078 moveto
+(F) cmmi10 9.96265 fshow
+41.14474 26.69774 moveto
+(G) cmmi10 9.96265 fshow
+showpage
+%%EOF

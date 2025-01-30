@@ -1,0 +1,689 @@
+%% uvod ku vzorakom druhej serie o pocitani uhlov, spravim z toho esf
+%% mazo
+
+\documentclass{article}
+\usepackage{slovak}
+\usepackage{palatino}
+\usepackage{picins}
+\usepackage[dvips]{graphicx}
+\usepackage{amsmath}
+
+\pagestyle{empty}
+\advance\textwidth by 4cm
+\advance\hoffset by -2cm
+\advance\textheight by 4cm
+\advance\voffset by -2cm
+\parindent = 0pt
+\parskip = .3\baselineskip
+
+\let\uhol=\angle
+
+\font\nadpis = csbx10 scaled 1800
+\font\fontkapitola = csbx10 scaled 1400
+
+\newcount\cislokapitoly
+\cislokapitoly = 1
+\def\kapitola#1\par{%
+{\bigskip
+\hskip 1cm {\fontkapitola\number\cislokapitoly. #1}\par}
+\bigskip
+\advance\cislokapitoly by 1}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\def\FIXME{{\nadpis FIXME}}
+
+\newcount\cisloulohy
+\cisloulohy = 1
+
+\def\uloha{%
+\medskip{\bf Úloha \number\cisloulohy . }%
+\global\advance\cisloulohy by 1%
+}
+
+\newcount\cislohintu
+\cislohintu = 1
+\def\hint{%
+\bigskip{\bf \number\cislohintu . }%
+\global\advance\cislohintu by 1%
+}
+
+\newcount\cisloriesenia
+\cisloriesenia = 1
+\def\riesenie{%
+\medskip{\bf \number\cisloriesenia . }%
+\global\advance\cisloriesenia by 1%
+}
+\def\riesenienieje{%
+\global\advance\cisloriesenia by 1%
+}
+
+\newcount\cisloprikladu
+\cisloprikladu = 1
+\def\priklad{%
+\medskip{\bf Príklad \number\cisloprikladu . }%
+\global\advance\cisloprikladu by 1%
+}
+
+\def\riespr{{\it Riešenie:\/\ }}
+
+\def\poznamka{{\it Poznámka:\/\ }}
+
+\newdimen\sirka
+\setbox 0 = \hbox{$*\,$}
+\sirka = \wd0
+
+\def\tazkauloha{%
+\hskip -\sirka
+$*\,${\bf Úloha \number\cisloulohy . }%
+\global\advance\cisloulohy by 1%
+}
+
+\let\phi=\varphi
+\let\uhol=\angle
+\def\st{^\circ}
+
+\newcount\backup
+\backup = \catcode`\@
+\catcode`\@ = 11
+\def\mydispl@y{\global\dt@ptrue \openup\jot \m@th
+  \everycr={\noalign{\ifdt@p \global\dt@pfalse
+              \ifdim\prevdepth>-1000pt \vskip-\lineskiplimit
+                 \vskip\normallineskiplimit \fi
+            \else \penalty\interdisplaylinepenalty \fi}}}
+\def\my@lign{\tabskip=0pt\everycr={}} % restore inside \displ@y
+\newskip\mycentering \mycentering=0pt plus 1000pt minus 1000pt
+\global\def\eqalignno#1{\mydispl@y \tabskip=\mycentering
+  \halign to\displaywidth{\hfil$\my@lign\displaystyle{##}$%
+    \tabskip=0pt &$\my@lign\displaystyle{{}##}$\hfil
+    \tabskip=\mycentering &\llap{$\my@lign##$}\tabskip=0pt \crcr
+    #1\crcr}}
+\catcode`\@ = \backup
+
+
+\begin{document}
+
+\centerline{{\huge\bf Poèítanie uhlov}}
+
+\bigskip
+
+Tento text si kladie za cie¾ ilustrova základnú metódu pouívanú pri syntetickom
+riešení geometrickıch úloh --- poèítanie uhlov. Ukáeme si, e nestaèí uhly poèíta,
+treba to robi systematicky a cie¾avedome, aby sme sa dostali k vısledku. S tım má mnoho detí
+problémy, poèítajú, poèítajú, a nikam to nevedie. Súèasne si ukáeme, ako sa postupuje pri riešení
+rôznych geometrickıch úloh. Napríklad ako si sformulova dokazované tvrdenie, aby sa ¾ahko dokazovalo.
+Zaèneme nieko¾kımi praktickımi radami.
+
+Keï dostaneme do rúk úlohu, preèítame si zadanie. Toto prvé preèítanie
+nám dá priblinı obraz o úlohe. Napríklad zistíme, e sa tam spomínajú
+krunice a úloha je konštrukèná. Potom si zadanie preèítame ešte raz
+a tentoraz poriadne, dbáme na všetky detaily. Súèasne si popritom kreslíme
+obrázok, staèí náèrt. Keï sa niekde pomılime, napríklad sa majú nejaké dve
+priamky pretnú a nám akurát vyšli rovnobené (lebo sme si nevhodne zvolili
+nejaké body), tak sa nebojíme zaèa kresli
+odznova. Niektoré úlohy majú obrázok takı nepríjemnı, e sa nám ho nepodarí
+nakresli rukou. Vtedy neváhame poui rysovacie pomôcky.
+Zrozumite¾nı obrázok je dôleitı. Len málo úloh je takıch, e si vieme
+všetko predstavi aj bez obrázka. A so zlım obrázkom sa zle pracuje: keï tri
+body sú na priamke, tak nech aj na obrázku sú na priamke, inak na to zabudneme.
+Keï je nieèo krunica, tak to má patriène aj vyzera, a nie ako nepodarenı
+zemiak. Èasto treba obrázok skúma a vytvára si hypotézy, napríklad
+o kolmosti priamok. A ako si všimneme, e tie priamky sú na seba kolmé, ak
+na našom obrázku zvierajú uhol $70\st$? Na druhej strane keï tri body {\it neleia} na priamke, ani na našom obrázku to tak nemá vyzera, lebo potom to zvádza k chybnım úvahám (zaloenım na nesprávnych predpokladoch).
+
+Keï u máme dobrı obrázok, preèítame si zadanie znova. Tentokrát si k obrázku
+napíšeme všetky dôleité fakty, ktoré sa spomínajú v zadaní. Napríklad ktoré
+priamky sú na seba kolmé, e $BD$ je osou uhla $ABC$ a podobne. Pre kolmos
+priamok èi rovnobenos máme dohodnuté znaèky, ktoré sa dajú kresli do obrázka,
+urèite ich poznáte. Takisto si treba niekam napísa, ktoré body ako vznikli,
+napríklad, e $M$ je prieseèník priamky $AB$ s priamkou $CD$.
+A nakoniec si rozmyslíme a poznamenáme na papier, èo od nás
+v úlohe chcú. Dokáza nieèo? Nájs mnoinu bodov? Zostroji nieèo?
+Niekedy je v zadaní chyba alebo mu nerozumieme. Treba sa spıta toho, kto
+nám úlohu zadal, alebo skúsi zadanie opravi, nie uspokoji sa s triviálnym pozorovaním, e tvrdenie, ktorého dôkaz poadujú,
+neplatí.
+
+Máme za sebou prvú fázu riešenia. Je dôleitá a nevynechávajú ju ani skúsení
+riešitelia. Bez nej nevieme, o èo v úlohe ide a ako môeme nieèo rieši.
+A tí z vás, ktorí si u niekedy zle preèítali zadanie a potom dostali $0$
+bodov, urèite vedia, preèo sa oplatí správnemu pochopeniu zadania venova dostatok èasu.
+
+V jednoduchıch úlohách po tejto fáze u aj vieme, èo robi a akım spôsobom postupova.
+Èo však, keï úloha je pre nás nová a zatia¾ sme sa s podobnou nestretli?
+Ukáeme si jednu z moností, ako postupova. Budeme poèíta uhly. A to nie hocijako,
+ale tak, aby sme úlohu vyriešili. Táto metóda nám èasto pomôe, ale nie je všemocná.
+Neskôr si ukáeme nieko¾ko príkladov, keï sa uhly poèíta nedajú.
+
+\priklad
+Daná je polkrunica $k$ s priemerom $AB$. Nech $C$ je ¾ubovo¾nı bod na tejto polkrunici rôzny
+od bodov $A$, $B$. Dokáte, e trojuholník $ABC$ je pravouhlı.
+
+\parpic{\includegraphics{pocitanie_uhlov.1}}
+Máme danú krunicu, jej priemer $AB$ a bod $C$. To všetko máme nakreslené na obrázku.
+Body $A$, $B$, $C$ neleia na priamke kvôli podmienke zo zadania a preto $ABC$ je naozaj trojuholník.
+Je pravouhlı? Ešte nevieme, ale budeme vedie na túto otázku odpoveda, keï budeme pozna
+jeho vnútorné uhly. Zatia¾ o nich nevieme niè. Oznaème si uhol ve¾kos uhla $CAB$ ako $\alpha$,
+ve¾kos uhla $CBA$ nech je $\beta$. Èo vieme o tıchto uhloch poveda? Môu nadobúda ¾ubovo¾né
+hodnoty? Nu, nech $\alpha=30^\circ$. Potom bod $C$ leí na polpriamke, ktorá s priamkou $AB$ zviera uhol
+$30^\circ$. Táto polpriamka však pretne polkrunicu $k$ v jedinom bode, take bod $C$ je jednoznaène
+urèenı. Ale potom aj uhol $CBA$ je jednoznaène urèenı. Túto úvahu vieme zopakova pre hocijakú
+ve¾kos uhla $\alpha$. A navyše ju vieme aj obráti: zaèneme uhlom $\beta$ a pre ve¾kos uhla
+$\alpha$ dostaneme jedinú hodnotu. Take medzi uhlami $\alpha$ a $\beta$ je nejaká skrytá zákonitos,
+ktorej presné odhalenie by mohlo vies k vısledku.
+
+Èo máme dokáza? e trojuholník $ABC$ je pravouhlı. Uhly $\alpha$ a $\beta$ sú ostré,
+je to jasné z obrázka. Podrobnejšie zdôvodnenie môeme zaloi na tom, e polkrunica
+$k$ leí okrem bodov $A$, $B$ celá vnútri pásu urèeného dotyènicami ku $k$ v bodoch $A$, $B$.
+(Tieto dotyènice sú kolmé na priamku $AB$. Nakreslite si to.) Bod $C$ je na $k$, teda tie vnútri tohto
+pásu.
+
+Take jedinı uhol, ktorı by mohol by pravı, je uhol pri vrchole $C$. Jeho ve¾kos
+$\gamma$ vieme urèi z toho, e súèet uhlov v trojuholníku $ABC$ je $180\st$. Jednoduchou úpravou
+dostaneme, e $\gamma = 180\st-\alpha-\beta$. Ale zatia¾ nevieme, èi toto je $90\st$ alebo nie.
+
+\parpic[r]{\includegraphics{pocitanie_uhlov.2}}
+Predsa potrebujeme odhali ten vzah medzi uhlami $\alpha$ a $\beta$. Keï sa vrátime k úvahe o tomto
+vzahu, všimneme si, e súvisí s tım, e bod $C$ leí na polkrunici $k$. Èo to znamená?
+Krunica je mnoinou bodov rovnako vzdialenıch od jej stredu. Oznaème teda ten stred $S$.
+Keïe $AB$ je priemer, je bod $S$ aj stredom úseèky $AB$. A teraz vieme, e $SA=SB=SC$, lebo $C$
+leí na krunici $k$. To si zaslúi novı obrázok, na ktorom tieto rovnaké vzdialenosti
+zvırazníme hrubšou èiarou.
+
+Na obrázku sú dva rovnoramenné trojuholníky. Vidíte ich? Boli tam aj doteraz, lene uvedomi
+si to a napísa na papier medzi zistené veci je ïalším krokom v riešení. Rovnoramennı trojuholník
+má rovnaké uhly pri základni. Nakreslíme do obrázka. Urèite si kreslíte na papier vlastnı, take
+to zvládnete aj sami. A èo sme zistili? e ve¾kos uhla pri vrchole $C$ je rovná $\alpha+\beta$.
+Ale my u o tejto ve¾kosti èosi vieme, $\gamma = 180\st-\alpha-\beta$. Take máme rovnicu
+$$
+\gamma = 180\st-\alpha-\beta=180\st-(\alpha+\beta)=180\st-\gamma.
+$$
+Rozmyslite si, odkia¾ sa táto rovnos zobrala.
+Z nej ¾ahko dopoèítame ve¾kos uhla $\gamma=90\st$ a aj vzah $\alpha+\beta=90\st$, ktorı
+sme tušili u od zaèiatku.
+
+Videli sme, e poèítanie uhlov nám pomohlo. Nerobili sme to však bezhlavo. Skúsme si
+zhrnú pravidlá, pod¾a ktorıch sa pri rátaní uhlov zvyèajne riadime.
+
+1. Uhly oznaèujeme písmenkami, zvyèajne gréckymi: $\alpha, \beta, \gamma, \delta,
+\varphi, \varepsilon, \omega,\dots$ Keï vieme, e dva uhly majú rovnakú ve¾kos,
+oznaèíme ich rovnakım písmenom. Nezaškodí niekam napísa, preèo sú rovnaké.
+
+2. Kreslíme si ve¾kı obrázok. Aby bol preh¾adnı a aby bolo dos miesta na všetky
+veci, ktoré tam neskôr budeme chcie doplni, napríklad zistené ve¾kosti uhlov.
+
+3. Nepotrebujeme do obrázka písa ve¾kosti všetkıch uhlov, ktoré vieme vypoèíta.
+Napríklad z dvoch vrcholovıch uhlov staèí napísa ve¾kos len k jednému. Pomáha
+to udra si preh¾ad o tom, èo vlastne robíme. Keï ideme skúsi nieèo nové, nebojme
+sa nakresli si novı obrázok. Staré pokusy by len odvádzali našu pozornos.
+Na starı obrázok sa môeme pozrie kedyko¾vek, keï to bude potrebné.
+
+4. Uhly rátame len vtedy, keï to vyzerá nádejne. Mnoho vecí sa dá vyjadri v reèi uhlov.
+Napríklad rovnoramennos trojuholníka, os uhla, kolmos èi rovnobenos dvoch
+priamok, podobnos trojuholníkov. Aj to, e tri body $A$, $B$, $C$ leia na priamke,
+to nastáva vtedy, keï uhol $ABC$ je priamy (má ve¾kos $180\st$).
+Rozmyslite si, ako pomocou uhlov popíšete tieto situácie. Napadá vás aj nejaká iná,
+ktorá sa dá popísa uhlami?
+
+Pokia¾ na obrázku niè takéto nie je, tak ani uhly nemá zmysel poèíta, veï o ich
+ve¾kostiach nebudeme vedie poveda takmer niè. Dobrım príkladom je uhol, ktorı
+zviera anica s proti¾ahlou stranou. Ten pomocou vnútornıch uhlov tohto trojuholníka
+vyjadri nijako pekne nevieme. (Narysujte si nieko¾ko trojuholníkov, ktorıch vnútorné
+uhly sú \uv{pekné} a odmerajte uhol medzi anicou z nejakého vrchola a proti¾ahlou
+stranou. Èo ste zistili?)
+
+5. Uhol oznaèíme (resp. pripíšeme ve¾kos) len vtedy, keï to potrebujeme. Nové písmenko
+na oznaèenie uhla zavedieme len vtedy, keï máme dobrı dôvod. Uvedieme
+si tri známe dobré dôvody.
+
+a) Uhol je nezávislı na ve¾kostiach doteraz oznaèenıch uhlov.
+Všimnime si ten príklad o polkrunici a pravouhlom trojuholníku. Uhol $ASB$ je priamy.
+Keï teraz pridáme do obrázka bod $C$, uhol $CAB$ nezávisí od ve¾kosti iadneho z uhlov,
+ktoré boli na obrázku doteraz. Môeme vhodnou vo¾bou bodu $C$ dosiahnu, e bude ma ¾ubovo¾nú
+ve¾kos z istého intervalu. Preto na jeho ve¾kos potrebujeme nové písmenko, neexistuje
+iaden vzah, pomocou ktorého by sme vedeli túto ve¾kos vypoèíta z u známych uhlov.
+
+b) Uhol síce je závislı, ale nevieme ho dobre vyjadri.
+Toto napríklad nastane po oznaèení ve¾kos uhla $CAB$ písmenom $\alpha$.
+Vieme, e ve¾kos uhla $\beta$ u je urèená, keï poznáme ve¾kos $\alpha$, ale túto závislo
+zatia¾ presne nepoznáme.
+Podobne je to s tım uhlom pri anici. Pre danı trojuholník $ABC$ s ve¾kosami vnútornıch uhlov
+$\alpha, \beta, \gamma$ je síce jeho anica aj uhol pri nej jednoznaène urèená, ale my
+jeho ve¾kos pomocou $\alpha, \beta, \gamma$ vyjadri nevieme. Preto ak chceme jeho ve¾kos
+poui ïalej vo vıpoètoch, treba ju oznaèi novım písmenkom.
+
+c) Uhol vieme vyjadri, ale vyjadrenie je zloité èi nepreh¾adné.
+Napríklad oznaèíme tretí uhol v trojuholníku $\gamma$ namiesto $180^\circ-\alpha-\beta$, aby
+sme mali struènejšie všetky zápisy, ktoré sa tohto uhla tıkajú.
+
+Pri poèítaní uhlov si treba dáva pozor na to, e situácia nemusí vyzera vdy
+tak, ako ju máme nakreslenú. Môe sa sta, e body leia na priamke èi krunici
+v inom poradí, nie tak, ako máme na obrázku. Potom niektoré uhly sú záporné,
+napríklad keï máme trojuholník s vnútornımi uhlami $\alpha$, $\beta$
+a nejaké ïalšie uhly, medzi nimi uhol s ve¾kosou $\alpha-\beta$. To znamená,
+e náš obrázok verne zachytáva situáciu iba vtedy, keï $\alpha>\beta$.
+Pre $\alpha=\beta$ a $\alpha<\beta$ si musíme nakresli iné obrázky
+a skontrolova, èi náš dôkaz funguje aj tam.
+
+Ïalej si dokáeme nieko¾ko dôleitıch tvrdení, na ktorıch je zaloená metóda poèítania uhlov.
+
+\priklad
+Nech $k$ je krunica opísaná trojuholníku $ABC$. Potom pre bod $X$ leiaci vnútri polroviny $ABC$ platí $|\angle AXB|=|\angle ACB|$ práve vtedy, keï bod $X$ leí na krunici $k$.
+
+Èo vlastne hovorí toto tvrdenie? Máme dané dva body $A$, $B$ a krunicu $k$, ktorá nimi prechádza. Táto krunica je urèená jej stredom, ktorı leí na osi úseèky $AB$. Uvaujme bod $X$ vnútri tej z polrovín urèenıch priamkou $AB$, v ktorej leí stred krunice $k$. O bode $X$ vieme iba to, e leí na krunici $k$. Bod $X$ leí na krunici $k$ práve vtedy, keï $|XS|=|AS|$. Tvrdenie, ktoré chceme dokáza, hovorí, e za podmienky $|XS|=|AS|$ ve¾kos uhla $AXB$ nezávisí od polohy bodu $X$. Toto teraz dokáeme.
+
+Èo chceme dokáza? e uhol $AXB$ sa nemení, keï bod $X$ posúvame po krunici. Inak povedané, ve¾kos uhla $AXB$ závisí len od tej krunice $k$. Táto krunica je urèená uhlom $ASB$ (lebo bod $S$ leí na osi úseèky $AB$). Vieme z ve¾kosti tohoto uhla odvodi ve¾kos uhla $AXB$?
+
+Bod $X$ je viazanı podmienkou $|SX|=|SA|=|SB|$. Preveïme toto do reèi uhlov: trojuholníky $ASX$, $BSX$, $BSA$ sú rovnoramenné. Nakreslime si tieto trojuholníky do obrázka. (Toto je podstatná vec pre Ïalší postup.) Oznaème ve¾kosti uhlov $AXS$, $BXS$ v tomto poradí $\alpha$, $\beta$. Preèo? No chceme zisti ve¾kos uhla $AXB$ a ten sa skladá z dvoch èastí. Zo spomínanej rovnoramennosti vieme, e uhly $XAS$, $XBS$ majú ve¾kosti $\alpha$, $\beta$. Nakreslíme do obrázka (vlastného). Èo chceme? Nejakú súvislos medzi uhlami $\alpha$, $\beta$ a ve¾kosou uhla $ASB$. Uhly $ASB$, $ASX$ a $BSX$ spolu vytvoria plnı uhol, take staèí zisti ve¾kosti uhlov $ASX$ a $BSX$. Ale tie predsa poznáme z trojuholníkov $ASX$, $BSX$. Jednoduchı vıpoèet nám povie, e
+$$
+|\angle ASB| = 360\st - (180\st-2\alpha)-(180\st - 2\beta)=2(\alpha+\beta)=2|\angle AXB|.
+$$
+
+Take uhol $AXB$ má poloviènú ve¾kos oproti uhlu $ASB$. K dokonèeniu dôkazu potrebujeme zdôvodni, preèo iaden bod leiaci mimo krunice nemá túto vlastnos. To je jednoduché. Nech $X$ leí mimo krunice (a nie vnútri kruhu urèeného touto krunicou). Potom aspoò jedna z úseèiek $AX$, $BX$ pretína krunicu $k$ v bode $X'$, nech je to (bez ujmy na všeobecnosti) úseèka $AX$ (rozmyslite si to, vyuívame, e body $S$ a $X$ leia v tej istej polrovine urèenej priamkou $AB$). Pre bod $X'$ platí, e ve¾kos uhla $AX'B$ je polovica ve¾kosti uhla $ASB$. Ale uhol $AXB$ je menší ako uhol $AX'B$, pretoe platí $|\uhol AX'B|=|\uhol AXB|+|\uhol X'BX|$. Take uhol $AXB$ nemôe ma ve¾kos polovice uhla $ASB$. Pre vnútornı bod $X$ zase dostaneme, e uhol $AXB$ je väèší ako polovica uhla $ASB$ (spravte si to podrobne). Našli sme teda kritérium, ktoré hovorí, ako pomocou uhla urèíme, èi bod leí vnútri kruhu, na jeho hranici, alebo mimo kruhu.
+
+A èo sa stane, keï body $X$, $S$ leia v rôznych polrovinách urèenıch priamkou $AB$?
+
+Dobre si rozváte všetky veci, ktoré robíme. Treba dokáza dve tvrdenia: \uv{ak bod $X$ leí na krunici $k$, tak uhol $AXB$ má istú ve¾kos} a opaèné tvrdenie \uv{ak uhol $AXB$ má istú ve¾kos, tak bod $X$ leí na krunici $k$}. Namiesto druhého tvrdenia dokáeme, e \uv{ak bod $X$ neleí na krunici $k$, tak uhol $AXB$ nemá istú ve¾kos}. Tieto dve tvrdenia sú buï obe pravdivé, alebo obe nepravdivé, rozmyslite si to. Preèo to robíme takto? Pretoe pri dôkaze druhého tvrdenia u môeme vyui prvé dokázané tvrdenie (v našom prípade to je pri urèení ve¾kosti uhla $AX'B$). Tento postup sa v matematike pouíva èasto.
+
+Všimnite si, e samotnı dôkaz podstaty tvrdenia je krátky, zvyšok tvorí diskusia a rozbor prípadov. Je potrebné rozobera spomínané prípady?
+
+\priklad
+Vrcholy štvoruholníka leia na jednej krunici práve vtedy, keï súèet jeho proti¾ahlıch uhlov je rovnı priamemu uhlu.
+
+Štvoruholník, ktorého vrcholy leia na jednej krunici (dá sa mu opísa krunica), sa nazıva {\it tetivovı} --- jeho strany sú tetivami krunice. Predo¾lá úloha hovorí o jednom z kritérií, ktoré umoòuje urèi, èi štvoruholník je tetivovı alebo nie. Štvoruholník $ABCD$ je tetivovı práve vtedy, keï uhly $ACB$ a $ADB$ majú rovnakú ve¾kos. Samozrejme, tetiva $AB$ nie je nièím vıznaèná, rovnako môeme skúma rovnos uhlov nad inou stranou štvoruholníka $ABCD$.
+
+V našom príklade máme dokáza iné kritérium, hovoriace o súète proti¾ahlıch uhlov. Keïe súèet uhlov v štvoruholníku je $360\st$ (preèo?), je jedno, ktorú dvojicu proti¾ahlıch uhlov vezmeme --- ak jedna z nich má súèet $180\st$, tak má takıto súèet aj druhá dvojica.
+
+\parpic{\includegraphics{pocitanie_uhlov.3}}
+
+Majme štvoruholník $ABCD$ vpísanı do krunice. Oznaème stred tejto krunice $S$. Zaujímajú nás ve¾kosti uhlov $ABC$ a $ADC$, oznaème si ich teda $\beta$ a $\delta$. Potom vieme poráta pod¾a predošlého príkladu uhly pri bode $S$ (obrázok) --- vyuívame, e vrcholy štvoruholníka $ABCD$ leia na krunici.
+Je jasné, e $2\beta+2\delta=360\st$, preto $\beta+\delta=180\st$.
+
+Ostáva druhá implikácia: ak $\beta+\delta=180\st$, tak body $A$, $B$, $C$, $D$ leia na krunici. Skúste to spravi sami, dobré je zaèa tım, e trojuholníku $ABC$ opíšeme krunicu (preèo existuje práve jedna?).
+
+\priklad
+V rovine je danı trojuholník $ABT$. Nech $k$ je krunica opísaná tomuto trojuholníku. Nech $M$ je bod leiaci v polrovine opaènej k $ATB$.
+Dokáte, e priamka $MT$ je dotyènicou ku krunici $k$ práve vtedy, keï uhly $MTA$ a $ABT$ majú rovnakú ve¾kos.
+
+Riešenie samozrejme zaèneme tım, e si nakreslíme obrázok. Opä sa dokazované tvrdenie skladá z dvoch implikácií. Skúsme sa pozrie prvú z nich: nech $MT$ je dotyènica, akı je uhol $MTA$? Oznaème jeho ve¾kos $\phi$. Ako vieme pomocou uhlov popísa, e $MT$ je dotyènica? Áno, máte pravdu, je kolmá na polomer $ST$ krunice $k$ so stredom $S$. Vyuijúc toto preformulovanie predpokladu dostávame, e uhol $STA$ má ve¾kos $90^\circ-\phi$ (vpisujte si ve¾kosti uhlov do obrázka). Je podstatné, e $S$ je stred krunice --- vyplıva z toho rovnoramennos trojuholníka $STA$, z èoho vieme, e uhol $AST$ má ve¾kos $2\phi$. Preèo sa zaoberáme tımto uhlom? To je jasné, jeho ve¾kos je dvojnásobná oproti uhlu $ABT$ (dokázali sme si pred chví¾ou). Inak povedané, uhol $ABT$ má ve¾kos $\phi$, a teda rovnakú ako uhol $MTA$.
+
+Druhá implikácia hovorí, e ak uhly $MTA$ a $ABT$ majú rovnakú ve¾kos, tak $MT$ je dotyènica ku $k$ v bode $T$.
+Toto dokáeme sporom, vyuijeme pri tom pred chví¾ou dokázanú prvú implikáciu. Predpokladajme, e dotyènica ku krunici $k$ v bode $T$ neprechádza bodom $M$, ale pritom uhly $MTA$ a $ABT$ majú rovnakú ve¾kos. Na dotyènici ku $k$ v bode $T$ leí teda nejakı bod $M'$, pre ktorı platí $|\angle M'TA|=|\angle ABT|$ (toto hovorí predošlá implikácia). Take uhly $M'TA$ a $MTA$ majú rovnakú ve¾kos, èo znamená, e bod $M$ leí na priamke $MT'$. To je spor (s èím?).
+
+Ukáeme si ešte jeden spôsob dôkazu prvej implikácie. Chceme dokáza, e uhol $ABT$ má rovnakú ve¾kos ako uhol $MTA$. Všetky uhly na oblúku $ABT$ majú rovnakú ve¾kos, preto staèí uvaova bod $B'$ takı, e $B'T$ je priemer krunice $k$. Dokonèite tento dôkaz sami, staèí poráta uhly.
+
+Predchádzajúci príklad ukazuje efektívny popis dotyènice pomocou uhla $MTA$, ktorı sa nazıva {\it úsekovı}. Môeme pracova s dotyènicami bez toho, aby sme si dokres¾ovali stred krunice. Vyskúšajte si to:
+
+\uloha
+Nech $ABCD$ je lichobeník so základòami $AB$, $CD$ a nech $M$ je prieseèník priamok $AD$ a $BC$. Vnútri úseèky $AB$ sa nachádza takı bod $E$, e krunice opísané trojuholníkom $ADE$ a $BCE$ sa dotıkajú. Dokáte, e body $C$, $M$, $D$, $E$ leia na jednej krunici.
+
+Nasledujúci príklad ukazuje, preèo je dôleitá diskusia a skúmanie poradia bodov na priamke èi krunici.
+
+\vbox{
+%
+\parpic[r]{\includegraphics{pocitanie_uhlov.4}}
+%
+\priklad
+Dokáeme, e kadı trojuholník je rovnoramennı.
+%
+Máme trojuholník $ABC$. Oznaème $D$ stred strany $BC$ a $O$ prieseèník osi uhla z vrchola $A$ s osou strany $BC$. Body $R$, $Q$ nech sú po rade päty kolmíc z bodu $O$ na strany $AB$, $AC$. Bod $O$ leí na osi strany $BC$, preto $|BO|=|CO|$. Bod $O$ leí aj na osi uhla $BAC$, preto $|OR|=|OQ|$. Take pravouhlé trojuholníky $ORB$ a $OQC$ sú zhodné. Potom $|RB| = |QC|$. Navyše $|AR| = |AQ|$ (priamka $AO$ je osou uhla $RAQ$). Take
+$$
+|AB| = |AR| + |RB| = |AQ| + |QC| = |AC|.
+$$
+Kde je chyba? Èo by nám pomohlo vyhnú sa jej?
+}
+
+A teraz si na nieko¾kıch príkladoch ilustrujeme, ako sa tie uhly poèítajú.
+
+\uloha
+Danı je trojuholník $ABC$ so stredom vpísanej krunice $I$ (v angliètine sa tento bod nazıva {\it incenter}). Os strany $AB$, os uhla $CAB$ a krunica opísaná trojuholníku $ABC$ sa pretínajú v jednom bode. Oznaème tento bod $M$. Dokáte, e $M$ je stred krunice opísanej trojuholníku $ABI$.
+
+Oznaème $k$ krunicu opísanú trojuholníku ABC. Zaèneme prvou èasou: nejaké dve priamky a krunica sa majú pretína v jednom bode. Máme tri monosti, ako si sformulova dokazované tvrdenie:\hfill\break
+1. Nech $M$ je prieseèník krunice $k$ a osi strany $AB$. Dokáeme, e uhly $ACM$ a $BCM$ sú rovnaké.\hfill\break
+2. Nech $M$ je prieseèník krunice $k$ a osi uhla $ACB$. Dokáeme, e $|AM|=|MB|$ (v reèi uhlov: trojuholník $AMB$ je rovnoramennı, máme dokáza rovnos dvoch uhlov pri základni $AB$).\hfill\break
+3. Nech $M$ je prieseèník osi strany $AB$ a osi uhla $CAB$. Dokáeme, e bodom $M$ prechádza aj krunica $k$.\hfill\break
+
+Vyskúšajte si vyrieši kadú z troch úloh, ktoré takto vzniknú. Najašia je tretia z nich. Riešenie nájdete vzadu.
+
+Ostáva druhá èas úlohy. Dokazované tvrdenie vieme ¾ahko formulova v reèi uhlov. Èo je krunica? Mnoina bodov rovnako vzdialenıch od stredu. V našom prípade chceme teda dokáza, e úseèky $SA$, $SB$, $SI$ majú rovnakú ve¾kos. Inak povedané, trojuholníky $ASB$, $ASI$, $BSI$ sú rovnoramenné. Dokonète dôkaz sami.
+
+\priklad
+Danı je ostrouhlı trojuholník $ABC$ a vnútri neho bod $C'$. Bod $B'$ je takı, e trojuholníky $ABC$ a $AB'C'$ sú podobné. Nech $P$ je prieseèník priamok $BB'$ a $CC'$. Dokáte, e body $A$, $B$, $C$, $P$ leia na krunici.
+
+Trojuholníky $ABC$ a $AB'C'$ sú v istom zmysle zamenite¾né: niet dôvod preferova niektorı z nich. Preto ak $A$, $B$, $C$, $P$ leia na krunici, tak aj $A$, $B'$, $C'$, $P$ leia na krunici a naopak. Bod $P$ by mal by teda prieseèníkom kruníc opísanıch trojuholníkom $ABC$ a $AB'C'$. Pri predošlej úlohe bolo jednoduchšie ma pri rátaní uhlov krunice a dokazova nieèo o priamkach (porovnaj 1., 2. a 3.), vyskúšame to aj teraz. Nech $P$ je prieseèník kruníc opísanıch trojuholníkom $ABC$ a $AB'C'$; dokáeme, e bodom $P$ prechádza priamka $BB'$ (zo symetrie je jasné, e potom ním prechádza aj priamka $CC'$). Uhol $APB$ má ve¾kos $180^\circ-|\angle ACB|$, uhol $APB'$ má ve¾kos ako uhol $AC'B'$ a teda takú ako uhol $ACB$. Dokopy máme, e uhol $BPB'$ je priamy.
+
+Metódu práce odzadu (vyuitú pri predošlej úlohe) si môete vyskúša na nasledujúcej:
+
+\uloha
+Danı je trojuholník $ABC$ a na jeho strane $AB$ bod $D$ takı, e $|CD| = |AB|$ a uhly $ABD$ a $ACB$ majú rovnakú ve¾kos. Os uhla $BAC$ pretína stranu $BC$ v bode $E$. Dokáte, e priamky $AB$ a $DE$ sú rovnobené.
+
+Na nasledujúcich úlohách si môete samostatne vyskúša poèítanie uhlov. Nevzdávajte sa, bojujte s úlohou, ak sa vám nedarí, pozrite si, èi sa nehodí niektoré z tvrdení o uhloch, ktoré sme u dokázali, alebo niektorá z ilustrovanıch dôkazovıch metód. Na konci sú struèné riešenia alebo návody k úlohám.
+
+\uloha
+Danı je trojuholník $ABC$. Body $P$, $Q$, $R$ leia vnútri úseèiek $BC$, $CA$, $AB$. Dokáte, e krunice opísané trojuholníkom $ARQ$, $BPR$, $CQP$ majú spoloènı bod.
+
+\uloha
+Nech $E$, $F$ sú po rade stredy strán $CD$, $DA$ v obdåniku $ABCD$. Oznaème $G$ prieseèník priamok $AE$ a $CF$. Dokáte, e uhly $EGC$ a $EBF$ majú rovnakú ve¾kos.
+
+\uloha
+Danı je trojuholník $ABC$ takı, e
+$|AC|>|AB|$ a $|\uhol ABC|-|\uhol ACB|=30^\circ$. Na jeho strane $AC$ vyznaème bod~$D$ tak, aby
+platilo $|AB|=|AD|$ (bod $D$ leí na úseèke $AC$). Pokúste sa (aj bez znalosti vnútornıch uhlov
+trojuholníka $ABC$) zisti ve¾kos uhla $CBD$.
+
+\parpic[r]{\includegraphics{obr.z5}}
+
+\uloha
+Blška skáèe po dvoch ramenách uhla ako na obrázku. Všetky jej skoky sú rovnakej dåky. Zaèína z vrcholu uhla a po siedmych skokoch sa vráti naspä do tohto vrcholu. Aká je ve¾kos uhla?
+
+\uloha
+Na strane $AB$ obdånika $ABCD$ si zvo¾me bod $F$. Os
+úseèky $AF$ pretína uhloprieèku $AC$ v~bode~$G$.
+Úseèky $FD$ a $BG$ sa pretínajú v~bode $H$.
+Dokáte, e trojuholníky $FBH$ a $GHD$ majú
+rovnakı obsah.
+
+\uloha
+V~trojuholníku $ABC$ delí anica $AM$ uhol
+$BAC$ tak, e platí $2\,|\uhol BAM|=|\uhol CAM|$. Na
+priamke $AM$ si vyznaème ako $D$ takı bod, e uhol $DBA$ je
+pravı. Dokáte, e potom platí $2\,|AC|=|AD|$.
+
+\uloha
+Nech v~lichobeníku $ABCD$ platí $AB\parallel CD$,
+$|AB|>|CD|$, $AC\perp BD$.
+Oznaème $O$ stred krunice opísanej trojuholníku $ABC$ a
+$E$ prieseèník priamok $OB$ a
+$CD$. Dokáte, e platí rovnos $|BC|^2=|CD|\cdot|CE|$.
+
+\uloha
+Danı je lichobeník $ABCD$ takı, e $|BC| = |CD| = |DA|$, $AB\parallel CD$ a $|\uhol DAB| = 36^\circ$. Bod $K$ leí na úseèke $AB$ a platí preò $|AK| = |AD|$. Dokáte, e krunice opísané trojuholníkom $AKD$ a $BKC$ sa dotıkajú.
+
+\uloha
+Dokáte, e obrazy prieseèníka vıšok v osovıch súmernostiach pod¾a jednotlivıch strán trojuholníka leia na opísanej krunici.
+
+\uloha
+Danı je trojuholník $ABC$ s prieseèníkom vıšok $V$. Vezmime tri krunice so stredmi v bodoch $A$, $B$, $C$, ktoré prechádzajú bodom $V$. Dokáte, e druhé prieseèníky tıchto kruníc (rôzne od bodu $V$) leia na krunici opísanej trojuholníku $ABC$.
+
+\uloha
+V rovine sú dané tri zhodné krunice prechádzajúce bodom $H$. Oznaème $A$, $B$, $C$ druhé prieseèníky tıchto kruníc (rôzne od bodu $H$). Dokáte, e $H$ je prieseèníkom vıšok trojuholníka $ABC$ a e krunica opísaná trojuholníku $ABC$ je zhodná s tımi danımi troma krunicami.
+
+\uloha
+Danı je konvexnı štvoruholník $ABCD$ s navzájom kolmımi uhloprieèkami pretínajúcimi sa v bode $P$. Dokáte, e obrazy bodu $P$ v osovej súmernosti pod¾a strán štvoruholníka $ABCD$ vytvoria tetivovı štvoruholník.
+
+\uloha
+Nech $P$ je ¾ubovo¾nı vnútornı bod rovnostranného trojuholníka $ABC$. Uvaujme obrazy $D$, $E$, $F$ bodu $P$ v osovıch súmernostiach s osami $BC$, $CA$, $AB$. Urète mnoinu všetkıch bodov $P$ takıch, e trojuholník $DEF$ je rovnoramennı.
+
+\uloha
+Nech $L$ je ¾ubovo¾nı vnútornı bod kratšieho oblúka $CD$ krunice opísanej štvorcu $ABCD$. Oznaème $K$ prieseèník priamok $AL$ a $CD$, $M$ prieseèník priamok $AD$ a $CL$ a $N$ prieseèník priamok $MK$ a $BC$. Dokáte, e body $B$, $L$, $M$, $N$ leia na krunici.
+
+\uloha
+Dokáte, e všetky stredy strán a päty vıšok trojuholníka $ABC$ leia na jednej krunici (táto krunica sa nazıva {\it Feuerbachova\/}).
+
+\uloha
+Danı je trojuholník $ABC$ a bod $P$ v jeho rovine. Nech $D$, $E$, $F$ sú päty kolmíc z bodu $P$ na priamky $BC$, $CA$, $AB$. Dokáte, e bod $P$ leí na opísanej krunici trojuholníka $ABC$ práve vtedy, keï body $D$, $E$, $F$ leia na priamke. (Priamka $DEF$ sa nazıva {\it Simsonova\/}.)
+
+\tazkauloha
+Nech $PQ$ je priemer krunice opísanej trojuholníku $ABC$. Dokáte, e Simsonove priamky (pozri predošlú úlohu) zodpovedajúce bodom $P$ a $Q$ sú na seba kolmé a pretínajú sa na Feuerbachovej krunici trojuholníka $ABC$.
+
+\tazkauloha
+Nech $ABCD$ je tetivovı štvoruholník s uhlom $60^\circ$ pri vrchole $B$. Dokáte, e ak $|BC|=|CD|$, tak $|CD| + |DA| = |AB|$. Rozhodnite, èi platí opaèná implikácia.
+
+\uloha
+V~trojuholníku $ABC$ platí $|\uhol ABC|=120^\circ$. Nad
+stranami $AB$, $BC$ sú (zvonku) zostrojené rovnostranné
+trojuholníky $ABP$ a $BCR$. Stredy strán $AB$ a $BC$ oznaème $M$ a
+$K$. Zostrojme ešte jeden rovnostrannı trojuholník $MKQ$ tak, e
+body $B$ a $Q$ budú lea v~rovnakej polrovine urèenej priamkou
+$MK$. Dokáte, e body $P$, $Q$, $R$ leia na jednej priamke.
+
+\uloha
+V rovnoramennom trojuholníku $ABC$ ($|AB| = |BC|$) stredná prieèka rovnobená so stranou $BC$
+pretne vpísanú krunicu trojuholnika $ABC$ v bode $F$, ktorı neleí na základni $AC$. Dokáte, e dotyènica ku vpísanej krunici v bode $F$ pretne os uhla $ACB$ na strane $AB$.
+
+\tazkauloha
+Krunice so stredmi $O$ a~$O'$ sa pretínajú v~bodoch $A$
+a~$B$. Priamka~$TT'$ sa dotıka prvej krunice v~bode~$T$ a~druhej
+v~bode~$T'$. Päty kolmíc spustenıch z~bodov $T$ a~$T'$ na
+priamku~$OO'$ oznaème $S$ a~$S'$. Polpriamka~$AS$ pretína prvú
+krunicu znova v~bode~$R$ a~polpriamka~$AS'$ druhú krunicu znova
+v~bode~$R'$. Dokáte, e body $R$, $B$ a~$R'$ leia na jednej
+priamke. %
+
+
+\kapitola Riešenia úloh
+
+\riesenie
+Nech bod $K$ leí v polrovine $ABM$ na spoloènej dotyènici kruníc zo zadania (tá prechádza bodom $E$). Potom pre ve¾kosti uhlov platí
+$$
+DMC + DEC = DMC + DEK + KEC = DMC + DAE + CBE = 180^\circ.
+$$
+
+\riesenie
+Ukáeme si iba riešenie tretej èasti.
+Nech $B'$ je bod súmernı s bodom $B$ pod¾a osi uhla $ACB$. Zrejme $B'$ leí na priamke $AC$ a trojuholník $AMB'$ je rovnoramennı. Pre ve¾kosti uhlov platí
+$$
+CBM = CB'M = 180^\circ - AB'M = 180^\circ - CAM,
+$$
+èo znamená, e body $A$, $C$, $B$, $M$ leia na krunici.
+Ako sme to vlastne dokázali? Vyuívame symetriu priamok $CA$, $CB$ pod¾a osi uhla. Hodí sa to aj v inıch prípadoch:
+
+Nech $ABC$ je trojuholník a $D$ je prieseèník osi uhla $ACB$ so stranou $AB$. Zistite ve¾kos pomeru $AD/BD$.
+
+Náèrt riešenia: nech $B'$ je obraz bodu $B$ v osovej súmernosti pod¾a a nech $B''$ je bod na priamke $CD$ takı, e $B'D = B'B''$. Potom $B'B'' \parallel AB$.
+
+\riesenie
+Nech $F$ je bod na úseèke $BC$ takı, e $AB\parallel DF$. Dokáte, e $AF$ je osou uhla $BAC$. Všímajte si dvojice rovnakıch uhlov a úseèiek.
+
+Úloha má aj priamoèiare riešenie zaloené na poèítaní pomerov, vyuívame dvojice podobnıch trojuholníkov.
+
+\riesenie
+Nech $M$ je spoloènı bod kruníc opísanıch trojuholníkom $ARQ$ a $BRP$ rôzny od bodu $R$ (ak takı neexistuje, úlohu vyriešime analogicky ako predošlú).
+Ukáeme, e body $C$, $P$, $M$, $Q$ leia na krunici. Staèí poráta uhly; pri urèení ve¾kostí uhlov $QMR$ a $PMR$ vyuijeme, e $ARMQ$ a $BRMP$ sú tetivové štvoruholníky.
+
+\riesenie
+Všetky ve¾kosti uhlov sa dajú vyjadri pomocou ve¾kostí uhlov $ABF$ a $CBE$. Existuje však aj elegantnejšie riešenie: situácia je symetrická pod¾a osi úseèky $AB$. Èo je obrazom uhlov, ktoré porovnávame?
+
+\riesenie
+Dvoma spôsobmi urèíme ve¾kos uhla $CBD$: ako rozdiel ve¾kostí uhlov $ABC$ a $ABD$ a z trojuholníka $BCD$.
+
+\riesenienieje
+
+\riesenie
+Namiesto toho, aby sme dokazovali, e obsahy trojuholníkov $FBH$ a $GHD$ sú rovnaké, staèí dokáza, e obsahy trojuholníkov $GFD$ a $GFB$ sú rovnaké. Tieto dva trojuholníky majú spoloènú stranu $GF$, teda staèí ukáza, e majú rovnakú vıšku na túto stranu a u budú ma rovnakı obsah. To ale znamená, e nám staèí
+ukáza, e $FG$ je rovnobené s $BD$. Oznaème $|\uhol CAB|=\alpha$.
+Pretoe platí \hbox{${\triangle ABC}\cong{\triangle BAD}$}, vidíme, e $|\uhol DBA|=|\uhol CAB|$. Trojuholník $AFG$ je rovnoramennı a preto
+$|\uhol GFA|=|\uhol GAB|=|\uhol CAB|=|\uhol DBA|=\alpha$.
+Zo zhodnosti uhlov sme tak do\-sta\-li $GF\parallel BD$.
+Teda vıška trojuholníka $GFD$ na stranu $GF$ a vıška trojuholníka $GFB$ na stranu $GF$
+sa rovnajú, preto sú obsahy trojuholníkov $GFB$ a $GFD$ rovnaké. Nakoniec dostaneme
+$S_{GFB}-S_{GFH}= S_{GFD}-S_{GFH}\Longleftrightarrow S_{FBH}= S_{GHD}$.
+
+\riesenie
+Nech $S$ je stred Tálesovej krunice nad úseèkou $AD$. Zaoberáme sa ním preto, lebo chceme dokáza, e $|AC| = |AS|$ a chceme vyui pravı uhol $ABD$. Uhly $CAM$ a $BSD$ sú rovnaké. Chceme vyui, e $M$ je stred $BC$. anica delí trojuholník na dve èasti s rovnakım obsahom, preto vıšky $CQ$ a $BP$ v trojuholníkoch $AMC$ a $AMB$ sú zhodné. Potom aj trojuholníky $SPB$ a $AQC$ sú zhodné.
+
+\riesenie
+Dokazovanı vzah si prepíšeme na rovnos pomerov $BC/CD = EC/CB$. Staèí porátaním uhlov dokáza, e trojuholníky $BCD$ a $ECB$ sú podobné.
+
+\riesenie
+Pozri úlohu 1. Porátame nieko¾ko uhlov a všimneme si rovnobenos. Èo dokazujeme? e os uhla $CKD$ je spoloènou dotyènicou tıch dvoch kruníc.
+
+\riesenienieje
+
+\riesenienieje
+
+\riesenie
+Dve krunice sú zhodné práve vtedy, keï ich spoloènú tetivu vidíme pod rovnakım uhlom z bodov na zodpovedajúcich oblúkoch tıchto kruníc.
+
+\riesenie
+Nech $K$ je obraz $P$ pod¾a jednej zo strán a $L$ nech je prieseèník tejto strany s priamkou $KP$. Ako vieme vyui, e $L$ je stred úseèky $KP$?
+Ako vyuijeme, e uhol pri bode $L$ je pravı?
+
+\riesenienieje
+
+\riesenie
+Jedna monos je poráta dåky; dokazované tvrdenie platí práve vtedy, keï $CL\cdot CM = CN\cdot CB$ (mocnos bodu ku krunici).
+Inı prístup spoèíva v porátaní uhlov. Ako pomocou uhlov vyjadríme, e $L$ leí na krunici opísanej {\it štvorcu\/} $ABCD$? Vieme zisti niektorı z uhlov, ktorı priamka $MK$ zviera s priamkami $MC$ èi $MA$?
+
+\riesenie
+Päty vıšok leia na Tálesovej krunici nad zodpovedajúcimi stranami trojuholníka, z toho vieme nejaké uhly. Uhly pri strednıch prieèkach vieme vyjadri tie. Treba si dokazované tvrdenie nejako sformulova (napr. vezmem stred strany, tri päty vıšok a ukáem, e leia na krunici, cyklickou zámenou dostanem dokazované tvrdenie), vyskúšajte rôzne formulácie, niektoré vedú k jednoduchšiemu dôkazu. Èo je obrazom vrchola v osovej súmernosti pod¾a strednej prieèky a èo je jeho obrazom v stredovej súmernosti pod¾a stredu strednej prieèky?
+
+\riesenie
+Porátame uhly, treba vyui tetivovos štvoruholníkov. Dva pravé uhly nad úseèkou vedú k Tálesovej krunici.
+
+\riesenie
+Kolmos sa dá dokáza ¾ahko poèítaním uhlov, aj keï situácia je nepreh¾adná (ve¾kı obrázok!). Èas s Feuerbachovou krunicou je aká, podobne ako dôkaz, e Feuerbachova krunica sa dotıka krunice vpísanej do trojuholníka a pripísanıch kruníc.
+
+\riesenie
+Vieme súèet $|CD| + |DA|$ reprezentova jedinou úseèkou? Rovnoramennı trojuholník, ktorého jeden uhol je $60^\circ$, je rovnostrannı. Viete tam takı nájs? Nebojte sa poráta potrebné vzdialenosti, ak sa vám nedarí úlohu rieši iba cez uhly.
+
+\riesenienieje
+
+\riesenienieje
+
+
+\parpic[r]{\includegraphics{obr.111}}
+\riesenie
+Preèítali sme si zadanie, nakreslili peknı obrázok a pochopili zadanie. Èo ïalej?
+Okrem iného sme zistili, e nezáleí na tom, na ktorú stranu kreslíme spoloènú dotyènicu,
+pretoe podstatné sú iba priemety $S$, $S'$ dotykovıch bodov $T$, $T'$ na os $OO'$, pod¾a
+ktorej sú obe krunice symetrické. Ak majú krunice rovnakı polomer, body $S$, $O$ (resp. $S'$, $O'$)
+splynú a tvrdenie platí, lebo uhly nad priemermi pri bode $B$ sú pravé
+(èitate¾ si nadšene nakreslí obrázok a overí to). Inak môeme bez ujmy
+na všeobecnosti predpoklada, e krunica $k$ má menší polomer ako krunica $k'$.
+
+Èo vlastne máme dokáza? e body $R$, $B$, $R'$ leia na priamke. Vieme toto nejako prístupnejšie
+sformulova? Áno: Uhol $RBR'$ je priamy. Nech ve¾kosti uhlov $ARB$, $AR'B$,  $RAB$, $R'AB$
+sú po rade $\alpha$, $\beta$, $\gamma$, $\delta$. Preèo sme oznaèili práve tieto uhly?
+Uhly $\gamma$ a $\delta$ vyjadrujú polohu bodov $S$, $S'$ vnútri jednotlivıch kruníc
+a uhly $\alpha$ a $\beta$ zase hovoria, pod akım uhlom vidíme zo zodpovedajúcich kruníc
+úseèku $AB$. Preto tieto uhly popisujú celú situáciu. Dokazované tvrdenie je ekvivalentné
+s tım, e $\alpha+\beta+\gamma+\delta=180\st$. Uhly vyjadrované pomocou $\alpha$, $\beta$,
+$\gamma$, $\delta$ teda predstavujú akúsi spoloènú reè pre predpoklady a dokazované tvrdenie
+a stojí za pokus oznaèi ich práve takto.
+
+Z tetivovıch štvoruholníkov $ABRT$ a $ABR'T'$ vieme vyjadri $|\uhol ATB|=\alpha$, $|\uhol AT'B|=\beta$.
+Tımto sme sa zbavili bodov $R$, $R'$, na dôkaz tvrdenia $\alpha+\beta+\gamma+\delta=180\st$
+ich nepotrebujeme. Starajme sa radšej o to, ako si situáciu ïalej zjednoduši. Máme tam
+stále ve¾a priamok a dve krunice. Ale tie krunice sú rovno¾ahlé pod¾a bodu $H$, ktorı
+je prieseèníkom osi $OO'$ a spoloènej dotyènice $TT'$. Obe spomenuté priamky sú v našej situácii
+podstatné, preto tento smer úvah vyzerá s¾ubne. Zobrazme v tejto rovno¾ahlosti krunicu $k'$ na $k$.
+(Rovnako by sme to mohli naopak, ale potom by nám tam zostali èiarkované body, takto ostanú
+neèiarkované.)
+Bod $B$ sa zobrazí do nejakého bodu $C$, bod $A$ do bodu $D$, bod $S'$ do bodu $S$, bod $T'$ do $T$.
+Uhol $AT'B$ sa zobrazí do $DTC$ a oba teda majú rovnakú ve¾kos $\beta$. Krunice $k'$ sme sa
+zbavili, môeme si nakresli novı obrázok, kde u nebude.
+
+\parpic{\includegraphics{obr.112}}
+Pozrieme sa na vec v novom svetle a zistíme nieko¾ko zaujímavostí. Priamky $AB$, $CD$, $ST$ sú
+rovnobené. Preto uhol $ASD$ má ve¾kos $\gamma+\delta$. Ve¾kos uhla $ADB$ je rovnaká ako
+ve¾kos uhla $ATB$, teda $\alpha$. Ve¾kos uhla $DAC$ je rovnaká ako ve¾kos uhla $DTC$, teda $\beta$.
+Èo s bodom $O$? Skôr, ne ho zahodíme, pozrime sa, èi nie je na nieèo uitoènı. Priamka
+$OT$ je kolmá na dotyènicu $HT$. Navyše vieme zisti ve¾kos uhla $AOD$, je to $180\st-\alpha-\beta$
+(skúste to sami, nakreslite si k tomu novı obrázok a vyuite, e $O$ je stred krunice).
+Ale toto znamená ve¾a, dokazované tvrdenie platí práve vtedy, keï štvoruholník $ASOD$ je tetivovı
+(potom $ASD$ a~$AOD$ majú rovnakú ve¾kos).
+
+\poznamka
+Nech $P$ je prieseèník uhloprieèok. Uhol $APD$ má tie ve¾kos $180\st-\alpha-\beta$. To by znamenalo,
+e body $S$, $P$, $O$ leia na krunici nad tetivou $AD$. Tieto body však leia na priamke. To znamená, e
+dva z nich by boli totoné. Keïe $O$ a $S$ aj $O$ a $P$ sú vo všeobecnosti rôzne, musia to by
+body $S$ a $P$. Z toho vyplıva toto tvrdenie: Nech $k$~je krunica a $H$ bod mimo nej. Vezmime nejaké
+dve seènice krunice $k$ prechádzajúce bodom $H$ tak, aby vznikol rovnoramennı lichobeník
+$ABCD$ vpísanı do krunice. Potom prieseèník uhloprieèok tohto lichobeníka je pevnı bod nezávislı
+od vo¾by seèníc. (A my u vieme, e je to bod $S$ z našej úlohy.)
+
+
+\smallskip
+\underline{Pokraèovanie riešenia:}
+Ostáva nám dokáza, e štvoruholník $ADSO$ je tetivovı. (Nakreslite si ïalší obrázok,
+kde bude len tento štvoruholník a objekty, pomocou ktorıch je urèenı, teda krunica
+$k$, priamky $HT$ a $AD$ a body $S$ a $O$.) To je ekvivalentné s tım,
+e $HD\cdot HA=HS\cdot HO$ (mocnos bodu ku krunici). Zrejme $HS\cdot HO=HT^2$ z Euklidovej vety
+v pravouhlom trojuholníku $HTO$ a $HD\cdot HA=HT^2$ z mocnosti bodu $H$ ku krunici $k$. A sme hotoví.
+Ešte raz si prejdeme celı postup a overíme, e nepotrebujeme iaden ïalší rozbor prípadov okrem
+toho v~úvode.
+
+V poslednej èasti dôkazu sme akosi odskoèili od poèítania uhlov. Spravili sme to kvôli struènosti
+a~tie pre ilustráciu vyuitia mocnosti bodu ku krunici. Neznamená to však, e
+riešenie sa poèítaním uhlov nedá dokonèi.
+Ale je to zdåhavejšie a poznám len jediné takéto riešenie, ktoré vyuíva prieseèník
+uhloprieèok a jeho vlastnosti spomínané v predošlej poznámke. Skúste takéto riešenie cez poèítanie uhlov
+nájs.
+
+Tetivovos štvoruholníka $ADSO$ sa dá dokáza aj inımi spôsobmi. Sú však nároènejšie z poh¾adu pouitıch
+poznatkov. Napríklad v krunicovej inverzii so stredom $O$ pod¾a krunice $k$ sa body $H$ a $S$ zobrazia
+na seba. Body $A$, $D$ sú samodruné. Obrazom priamky prechádzajúcej bodmi $H$, $D$, $A$ je krunica, prechádzajúca
+obrazmi tıchto bodov a navyše stredom $O$. Tımi obrazmi sú body $S$, $D$, $A$ a sme hotoví.
+
+{\it Iné riešenie:\/}\ %
+Obrázky sme si nakreslili, zadanie pochopili, uhly oznaèili, ale nikam sme sa nedorátali.
+Niè to, stávajú sa aj horšie veci. Ale èo ïalej s príkladom? Všimnime si predošlé riešenie.
+Skladá sa z nieko¾kıch krokov. Preto nevidno súvis medzi predpokladmi a dokazovanım tvrdením,
+nevieme, ako zaèa, ani ktorım smerom sa ubera. Pomohlo by nám, keby sme vedeli úlohu rozloi
+na nieko¾ko jednoduchších èastí. To sa dá dosiahnu tak, e nejakı medzikrok uhádneme. Ako? Narysujeme
+si ve¾kı presnı obrázok. A potom skúšame háda, èo platí. Napríklad zostrojíme krunicu cez tri body.
+Neleí na nej nejakı pouite¾nı štvrtı? Nie sú nejaké priamky rovnobené? Mono je nieèo vhodne symetrické?
+A tamten trojuholník, preèo vyzerá tak rovnoramenne? Nakreslíme si ïalší obrázok, odlišnı od prvého.
+Zase ten trojuholník vyzerá rovnoramenne? Alebo pravouhlo? Leia nejaké trojice bodov na priamke?
+Èo keby sme si tam dokreslili nejakú ïalšiu priamku? Krunicu? Predåili úseèku?
+Takto získame nieko¾ko hypotéz, ktoré potom  otestujeme na ïalšom presnom obrázku.
+
+Keï uvedenı postup vyskúšame na tejto úlohe, môeme si všimnú toto: Body $R$, $B$, $R'$ leia na priamke.
+A nielen to, táto priamka navyše prechádza bodom $H$ (stred rovno¾ahlosti kruníc). Priamky $AS$ a $BS'$
+sú rovnobené. Aj priamky $AS'$ a $BS$ sú rovnobené. Trojuholník $SS'A$ je rovnoramennı.
+Štvoruholník $ASBS'$ je kosoštvorec. Štvoruholník $RSOB$ je tetivovı (aj ïalšie tri štvoruholníky
+tohto typu). Na ¾ubovo¾nom z tıchto pozorovaní u vieme vybudova riešenie.
+
+Budeme pouíva rovnaké oznaèenie ako v predošlom riešení.
+Nech $AR$ a $BS'$ sú rovnobené.
+Z tejto rovnobenosti vyplıva, e tieto priamky sú rovno¾ahlé pod¾a bodu $H$ v rovno¾ahlosti,
+ktorá zobrazí krunicu $k$ na krunicu $k'$. (Pretoe bod $S'$ je obrazom $S$.) V tejto rovno¾ahlosti sa $R$ zobrazí
+na $B$, preto body $R$, $B$, $H$ leia na priamke. Priamky $BR$, $AS'$ sú tie rovnobené (lebo situácia
+je symetrická pod¾a osi $OO'$), preto aj body $R'$, $B$, $H$ leia na priamke.
+Zostáva dokáza rovnobenos priamok $AR$ a $BS'$. Keïe bod $B$ je obrazom bodu $A$ v osovej súmernosti pod¾a
+osi $OO'$, je to ekvivalentné s rovnoramennosou trojuholníka $SS'A$ (poriadne  to uváte). Toto sa dá dokáza
+vıpoètom vyuívajúcim podobnos trojuholníkov a Pytagorovu vetu pre mnostvo pravouhlıch trojuholníkov
+na obrázku. Existuje však elegantné geometrické zdôvodnenie.
+Priamka $AB$ je chordálou kruníc $k$ a $k'$, preto pretína úsek $TT'$ na spoloènej dotyènici v jeho strede $M$
+(z mocnosti bodu $M$ k danım kruniciam máme $MT^2=MA\cdot MB=MT'^2$). Keï si
+to kolmo premietneme na priamku $OO'$, tak prieseèník priamky $AB$ s $OO'$ je stredom úseèky $SS'$. Hotovo.
+
+\vfill\eject
+
+\kapitola Ako pouíva tento text?
+
+Planimetria sa u nás vyuèuje dos obmedzene. Najmä vzh¾adom na bené planimetrické úlohy, ktoré sa vyskytujú v matematickıch súaiach. Hlavnı problém spoèíva v nedostatku samostatnej práce iakov pri riešení úloh. Táto samostatná èinnos je obmedzená len na štandardné úlohy, iaci sa nestretnú s úlohami vyadujúcimi tvorivı prístup a èosi viac, ne nauèené poznatky (istú vınimku predstavujú matematické gymnáziá). Túto medzeru pokladám za vhodné vyplni; dobrou pomôckou môe by aj tento materiál. Je urèenı najmä pre stredoškolákov, niet však dôvod, preèo by jednoduchšie èasti nemohli by pouité u na základnej škole. Napríklad na matematickom krúku.
+
+Materiál v texte obsiahnutı postaèí na desiatky hodín práce, aj vzh¾adom k akım úlohám uvedenım na konci. Nie je problém
+zohna dostatok ïalších úloh, staèí si pozrie archívy korešpondenènıch seminárov alebo roèenky MO. Zvládnutie poèítania uhlov
+patrí medzi základné zruènosti vyuívané v matematickıch súaiach. Geometria je pre mnoho detí aká a neprístupná,
+pretoe v škole sa èasto iba transmisívne vyuèujú poznatky bez hlbšieho porozumenia (namiesto toho, aby sa uèilo, ako rieši problémy). iaci neve¾mi rozumejú preberanım vetám z planimetrie
+a netušia, na èo sú dobré, ani sa nikdy k ich vyuitiu nedostanú. Pritom rátanie úloh z planimetrie vedie k dobrım pracovnım
+návykom: musíme ma preh¾ad, èo robíme, nie len tak èumie do papiera a oznaèova uhly, ktoré nevieme zráta, novımi premennımi.
+Písanie riešenia a podrobného postupu je taktie uitoèné: argumenty v dôkaze musia na seba nadväzova, riešenie má by zrozumite¾né a preh¾adné. Preto je dôleité, aby iak dostal spätnú väzbu, aby bol upozornenı na chyby, ktoré pri písaní riešenia robí.
+
+¾ahšie úlohy je moné rieši so iakmi priamo na hodine, necha ich pracova, sledova, ako im práca ide, zastavi sa pri jednotlivcoch a pomôc im pri riešení vhodnımi otázkami. Tieto otázky by mali by všeobecné, napríklad \uv{Èo dokazujeme?}, \uv{Nedá sa to preformulova inak?}, \uv{Vyuívame všetky predpoklady zo zadania? Platí tvrdenie aj bez niektorého z nich? Alebo vieme nájs protipríklad?}. Na druhej strane existuje aj nevhodná pomoc: \uv{Kde môeš poui Pytagorovu vetu?} Takáto otázka nevysvet¾uje, ako uèite¾ prišiel na to, e treba poui Pytagorovu vetu, preto iakovi niè do budúcnosti nedáva. Navyše ak iak Pytagorovu vetu pozná a nedokázal ju poui celı èas, èo ráta úlohu, tak ju najskôr nebude vedie poui ani teraz, take aj tak sme mu takouto otázkou nepomohli.
+
+Dôleité je dba na to, aby deti pri riešení postupovali aktívne a cie¾avedome. Mali by stále vedie, èo robia: kreslím obrázok, pretoe predošlı je primalı; rysujem presnı obrázok, lebo chcem overi hypotézu, e body $A$, $B$, $C$ leia na priamke; dokazujem, e tento trojuholník je rovnoramennı; ešte nerozumiem úplne zadaniu, tak sa ho snaím pochopi; myslím si, e tieto dva predpoklady nemôu plati naraz, preto sa snaím nájs trojuholník, kde platia, alebo dokáza, e neexistuje; vyjadrujem ve¾kos tohto uhla pomocou uhlov trojuholníka $ABC$; h¾adám, èi sa v situácii nevyskytuje nejakı tetivovı štvoruholník; \dots{}
+
+Je uitoèné, ak iaci riešenia aspoò nieko¾kıch úloh skúsia vysvetli spoluiakom a iné zase napísa na papier tak, aby ich pochopili aj spoluiaci --- èasto sa ukáe, e iaci nedokáu dostatoène jasne a plynule vysvet¾ova vlastné myšlienky. Matematika je na získanie tıchto schopností ve¾mi vhodná, nu preèo ju nevyui?
+
+Spolupráca pri planimetrii nemá ve¾kı zmysel, najmä nie pri jednoduchıch úlohách. Pri akıch však rôzne poh¾ady na problém umoòujú lepší vh¾ad do situácie. Máme viacero hypotéz, kamarát môe poukáza na chybu v mojej úvahe (ktorú by som sám našiel mono a po pár hodinách). Navyše rieši nieèo vo dvojici aj zvyšuje chu ráta --- nenechám v tom kamaráta samého, dvaja zvládneme viac, \dots{}
+
+V úvode tohto textu je nieko¾ko praktickıch rád. Cie¾om je, aby sa dostali tieto osvedèené veci deom do krvi. To ako pôjde proste tak, e im ich povieme. Napríklad väèšinou si ¾udia kreslia primalé obrázky. Ale aby si èlovek zaèal kresli ve¾ké obrázky, najprv musí ma skúsenos s malımi, musí pochopi, e sa tam naozaj nezmestí to, èo tam potrebuje ma. Preto tieto rady ponúkame deom popri tom, ako rátajú, vo vhodnej chvíli. Napríklad: Vidíme, e iak u oznaèil 4 uhly rôznymi písmenami a nikam sa nedostal. Namieste je otázka, èi potrebuje tieto štyri písmená, èi sa nedá niektoré nedá vyjadri pomocou ostatnıch. A kam smeruje jeho snaha --- má zmysel poèíta uhly? Na riešenie úloh deti potrebujú dostatok èasu, preto najvhodnejšie je rozdeli si to na viac pokraèovaní, ako seminár, ako súèas hodín matematiky alebo ako náplò matematického krúku.
+
+Úvodné tri príklady vyriešené v texte sa bene uèia na strednej škole, avšak èasto ich prezentujeme nepripravenım iakom --- pri vete o obvodovom uhle napríklad iaci nerozumejú dostatoène ekvivalencii a jej vıznamu a pouitiu. Preto je dobré si tieto poznatky zopakova, aj s dôkazmi a s vysvetlením, ako sa dá na tieto dôkazy prís. (Preto som tieto príklady rozpísal tak podrobne.) V príklade 4 dokáeme vetu o úsekovom uhle, s ktorou sa iaci stretávajú prvıkrát a v matematickej olympiáde (kategória B, z nej je vybratá úloha 1). Príklad 5 je krásnym príkladom chybného dôkazu, zaloeného na nesprávnom obrázku. Poukazuje aj na vıznam diskusie --- úvah o poradí bodov na priamkach èi o polrovinách, v ktorıch bod môe èi nemôe lea.
+
+Medzi bené chyby patrí aj \uv{dôkaz kruhom} --- pri dôkaze nechtiac a nevedomky vyuijeme èosi ekvivalentné s dokazovanım tvrdením, napríklad kolinearitu troch bodov, ktorú odpozorujeme z obrázka. Takto sa nám podarí oklama seba a èasto aj opravovate¾a úlohy.
+
+Úloha 2 ukazuje dôleitos sformulovania dokazovaného tvrdenia. Navyše v nej dokázané tvrdenie je faktom bene vyuívanım pri riešení ïalších úloh. Tento príklad naozaj netreba vynecha. Príklad 6 ukazuje metódu práce \uv{odzadu}: bod $P$ popíšeme dokazovanou vlastnosou a ukáeme, e takto definovanı bod spåòa všetky predpoklady zo zadania a je jedinı. Toto sa pouíva èasto, preto netreba tento príklad vynecha.
+
+Úlohy 4 a 7 sú jednoduché a staèí priamo poèíta uhly s vyuitím súètu uhlov v trojuholníku èi známych vlastností tetivovıch štvoruholníkov. (Preèo je súèet uhlov v trojuholníku rovnı priamemu uhlu? Ko¾ko vašich iakov to vie?)
+Úlohy 9 -- 11 sú u ašie a riešenie pozostáva z nieko¾kıch krokov, preto je vhodná pomoc iakom pri ich riešení.
+
+Ïalšie úlohy sú väèšinou zoradené po skupinách podobnıch èi súvisiacich (12--14, 15--16, 18--20). Preto je moné vyrieši jednu úlohu so iakmi na hodine a ostatné podobné im necha na samostatnú prácu. Upozoròujem, e úlohy od 19 vyššie sú dos aké a nedá sa èaka, e si s nimi poradí ve¾a iakov. Tieto úlohy dosahujú (priam a presahujú) úroveò úloh v celoštátnom kole MO kategórie A. Všimnite si riešenie úlohy 24. Je tam pekne rozpísané, ako sa dá vyrieši aká viackroková úloha. Pri jej riešení som nakreslil aspoò 20 obrázkov a riešil som ju vyše troch hodín --- to je primeranı èas na jej vyriešenie.
+
+
+\end{document}
+
+
