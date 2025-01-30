@@ -1,0 +1,554 @@
+%% kruznicova inverzia, na ESF, marec/august 2006
+%% Mazo
+
+\documentclass{article}
+\usepackage{slovak}
+\usepackage{palatino}
+\usepackage{picins}
+\usepackage[dvips]{graphicx}
+\usepackage{amsmath}
+
+\pagestyle{empty}
+\advance\textwidth by 2cm
+\advance\hoffset by -1cm
+\advance\textheight by 4cm
+\advance\voffset by -2cm
+\parindent = 0pt
+\parskip = .4\baselineskip
+
+\let\uhol=\angle
+
+\font\nadpis = csbx10 scaled 1800
+\font\fontkapitola = csbx10 scaled 1400
+
+\newcount\cislokapitoly
+\cislokapitoly = 1
+\def\kapitola#1\par{%
+{\bigskip
+\hskip 1cm {\fontkapitola\number\cislokapitoly. #1}\par}
+\bigskip
+\advance\cislokapitoly by 1}
+
+\def\komentar#1{\relax}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\def\FIXME{{\nadpis FIXME}}
+
+\newcount\cisloulohy
+\cisloulohy = 1
+
+\def\uloha{%
+\medskip{\bf Úloha \number\cisloulohy . }%
+\advance\cisloulohy by 1%
+}
+
+\newcount\cislohintu
+\cislohintu = 1
+\def\hint{%
+\bigskip{\bf \number\cislohintu . }%
+\advance\cislohintu by 1%
+}
+
+\newcount\cisloriesenia
+\cisloriesenia = 1
+\def\riesenie{%
+\bigskip{\bf \number\cisloriesenia . }%
+\advance\cisloriesenia by 1%
+}
+
+\newcount\cisloprikladu
+\cisloprikladu = 1
+\def\priklad{%
+\bigskip{\bf Príklad \number\cisloprikladu . }%
+\advance\cisloprikladu by 1%
+}
+
+\def\riespr{{\it Riešenie:\/\ }}
+
+\def\poznamka{{\it Poznámka:\/\ }}
+
+\newdimen\sirka
+\setbox 0 = \hbox{$*\,$}
+\sirka = \wd0
+
+\def\tazkauloha{%
+\hskip -\sirka
+$*\,${\bf Úloha \number\cisloulohy . }%
+\advance\cisloulohy by 1%
+}
+
+\let\phi=\varphi
+\let\uhol=\angle
+
+
+\newcount\backup
+\backup = \catcode`\@
+\catcode`\@ = 11
+\def\mydispl@y{\global\dt@ptrue \openup\jot \m@th
+  \everycr={\noalign{\ifdt@p \global\dt@pfalse
+              \ifdim\prevdepth>-1000pt \vskip-\lineskiplimit
+                 \vskip\normallineskiplimit \fi
+            \else \penalty\interdisplaylinepenalty \fi}}}
+\def\my@lign{\tabskip=0pt\everycr={}} % restore inside \displ@y
+\newskip\mycentering \mycentering=0pt plus 1000pt minus 1000pt
+\global\def\eqalignno#1{\mydispl@y \tabskip=\mycentering
+  \halign to\displaywidth{\hfil$\my@lign\displaystyle{##}$%
+    \tabskip=0pt &$\my@lign\displaystyle{{}##}$\hfil
+    \tabskip=\mycentering &\llap{$\my@lign##$}\tabskip=0pt \crcr
+    #1\crcr}}
+\catcode`\@ = \backup
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+\centerline{\nadpis Krunicová inverzia}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\kapitola Úvod
+
+Jednım z objavov modernej geometrie je krunicová inverzia. Tento koncept vznikol pri revízii geometrie v 19. a 20. storoèí. 
+
+Sila tohto zobrazenia spoèíva v tom, e dokáe previes tvrdenia o kruniciach na tvrdenia o~priamkach. Èasto sa komplikovaná geometrická situácia po vhodnom zobrazení inverziou zmení na jednoduchú a prístupnú klasickım metódam planimetrie. Inverzia má vyuitie nielen v matematickıch súaiach, ale napríklad aj v algoritmoch poèítajúcich prieniky kruhov.
+
+Tento materiál kladie pomerne vysoké nároky na èitate¾a. Mal by by zbehlı v pouívaní benıch planimetrickıch metód (rovno¾ahlos, úsekové uhly, mocnos bodu ku krunici, analytické prístupy). Inverzia je krásna, ale pokia¾ sa nevyznáme v jednoduchších veciach, nedokáeme jej krásu oceni. Preto tento text poslúi skôr pre matematické krúky vo vyšších roèníkoch strednej školy, nie ako základ popularizaènej prednášky pre širšiu verejnos. 
+
+Skôr, ne si o inverzii spravíme prednášku èi seminár, treba dostatok èasu strávi riešením úloh a skúmaním vlastností inverzie. (Keï som prvıkrát robil trojhodinovı seminár, venoval som príprave asi 40 hodín.) Keï predkladáme iakom poèas prednášky úlohu, mali by sme vedie posúdi, ktoré cesty môu vies k riešeniu, a ktoré nie. (Dá sa úloha rieši aj bez inverzie? Poznáme aspoò dve rôzne riešenia?). Pri domácich úlohách to nie je a také dôleité, nie je nutné pozna riešenie.
+
+Pri èítaní treba ma papier, ceruzku a kresli si vlastné obrázky. Ve¾ké a preh¾adné. Mnoho ich pokazíte, nebojte sa nakresli si nové. So zlım obrázkom sa zle uvauje. Nevšimneme si uitoèné veci, ktoré by mohli pomôc pri riešení: rovnobenosti, zhodnosti úseèiek èi trojuholníkov\dots{} K správnemu kresleniu obrázkov vedieme aj iakov.
+
+Úlohy na konci textu (s hviezdièkou) sú aké, dosahujú úroveò aších úloh z medzinárodnej matematickej olympiády. Nedá sa èaka, e ich vyriešime za krátky èas, treba si na to vyhradi hodiny a hodiny.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\kapitola Èo je to vlastne krunicová inverzia?
+
+Vezmime si nejakú rovinu, v nej leiaci bod $O$ a kladné reálne èíslo $r$. Existuje práve jedna krunica so stredom $O$ a polomerom $r$ a práve pod¾a tejto krunice sa naše zobrazenie volá krunicová inverzia. A èo to teda je? 
+
+Nech $X$ je bod rôzny od bodu $O$ (samozrejme, bod $X$ patrí do roviny, s ktorou pracujeme, toto konštatovanie budeme v ïalšom vynecháva). Obrazom bodu $X$ je bod $X'$ leiaci na polpriamke $OX$ takı, e 
+$$
+|OX|\cdot |OX'| = r^2.
+$$
+Zrejme takıto bod je práve jeden a teda naše zobrazenie, ktoré budeme ïalej oznaèova $f$, je korektne definované.
+
+Aké vlastnosti má naše zobrazenie? Ak máme dva rôzne body, tak ich obrazmi budú opä rôzne body, teda naše zobrazenie je prosté. Overte si to.
+Kadı bod $X$ tejto roviny okrem bodu $O$ vieme zobrazi na nejakı bod $X'$ (tie rôzny od $O$). Obrazom bodu $X'$ je však náš pôvodnı bod $X$. Take kadı bod $X$ je obrazom nejakého bodu $X'$. Body $X$, $X'$ vytvárajú dvojicu navzájom inverznıch bodov. Preto zobrazenie $f$ je inverzné samo k sebe, platí $f^{-1}=f$. Inak sa to dá zapísa tak, e pre kadı bod $X\neq O$ platí $f(f(X))=X$.
+
+Dohodneme sa na oznaèovaní. Obraz bodu $X$ v zobrazení $f$ budeme znaèi $X'$ alebo $f(X)$, obraz priamky $AB$ oznaèíme $(AB)'$, obraz krunice $k$ oznaèíme $k'$. Na tieto geometrické útvary sa dívame ako na mnoiny bodov; vo všeobecnosti obrazom mnoiny bodov $M$ bude $M'$.
+Ve¾kos úseèky $AB$ budeme oznaèova $AB$, ak nemôe dôjs k nedorozumeniu (je to jednoduchšie ako klasické oznaèenie $|AB|$ a spreh¾adní to zápisy).
+Krunicu opísanú trojuholníku $ABC$ budeme oznaèova $(ABC)$.
+
+Iste ste si všimli, e bod $O$ spôsobuje problémy, je akosi \uv{inı} ne ostatné body, minimálne tım, e nemá obraz a niè sa naò nezobrazí. Tieto problémy vyriešime neskôr, zatia¾ budeme zobrazova iba body rôzne od bodu $O$ (vystaèíme si s tım pri riešení stredoškolskıch úloh).
+
+Ako sa dá zobrazenie $f$ reprezentova analyticky? Zvo¾me karteziánsku súradnicovú sústavu tak, aby bod $O$ mal súradnice $[0,0]$. Vezmime si bod $X=[x,y]$. Nech jeho obraz $X'$ má súradnice $[x', y']$. Keïe bod $X'$ leí na polpriamke $OX$, existuje kladné èíslo $k$ také, e $x'=kx$ a $y'=ky$.
+Ïalej platí $OX=\sqrt{x^2+y^2}$ a $OX'=\sqrt{x'^2+y'^2}=k\sqrt{x^2+y^2}=k\cdot OX$. Má plati $OX\cdot OX'=r^2$, po dosadení z toho dostaneme $k=r^2/(x^2+y^2)$. Take 
+$$
+[x,y]\qquad {\rm sa\ zobrazí\ na}\qquad \left[{x\cdot r^2\over x^2+y^2},{y\cdot r^2\over x^2+y^2}\right].
+$$
+
+Jednoduchšie je poui polárne súradnice alebo komplexnú rovinu. Bod $X$, ktorému zodpovedá komplexné èíslo $x\neq 0$, sa zobrazí na $x'=r^2/|x|^2\cdot x$.
+
+\uloha
+Má zobrazenie $f$ nejakı samodrunı bod?
+
+Pri riešení tejto úlohy ste mono prišli na to, ako sa inverzia správa k bodom vnútri krunice $k(O, r)$. Kam sa zobrazia body zvnútra? A kam body zvonku?
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\kapitola Geometrická konštrukcia obrazu bodu v inverzii
+
+Ako zostrojíme obraz daného bodu $X$? Z definície tento obraz $X'$ leí na polpriamke $OX$ a~platí \hbox{$OX\cdot OX'=r^2$}, teda chceme vlastne zostroji vzdialenos $OX'=r^2/OX$.
+
+\uloha
+V rovine sú dané úseèky s dåkami $a$, $b$, $c$. Zostrojte úseèku s dåkou $ab/c$. Aplikujte túto konštrukciu na náš prípad.
+
+Ukáeme si inú konštrukciu. Predpokladajme, e $OX>r$. Vzah \hbox{$|OX|\cdot |OX'| = r^2$} pripomína Euklidovu vetu o odvesne. Aby to fungovalo, úseèka $OX$ by mala by preponou v pravouhlom trojuholníku, ktorého jedna odvesna má dåku $r$. Zostrojme teda Tálesovu krunicu nad priemerom $OX$, na nej leí tretí vrchol $T$ nášho trojuholníka. Keïe má by od bodu $O$ vzdialenı $r$, leí aj na krunici $k(O, r)$. Kde leí bod $X'$? Pod¾a spomínanej Euklidovej vety je to päta vıšky z vrchola $T$ v trojuholníku $OXT$ a tú vieme ¾ahko zostroji. Uvedenı postup vieme aj obráti, získame tım konštrukciu obrazu pre bod $X$ leiaci vnútri krunice.
+
+\komentar{ \FIXME
+\tazkauloha
+Daná je krunica $k(O,r)$ a bod $M$ rôzny od bodu $O$. Zostrojte obraz bodu $M$ v inverzii pod¾a krunice $k$. Pri konštrukcii môete poui iba kruidlo.
+%
+\uloha
+Dané sú dva body $A$, $B$. Zostrojte stred úseèky $AB$. Pouíva môete iba kruidlo.
+%
+\uloha
+Daná je krunica, ktorej stred nepoznáte. Zostrojte tento stred. Pouíva môete iba kruidlo.
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\kapitola Vlastnosti krunicovej inverzie
+
+Pozrieme sa na obrazy známych mnoín bodov. Keï sa snaíme uhádnu, akım geometrickım útvarom je mnoina bodov, najlepšie je zostroji si pod¾a monosti èo najpresnejšie obrazy èo najviac bodov. Preto treba kresli, vezmite si papier a skúste to. Dobrú pomôcku predstavujú aj poèítaèové programy, ktoré umoòujú vytvára dynamické geometrické konštrukcie, napríklad Cabri, Sketchpad alebo Kig. Z tıchto obrazov sa dá takmer vdy uhádnu, èo je obrazom: priamka, krunica, úseèka, oblúk, elipsa\dots{} Keï u máme dobre podloenú hypotézu, môeme prikroèi k dôkazu, teda overeniu našej hypotézy. (Všimnite si, e v matematike sa hypotézy vlastne overujú inak ako v ostatnıch vedách. Ak spravíme dôkaz, tak hypotéza je nezvratne potvrdená. Na druhej strane napríklad fyzici môu hypotézy na základe experimentov iba zavrhova, nikdy nemajú stopercentnú istotu, e hypotéza je pravdivá --- mono majú iba málo experimentálnych údajov.)
+
+Zaènime priamkou, ktorá prechádza stredom inverzie $O$. Kadı bod $X$ tejto priamky rôzny od bodu $O$ sa zobrazí do bodu tejto priamky a tie je vzorom nejakého bodu z tejto priamky, preto takáto priamka je samodruná. Dôkaz vyuívajúci analytickú geometriu ponechávame na èitate¾a.
+
+Èo sa stane s priamkou $p$, ktorá neprechádza bodom $O$? Nech $M$ je päta kolmice z bodu $O$ na priamku $p$ a nech $A$ je bod priamky $p$ rôzny od bodu $M$. (Nakreslite si obrázok.) Pozrime sa na body $A'$, $M'$. Z definície inverzie vieme, e platí $OM\cdot OM'=r^2=OA\cdot OA'$. Toto však znamená, e štvoruholník $M'MAA'$ je tetivovı.\footnote{Nech $A''$ je prieseèník krunice $(M'MA)$ s priamkou $OA$ rôzny od bodu $A$. Štvoruholník $M'MAA''$ je tetivovı, preto platí $OM'\cdot OM = OA\cdot OA'$. Porovnaním so vzahom $OM'\cdot OM=OA\cdot OA''$ dostávame, e $OA'=OA''$, èo však znamená, e body $A'$, $A''$ sú totoné.}
+Preto ve¾kos uhla $OA'M'$ je taká istá istá ako ve¾kos uhla $OMA$, èo znamená, e bod $A'$ leí na Tálesovej krunici nad priemerom $OM'$. Táto úvaha funguje pre všetky body $A\in p\setminus \{M\}$. Navyše obrátením našej úvahy vieme dokáza, e kadı bod krunice nad priemerom $OM'$ (okrem bodu $O$) je obrazom nejakého bodu z priamky $p$. Take obrazom priamky neprechádzajúcej bodom $O$ je krunica prechádzajúca bodom $O$. Keïe $f(f(M))=M$ pre kadú mnoinu bodov $M$ (neobsahujúcu bod $O$), vieme aj to, e obrazom krunice prechádzajúcej bodom $O$ je priamka neprechádzajúca bodom $O$.
+
+Ukáeme aj analytickı dôkaz. Od ïalších dôkazov vyuívajúcich metódu súradníc upustíme, veríme, e èitate¾ ich zvládne aj sám. Nech $p$ je priamka neprechádzajúca bodom $O$. Súradnicovú sústavu môeme zvoli tak, e $O$ bude poèiatkom a priamka $p$ bude kolmá na os $x$. Take $p$ má rovnicu $x=m$ pre nejaké kladné èíslo $m$. Namiesto obrazu tejto priamky budeme h¾ada jej vzor v tej istej inverzii. Na zaèiatku sme si ukázali, e vzor je totonı s obrazom, lebo $M=f(f(M))$ pre kadú mnoinu bodov neobsahujúcu bod $O$, teda aj pre našu priamku. Nech $A'=[x',y']$ patrí do $p'$. Bod $A=(A')'$ má súradnice $[x'\cdot r^2/(x'^2+y'^2), y'\cdot r^2/(x'^2+y'^2)]$. Bod $A$ musí lea na priamke $p$, take platí 
+$$
+{r^2\over x'^2+y'^2}\cdot x' = m.
+$$
+Z tohto po ekvivalentnej úprave dostaneme, e 
+$$
+\left(x'-{r^2\over 2m}\right)^2+y'^2 = \left({r^2\over 2m}\right)^2.
+$$
+Inak povedané, bod $A$ leí na krunici so stredom $[r^2/2m, 0]$ a polomerom $r^2/2m$. Táto krunica prechádza bodom $O$.
+
+Teraz u vieme ¾ahko zobrazi ¾ubovo¾nú priamku. Aj krunicu prechádzajúcu stredom inverzie $O$. Èo je však obrazom krunice neprechádzajúcej bodom $O$?
+Vezmime si krunicu, ktorá má stred v bode $O$. Jednu takúto predstavuje samotná krunica $k(O,r)$, ktorá sa zobrazí sama na seba. Ostatné krunice so stredom $O$ sa zväèšia èi zmenšia, závisí to od ich polomeru. Vyskúšajte si to a dokáte.
+
+Vezmime si dve rôznobené priamky neprechádzajúce bodom $O$, oznaème ich prieseèník $P$. Obrazy tıchto priamok budú krunice. Ko¾ko spoloènıch bodov budú ma tieto krunice? Minimálne bod $O$. Avšak bod $P$ patrí obom spomínanım priamkam, preto jeho obraz patrí obom kruniciam. Na druhej strane, keby naše krunice mali spoloènı ešte nejakı ïalší bod $R$ rôzny od $O$ aj $P$, tak tento bod musí ma svoj vzor na oboch priamkach. To však nie je moné, pretoe tieto priamky mali iba jedinı spoloènı bod $P$. Inak povedané, inverzia zachováva poèet prieseèníkov (a na bod $O$). Overte si to na rovnobenıch priamkach (èo bude obrazom?) a nejakıch inıch mnoinách bodov.
+
+Vezmime si krunicu, ktorá neprechádza bodom $O$ a bod $O$ nie je jej stredom. Narysovaním dostatoèného mnostva obrázkov (áno, toto je vaša práca) prídeme k hypotéze, e obrazom tejto krunice je krunica. (Z u dokázanıch vlastností je jasné, e nemôe prechádza bodom~$O$.) Túto hypotézu dokáeme. Potrebujeme na to nejaké dobré kritérium pre body leiace na krunici. V princípe krunica je mnoina bodov rovnako vzdialenıch od jej stredu, avšak to je nám tu dos naniè, pretoe inverzia vzdialenosti pokazí a stred krunice u nebude stredom jej obrazu. S inım kritériom ste sa u urèite stretli: hovorí o òom Tálesova veta.
+
+\parpic{\includegraphics{inverzia.2}}
+
+Máme teda krunicu $\ell$ so stredom $S$. Pre jednoduchos predpokladajme, e krunica $\ell$ leí zvonka krunice $k$ (zvyšné prípady zvládnete vyrieši aj sami, spraví sa to podobne ako tento). Oznaème $A$, $B$ prieseèníky polpriamky $OS$ s krunicou $k$ (pozrite si obrázok, ešte lepšie bude, ak si nakreslíte vlastnı). Body $A$, $B$ sa zobrazia na body $A'$, $B'$ leiace vnútri krunice $k$. (Preèo body $B$, $A'$, $A$, $B'$ leia na priamke $OS$ v tomto poradí?) Vezmime si nejakı bod $M$ leiaci na krunici $\ell$ (rôzny od bodov $A$, $B$). Ukáeme, e jeho obraz $M'$ leí na Tálesovej krunici nad priemerom $B'A'$. To je ekvivalentné s tım, e uhol $B'M'A'$ je pravı.
+
+Oznaème ve¾kosti uhlov $ABM$, $BAM$, $MOA$ písmenami $\beta$, $\alpha$, $\phi$. Bod $M$ leí na krunici nad priemerom $AB$, preto $\alpha+\beta=90^\circ$.
+Z definície inverzie platí $OB'\cdot OB=r^2=OM'\cdot OM$, preto štvoruholník $B'BMM'$ je tetivovı. Take uhol $OM'B'$ má ve¾kos $\beta$ a preto uhol $M'B'A'$ má ve¾kos $\phi + \beta$. Zopakovaním tejto úvahy pre štvoruholník $A'AMM'$ dostaneme, e $|\uhol M'A'O|=|\uhol OMA|=\alpha-\phi$ (posledná rovnos je z trojuholníka $OAM$). Èo sme chceli? Ve¾kos uhla $B'M'A'$. Tá je
+$$
+|\uhol B'M'A'|= 180^\circ - (\phi + \beta)- (\alpha-\phi)=180^\circ-(\alpha+\beta)=90^\circ.
+$$
+Táto úvaha platí pre ¾ubovo¾nı bod $M$ zo spomínaného oblúka. Navyše je ¾ahké obrátením úvahy zdôvodni, e kadı bod Tálesovej krunice nad priemerom $B'A'$ je obrazom nejakého bodu krunice $\ell$. Dokázali sme, e obrazom krunice neprechádzajúcej bodom $O$ je krunica.
+
+
+Na situáciu pri zobrazovaní krunice sa dá díva aj inak. Majme v rovine bod $O$ a nejakú krunicu $k$ (opä pre jednoduchos predpokladáme, e táto krunica je dostatoène ïaleko od bodu $O$). Inverziu budeme robi s polomerom $r$. Chceme dokáza, e obrazom krunice $k$ je krunica. Vezmime si dotyènicu ku krunici $k$ prechádzajúcu bodom $O$, dotykovı bod oznaème $T$. Kam sa zobrazí bod $T$? Nech jeho obraz je $T'$. Obrazom polpriamky $OT$ je samotná táto polpriamka. Keïe krunica $k$ má s polpriamkou $OT$ spoloènı práve jeden bod, aj obraz krunice $k$ musí ma s obrazom polpriamky $OT$ práve jeden spoloènı bod. Take ak obrazom krunice $k$ je krunica $\ell$, tak krunica $\ell$ sa dotıka priamky $OT$ v bode $T'$ (analogicky sa dotıka tej druhej dotyènice ku krunici $k$ z bodu $O$). Z tohto je jasné, preèo uvaujeme o dotyènici ku $k$. Dokáeme, e takáto krunica $\ell$ je naozaj obrazom krunice $k$.
+
+\parpic{\includegraphics{inverzia.1}}
+
+Vezmime seènicu krunice $k$, ktorá ju pretína v bodoch $A$, $B$. Táto priamka pretne krunicu $\ell$ v bodoch $C$, $D$. Krunice $k$ a $\ell$ sú rovno¾ahlé v istej rovno¾ahlosti so stredom $O$. Take máme dve dvojice rovnobenıch priamok: $TB$, $T'D$ a $TA$, $T'C$. Chceme dokáza, e bod $C$ je obrazom bodu $B$ a bod $D$ je obrazom bodu $A$, teda e platí 
+
+\begin{equation}
+OB\cdot OC = r^2\qquad {\rm a}\qquad  OA\cdot OD = r^2. \label{dokazovanedverovnosti}
+\end{equation}
+Z podobnosti trojuholníkov $OTB$ a $OT'D$ vieme, e 
+\begin{equation}
+{OD\over OT'}={OB\over OT}\cdot \label{prvapodobnost}
+\end{equation}
+Z podobnosti trojuholníkov $OTA$ a $OT'C$ vieme, e
+\begin{equation}
+{OC\over OT'}={OA\over OT}\cdot \label{druhapodobnost}
+\end{equation}
+Navyše $T'$ je obrazom bodu $T$, take $OT\cdot OT'=r^2$. Z tohto všetkého chceme odvodi rovnosti \eqref{dokazovanedverovnosti}.
+
+Vynásobením vzahov \eqref{prvapodobnost} a \eqref{druhapodobnost} (uvedomte si, ako a preèo ich násobíme) dostaneme $OB\cdot OC = OA\cdot OD$. Z tohto je jasné, e na dôkaz rovností \eqref{dokazovanedverovnosti} staèí dokáza, e
+\begin{equation}
+OA\cdot OB\cdot OC\cdot OD = r^4 = OT^2\cdot OT'^2. \label{sucinvsetkych}
+\end{equation}
+
+Posledná rovnos nevyplıva priamo zo vzahov, ktoré sme si zatia¾ napísali (vyskúšajte si to). Potrebujeme ešte nieèo viac. Èo ešte vieme o súèinoch dåok $OA$, $OB$, $OC$, $OD$? Áno, mocnos bodu $O$ ku kruniciam $k$ a $\ell$. Platí $OT^2 = OA\cdot OB$ a tie $OT'^2=OC\cdot OD$. Vynásobením poslednıch dvoch vzahov dostávame priamo rovnos \eqref{sucinvsetkych} a sme hotoví.
+
+Ešte sa na chví¾u vrátime k poslednému dôkazu. Vzah $OB\cdot OC=r^2=OT\cdot OT'$, ktorı chceme dokáza, sa dá prepísa na rovnos dvoch pomerov
+$$
+{OC\over OT'} = {OT\over OB}\cdot
+$$
+Táto rovnos je ekvivalentná s podobnosou trojuholníkov $OCT'$ a $OTB$. Tieto trojuholníky sú podobné práve vtedy, keï uhly $OT'C$ a $OBT$ majú rovnakú ve¾kos. Uhol $OT'C$ je zhodnı s uhlom $OTA$, lebo priamky $CT'$ a $AT$ sú rovnobené. A uhol $OBT$ je tie zhodnı s uhlom $OTA$, ako hovorí veta o úsekovom uhle\footnote{Ak túto vetu nepoznáte, skúste si ju dokáza. Znenie: Nech $T$ je dotykovı bod krunice $k$ a priamky $p$. Nech $A$ je ¾ubovo¾nı bod krunice $k$ rôzny od $T$. Potom uhol nad tetivou $AT$ (pre body leiace na jednom z dvoch oblúkov $AT$ krunice $k$) je rovnı uhlu, ktorı zvierajú priamky $AT$ a $p$. (Platí to aj naopak: ak uhol urèenı nejakou priamkou $q$ prechádzajúcou bodom $T$ a priamkou $AT$ je rovnı uhlu nad tetivou $AT$, tak $q$ je dotyènica.)}. Hotovo.
+
+Vyzbrojení tımito poznatkami si môeme trúfnu vyrieši nieko¾ko úloh.
+
+\priklad
+V rovine sú dané dve krunice $k$, $\ell$ s prieseèníkmi $A$, $B$. Vezmime priamku $p$ prechádzajúcu bodom $B$, jej druhı prieseèník s krunicou $k$ oznaème $C$, jej druhı prieseèník s krunicou $\ell$ oznaème $D$. Dokáte, e ve¾kos uhla $CAD$ nezávisí od polohy priamky $p$.
+
+\riespr
+Najprv vyriešte úlohu bez pouitia inverzie, nie je aká.
+
+Zaujíma nás ve¾kos uhla zovretého priamkami $AC$ a $AD$. Obe tieto priamky prechádzajú bodom $A$. Navyše tımto bodom prechádzajú aj obe krunice $k$, $\ell$. Zobrazme teda celú situáciu v inverzii so stredom $A$ a nejakım polomerom $r$. Obrazmi kruníc $k$, $\ell$ budú priamky $k'$, $\ell'$ s prieseèníkom $B'$. Obrazom priamky $p$ je krunica $p'$, ktorá prechádza bodom $A$. Táto krunica pretína priamku $k'$ po druhıkrát v bode $C'$ a priamku $\ell'$ po druhıkrát v bode $D'$.
+Máme tri moné poradia, ako môu na krunici $p'$ lea tieto body: $A, C', B', D'$, alebo $A, B', C', D'$, alebo $A', C', D', B'$. Vo všetkıch troch prípadoch je ve¾kos uhla $C'AD'$ rovná ve¾kosti uhla zovretého priamkami $k',\ell'$ (toho, v ktorom neleí bod $A$). A to je presne to, èo sme chceli dokáza.
+
+\uloha
+Danı je trojuholník $ABC$ so stredom vpísanej krunice $I$ (v angliètine sa tento bod nazıva {\it incenter}). Dokáte, e os strany $AB$, os uhla $CAB$ a krunica opísaná trojuholníku $ABC$ sa pretínajú v jednom bode. Oznaème tento bod $S$. Dokáte, e $S$ je stred krunice opísanej trojuholníku $ABI$.\footnote{Toto je známy fakt èasto vyuívanı pri riešení úloh, dokáte ho bez pouitia inverzie.}
+
+\priklad
+V rovine sú dané tri zhodné krunice, ktoré prechádzajú spoloènım bodom $H$. Oznaème druhé prieseèníky tıchto kruníc $A$, $B$, $C$ (rôzne od $H$).
+Dokáte, e $H$ je ortocentrum trojuholníka $ABC$.
+
+\riespr
+Bodom $H$ prechádzajú tri krunice. Oplatí sa preto spravi inverziu so stredom $H$, v nej sa tieto krunice zobrazia na priamky. Vyskúšajme to a dúfajme, e úloha, ktorá vznikne, bude jednoduchšia. Ako sa zmení dokazované tvrdenie? Pokia¾ nedokáeme toto tvrdenie sformulova pre situáciu, ktorá vznikne po zobrazení, sme na nesprávnej ceste. Je jasné, e staèí dokáza kolmos priamok $AH$ a $BC$ (rovnakou úvahou získame dôkaz ostatnıch dvoch kolmostí). Obrazom priamky $AH$ bude ona sama, obrazom priamky $BC$ bude krunica $(B'C'H)$. Ak priamky $AH$ a $BC$ sú na seba kolmé, tak stred krunice $(B'C'H)$ leí na priamke $A'H$ (s tımto sme sa stretli pri dôkaze toho, e priamka $BC$ sa zobrazí na krunicu). Platí to aj naopak: ak stred krunice $(B'C'H)$ leí na priamke $A'H$, tak priamky $AH$ a $BC$ sú na seba kolmé.
+
+Tvrdenie úlohy neplatí bez predpokladu, e všetky krunice majú rovnakı polomer. Ako vyui, e krunice $(AHB)$ a $(AHC)$ sú zhodné? Tieto krunice sú zhodné práve vtedy, keï sú osovo súmerné pod¾a priamky $AH$. Ich obrazmi sú priamky $A'B'$ a $A'C'$. Krunicová inverzia zachováva osovú súmernos pod¾a osi prechádzajúcej stredom inverzie (overte si to!). Preto aj priamky $A'B'$ a $A'C'$ sú osovo súmerné pod¾a osi $A'H$ (vyuívame, e priamka $AH$ prechádza stredom inverzie a teda je samodruná). Take uhly $C'A'H$ a $B'A'H$ sú rovnaké a $A'H$ je osou uhla $C'A'B'$. Analogicky priamky $C'H$ a $B'H$ sú osami uhlov v~trojuholníku $A'B'C'$.
+
+Stred krunice opísanej trojuholníku $B'C'H$ je prieseèník osi uhla $C'A'B'$ s krunicou opísanou trojuholníku $A'B'C'$ (pozri predchádzajúcu úlohu), preto leí na priamke $A'H$. Tım sme dokázali tvrdenie úlohy.
+
+Akı bol polomer inverzie $r$ v našom riešení? Nezálealo na òom, mohli sme si ho zvoli ¾ubovo¾ne. Vyskúšajte si ho zvoli tak, aby sa krunica $k(H,r)$ dotıkala tıch troch kruníc zo zadania. Nakreslite si obrázok a preskúmajte situáciu.
+
+V skutoènosti nám inverzia pri riešení ve¾mi nepomohla, skôr sme si ilustrovali jej pouitie. Úloha bola ¾ahko riešite¾ná aj bez inverzie. Vyriešte ju! Navyše platí, e krunica opísaná trojuholníku $ABC$ je zhodná s tımi krunicami zo zadania. Dokáte to!
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\kapitola Apollóniove úlohy
+
+Najrozvinutejšou oblasou matematiky v starom Grécku bola geometria. V planimetrii vyriešili Gréci v podstate všetky úlohy, ktoré sa dali vyrieši bez pouitia algebry. Jednou z najznámejších sérií konštrukènıch úloh, ktoré nám Gréci zanechali, sú {\it Apollóniove úlohy\/}.
+
+Máme v rovine danı bod, priamku a krunicu. Úlohou je zostroji krunicu, ktorá prechádza danım bodom, dotıka sa danej priamky a dotıka sa danej krunice. Rôznymi kombináciami danıch bodov, priamok a kruníc (vdy zadáme tri objekty) získame desa konštrukènıch úloh.
+
+Dve z nich sa preberajú v škole, a to zostrojenie krunice opísanej trojuholníku (prechádza tromi danımi bodmi) a zostrojenie krunice vpísanej do trojuholníka (dotıka sa troch danıch priamok). Len málo iakov však rozumie tımto konštrukciám (preèo sa osi strán èi uhlov pretínajú v jednom bode?). A bene sa neurèuje poèet riešení (poznáte pripísané krunice?), aj keï je to súèasou štandardného postupu pri riešení konštrukènıch úloh.
+
+Väèšinu tıchto úloh vyriešime benımi prostriedkami: rovno¾ahlosou a pomocou mocnosti bodu ku krunici. Niektoré úlohy vieme inverziou alebo inou úvahou zredukova na inú Apollóniovu úlohu (napríklad prípad troch kruníc na dve krunice a bod/priamku). Najdlhšie mojim pokusom o vyriešenie odolávala úloha, keï máme danı bod, priamku a krunicu, ktoré nemajú spoloèné body. Tu pomôe inverzia podstatnım spôsobom: namiesto krunice budeme zostrojova priamku.
+
+Tıchto desa úloh mono predloi iakom naraz. Treba im necha dostatok èasu na samostatnú prácu, napríklad tıdeò. (Samozrejme, okrem èasu potrebujú deti motiváciu.) Asi štyri a pä úloh vyriešia rıchlo aj bez inverzie a tie ostatné predstavujú vızvu aj pre skúsenejších.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\kapitola Vzdialenosti
+
+Majme dva body $A$, $B$ také, e priamka $AB$ neprechádza bodom $O$. Štvoruholník $ABB'A'$ je tetivovı. Trojuholníky $OAB$ a $OB'A'$ sú podobné a z toho vieme vyjadri vzdialenos $A'B'$ pomocou $AB$:
+$$
+A'B' = {r^2\over OA\cdot OB}\cdot AB.
+$$
+Je ¾ahké overi, e tento vzah platí aj pre body $A$, $B$ na priamke prechádzajúcej bodom $O$.
+
+Vyzerá to dos komplikovane, vzdialenos obrazov závisí od $OA$ aj $OB$, nevidno z toho, ako inverzia mení vzdialenosti. Napriek tomu je tento vzah na èosi uitoènı, ako uvidíme v ïalšej kapitole.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\kapitola Ptolemaiova nerovnos
+
+Jednou zo známych nerovností je {\it Ptolemaiova nerovnos}. Nech $ABCD$ je štvoruholník. Potom platí
+$$
+AB\cdot CD + BC\cdot AD \ge AC\cdot BD,
+$$
+rovnos nastáva práve vtedy, keï je štvoruholník $ABCD$ tetivovı.
+
+Ako by sa dala takáto nerovnos dokáza? Súèet dvoch vecí má by viac ako tretia. To je trojuholníková nerovnos pre vhodnı trojuholník. Viem o troch dôkazoch Ptolemaiovej nerovnosti a všetky sú zaloené na trojuholníkovej nerovnosti. Okrem nej jeden pouíva podobnos, druhı Simsonovu priamku a tretí inverziu.
+
+Dobre, máme štyri body $A$, $B$, $C$, $D$. Keï chceme robi inverziu, tak na to treba jej stred. Máme dve monosti. Buï je rôzny od vrcholov štvoruholníka $ABCD$, alebo je to jeden z nich. V tom druhom prípade navyše zvyšné vrcholy vytvoria trojuholník, take azda aj trojuholníková nerovnos sa tam nájde.
+
+Nech $A$ je stred inverzie. Trojuholníková nerovnos pre trojuholník $B'C'D'$ urèenı obrazmi bodov $B$, $C$, $D$ hovorí, e
+$$
+B'C' + C'D' \ge B'D'.
+$$
+Po dosadení vısledku z predošlej kapitoly a predelení $r^2$ máme
+$$
+{BC\over AB \cdot AC} + {CD\over AC \cdot AD} \ge {BD\over AB \cdot AD},
+$$
+z èoho po prenásobení vırazom $AB\cdot AC\cdot AD$ dostávame Ptolemaiovu nerovnos. Rovnos v trojuholníkovej nerovnosti nastane, ak body $B$, $C$, $D$ leia na priamke v tomto poradí, teda keï body $A$, $B$, $C$, $D$ leia na krunici.
+
+V skutoènosti sme dokázali tvrdenie ešte všeobecnejšie, pretoe naša úvaha funguje aj v~priestore a pre body $A$, $B$, $C$, $D$ neleiace v rovine (\uv{gu¾ová inverzia\/}).
+
+\uloha
+Danı je rovnostrannı trojuholník $ABC$ a bod $P$ na kratšom oblúku $BC$ jemu opísanej krunice. Dokáte, e $AP = BP+CP$.
+
+
+\vfill\eject
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\kapitola Úlohy
+
+Nasledujúce úlohy nie sú aké (väèšinou ani ¾ahké\dots). Podarilo sa mi ich zráta.
+
+\uloha
+V rovine sú dané dve krunice $k$, $\ell$ s prieseèníkmi $A$, $C$. V bode $A$ spravíme dotyènicu ku $k$, tá druhıkrát pretne krunicu $\ell$ v bode $D$.
+Bod $B$ je prieseèníkom krunice $k$ s dotyènicou ku krunici $\ell$ v bode $A$. Dokáte, e $|AB|\cdot |CD| = |AC|\cdot |AD|$.
+
+\uloha
+Krunice $k_1$, $k_2$ sa pretínajú v bodoch $A$, $B$. Krunica $k_3$ sa zvonku dotıka kruníc $k_1$, $k_2$ po poradí v bodoch $C$, $E$. Krunica $k_4$ sa zvonku dotıka kruníc $k_1$, $k_2$ po poradí v~bodoch $D$, $F$. Dokáte, e krunica opísaná trojuholníku $ACE$ sa dotıka krunice opísanej trojuholníku $ADF$.
+%% Oboz naukowy OM 2004, 6/11
+
+\uloha
+Krunica $\ell$ sa zvnútra dotıka krunice $k$ v bode $A$. Zvolíme bod $B$ na krunici $\ell$. Dotyènica ku $\ell$ v bode $B$ pretne krunicu $k$ v bodoch $D$, $E$. Oznaème $C$ stred toho oblúka $DE$ krunice $k$, ktorı neobsahuje bod $A$. Dokáte, e body $A$, $B$, $C$ leia na priamke.
+
+\uloha
+Krunice $k_1$, $k_2$ sa zvonka dotıkajú v bode $D$. Priamka $p$ sa dotıka kruníc $k_1$, $k_2$ po rade v (rôznych) bodoch $A$, $B$. Úseèka $AC$ je priemerom krunice $k_1$. Priamka $q$ prechádza cez bod $C$ a dotıka sa krunice $k_2$ v bode $E$. Dokáte, e trojuholník $ACE$ je rovnoramennı.
+%% Oboz naukowy OM 2004, 5/2
+
+\uloha
+Dané sú krunice $k_1, k_2, k_3, k_4$ tak, e $k_i$ sa zvonka dotıka $k_{i+1}$ pre $i=1,2,3,4$ ($k_5=k_1$). Dokáte, e štyri dotykové body tıchto kruníc leia na jednej krunici.
+
+\uloha
+Danı je trojuholník $ABC$. Vnútri strán $CA$, $CB$ leia v tomto poradí body $Y$, $X$. Nech $P$ je prieseèník uhloprieèok štvoruholníka $ABXY$. Nech $Q$ je prieseèník kruníc opísanıch trojuholníkom $BYC$ a $AXC$ rôzny od bodu $C$. Dokáte, e body $P$, $Q$, $C$ leia na priamke práve vtedy, keï je štvoruholník $ABXY$ tetivovı.
+
+\uloha
+Dané sú dve krunice $k$, $\ell$ pretínajúce sa v bodoch $D$ a $A$. Spoloèná dotyènica tıchto kruníc blišia k bodu $A$
+sa dotıka krunice $k$ v bode $E$ a krunice $\ell$ v bode $F$. Rovnobeka so spoloènou dotyènicou prechádzajúca bodom $D$ pretína
+krunicu $k$ v bode $C$ a krunicu $\ell$ v bode $B$ (tieto body sú rôzne od bodu $D$). Dokáte, e druhı prieseèník (rôzny od bodu $D$)
+kruníc opísanıch trojuholníkom $CDF$ a $BDE$ leí na priamke $AD$.
+
+\uloha
+V rovine je danı trojuholník $DEF$ a tri body $A$, $B$, $C$. Dokáte, e existuje krunica taká, e keï pod¾a nej urobíme inverziu, tak obrazy $A'$, $B'$ $C'$ bodov $A$, $B$, $C$ vytvoria trojuholník $A'B'C'$ podobnı trojuholníku $DEF$.
+
+
+
+\bigskip\hrule
+
+Ostatné úlohy sú prevzaté a mali by sa da rieši inverziou, neskúmal som ich podrobne.
+
+\uloha
+Dve krunice sa dotıkajú zvonka v bode $A$. Do krivoèiareho trojuholníka urèeného tımito krunicami a ich spoloènou dotyènicou vpíšeme krunicu
+so stredom $O$ a polomerom $r$. Dokáte, e $|AO|\le 3r$.
+
+\uloha
+Krunice $k_1$, $k_2$ sa pretínajú v bodoch $A$, $B$. Priamka rôzna od $AB$ pretína krunicu $k_1$ v bodoch $C$, $D$, krunicu $k_2$ v bodoch $E$, $F$ a priamku $AB$ v bode $P$ leiacom mimo úseèky $AB$. Dokáte, e priamka spájajúca stredy kruníc opísanıch trojuholníkom $ACE$ a $BDF$ prechádza bodom $P$.
+%% Oboz naukowy OM 2002, 10/3
+
+\tazkauloha
+Nech $ABC$ je trojuholník s opísanou krunicou $k$ a nech $D$ je bod na strane $BC$. Dokáte, e krunice dotıkajúce sa $k$, $AD$, $AB$ a $k$, $AD$, $DC$ sa navzájom dotıkajú práve vtedy, keï uhly $BAD$ a $CAD$ majú rovnakú ve¾kos.
+%% Rumunsko, 1997
+
+\tazkauloha
+Daná je polkrunica $k$ s priemerom $AB$ a stredom $O$ a priamka, ktorá pretína polkrunicu $k$ v bodoch $C$ a $D$ a priamku $AB$ v bode $M$ ($MB<MA$, $MD < MC$). Nech $k$ je druhı prieseèník kruníc opísanıch trojuholníkom $AOC$ a $DOB$. Dokáte, e uhol $MKO$ je pravı.
+%% Rusko, 1995
+
+\uloha
+Nech $ABCD$ je konvexnı štvoruholník s kolmımi uhloprieèkami pretínajúcimi sa v bode $O$. Dokáte, e obrazy bodu $O$ v osovej súmernosti pod¾a priamok $AB$, $BC$, $CD$, $DA$ leia na krunici. (Nájdite aj dôkaz bez inverzie.)
+%% USAMO 1993/2
+
+\tazkauloha
+Krunica vpísaná do trojuholníka $ABC$ sa dotıka jeho strán $BC$, $CA$, $AB$ po poradí v bodoch $D$, $E$, $F$. Bod $X$ leí vnútri trojuholníka $ABC$ tak, e krunica vpísaná do trojuholníka $XBC$ sa dotıka priamky $BC$ v bode $D$ a priamok $CX$ a $XB$ v bodoch $Y$ a $Z$ (v tomto poradí). Dokáte, e $EFZY$ je tetivovı štvoruholník.
+%% IMO 1994 proposal
+
+\tazkauloha
+Nech $PQ$ je priemer polkrunice $k$. Krunica $\ell$ sa zvnútra dotıka polkrunice $k$ a~dotıka sa priamky $PQ$ v bode $C$. Nech $A$ je bod na $k$ a $B$ bod na priamke $PQ$ takı, e priamka $AB$ je kolmá na priamku $PQ$ a dotıka sa krunice $\ell$. Dokáte, e $AC$ je osou uhla $PAB$.
+%% Izrael 1995
+
+\tazkauloha
+Nech $K$, $L$, $M$ sú dotykové body krunice vpísanej do trojuholníka $ABC$ so stranami $BC$, $CA$, $AB$ (v tomto poradí). Dokáte, e ortocentrum trojuholníka $KLM$, stred krunice vpísanej do trojuholníka $ABC$ a stred krunice opísanej trojuholníku $ABC$ leia na jednej priamke.
+%% Iran 1995
+%% solution: invert through incircle and superimpose original and inverted diagrams
+
+\tazkauloha
+Nech $ABC$ je trojuholník a $O$ stred jemu opísanej krunice. Priamky $AB$ a $AC$ pretínajú krunicu opísanú trojuholníku $BOC$ po druhıkrát v bodoch $B_1$ a $C_1$ (v tomto poradí). Nech $D$ je prieseèník priamok $BC$ a $B_1C_1$. Dokáte, e krunica dotıkajúca sa priamky $AD$ v bode $A$, ktorej stred leí na priamke $B_1C_1$, je kolmá na krunicu s priemerom $OD$.
+%% MOP 1997
+
+\tazkauloha
+Nech $O$ je stred krunice opísanej štvoruholníku $ABCD$, $I$ je stred krunice doò vpísanej a $P$ prieseèník jeho uhloprieèok. Dokáte, e body $O$, $I$, $P$ leia na jednej priamke. (Navyše bod $P$ je pevnı pre všetky štvoruholníky, ktoré sa dajú vpísa do danej krunice tak, aby druhá daná krunica bola jeho vpísanou.)
+%% Czech-Polish-Slovak Match 2005
+
+\tazkauloha
+Šesuholník $ABCDEF$ je vpísanı do krunice $k$. Krunice $k_1,k_2,k_3,k_4,k_5,k_6$ sa zvnútra dotıkajú krunice $k$ v bodoch $A$, $B$, $C$, $D$, $E$, $F$.
+Krunica $k_i$ sa zvonka dotıka krunice $k_{i+1}$ pre $i=1,2,\dots,6$ (pritom $k_7=k_1$). Dokáte, e priamky $AD$, $BE$, $CF$ sa pretínajú v jednom bode.
+%% Oboz naukowy OM 2004, 39/8
+
+\tazkauloha
+Nech $P$ je bod vnútri trojuholníka $ABC$ takı, e 
+$$
+|\uhol APB|-|\uhol ACB|=|\uhol APC|-|\uhol ABC|.
+$$
+Nech $D$, $E$ sú stredy kruníc vpísanıch do trojuholníkov $APB$ a $APC$. Dokáte, e priamky $AP$, $BD$, $CE$ prechádzajú jednım bodom.
+%% IMO 1996, Problem 2
+
+\tazkauloha
+Nech body $C$, $D$ leia v jednej z polrovín urèenıch priamkou $AB$. Platí
+$$
+|AC|\cdot |BD| = |AD|\cdot |BC| \qquad\qquad {\rm a\ súèasne}\qquad\qquad |\uhol ADB| = {\pi\over 2} + |\uhol ACB|.
+$$
+Nájdite pomer 
+$$
+{|AB|\cdot |CD|\over |AC|\cdot |BD|}
+$$
+a dokáte, e krunice opísané trojuholníkom $ACD$ a $BCD$ sú ortogonálne.
+%% IMO 1993, Problem 2
+
+\tazkauloha
+Bod $O$ leí v rovine trojuholníka $ABC$. Krunica $k$ prechádzajúca cez
+bod $O$ je druhıkrát preatá priamkami $OA$, $OB$, $OC$ po rade v bodoch $P$, $Q$, $R$.
+Body $K$, $L$, $M$ (v tomto poradí) sú druhé prieseèníky krunice $k$ s krunicami opísanımi
+trojuholníkom $BOC$, $AOC$, $AOB$. Dokáte, e priamky $PK$, $QL$, $RM$
+prechádzajú jednım bodom. 
+%% Romanian Mathematical Competitions 2004, 15/14 (selection test for the IMO)
+
+\tazkauloha
+Danı je konvexnı šesuholník $ABCDEF$ takı, e $|\uhol B|+|\uhol D|+|\uhol F|=360^\circ$ a
+$$
+{AB\over BC}\cdot{CD\over DE}\cdot {EF\over FA}=1.
+$$
+Dokáte, e 
+$$
+{BC\over CA}\cdot{AE\over EF}\cdot{FD\over DB}=1.
+$$
+%% IMO 1998 proposal
+
+\tazkauloha
+Nech $k$ je krunica a $AB$ priamka nepretínajúca $k$. K danému bodu $P_0$ na krunici $k$ definujme postupnos $P_0, P_1, \dots$ takto: $P_{n+1}$ je druhı prieseèník krunice $k$ s priamkou urèenou bodom $B$ a druhım prieseèníkom priamky $AP_n$ s krunicou $k$. Nech $k$ je ¾ubovo¾né prirodzené èíslo. Dokáte, e ak platí $P_0=P_k$ pre nejakú vo¾bu $P_0$, tak $P_0=P_k$ pre kadú vo¾bu $P_0$.
+%% Rumunsko, 1997
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\kapitola Návody na riešenie úloh
+
+\hint
+Èo je to samodrunı bod? Èo to znamená v našom konkrétnom prípade (pozri definíciu inverzie)?
+
+\hint
+Skúste si úlohu pre konkrétne $b$, $c$, napr. ako nájdeme stred úseèky? A ako tretinu jej dåky? Kde v geometrii sa vyskytujú pomery?
+
+\komentar{ \FIXME
+\hint
+Najprv vyriešte úlohu pre bod $M$ leiaci zvonku $k$. Rovnos pre vzdialenosti z definície inverzie sa dá prepísa na rovnos dvoch pomerov, k nim potom nájdeme vhodné podobné trojuholníky.
+%
+\hint
+Vyuite konštrukciu z predošlej úlohy, pod¾a nej vieme zostroji obraz v inverzii.
+%
+\hint
+Pozri predošlú úlohu.
+}
+
+\hint
+Porátame vhodné uhly.
+
+\hint
+Èo pripomína dokazovanı vzah? 
+
+\hint
+Vieme sa vhodnou inverziou zbavi nejakıch kruníc?
+
+\hint
+Preè s krunicami! Ako sa môe zmeni dokazované tvrdenie, keï budeme robi inverziu?
+
+%7
+\hint
+Dá sa robi inverzia tak, aby sa krunica $k$ zobrazila na priamku $DE$?
+
+\hint
+Narysujte si presnı obrázok a skúste èosi odpozorova. Existuje riešenie úlohy vyuívajúce iba Pytagorovu vetu. Ale my chceme poui inverziu. Ako sa to dá, aby sa dokazované tvrdenie zmenilo na èosi rozumné?
+
+\hint
+Preè èo najviac kruníc.
+
+\hint
+Body P, Q, C majú lea na priamke. Dá sa táto priamka zafixova inverziou? Štvoruholník ABXY má by tetivovı. To sa dá popísa mocnosou bodu ku krunici a z toho vieme, akı má by polomer inverzie.
+
+\hint
+Preè nejaké krunice.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\kapitola Riešenia úloh
+
+\riesenie
+Z definície inverzie je bod samodrunı práve vtedy, keï $|OX|^2=r^2$. Preto samodruné sú všetky body leiace na krunici so stredom $O$ a polomerom $r$ a iadne iné.
+
+\riesenie
+Pri konštrukcii vyuijeme podobnos. Chceme $(b/c)$-krát zväèši úseèku dåky $a$. (Uvedomte si, e toto je trocha inak preformulovaná úloha --- máme jasnı cie¾, vieme, èo chceme dosiahnu.) Zostrojíme dva podobné trojuholníky, prièom prvı bude ma stranu dåky $a$ a~strany tıchto trojuholníkov budú v pomere $b:c$. Dva podobné trojuholníky vieme v rovine umiestni tak, e budú ma spoloènı vrchol a strany obsahujúce tento vrchol budú ramenami uhla. Z tohto vyplıva naša konštrukcia: zostrojíme ¾ubovo¾nı ostrı uhol a na jedno jeho rameno nanesieme úseèku dåky $a$ (jej koncovı bod rôzny od vrchola uhla oznaème $A$). Ako dosiahnu, aby naše trojuholníky mali strany v pomere $b:c$? No naj¾ahšie tak, e jeden bude ma stranu dåky $b$ a druhı stranu dåky $c$. Preto na druhé rameno nanesieme úseèky dåok $b$ a $c$ (analogicky ako bod $A$ vzniknú body $B$ a $C$). A u len vedieme bodom $B$ rovnobeku s priamkou $AC$, jej prieseèník s ramenom uhla rôzny od bodu $B$ nám urèuje úseèku dåky $ab/c$.
+
+\komentar{ \FIXME
+\parpic[r]{\includegraphics{inverzia.3}}
+%
+\riesenie
+Zostrojíme krunicu so stredom $M$ a polomerom $MO$. Táto krunica pretne krunicu $k$ v dvoch bodoch $R$, $S$. Z bodov $R$, $S$ opíšeme krunice s polomermi rovnımi $r$; tieto sa pretnú okrem bodu $O$ v nejakom ïalšom bode $M'$. ¼ahko sa dá ukáza, e bod $M'$ leí na priamke $OM$. Navyše trojuholníky $OMR$ a $ORM'$ sú podobné a rovnoramenné, preto $OM/OR = OR/OM'$. Inak povedané, $OM\cdot OM' = OR^2 = r^2$, teda $M'$ je obrazom $M$. Pouili sme iba kruidlo.
+%
+Rovnaká konštrukcia sa dá poui aj pre vnútornı bod $M$, pokia¾ krunica so stredom $M$ a polomerom $OM$ pretína krunicu $k$. Èo však v prípade, e tieto krunice nemajú spoloènı bod? Nedá sa tento prípad previes na predchádzajúci? Problém spoèíva v tom, e bod $M$ je príliš blízko bodu $O$. Vezmime si bod $N$ z polpriamky $OM$, ktorı je dostatoène vzdialenı od bodu $O$, povezme $ON = n\cdot OM$ (pre vhodné prirodzené èíslo $n$ bude bod $N$ dostatoène ïaleko od $O$ a budeme vedie iba kruidlom zostroji jeho obraz). Pre obraz $N'$ bodu $N$ platí $r^2=ON\cdot ON'$, pre obraz $M'$ bodu $M$ platí $r^2=OM\cdot OM'$. Porovnaním tıchto dvoch vzahov a vyuitím definície bodu $N$ dostávame
+$$
+r^2=ON\cdot  ON'= (n\cdot OM)\cdot ON' = OM \cdot (n\cdot ON') = OM \cdot OM'.
+$$
+Z poslednej rovnosti vidíme, e $OM'=n\cdot ON'$. Èo nám chıba k spokojnosti? Vedie zostroji násobok danej úseèky iba pouitím kruidla.
+%
+Skúste si to sami. Máme body $A$, $B$ a chceme na priamke $AB$ zostroji bod $C$ takı, e $BA = BC$. Keby sme mali nakreslenú priamku $AB$, staèí zostroji krunicu so stredom $B$ a polomerom $BA$. Ale my tú priamku nemáme. Napriek tomu vieme nájs bod $C$ na tejto krunici. Je to vrchol pravidelného šesuholníka vpísaného do tejto krunice leiaci oproti vrcholu $A$. Take staèí trikrát nanies na našu krunicu vzdialenos $BA$ (zaèíname bodom $A$) a dostaneme h¾adanı bod $C$.
+%
+Konštrukcia popísaná v predošlom odstavci nám umoòuje \uv{posunú$\,$} úseèku $AB$. Niè nám nebráni túto konštrukciu zopakova to¾kokrát, ko¾ko potrebujeme.
+%
+\riesenie
+Dané sú body $A$, $B$. Zostrojíme na priamke $AB$ bod $C$ tak, aby $BA = BC$ (pozri riešenie predošlej úlohy). Vezmime si krunicu so stredom $A$ a polomerom $AB$. Vieme zostroji obraz $C'$ bodu $C$ v inverzii pod¾a spomínanej krunice. Pre tento obraz platí $AC'\cdot AC = AB^2$, z èoho po dosadení $AC=2AB$ dostaneme $2AC'=AB$. To znamená, e bod $C'$ je h¾adanım stredom úseèky $AB$.
+%
+\riesenie
+Daná je krunica $k$. Zvo¾me si na nej ¾ubovo¾nı bod $P$ a zostrojme krunicu $\ell$ so stredom $P$ a ¾ubovo¾nım polomerom tak, aby sa krunice $k$ a $\ell$ pretli v dvoch bodoch $R$, $S$. Opíšme krunice so stredmi $R$, $S$ a polomermi ve¾kosti $PS$, tieto krunice sa pretnú okrem bodu $P$ v nejakom bode $Q$. Z predošlıch konštrukcií vieme, e obraz $Q'$ bodu $Q$ v inverzii pod¾a krunice $\ell$ je h¾adanım stredom krunice $k$. Tento obraz vieme zostroji iba pouitím kruidla.
+%
+\poznamka
+Predošlé dve úlohy sa dajú vyrieši aj bez pouitia krunicovej inverzie. Konštrukciami s~vyuitím jediného kruidla sa zaoberal v 18. storoèí Talian Mascheroni.
+}
+
+\riesenie
+Uhly $SCA$ a $SCB$ sú rovnako ve¾ké. Preto aj im zodpovedajúce tetivy $SA$, $SB$ na krunici $(ABC)$ sú rovnako dlhé, take $S$ leí na osi strany $AB$. Uhly $AIS$, $IAS$ sú rovnako ve¾ké, preto $SA = SI$.
+
+\riesenie
+Ptolemaiova nerovnos pre tetivovı štvoruholník $ABPC$.
+
+\end{document}

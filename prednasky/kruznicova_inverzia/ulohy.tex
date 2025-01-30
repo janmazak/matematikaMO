@@ -1,0 +1,200 @@
+%% kruznicova inverzia, na ESF, marec 2006
+%% Mazo
+
+\documentclass{article}
+\usepackage{slovak}
+\usepackage{palatino}
+\usepackage{picins}
+\usepackage[dvips]{graphicx}
+\usepackage{amsmath}
+
+\pagestyle{empty}
+\advance\textwidth by 2cm
+\advance\hoffset by -1cm
+\advance\textheight by 4cm
+\advance\voffset by -2cm
+\parindent = 0pt
+\parskip = .4\baselineskip
+
+\let\uhol=\angle
+
+\font\nadpis = csbx10 scaled 1800
+\font\fontkapitola = csbx10 scaled 1400
+
+\newcount\cislokapitoly
+\cislokapitoly = 1
+\def\kapitola#1\par{%
+{\bigskip
+\hskip 1cm {\fontkapitola\number\cislokapitoly. #1}\par}
+\bigskip
+\advance\cislokapitoly by 1}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\def\FIXME{{\nadpis FIXME}}
+
+\newcount\cisloulohy
+\cisloulohy = 1
+
+\def\uloha{%
+\medskip{\bf Úloha \number\cisloulohy . }%
+\advance\cisloulohy by 1%
+}
+
+\newcount\cislohintu
+\cislohintu = 1
+\def\hint{%
+\bigskip{\bf \number\cislohintu . }%
+\advance\cislohintu by 1%
+}
+
+\newcount\cisloriesenia
+\cisloriesenia = 1
+\def\riesenie{%
+\bigskip{\bf \number\cisloriesenia . }%
+\advance\cisloriesenia by 1%
+}
+
+\newcount\cisloprikladu
+\cisloprikladu = 1
+\def\priklad{%
+\bigskip{\bf Príklad \number\cisloprikladu . }%
+\advance\cisloprikladu by 1%
+}
+
+\def\riespr{{\it Riešenie:\/\ }}
+
+\def\poznamka{{\it Poznámka:\/\ }}
+
+\newdimen\sirka
+\setbox 0 = \hbox{$*\,$}
+\sirka = \wd0
+
+\def\tazkauloha{%
+\hskip -\sirka
+$*\,${\bf Úloha \number\cisloulohy . }%
+\advance\cisloulohy by 1%
+}
+
+\let\phi=\varphi
+\let\uhol=\angle
+
+
+\newcount\backup
+\backup = \catcode`\@
+\catcode`\@ = 11
+\def\mydispl@y{\global\dt@ptrue \openup\jot \m@th
+  \everycr={\noalign{\ifdt@p \global\dt@pfalse
+              \ifdim\prevdepth>-1000pt \vskip-\lineskiplimit
+                 \vskip\normallineskiplimit \fi
+            \else \penalty\interdisplaylinepenalty \fi}}}
+\def\my@lign{\tabskip=0pt\everycr={}} % restore inside \displ@y
+\newskip\mycentering \mycentering=0pt plus 1000pt minus 1000pt
+\global\def\eqalignno#1{\mydispl@y \tabskip=\mycentering
+  \halign to\displaywidth{\hfil$\my@lign\displaystyle{##}$%
+    \tabskip=0pt &$\my@lign\displaystyle{{}##}$\hfil
+    \tabskip=\mycentering &\llap{$\my@lign##$}\tabskip=0pt \crcr
+    #1\crcr}}
+\catcode`\@ = \backup
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+\centerline{\nadpis Krunicová inverzia}
+
+\priklad
+V rovine sú dané dve krunice $k$, $\ell$ s prieseèníkmi $A$, $B$. Vezmime priamku $p$ prechádzajúcu bodom $B$, jej druhı prieseèník s krunicou $k$ oznaème $C$, jej druhı prieseèník s krunicou $\ell$ oznaème $D$. Dokáte, e ve¾kos uhla $CAD$ nezávisí od polohy priamky $p$.
+
+\priklad
+V rovine sú dané tri zhodné krunice, ktoré prechádzajú spoloènım bodom $H$. Oznaème druhé prieseèníky tıchto kruníc $A$, $B$, $C$ (rôzne od $H$).
+Dokáte, e $H$ je ortocentrum trojuholníka $ABC$.
+
+\uloha
+Apollóniove úlohy
+
+\uloha
+V rovine sú dané dve krunice $k$, $\ell$ s prieseèníkmi $A$, $C$. V bode $A$ spravíme dotyènicu ku $k$, tá druhıkrát pretne krunicu $\ell$ v bode $D$.
+Bod $B$ je prieseèníkom krunice $k$ s dotyènicou ku krunici $\ell$ v bode $A$. Dokáte, e $|AB|\cdot |CD| = |AC|\cdot |AD|$.
+
+\uloha
+Krunice $k_1$, $k_2$ sa pretínajú v bodoch $A$, $B$. Krunica $k_3$ sa zvonku dotıka kruníc $k_1$, $k_2$ po poradí v bodoch $C$, $E$. Krunica $k_4$ sa zvonku dotıka kruníc $k_1$, $k_2$ po poradí v bodoch $D$, $F$. Dokáte, e krunica opísaná trojuholníku $ACE$ sa dotıka krunice opísanej trojuholníku $ADF$.
+%% Oboz naukowy OM 2004, 6/11
+
+\uloha
+Krunica $\ell$ sa zvnútra dotıka krunice $k$ v bode $A$. Zvolíme bod $B$ na krunici $\ell$. Dotyènica ku $\ell$ v bode $B$ pretne krunicu $k$ v bodoch $D$, $E$. Oznaème $C$ stred toho oblúka $DE$ krunice $k$, ktorı neobsahuje bod $A$. Dokáte, e body $A$, $B$, $C$ leia na priamke.
+
+\uloha
+Krunice $k_1$, $k_2$ sa zvonka dotıkajú v bode $D$. Priamka $p$ sa dotıka kruníc $k_1$, $k_2$ po rade v (rôznych) bodoch $A$, $B$. Úseèka $AC$ je priemerom krunice $k_1$. Priamka $q$ prechádza cez bod $C$ a dotıka sa krunice $k_2$ v bode $E$. Dokáte, e trojuholník $ACE$ je rovnoramennı.
+%% Oboz naukowy OM 2004, 5/2
+
+\uloha
+Dané sú dve krunice $k$, $\ell$ pretínajúce sa v bodoch $D$ a $A$. Spoloèná dotyènica tıchto kruníc blišia k bodu $A$
+sa dotıka krunice $k$ v bode $E$ a krunice $\ell$ v bode $F$. Rovnobeka so spoloènou dotyènicou prechádzajúca bodom $D$ pretína
+krunicu $k$ v bode $C$ a krunicu $\ell$ v bode $B$ (tieto body sú rôzne od bodu $D$). Dokáte, e druhı prieseèník (rôzny od bodu $D$)
+kruníc opísanıch trojuholníkom $CDF$ a $BDE$ leí na priamke $AD$.
+
+\bigskip\hrule
+
+\uloha
+V rovine je danı trojuholník $DEF$ a tri body $A$, $B$, $C$. Dokáte, e existuje krunica taká, e keï pod¾a nej urobíme inverziu, tak obrazy $A'$, $B'$ $C'$ bodov $A$, $B$, $C$ vytvoria trojuholník $A'B'C'$ podobnı trojuholníku $DEF$.
+
+\uloha
+Dané sú krunice $k_1, k_2, k_3, k_4$ tak, e $k_i$ sa zvonka dotıka $k_{i+1}$ pre $i=1,2,3,4$ ($k_5=k_1$). Dokáte, e štyri dotykové body tıchto kruníc leia na jednej krunici.
+
+\uloha
+Dve krunice sa dotıkajú zvonka v bode $A$. Do krivoèiareho trojuholníka urèeného tımito krunicami a ich spoloènou dotyènicou vpíšeme krunicu
+so stredom $O$ a polomerom $r$. Dokáte, e $|AO|\le 3r$.
+
+\uloha
+Krunice $k_1$, $k_2$ sa pretínajú v bodoch $A$, $B$. Priamka rôzna od $AB$ pretína krunicu $k_1$ v bodoch $C$, $D$, krunicu $k_2$ v bodoch $E$, $F$ a priamku $AB$ v bode $P$ leiacom mimo úseèky $AB$. Dokáte, e priamka spájajúca stredy kruníc opísanıch trojuholníkom $ACE$ a $BDF$ prechádza bodom $P$.
+%% Oboz naukowy OM 2002, 10/3
+
+\tazkauloha
+Nech $ABC$ je trojuholník s opísanou krunicou $k$ a nech $D$ je bod na strane $BC$. Dokáte, e krunice dotıkajúce sa $k$, $AD$, $AB$ a $k$, $AD$, $DC$ sa navzájom dotıkajú práve vtedy, keï uhly $BAD$ a $CAD$ majú rovnakú ve¾kos.
+%% Rumunsko, 1997
+
+\tazkauloha
+Daná je polkrunica $k$ s priemerom $AB$ a stredom $O$ a priamka, ktorá pretína polkrunicu $k$ v bodoch $C$ a $D$ a priamku $AB$ v bode $M$ ($MB<MA$, $MD < MC$). Nech $k$ je druhı prieseèník kruníc opísanıch trojuholníkom $AOC$ a $DOB$. Dokáte, e uhol $MKO$ je pravı.
+%% Rusko, 1995
+
+\uloha
+Nech $ABCD$ je konvexnı štvoruholník s kolmımi uhloprieèkami pretínajúcimi sa v bode $O$. Dokáte, e obrazy bodu $O$ v osovej súmernosti pod¾a priamok $AB$, $BC$, $CD$, $DA$ leia na krunici. (Nájdite aj dôkaz bez inverzie.)
+%% USAMO 1993/2
+
+\tazkauloha
+Krunica vpísaná do trojuholníka $ABC$ sa dotıka jeho strán $BC$, $CA$, $AB$ po poradí v bodoch $D$, $E$, $F$. Bod $X$ leí vnútri trojuholníka $ABC$ tak, e krunica vpísaná do trojuholníka $XBC$ sa dotıka priamky $BC$ v bode $D$ a priamok $CX$ a $XB$ v bodoch $Y$ a $Z$ (v tomto poradí). Dokáte, e $EFZY$ je tetivovı štvoruholník.
+%% IMO 1994 proposal
+
+\tazkauloha
+Nech $PQ$ je priemer polkrunice $k$. Krunica $\ell$ sa zvnútra dotıka polkrunice $k$ a dotıka sa priamky $PQ$ v bode $C$. Nech $A$ je bod na $k$ a $B$ bod na priamke $PQ$ tak, e priamka $AB$ je kolmá na priamku $PQ$ a dotıka sa krunice $\ell$. Dokáte, e $AC$ je osou uhla $PAB$.
+%% Izrael 1995
+
+\tazkauloha
+Nech K, L, M sú dotykové body krunice vpísanej do trojuholníka ABC so stranami BC, CA, AB (v tomto poradí). Dokáte, e ortocentrum trojuholníka KLM, stred krunice vpísanej do trojuholníka ABC a stred krunice opísanej trojuholníku ABC leia na jednej priamke.
+%% Iran 1995
+%% solution: invert through incircle and superimpose original and inverted diagrams
+
+\tazkauloha
+Nech $ABC$ je trojuholník a $O$ stred jemu opísanej krunice. Priamky $AB$ a $AC$ pretínajú krunicu opísanú trojuholníku $BOC$ po druhıkrát v bodoch $B_1$ a $C_1$ (v tomto poradí). Nech $D$ je prieseèník priamok $BC$ a $B_1C_1$. Dokáte, e krunica dotıkajúca sa priamky $AD$ v bode $A$, ktorej stred leí na priamke $B_1C_1$, je kolmá na krunicu s priemerom $OD$.
+%% MOP 1997
+
+\tazkauloha
+Nech $O$ je stred krunice opísanej štvoruholníku $ABCD$, $I$ je stred krunice doò vpísanej a $P$ prieseèník jeho uhloprieèok. Dokáte, e body $O$, $I$, $P$ leia na jednej priamke. (Navyše bod $P$ je pevnı pre všetky štvoruholníky, ktoré sa dajú vpísa do danej krunice tak, aby druhá daná krunica bola jeho vpísanou.)
+%% Czech-Polish-Slovak Match 2005
+
+\tazkauloha
+Šesuholník $ABCDEF$ je vpísanı do krunice $k$. Krunice $k_1,k_2,k_3,k_4,k_5,k_6$ sa zvnútra dotıkajú krunice $k$ v bodoch $A$, $B$, $C$, $D$, $E$, $F$.
+Krunica $k_i$ sa zvonka dotıka krunice $k_{i+1}$ pre $i=1,2,\dots,6$ (pritom $k_7=k_1$). Dokáte, e priamky $AD$, $BE$, $CF$ sa pretínajú v jednom bode.
+%% Oboz naukowy OM 2004, 39/8
+
+\tazkauloha
+Nech $P$ je bod vnútri trojuholníka $ABC$ takı, e 
+$$
+|\uhol APB|-|\uhol ACB|=|\uhol APC|-|\uhol ABC|.
+$$
+Nech $D$, $E$ sú stredy kruníc vpísanıch do trojuholníkov $APB$ a $APC$. Dokáte, e priamky $AP$, $BD$, $CE$ prechádzajú jednım bodom.
+%% IMO 1996, Problem 2
+
+\end{document}
