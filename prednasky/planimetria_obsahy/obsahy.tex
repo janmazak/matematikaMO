@@ -1,0 +1,366 @@
+%% obsahy a suvislosti, na ESF, august 2006
+%% Mazo
+
+\documentclass{article}
+\usepackage{slovak}
+%\usepackage{palatino}
+%\usepackage{picins}
+\usepackage[dvips]{graphicx}
+\usepackage{amsmath}
+
+\pagestyle{empty}
+\advance\textwidth by 3.2cm
+\advance\hoffset by -1.6cm
+\advance\textheight by 4cm
+\advance\voffset by -2cm
+\parindent = 0pt
+\parskip = .4\baselineskip
+
+\let\uhol=\angle
+
+\font\nadpis = csbx10 scaled 1800
+\font\fontkapitola = csbx10 scaled 1400
+
+\newcount\cislokapitoly
+\cislokapitoly = 1
+\def\kapitola#1\par{%
+{\bigskip
+\hskip 1cm {\fontkapitola\number\cislokapitoly. #1}\par}
+\bigskip
+\advance\cislokapitoly by 1}
+
+\def\komentar#1{\relax}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\def\FIXME{{\nadpis FIXME}}
+
+\newcount\cisloulohy
+\cisloulohy = 1
+
+\def\uloha{%
+\medskip{\bf Úloha\ \number\cisloulohy . }%
+\advance\cisloulohy by 1%
+}
+
+\newcount\cislohintu
+\cislohintu = 1
+\def\hint{%
+\bigskip{\bf \number\cislohintu . }%
+\advance\cislohintu by 1%
+}
+
+\newcount\cisloriesenia
+\cisloriesenia = 1
+\def\riesenie{%
+\bigskip{\bf \number\cisloriesenia . }%
+\advance\cisloriesenia by 1%
+}
+
+\newcount\cisloprikladu
+\cisloprikladu = 1
+\def\priklad{%
+\bigskip{\bf Príklad\ \number\cisloprikladu . }%
+\advance\cisloprikladu by 1%
+}
+
+\def\riespr{{\it Riešenie:\/\ }}
+
+\def\poznamka{{\it Poznámka:\/\ }}
+
+\newdimen\sirka
+\setbox 0 = \hbox{$*\,$}
+\sirka = \wd0
+
+\def\tazkauloha{%
+\hskip -\sirka
+$*\,${\bf Úloha \number\cisloulohy . }%
+\advance\cisloulohy by 1%
+}
+
+\let\phi=\varphi
+\let\uhol=\angle
+
+
+\newcount\backup
+\backup = \catcode`\@
+\catcode`\@ = 11
+\def\mydispl@y{\global\dt@ptrue \openup\jot \m@th
+  \everycr={\noalign{\ifdt@p \global\dt@pfalse
+              \ifdim\prevdepth>-1000pt \vskip-\lineskiplimit
+                 \vskip\normallineskiplimit \fi
+            \else \penalty\interdisplaylinepenalty \fi}}}
+\def\my@lign{\tabskip=0pt\everycr={}} % restore inside \displ@y
+\newskip\mycentering \mycentering=0pt plus 1000pt minus 1000pt
+\global\def\eqalignno#1{\mydispl@y \tabskip=\mycentering
+  \halign to\displaywidth{\hfil$\my@lign\displaystyle{##}$%
+    \tabskip=0pt &$\my@lign\displaystyle{{}##}$\hfil
+    \tabskip=\mycentering &\llap{$\my@lign##$}\tabskip=0pt \crcr
+    #1\crcr}}
+\catcode`\@ = \backup
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+\centerline{\nadpis Obsahy a ich vyuitie v planimetrii}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\kapitola Úvod
+
+Pri práci so iakmi na matematickom krúku a sústredeniach korešpondenènıch seminárov som si všimol, e im chıba ucelenejší poh¾ad na planimetriu. Prejavuje sa to najmä pri riešení úloh. Vezmime si úlohy napríklad z MO. S poznatkami, ktoré iaci preberali v škole, by mali tieto úlohy vyrieši. Keï im prezentujem riešenie, ¾ahko ho pochopia. Avšak èasto nedokáu riešenie samostatne objavi. A aj keï nieèo vyriešia a nechám si vysvetli riešenie, nedokáu odpoveda na otázku \uv{Preèo toto platí?}. Typickım príkladom je nieko¾ko faktov, ktoré sa v škole preberajú, deti však nevedia, odkia¾ sa vzali:
+
+1. Súèet uhlov v trojuholníku je $180^\circ$.\\
+2. anice (vıšky, osi uhlov) trojuholníka sa pretínajú v jednom bode.\\
+3. Trojuholníku sa vdy dá opísa práve jedna krunica.
+
+iaci nepoznajú dôkazy tıchto tvrdení. Preto samotné tvrdenia èasto zabúdajú. Nenauèia sa díva sa na matematiku ako na ucelenı systém. Ani geometricky uvaova, metódy dôkazov tıchto tvrdení sú pouèné.
+
+Cie¾om tohto textu je ukáza si na nieko¾kıch príkladoch súvislosti v planimetrii. Konkrétne sa pozrieme na obsahy, ich vyuitie a súvis s podobnosou. Obtianosou je materiál vhodnı skôr pre stredoškolákov, alebo pre matematické krúky v poslednıch roèníkoch ZŠ. Úlohy sú formulované stredoškolsky, ako v MO kat. A a C. Formulácie treba prispôsobi iakom. Napríklad: Pri práci so základoškolákmi sa skúste (aspoò spoèiatku) vyhnú formulácii \uv{dokáte, e\dots{}}, ktorá nemá pre tıchto iakov iaden obsah (absencia dôkazov v~osnovách).
+
+Úlohy nie sú ¾ahké a deom môe ich riešenie trva dlho (štvrhodinu aj pri ¾ahkıch úlohách), aj keï im trocha pomáhame. Pri riešení kladieme deom vhodné otázky. Vhodné otázky sú {\it všeobecné} a zodpovedajú základnım myšlienkovım pochodom pri riešení akejko¾vek úlohy (problému). Keï sa ich budeme pıta dostatoène èasto, deti sa nauèia klás si takéto otázky samé od seba (mono nie na vedomej úrovni). A potom u budú vedie rieši samostatne. To sa samozrejme nedá dosiahnu za krátky èas, trvá to roky.
+
+Rozoberme si ako príklad otázku \uv{Kde môeš poui Pytagorovu vetu?} Táto otázka vôbec nespåòa úèel popísanı v predošlom odstavci a navyše je škodlivá. Vezmime si iaka, ktorı úlohu nedokáe sám vyrieši. Èo sa stane, keï poèuje túto otázku? Prvé, èo ho zarazí, je, e odkia¾ na to uèite¾ prišiel. Aká mágia za tım je? Preèo práve Pytagorova veta a nie Tálesova, Euklidova\dots{}? iak nevidí súvis medzi úlohou a Pytagorovou vetou, preto ani nabudúce nepríde na to, e treba poui Pytagorovu vetu. Ak iak Pytagorovu vetu dobre pozná, mal dostatok èasu úlohu rieši a nedokázal tú vetu poui, tak ani teraz nebude vedie, èo s òou. Ak iak Pytagorovu vetu dobre nepozná, tak mu uèite¾ova \uv{pomoc} aj tak nepomôe, pretoe jeho poznatok je nedostatoènı (alebo formálny --- potrebuje vidie trojuholník so stranami $a$, $b$, $c$, aby mohol poui vzorec $a^2+b^2=c^2$). Inak povedané, otázka mu nepomohla úlohu vyrieši. Tento príklad ilustruje, preèo treba opatrnos pri kladení otázok a pomáhaní iakom.
+
+Viac o kladení otázok nájdete v materiáli {\it Dá sa z päuholníka posklada štvorec?\/}, ktorı si môete stiahnu na {\tt www.ucmeradi.sk}.
+
+Pri èítaní si kreslite vlastné obrázky. Podobne ku kresleniu ve¾kıch, preh¾adnıch obrázkov nabádajte aj iakov.
+
+\kapitola Obsahy
+
+Dohodneme sa kvôli struènosti a preh¾adnosti na nasledovnom oznaèení. Dåku úseèky $AB$ budeme oznaèova prosto $AB$ bez absolútnej hodnoty. Ve¾kos obsahu trojuholníka $ABC$ budeme oznaèova $[ABC]$, podobne pre štvoruholník $ABCD$ jeho obsah bude $[ABCD]$. Ve¾kos uhla $ABC$ oznaèíme $ABC$, pokia¾ bude z kontextu jasné, o èo ide. Takéto znaèenie volíme kvôli struènosti: zvislé èiary pri dåke úseèky sú zbytoèné, pretoe dåka úseèky je jediná rozumná vec, ktorá sa dá na úseèke mera. Vırazy bez zbytoènıch symbolov sa ¾ahšie a rıchlejšie èítajú.
+(Toto znaèenie je viacmenej štandardné, napríklad v~Po¾sku, Rumunsku èi v anglicky hovoriacich krajinách.)
+
+Definícia obsahu nie je jednoduchá. Viac na túto tému si môete pozrie napríklad na stránke {\tt http://en.wikipedia.org/wiki/Area\_\%28geometry\%29\#How\_to\_define\_area}. Euklides mnoho tvrdení vo svojich Základoch dokazuje pomocou obsahov, pritom pojem obsah ani nepouíva a narába s ním intuitívne, vdy ako s pomerom obsahov. S obsahom budeme intuitívne pracova i my, napríklad ako s plochou koberca potrebného na pokrytie rovinného útvaru.
+
+Ukáeme si Euklidov dôkaz vety {\it uu\/} o podobnosti trojuholníkov. Táto úloha nie je vhodná pre iakov medzi prvımi na samostatné riešenie: dokazujeme ekvivalenciu a v dôkaze pouívame obsahy trojuholníkov, o ktorıch sa v zadaní nehovorí niè. Tento dôkaz tu uvádzam ako príklad peknej súvislosti medzi spomínanımi pojmami. V prípade, e chceme úlohu predloi deom, treba ju rozdeli na vhodné èasti. A ešte pred touto úlohou treba úvod o obsahoch.
+
+Cie¾om prednášky je privies iakov k tomu, aby si vybudovali správne asociácie (medzi pomermi obsahov, vzdialeností a podobnosou) a dokázali takéto úlohy rieši samostatne.
+
+\priklad
+Danı je trojuholník $ABC$ a body $D$, $E$ na polpriamkach opaènıch k $BA$, $CA$ (v tomto poradí). Dokáte, e priamky $BC$ a $DE$ sú rovnobené práve vtedy, keï platí $BA/DA = CA/EA$.
+
+\riespr
+Kedy sú dve priamky rovnobené? Keï je vzdialenos medzi nimi stále rovnaká. V našom prípade to znamená, e keï vezmeme trojuholníky $BCD$ a $BCE$ so spoloènou základòou $BC$, tak ich vıška na túto základòu je rovnaká. Preto majú rovnakı obsah. Toto tvrdenie vieme aj obráti.
+
+Z druhej strany {\it prevedieme pomer vzdialeností na pomer obsahov\/}. Trojuholníky $ABE$ a $ADE$ majú rovnakú vıšku na základòu $AB$ (resp. $AD$), preto pomer ich obsahov je rovnı pomeru základní: $BA/DA=[ABE]/[ADE]$. Podobne platí $CA/EA=[ACD]/[AED]$. Porovnáme to s pôvodnou rovnosou pomerov a vidíme, e dokazujeme toto: trojuholníky $BCD$ a $BCE$ majú rovnakı obsah práve vtedy, keï trojuholníky $ACD$ a $ABE$ majú rovnakı obsah. Nako¾ko platí $[ABE]=[ABC]+[BCE]$ a $[ACD]=[ABC]+[BCD]$, máme dôkaz hotovı.
+
+Prednášku zaèneme zopakovaním školskıch poznatkov o obsahu. Nejde ani tak o vzorce, z tıch si vystaèíme so základnım $S=av_a/2$. Skôr sa venujeme aplikáciám tohto vzorca a prevedením pomeru základní na pomer obsahov. Potom spolu s demi riešime príklady z ïalšej kapitoly.
+
+\kapitola Nieko¾ko príkladov
+
+\priklad
+Zistite ve¾kos vıšky na preponu v pravouhlom trojuholníku s odvesnami dåok $a$, $b$.
+
+\riespr
+Táto úloha je dobrá na úvod, ak iaci poznajú Pytagorovu vetu. (Inak je úplne nevhodná.)
+
+Obsah trojuholníka zo zadania vieme urèi dvomi spôsobmi. Raz za základòu zvolíme preponu, druhıkrát jednu z odvesien. Obe tieto vyjadrenia musia da tú istú hodnotu, preto $v_c=ab/\sqrt{a^2+b^2}$.
+
+\priklad
+Zistite, v akom pomere pretína v trojuholníku os uhla proti¾ahlú stranu.
+
+Samotné zadanie hovorí, e máme zisti akısi pomer. Nakreslíme si obrázok. Kde sa vyskytujú pomery? Pri podobnosti.
+Aby sme mohli spravi vıpoèet pomeru, treba si zavies oznaèenie. Nech teda náš trojuholník je $ABC$, ideme zisti, v akom pomere delí os uhla $ACB$ proti¾ahlú stranu. Nech $K$ je prieseèník osi uhla $ACB$ s proti¾ahlou stranou. Úloha sa dá rieši sínusovou vetou, skúste to sami. Takto postupujeme vtedy, keï neh¾adáme v úlohe krásu, ale potrebujeme ju v krátkom èase zráta. (Alebo overi nejakú hypotézu bez hlbšieho geometrického vh¾adu do situácie.)
+ 
+{\it Riešenie 1:\/\ }
+Pouijeme ideu z Euklidovho dôkazu a namiesto pomeru $AK/BK$ budeme h¾ada pomer $[AKC]/[BKC]$. Trojuholníky $AKC$ a $BKC$ majú spoloènú základòu $KC$, take staèí zisti pomer ich vıšok. Nech $P$, $Q$ sú v tomto poradí päty kolmíc z bodov $A$, $B$ na priamku $KC$. Potrebujeme vyui, e $CK$ je osou uhla $ACB$. Trojuholníky $APC$ a $BPC$ sú pravouhlé s rovnakım ostrım uhlom pri vrchole $C$, take sú podobné a platí $AP/BQ=AC/BC$. Teda os uhla delí proti¾ahlú stranu v~pomere pri¾ahlıch strán.
+
+{\it Riešenie 2:\/\ }
+V ïalšom riešení tej istej úlohy skúsime h¾adanı pomer pomocou podobnosti previes na inı. Chceme podobnos, veïme preto bodom $K$ rovnobeku s priamkou $BC$ a jej prieseèník so stranou $AC$ oznaème $L$. Trojuholník $KLC$ je rovnoramennı (preèo?), take platí $LC=LK$. Potom pre h¾adanı pomer z podobnosti vhodnıch trojuholníkov (a na základe poslednej rovnosti) dostávame
+$$
+{AK\over BK}={AL\over CL}={AL\over LK}={AC\over BC}.
+$$
+
+aisko tohto riešenia spoèíva v prvom kroku, musíme si dokresli vhodnú priamku. Ako ju objavi? Mala by prechádza bodom $K$, pretoe ten urèuje h¾adanı pomer. A malo by sa pri tom nejako vyui, e $CK$ je osou uhla $ACB$. Tento uhol je urèenı priamkami $BC$ a $AC$, preto by h¾adaná priamka mohla by rovnobená s jednou z nich. A je to. (Podobnım spôsobom sa dá dokáza Menelaova veta. Proste vedieme vhodnú rovnobeku. Pritom na tejto vo¾be a tak nezáleí, dôkaz sa dá dokonèi pre nieko¾ko rôznych volieb rovnobeky.)
+
+A ešte jedno riešenie tej istej úlohy. Stretol som sa s ním, keï som si myslel, e u o tejto úlohe viem všetko. Ale veru nie. Pochádza od jedného zo iakov na krúku a je zaloené na geniálnej myšlienke. \footnote{Neviem, ako na takéto riešenie prirodzenou cestou navies iakov.}
+
+{\it Riešenie 3:\/\ }
+Nech $B_1$ je obraz bodu $B$ v osovej súmernosti pod¾a osi uhla $ACB$. Nech $B_2$ je takı bod na priamke $KC$, e $B_1K = B_1B_2$. Potom pre ve¾kosti uhlov platí $KBB_1 = KB_1B = B_2B_1B$. Teda priamky $B_1B_2$ a $AB$ sú rovnobené. Štvoruholník $KBB_2B_1$ je rovnobeník. Trojuholníky $AKC$ a~$B_1B_2C$ sú podobné. Preto $AK/KB=AK/B_1B_2=AC/B_1C=AC/BC$.
+
+\priklad
+anice trojuholníka sa pretínajú v jednom bode. Preèo je to tak?
+
+\riespr
+Nakreslíme si obrázok. Ak doòho nakreslíme všetky tri anice tak, e prechádzajú jednım bodom, tak je zle: bude nás to akurát zavádza. Keï ich nakreslíme tak, e neprechádzajú jednım bodom a skúsime odvodi spor, zistíme, e to nejde: èo u sa tak dá odvodi z predpokladu, e nejaké priamky {\it neprechádzajú} jednım bodom? Preto do obrázka nakreslíme presne dve anice. Nech $ABC$ je trojuholník, $T$ prieseèník jeho aníc na strany $CA$ a $CB$ a nech $S$ je prieseèník priamky $CT$ so stranou $AB$. Nech $K$, $L$ sú stredy strán $CA$, $CB$. Priamka $CT$ je anica práve vtedy, keï $AS=SB$, teda keï $SA/SB = 1$. Prevedieme to na pomer obsahov. Nech vzdialenosti bodov $A$ a $B$ od priamky $CS$ sú $v_1$ a $v_2$.
+$$
+{SA\over SB}={[ASC]\over [BSC]}={v_1\over v_2}={{1\over 2}\,CT\cdot v_1\over{1\over 2}\,CT\cdot v_2}={[ATC]\over [BTC]}={2[ATK]\over 2[BTL]}={[ATK]\over [BTL]}
+$$
+Ostáva dokáza, e trojuholníky $ATK$ a $BTL$ majú rovnakı obsah. To ponechávame na èitate¾a. (Návod: Ako vyuijeme, e tieto trojuholníky sú urèené anicami?) 
+
+Pokraèovaním v tejto úvahe sa dá dokáza, e anice delia trojuholník na $6$ èastí s rovnakım obsahom a sú rozdelené aiskom na èasti v pomere dåok $2:1$. Prvá èas tejto úvahy sa poui na dôkaz Cevovej vety, vyskúšajte si to.
+\footnote{{\tt http://www-history.mcs.st-and.ac.uk/\~{}john/MT4521/Lectures/L14.html}\\
+\hskip 1cm Spomínanı dôkaz nájdete aj v knihe {\it Geometry revisited\/} od Coxetera a Greitzera.}
+
+\kapitola Ïalšie úlohy
+
+Najlepšie, èo môete pre prednášku urobi, je venova dostatok èasu riešeniu úloh. Nasledujúce úlohy sú zoradené viacmenej pod¾a odhadovanej obtianosti a náväznosti (pri riešení úlohy sa pouije vısledok alebo metóda z niektorej predchádzajúcej). Pri ich riešení sa vyuívajú najmä obsahy a~podobnos trojuholníkov. Úlohy sú prebraté z korešpondenèného seminára, z matematickej olympiády alebo úèelovo vymyslené.
+
+\uloha
+Danı je lichobeník $ABCD$ s prieseèníkom uhloprieèok $P$. Obsah trojuholníka $ADP$ je $6$, obsah trojuholníka $CDP$ je $9$. Zistite obsah $S$ lichobeníka $ABCD$.
+
+\uloha
+Danı je lichobeník $ABCD$ s dlhšou základòou $AB$. Bodom $D$ veïme rovnobeku so stranou $BC$ a jej prieseèník s priamkou $AC$ oznaème $E$. Dokáte, e obsahy trojuholníkov $ACD$ a~$EBC$ sú rovnaké.
+
+\uloha
+V~rovnobeníku $ABCD$ si na strane $BC$ zvolíme ¾ubovo¾ne bod $E$.
+Priamka $AE$ pretne uhloprieèku $BD$ v~bode $G$ a
+priamku $DC$ v~bode $F$ ($F$ leí na polpriamke
+$DC$ za bodom $C$). Dokáete zisti ve¾kos
+úseèky $EF$ (v~cm), ak viete iba to¾ko, e platí $|AG|=6$\,cm a
+$|GE|=4$\,cm?
+
+\uloha
+Nech $ABCD$ je lichobeník. Prieseèník jeho predåenıch ramien oznaème $K$, prieseèník uhloprieèok je $L$, stred úseèky $AB$ je $M$ a stred úseèky $CD$ je $N$. Dokáte, e body $K$, $L$, $M$, $N$ leia na priamke.
+
+\uloha
+Dané sú dva rovnobeníky $ABCD$ a $EFGH$ také, e bod $D$ je totonı s bodom $H$, bod $E$ leí na strane $AB$ a bod $C$ leí na strane $FG$. Dokáte, e tieto dva rovnobeníky majú rovnakı obsah.
+
+\uloha
+Danı je trojuholník $ABC$. Na strane $AB$ leí bod $D$ tak, e je v jednej tretine tejto strany blišie k~bodu $A$. Na strane $BC$ leí bod $E$ tak, e je v jednej štvrtine tejto strany blišie k bodu $B$. Na strane $AC$ leí bod $F$ tak, e je v jednej polovici tejto strany. Zistite, akı je pomer obsahov trojuholníkov $DEF$ a $ABC$.
+
+\uloha
+Nech $P$ je bod vnútri rovnostranného trojuholníka $ABC$. Dokáte, e súèet vzdialeností bodu $P$ od strán trojuholníka $ABC$ nezávisí od polohy tohto bodu.
+
+\uloha
+Nech $K$, $L$, $M$, $N$ sú v tomto poradí stredy strán $AB$, $BC$, $CD$, $DA$ štvoruholníka $ABCD$.
+Nech $P$ je prieseèník uhloprieèok štvoruholníka $ABCD$.\\
+a) Dokáte, e prieseèníkom uhloprieèok štvoruholníka $KLMN$ je bod $P$.\\
+b) Zistite, pre ktoré rovnobeníky $ABCD$ je útvar $KLMN$ štvorec.\\
+c) Vyjadrite súèet obsahov trojuholníkov $APD$ a $BPC$ pomocou obsahu $S$ štvoruholníka $ABCD$.
+
+\uloha
+Danı je trojuholník s anicami dåok $x$, $y$, $z$ a obsahom $S$. Dokáte, e z úseèiek dåok $x$, $y$, $z$ sa dá zostavi trojuholník a vyjadrite jeho obsah pomocou $S$.
+
+\uloha
+Rovnostrannı trojuholník je rozdelenı na dve èasti priamkou, ktorá prechádza jeho aiskom. Dokáte, e pomer obsahov tıchto èastí sa nachádza medzi $4/5$ a $5/4$. Platí toto tvrdenie aj pre trojuholníky, ktoré nie sú rovnostranné?
+\footnote{Áno, platí. To preto, e dokazované tvrdenie je {\it teorémou afinnej geometrie\/}. Afinita zachováva pomer obsahov aj pomer vzdialeností na priamke, preto aisko je afinnı pojem. Keï rovnostrannı trojuholník zobrazíme vhodnım afinnım zobrazením na danı ¾ubovo¾nı, tak aisko sa zobrazí na aisko a prenesie sa platnos tvrdenia o pomere obsahov. Viac o afinnej geometrii sa doèítate napríklad na stránke {\tt http://en.wikipedia.org/wiki/Affine\_geometry}.}
+
+\uloha
+V rovnobeníku $ABCD$ sú na uhloprieèke $AC$ zvolené body $E$ a $F$ tak, e $AE=FC$. Priamka $BF$ pretína stranu $CD$ v bode $G$ a priamka $BE$ pretína stranu $AD$ v bode $H$. Dokáte, e priamky $GF$ a $AC$ sú rovnobené.
+
+\uloha
+Na strane $AB$ obdånika $ABCD$ si zvo¾me bod $F$. Os
+úseèky $AF$ pretína uhloprieèku $AC$ v~bode~$G$.
+Úseèky $FD$ a $BG$ sa pretínajú v~bode $H$.
+Dokáte, e trojuholníky $FBH$ a $GHD$ majú
+rovnakı obsah. 
+
+\uloha
+Je danı trojuholník $ABC$. Vnútri jeho strán $BC$, $CA$, $AB$ máme body $K$, $L$, $M$ také, e úseèky $AK$, $BL$, $CM$ sa pretínajú v bode $U$. Dokáte, e ak trojuholníky $AMU$ a $KCU$ majú obsah $P$ a trojuholníky $MBU$ a $CLU$ majú obsah $Q$, tak $P=Q$.
+
+\uloha
+Nech $ABCD$ je konvexnı štvoruholník, $M$ stred strany $AB$ a $N$ stred strany $CD$. Úseèka $MN$ rozde¾uje štvoruholník $ABCD$ na dve èasti s rovnakım obsahom. Dokáte, e $ABCD$ je lichobeník.
+
+\uloha
+Danı je štvoruholník $ABCD$. V jeho rovine leí bod $P$ takı, e ¾ubovo¾ná priamka prechádzajúca bodom $P$ rozdelí štvoruholník $ABCD$ na dve èasti s rovnakım obsahom. Dokáte, e $ABCD$ je rovnobeník.
+
+\uloha
+V rovine leí bod $O$ a štyri body $A$, $B$, $C$, $D$, ktoré sú vrcholmi konvexného štvoruholníka. Pre vzdialenosti tıchto bodov platí $OA\le OB\le OC\le OD$. Dokáte, e pre obsah $P$ štvoruholníka $ACBD$ vdy platí
+$$
+P \le {1\over 2}\,(OA+OD)(OB+OC).
+$$
+Zistite, kedy nastáva rovnos.
+
+\uloha
+V trojuholníku $ABC$ je všetko oznaèené ako obvykle. Ak je uhol $\alpha$ dvakrát takı ve¾kı ako uhol 
+$\beta$, tak $a^2 = b(b+c)$. Dokáte. Platí aj obrátená implikácia?
+({\it Návod:\/} Prepíšte si vzah zo zadania na rovnos dvoch pomerov.)
+
+\uloha
+Na ramene $BC$ lichobeníka $ABCD$ s prieseèníkom uhloprieèok $M$ leí bod $P$ tak, e uhly $APM$ a $DPM$ majú rovnakú ve¾kos. Dokáte, e vzdialenos bodu $B$ od priamky $DP$ je rovnaká ako vzdialenos bodu $C$ od priamky $AP$.
+
+\kapitola Ako rieši geometrické úlohy
+
+Táto kapitola pochádza pôvodne z materiálu o poèítaní uhlov. Ten môete tie nájs na stránke {\tt www.ucmeradi.sk}, doporuèujem si ho preèíta, nako¾ko ilustruje inı poh¾ad na geometrické úlohy. Spolu tieto materiály pokrıvajú takmer všetko, èo treba na úspešné riešenie úloh MO v kategóriách niších ne A a v škole sa to neuèí. Ku kategórii A sa zíde èosi navyše, napríklad tu spomínaná Cevova a Menelaova veta èi krunicová inverzia (príslušné materiály nájdete na {\tt www.ucmeradi.sk}).
+
+Keï dostaneme do rúk úlohu, preèítame si zadanie. Toto prvé preèítanie
+nám dá priblinı obraz o~úlohe. Napríklad zistíme, e sa tam spomínajú
+krunice a úloha je konštrukèná. Potom si zadanie preèítame ešte raz 
+a tentoraz poriadne, dbáme na všetky detaily. Súèasne si popritom kreslíme
+obrázok, staèí náèrt. Keï sa niekde pomılime, napríklad sa majú nejaké dve 
+priamky pretnú a nám akurát vyšli rovnobené (lebo sme si nevhodne zvolili
+nejaké body), tak sa nebojíme zaèa kresli
+odznova. Niektoré úlohy majú obrázok takı nepríjemnı, e sa nám ho nepodarí
+nakresli rukou. Vtedy neváhame poui rysovacie pomôcky. 
+Zrozumite¾nı obrázok je dôleitı. Len málo úloh je takıch, e si vieme
+všetko predstavi aj bez obrázka. A so zlım obrázkom sa zle pracuje: keï tri
+body sú na priamke, tak nech aj na obrázku sú na priamke, inak na to zabudneme.
+Keï je nieèo krunica, tak to má patriène aj vyzera, a nie ako nepodarenı
+zemiak. Èasto treba obrázok skúma a vytvára si hypotézy, napríklad
+o kolmosti priamok. A ako si všimneme, e tie priamky sú na seba kolmé, ak
+na našom obrázku zvierajú uhol $70^\circ$? Na druhej strane keï tri body {\it neleia} na priamke, ani na našom obrázku to tak nemá vyzera, lebo potom to zvádza k chybnım úvahám (zaloenım na nesprávnych predpokladoch).
+
+Keï u máme dobrı obrázok, preèítame si zadanie znova. Tentokrát si k obrázku
+napíšeme všetky dôleité fakty, ktoré sa spomínajú v zadaní. Napríklad ktoré
+priamky sú na seba kolmé, e $BD$ je osou uhla $ABC$ a podobne. Pre kolmos
+priamok èi rovnobenos máme dohodnuté znaèky, ktoré sa dajú kresli do obrázka,
+urèite ich poznáte. Takisto si treba niekam napísa, ktoré body ako vznikli,
+napríklad, e $M$ je prieseèník priamky $AB$ s priamkou $CD$.
+A nakoniec si rozmyslíme a poznamenáme na papier, èo od nás
+v úlohe chcú. Dokáza nieèo? Nájs mnoinu bodov? Zostroji nieèo?
+Niekedy je v zadaní chyba alebo mu nerozumieme. Treba sa spıta toho, kto
+nám úlohu zadal, alebo skúsi zadanie opravi, nie uspokoji sa s triviálnym pozorovaním, e tvrdenie, ktorého dôkaz poadujú,
+neplatí.
+
+\end{document}
+
+
+4. Vnutri stran AB, BC, CA trojuholnika ABC zvolime v tomto poradi
+lubovolne body K, L, M. Dokazte, ze obsah
+aspon jedneho z trojuholnikov MAK, KBL, LCM je mensi alebo sa rovna
+stvrtine obsahu trojuholnika ABC.
+% Vybrane ulohy z MO, 61
+% mazo, alfa
+
+V trojuholniku ABC oznacme E stred strany BC a F stred strany AE. Priamka
+BF pretina usecku AC vo vnutornom bode D. Najdite obsah trojuholnika AFD,
+ak trojuholnik ABC ma obsah 48 nm^2.
+
+
+Danı je trojuholník $ABC$. Nech $B'$ je obraz bodu $B$ v stredovej
+súmernosti so stredom $C$, bod $C'$ je obraz bodu $C$ v stredovej
+súmernosti so stredom $A$ a bod $A'$ je obraz bodu $A$ v stredovej
+súmernosti so stredom $B$.\hfill\break
+a) Zistite pomer obsahov trojuholníkov $AC'A'$ a $ABC$.\hfill\break
+b) Zmaeme body $A$, $B$, $C$ a ostanú len body $A'$, $B'$, $C'$. Dá
+sa z tıchto troch bodov zrekonštruova trojuholník $ABC$? Prípadnú
+konštrukciu zdôvodnite.
+
+% vzorak ulohy 2.7, zima 2006/7
+
+a) Porovnávame obsahy trojuholníkov. Obsah trojuholníka môeme urèi ako polovicu súèinu vıšky a základne. Pomer obsahov môeme urèi, ak poznáme pomery zodpovedajúcich základní a vıšok. Nu, narysujeme, odmeriame, vypoèítame. Vyjde pomer $1,92$ (nie, nevnucujeme toto konkrétne èíslo \smile). Novı obrázok, $2,03$. Spriemerujeme, odhadneme, asi je to presne $2$. Vieme to dokáza?
+
+V našom prípade je najvıhodnejšie zvoli základne na priamke $AB$, spoloènej stranám $AB$ a $AA'$ skúmanıch trojuholníkov.
+
+Nech bod $C$ má od priamky $AB$ vzdialenos $v$. Nech $V$ je päta kolmice z bodu $C$ na priamku $AB$, úseèka $CV$ urèuje vzdialenos $v$. Obraz tejto úseèky v stredovej súmernosti so stredom $A$ urèuje zase vzdialenos bodu $C'$ od priamky $AB$. Táto je však tie rovná $v$, lebo stredová súmernos je zhodné zobrazenie, teda zachováva vzdialenosti. Túto vlastnos si môete ¾ahko dokáza s vyuitím zhodnıch trojuholníkov.
+
+Vıšky trojuholníkov $ABC$ a $AA'C'$ sú teda rovnaké. Základòa trojuholníka $AA'C'$ je dvakrát dlhšia ako základòa trojuholníka $ABC$ (preèo?). Preto má trojuholník $AA'C'$ dvakrát väèší obsah ako trojuholník $ABC$. 
+
+\poznamka
+Niekedy nestaèí ráta obsah trojuholníka tak ako teraz, napríklad, ak nepoznáme vıšku. Èo potom? Pozrite si v tabu¾kách nieko¾ko ïalších vzorcov, pomocou ktorıch vieme zráta obsah trojuholníka. Viete ich odvodi? Alebo inak skontrolova ich správnos? Dajú sa poui na nieèo iné ako na vıpoèet obsahu?
+
+b) Najprv si to narysujeme, aby sme mali presnı obrázok a mohli skúsi nieèo uhádnu. Èo vieme o situácii? Napríklad vieme vısledok z èasti a). Skúsme preto pouvaova o obsahoch. Keï trocha zjemníme úvahu, ktorou sme k tomuto vısledku došli, dostaneme, e trojuholníky $ABC'$ a $A'BC'$ majú rovnakı obsah ako trojuholník $ABC$ (rovnaká základòa, rovnaká vıška). Zopakovaním tejto úvahy pre iné trojuholníky dostaneme, e aj trojuholníky $BCA'$, $B'CA'$, $ACB'$, $AC'B'$ majú rovnakı obsah ako trojuholník $ABC$. Oznaème tento obsah $S$.
+
+Máme danı trojuholník s vrcholmi $A'$, $B'$, $C'$. Tento trojuholník má obsah $7S$. Ako nájdeme bod $A$ v jeho vnútri? Bod $A$ leí na prieseèníku priamok $C'A$ a $A'A$. Tieto priamky síce nepoznáme, ale vieme, e obsah trojuholníka $C'A'A$ je dve sedminy obsahu trojuholníka $A'B'C'$. Keïe tieto dva trojuholníky majú spoloènú základòu $C'A'$, vieme pomer vıšok. A keïe poznáme ve¾kos vıšky trojuholníka $A'B'C'$ na stranu $A'C'$, poznáme aj vzdialenos bodu $A$ od priamky $A'C'$. Preto bod $A$ leí na rovnobeke s priamkou $A'C'$ vo vhodnej vzdialenosti. Tım istım spôsobom urèíme vzdialenos bodu $A$ od priamky $A'B'$, vyjdú štyri sedminy vıšky trojuholníka $A'B'C'$ na stranu $A'B'$. Rovnobeky s priamkami $A'B'$ a $A'C'$, ktoré pouijeme v konštrukcii, majú vdy práve jeden prieseèník (preèo?). Analogicky ako bod $A$ zostrojíme body $B$, $C$. Netreba zabudnú na dôkaz správnosti konštrukcie, prenechávame ho na vás.
+
+\ineries
+Narysovali sme presnı obrázok. Myšlienka skúma obsahy sa nám však vytrvalo vyhıba. Èo ideme h¾ada na tom obrázku? Èosi, èo súvisí so stredovou súmernosou. Bod $A$ je stredom úseèky $CC'$. Podobne $B$ je stredom $AA'$ a $C$ je stredom $BB'$. Naèo sú stredy strán v trojuholníku? Áno, anice a stredné prieèky. anice sa delia v pomere $1:2$. Nejaké pomery. No, poh¾adáme. (Šastnejší èi pozornejší si ten správny pomer všimnú, mne sa nepodarilo.) Tak teda tie stredné prieèky, kdee sú? Zatia¾ tam nie sú, treba èosi dokresli. A to tak, aby sme vyuili to, èo máme. Bod $A$ je stredom úseèky $CC'$. Preto by tımto bodom mala prechádza stredná prieèka nejakého trojuholníka. Tá je rovnobená so základòou tohto trojuholníka. Máme dve monosti; bodom $C$ toti prechádzajú dve priamky -- kandidáti na základne. Nech $D$ je bod na priamke $A'C'$ takı, e priamky $AD$ a $BC$ sú rovnobené. Nech $E$ je prieseèník priamok $BC$ a $A'C'$. Úseèka $AD$ je strednou prieèkou v trojuholníku $C'CE$, preto $C'D=DE$. Úseèka $BE$ je strednou prieèkou v trojuholníku $A'AD$, preto $DE=EA'$. Dokopy máme, e body $D$, $E$ delia úseèku $C'A'$ na tri rovnaké èasti. Preto tieto body vieme zostroji. Rovnako rozdelíme na tretiny aj ostatné strany trojuholníka $A'B'C'$, potom dostaneme body $A$, $B$, $C$ ako prieseèníky vhodnıch priamok. Dôkaz správnosti konštrukcie a diskusiu si u spravíte aj sami.  
+
+Toto riešenie je krátke, ale objavi ho môe trva aj nieko¾ko dní. Ak sa nám pri riešení nedarí niè objavi, treba sa na to vyspa a skúsi nieèo nové (takto sa matematika naozaj robí, èo myslíte, na ko¾ko novıch objavov príde matematik za svoj ivot?). Môeme skúsi aj zavrhnutı prístup, èo sme skúšali predtım, ak vieme, preèo to predtım nefungovalo a vidíme v starom prístupe nejakú novú nádej.
+
+\poznamka
+Vidíme, e obsahy, pomery a podobnos navzájom súvisia. Skúste získané poznatky uplatni pri riešení úloh:\hfil\break
+1. Strany trojuholníka zväèšíme päkrát. Ko¾kokrát sa zväèší obsah?
+2. Kocka $K$ má hranu $\sqrt2$-krát dlhšiu ako kocka $L$. Ko¾kokrát má kocka $K$ väèší objem ako kocka $L$? Ko¾kokrát má kocka $K$ väèší povrch?
+3. Trojuholník $ABC$ má anice s dåkami $x,y,z$. Dá sa úseèiek dåok $x,y,z$ zostavi trojuholník? Ak áno, akı má obsah vzh¾adom na obsah trojuholníka $ABC$?
+4. Zostrojte trojuholník, ak sú dané dåky jeho aníc.\hfil\break
+5. V akom pomere delí os uhla proti¾ahlú stranu? Narysujte, odmerajte, uhádnite a skúste dokáza.\hfil\break
+6. Dokáte, e anice delia trojuholník na šes èastí s rovnakım obsahom.
+Uvedomte si, e na dôkaz prvej èasti tvrdenia (presne šes èastí) potrebujeme dokáza, e anice sa pretínajú v jednom bode. Pri dôkaze tohto tvrdenia by mohli pomôc práve obsahy. Èo je anica? Ako rozde¾uje trojuholník?\hfil\break
+7. Vyjadrite polomer krunice vpísanej do trojuholníka pomocou dåok jeho strán.
+
+Nedajte sa odradi, ak sa vám úlohy nepodarí hneï vyrieši. Vráte sa k nim na druhı deò. Radi vám pri ich riešení poradíme ({\tt mazo@kms.sk}).
+
