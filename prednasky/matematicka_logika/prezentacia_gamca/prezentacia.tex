@@ -1,0 +1,261 @@
+\documentclass[12pt]{beamer}
+\usetheme{default}
+\usecolortheme{crane}
+%\usetheme{Madrid}
+
+\usepackage[utf8x]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[slovak]{babel}
+\usepackage{ucs}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{array}
+\usepackage{amsmath, amssymb}
+%\usepackage[inline]{asymptote}
+
+%\setbeamersize{text margin left=1pt,text margin right=1pt}
+
+\theoremstyle{definition}
+\newtheorem{uloha}{Úloha}
+
+\let\o=\vee
+\let\a=\wedge
+\let\bigo=\bigvee
+\let\biga=\bigwedge
+\let\A\forall
+\let\E\exists
+
+\begin{document}
+	\title{Ako moderná logika vyriešila problémy s~pravdivosťou výrokov}
+	\author{Ján Mazák}
+	\frame{\titlepage}
+	\institute{
+		\inst{1}
+		UK Bratislava}
+
+\begin{frame}
+%\frametitle{Čo je výrok?}
+Čo je výrok? \emph{Oznamovacia veta},
+\begin{itemize}
+	\item ktorá má pravdivostnú hodnotu.
+	\item ktorej sa dá priradiť pravdivostná hodnota.
+	\item pre ktorú má zmysel otázka na jej platnosť, správnosť, pravdivosť.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+Nech $x$ je kladné reálne číslo. Potom $x^2 > 0$.
+\end{frame}
+
+\begin{frame}
+Predstavme si, že $p$, $q$ sú výroky.
+\begin{itemize}
+	\item Je \uv{$p$ or not $p$} výrok?
+	\item Je \uv{$p$ or not $q$} výrok?
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+Ako definovať \emph{jednoduchý výrok}? \uv{Neobsahuje logické spojky.}
+\begin{itemize}
+	\item $x$ delí $y$
+	\item existuje číslo $k$ také, že $k$ je prirodzené a $y = kx$
+\end{itemize}
+Hovoríme to isté, lenže raz s logickou spojkou a raz bez.\\
+
+Pritom ak chceme uchopiť zložitosť výrokov, treba aspoň vedieť určiť, ktoré sú tie najjednoduchšie.
+\end{frame}
+
+\begin{frame}
+Mimo Zeme žijú niekdajší obyvatelia Atlantídy.\\[5mm]
+Počet hviezd je nepárny.
+\end{frame}
+
+\begin{frame}
+Zajtra bude pršať.\\[5mm]
+\pause
+Odteraz až navždy bude každý deň pršať.
+\end{frame}
+
+\begin{frame}
+Každé párne číslo je súčtom dvoch prvočísel.
+\\(Goldbachova hypotéza)
+\end{frame}
+
+\begin{frame}
+Postupnosť $0,1,2,3,4,5,6,\dots$ je rastúca.
+\begin{itemize}
+\item Je to výrok?
+\pause
+\item Ako vieme, ako bude postupnosť pokračovať?
+\pause
+\item Aký je význam troch bodiek ako symbolu? Môže byť súčasťou výroku popis algoritmu?
+\pause
+\item Môže byť výrok nekonečne dlhý?
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+Bu bayonot emas.
+\begin{itemize}
+\item Znamená \uv{toto nie je výrok} v uzbečtine. Aký jazyk je prípustný?
+\pause
+\item Môže výrok hovoriť o sebe?
+\item Môže viesť k paradoxom: Zoberme množinu $X$ všetkých množín, ktoré neobsahujú samé seba.
+Je veta \uv{$X$ patrí do $X$} výrok? Nemôže to byť ani pravda, ani nepravda,
+pritom to vyzerá ako úplne korektné matematické vyjadrenie.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Sumarizácia problémov}
+\begin{itemize}
+\item Pravdivosť je veľmi ťažké uchopiť.
+\item Výrok v sebe nesie odkazy na reálny svet, ktoré nesúvisia s logikou a ťažko sa vyhodnocujú.
+\item Potrebujeme nejaké obmedzenia na použité symboly a ich prípustné kombinovanie.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Riešenie}
+Definovať výroky tak, aby
+\begin{itemize}
+\item sme sa vyhli pojmu pravdivosti (a pravdivosť výroku definujeme až následne, keď budeme vedieť, čo výrok je);
+\pause
+\item logická štruktúra výroku (spojky, kvantifikátory) bola oddelená od sveta, ktorý výrok popisuje;
+\pause
+\item symboly, z ktorých výrok pozostáva, patrili do nejakej fixnej abecedy a ich použitie podliehalo jasným syntaktickým/gramatickým pravidlám.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Jazyk logiky}
+\alert{Konštanty} zastupujú konkrétne objekty popisovaného sveta.\\[5mm]
+\pause
+\alert{Predikáty} zastupujú nejaké vlastnosti popisovaného sveta, logike je úplne jedno, aké vlastnosti to sú.
+\end{frame}
+
+\begin{frame}{Jazyk logiky}
+\alert{Formula} --- postupnosť symbolov s jasne danými pravidlami (dobre uzátvorkovaná, logické spojky majú správny počet operandov, za kvantifikátorom nasleduje premenná atď.).
+\pause
+Príklady formúl:
+\begin{itemize}
+	\item $0 = 1$
+	\item $\A x (x \neq 0 \implies x = 1)$
+	\item $\A x \E y [P(x) \land Q(x, y)]$
+	\item $P(x) \implies \lnot Q(7)$\\ --- tzv. otvorená formula, zodpovedá výrokovej forme
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+Logika zrazu nie je len jedna --- jednotlivé logické jazyky sa líšia o.i. v konštantách, môžeme tiež obmedziť použitie logických spojok.
+\end{frame}
+
+\begin{frame}
+Chceme vedieť algoritmicky rozhodovať o tom, ktorá postupnosť symbolov je formula?
+\end{frame}
+
+\begin{frame}{Pravdivosť formúl}
+Je $P(\hbox{alf})$ pravda?\\[5mm]
+Aby bolo možné skúmať pravdivosť, treba pridať \alert{intepretácie} pre všetky mimologické symboly.
+\end{frame}
+
+\begin{frame}{Pravdivosť formúl}
+\begin{itemize}
+\item Konštanty budú prvky nejakej množiny $D$ (doména).
+\pause
+\item Predikát je pravdivý pre niektoré prvky z $D$ (podmnožina domény).
+\pause
+\item Kvantifikované premenné nadobúdajú hodnoty z domény:
+	$\E x P(x)$ vyjadruje, že v $D$ sa nachádza prvok $d$, pre ktorý platí $P(d)$.
+\end{itemize}
+\pause
+\vspace*{3mm}
+Úloha: uvažujme formulu $\A x (x = c_0 \lor x = c_1)$.\\
+Nájdite doménu a interpretáciu konštánt, pre ktoré je táto formula
+(a) pravdivá, (b) nepravdivá.
+\end{frame}
+
+\begin{frame}{Načo je to dobré? Databázy}
+Bežná databáza obsahuje tabuľky, v ktorých sú zoznamy objektov spĺňajúcich predikáty.
+Napr. tabuľka s dvojicami (meno, rodné číslo) popisuje predikát s dvomi argumentmi.
+Databázy sa potom pýtame otázky v podobe \uv{nájdi mi všetky $x$, ktoré spĺňajú nejakú formulu vyjadrujúcu požadovanú vlastnosť $x$}.
+Napr. \uv{rodné čísla ľudí, ktorí sa volajú Jozef}.
+\end{frame}
+
+\begin{frame}{Načo je to dobré? Databázy}
+Pri návrhu databázového systému potrebujeme presne popísať, aké formuly je povolené použiť v dotazoch.
+Čím zložitejšie formuly, tým viac nimi možno vyjadriť, ale zároveň sa ťažšie vyhodnocujú.
+Aj preto sa dotazy píšu v špeciálnych jazykoch ako SQL, nie v C či Pythone.
+\end{frame}
+
+
+\begin{frame}{Pravdivosť formúl}
+Podarilo sa nám oddeliť vlastnosť \uv{byť formulou} od pravdivosti.
+Jedna formula môže byť pravdivá i nepravdivá, závisí od interpretácie mimologických symbolov.\\[3mm]
+
+Množine formúl hovoríme teória. Teória tiež môže byť pravdivá i nepravdivá.
+Interpretáciám, v ktorých je teória pravdivá, hovoríme model.
+\end{frame}
+
+\begin{frame}{Pravdivosť formúl}
+Zväčša nás nezaujíma vymýšľanie interpretácií, ale vzťahy medzi formulami
+--- logické vyplývanie.
+Typická otázka je, či z teórie $T$ vyplýva formula $F$.
+Napr. keď ako teóriu $T$ vezmeme aritmetiku a pýtame sa, či z $T$ vyplýva \uv{súčet dvoch prvočísel je vždy párny}.\\[2mm]
+
+Toto sa dá úplne presne definovať: je pravda, že každý model $T$ je modelom $F$?\\
+\alert{Je pravda, že v každom svete, v ktorom sú splnené všetky formuly z $T$, je splnená aj $F$?}
+\end{frame}
+
+\begin{frame}
+Úloha: Nech $A$, $B$ sú formuly.\\
+Je pravda, že z $A \lor\lnot B$ a $B$ vyplýva $A$?
+\end{frame}
+
+\begin{frame}{Čo je to dôkaz?}
+Kľúčová idea: dokazovacie systémy sú mechanické, algoritmické,
+realizovateľné na počítači bez akýchkoľvek úvah o tom,
+čo je pravda či pre ktoré interpretácie je formula pravdivá.
+
+Korektnosť a úplnosť.
+\end{frame}
+
+\begin{frame}{Čo je to dôkaz?}
+Kľúčová idea: dokazovacie systémy sú mechanické, algoritmické,
+realizovateľné na počítači bez akýchkoľvek úvah o tom,
+čo je pravda či pre ktoré interpretácie je formula pravdivá.
+\end{frame}
+
+\begin{frame}
+Hilbertov program (1900):
+nájdime takú sadu axióm (teóriu), že pre každú matem. formulu $F$ možno dokázať $F$ alebo $\lnot F$.\\[5mm]
+Čosi podobne sa podarilo Euklidovi s planimetriou: na základe 5 axióm (v skutočnosti asi 20)
+dokázal platnosť všetkých podstatných planimetrickych tvrdení známych Grékom.
+\end{frame}
+
+\begin{frame}{G\"odelova veta o neúplnosti (1930)}
+Nemožno axiomatizovať ani len aritmetiku.
+Presnejšie, nemožno nájsť teóriu $T$, ktorá má zároveň nasledujúce vlastnosti:
+\begin{itemize}
+\item $T$ je prvého rádu a je korektná [ak nie, pravdivosť nebude totožná s dokázateľnosťou],
+\item z $T$ nevyplýva nepravda [ak by vyplývala, tak z tejto nepravdy už vyplýva čokoľvek, čiže $T$ je nanič],
+\item $T$ je efektívne axiomatizovateľná [ak by nie, nevieme algoritmicky ani len rozhodnúť, čo je formula či dôkaz],
+\item $T$ obsahuje aritmetiku (sčítanie, násobenie, prirodzené čísla),
+\item $T$ je negačne úplná (pre každú formulu vyjadriteľnú v jazyku $T$ máme jej dôkaz alebo vyvrátenie).
+\end{itemize}
+\end{frame}
+% Idea dôkazu: Godelovo tvrdenie G = "toto je veta, ktorá sa nedá dokázať".
+
+\begin{frame}{Čomu sa venuje logika dnes?}
+\begin{itemize}
+\item zúženia prvorádovej logiky (napr. monadická), logika vyššieho rádu
+\item rôzne výpočtové aspekty (automatické dokazovače, SAT solvery, zložitosť problémov)
+\item fuzzy logika, modálne logiky (reprezentácia \uv{možno}/\uv{morálne akceptovateľné}/\dots)
+\item mnoho teoretických tém, ktorým nerozumiem
+\end{itemize}
+\end{frame}
+
+
+\end{document}
+
+
+
+
