@@ -159,6 +159,12 @@ Konštanty: s\\
 Predikáty: C, U
 \end{frame}
 
+\begin{frame}{Jazyk logiky: príklad}
+$\A x\in{\mathbb R}$ je skratka pre $\A x\ (x\in {\mathbb R}\implies \dots)$.\\[3mm]
+$x\in y$ je skratka pre zápis predikátu: $\in(x, y)$\\[3mm]
+Čiže aj teória množín je len špeciálny prípad jazyka logiky.
+\end{frame}
+
 \begin{frame}{Jazyk logiky}
 \alert{Formula} --- postupnosť symbolov s jasne danými pravidlami (dobre uzátvorkovaná, logické spojky majú správny počet operandov, za kvantifikátorom nasleduje premenná atď.).
 \pause
@@ -171,7 +177,7 @@ Príklady formúl:
 \end{itemize}
 \end{frame}
 
-\begin{frame}
+\begin{frame}{Jazyk logiky}
 Jazykov logiky existuje viacero, líšia sa
 \begin{itemize}
 \item konštantami
@@ -185,10 +191,10 @@ Niektoré obmedzenia (napr. kvantifikátory) majú zásadný vplyv na to, čo mo
 
 \begin{frame}{Pravdivosť formúl}
 Je $P(\hbox{alf})$ pravda?\\[5mm]
-Aby bolo možné skúmať pravdivosť, treba pridať \alert{intepretácie} pre všetky mimologické symboly.
+Aby bolo možné skúmať pravdivosť, treba pridať \alert{interpretáciu} pre všetky predikáty a konštanty (\emph{non-logical} symbols).
 \end{frame}
 
-\begin{frame}{Pravdivosť formúl}
+\begin{frame}{Pravdivosť formúl: interpretácia}
 \begin{itemize}
 \item Konštanty budú prvky nejakej množiny $D$ (doména).
 \pause
@@ -220,7 +226,7 @@ Databáza: tabuľky, v ktorých sú uložené zoznamy objektov.
 \end{table}
 Táto tabuľka popisuje akýsi predikát $P$ s dvomi argumentmi.\\
 Dátové typy určujú doménu, naplnenie tabuliek dátami určuje interpretáciu.\\[3mm]
-Databázy sa potom pýtame:\\
+Databázy sa potom pýtame:\\[2mm]
 \uv{rodné čísla ľudí, ktorí sa volajú Jozef} $ = \{rc\ |\ P(Jozef, rc)\}$
 \uv{rodné čísla všetkých ľudí}\hspace*{21.5mm} $ = \{rc\ |\ \E m\ P(m, rc)\}$
 \end{frame}
@@ -270,33 +276,94 @@ Pravidlá musia byť \alert{syntaktické}: pri aplikácii pravidla sa riadime č
 
 \begin{frame}
 Hilbertov program (1900):
-nájdime takú sadu axióm (teóriu), že pre každú matem. formulu $F$ možno dokázať $F$ alebo $\lnot F$.\\[5mm]
-Čosi podobne sa podarilo Euklidovi s planimetriou: na základe 5 axióm (v skutočnosti asi 20)
-dokázal platnosť všetkých podstatných planimetrických tvrdení známych Grékom.
+Nájdime takú sadu axióm (teóriu), že pre každú matem. formulu $F$ možno dokázať $F$ alebo $\lnot F$.\\[5mm]
+(Zovšeobecnenie Euklidových Základov.)
 \end{frame}
 
 \begin{frame}{G\"odelova veta o neúplnosti (1930)}
-Nemožno axiomatizovať ani len aritmetiku.
-Presnejšie, nemožno nájsť teóriu $T$, ktorá má zároveň nasledujúce vlastnosti:
+Nemožno nájsť systém axióm $T$, ktorý má zároveň nasledujúce vlastnosti:
 \begin{itemize}
-\item $T$ je prvého rádu a je korektná [ak nie, pravdivosť nebude totožná s dokázateľnosťou],
-\item z $T$ nevyplýva nepravda [ak by vyplývala, tak z tejto nepravdy už vyplýva čokoľvek, čiže $T$ je nanič],
-\item $T$ je efektívne axiomatizovateľná [ak by nie, nevieme algoritmicky ani len rozhodnúť, čo je formula či dôkaz],
 \item $T$ obsahuje aritmetiku (sčítanie, násobenie, prirodzené čísla),
-\item $T$ je negačne úplná (pre každú formulu vyjadriteľnú v jazyku $T$ máme jej dôkaz alebo vyvrátenie).
+\item $T$ je efektívne axiomatizovateľná [ak by nie, nevieme algoritmicky ani len rozhodnúť, čo je formula či dôkaz],
+\item z $T$ nevyplýva nepravda [ak by vyplývala, tak z tejto nepravdy už vyplýva čokoľvek, čiže $T$ je nanič],
+\item $T$ je korektný [čo sa dá dokázať, je pravda],
+\item $T$ je negačne úplný (pre každú formulu vyjadriteľnú v jazyku $T$ máme jej dôkaz alebo vyvrátenie).
 \end{itemize}
 \end{frame}
 % Idea dôkazu: Godelovo tvrdenie G = "toto je veta, ktorá sa nedá dokázať".
 
-\begin{frame}{Čomu sa venuje logika dnes?}
-\begin{itemize}
-\item zúženia prvorádovej logiky (napr. monadická), logika vyššieho rádu
-\item rôzne výpočtové aspekty (automatické dokazovače, SAT solvery, zložitosť problémov)
-\item fuzzy logika, modálne logiky (reprezentácia \uv{možno}/\uv{morálne akceptovateľné}/\dots)
-\item mnoho teoretických tém, ktorým nerozumiem
-\end{itemize}
+\begin{frame}{Ďalšie nepríjemnosti}
+Ak povolíme kvantifikátory, \alert{neexistuje algoritmus}, ktorý by pre danú formulu rozhodol, či je pravdivá.
+
+Inak: akýkoľvek postup na rozhodovanie pravdivosti pre nejakú vstupnú formulu neskončí (alebo dá nesprávny výsledok).
 \end{frame}
 
+\begin{frame}{Čo robia automatizované dokazovače?}
+Jazyk logiky sa dá navrhnúť tak, že pravdivosť je totožná s dokázateľnosťou.\\[3mm]
+
+Dokazovač potom skúsi postupne generovať všetky možné dôkazy (napr. od najkratších), a ak nájde dôkaz danej formuly, vie, že je pravdivá.
+(Keby sme postupne skúšali všetky domény a interpretácie, nikdy nemôžeme povedať, že formula je pravdivá.)\\[3mm]
+
+V praxi je tento postup prekvapivo úspešný (používajú sa iné metódy, nie priame dôkazy).
+\end{frame}
+
+\begin{frame}{Symbolické vs. numerické výpočty}
+\begin{minipage}[t]{0.45\textwidth}
+Symbolický výpočet:
+\begin{align*}
+	x^2 &= 2\\
+	(x+\sqrt 2)(x-\sqrt 2) &= 0\\
+	x &= \pm\sqrt 2
+\end{align*}
+Symboly majú jasný význam, výpočet pozostáva z overiteľných krokov, ktoré samé osebe \uv{dávajú zmysel}.
+\end{minipage}
+\quad
+\begin{minipage}[t]{0.45\textwidth}
+Numerický výpočet:
+\begin{align*}
+	x^2 &= 2\\
+	x &\in (1, 2)\\
+	x &\in (1.4, 1.5)\\
+	  &\dots\\
+	x &\approx 1.4142
+\end{align*}
+Kroky výpočtu nenesú samé osebe zmysel, sú to len aritmetické operácie, výsledok je nespoľahlivý.
+\end{minipage}
+\end{frame}
+
+\begin{frame}{Symbolické vs. aproximačné výpočty}
+\begin{minipage}[t]{0.45\textwidth}
+Symbolické:
+\begin{itemize}
+	\item úprava výrazov
+	\item matematické dôkazy
+	\item expertné systémy (kľúč na určovanie druhu húb)
+\end{itemize}
+\end{minipage}
+\quad
+\begin{minipage}[t]{0.45\textwidth}
+Aproximačné / data-driven:
+\begin{itemize}
+	\item numerická optimalizácia
+	\item strojové učenie
+	\item LLM (ChatGPT)
+\end{itemize}
+\end{minipage}
+\end{frame}
+
+\begin{frame}{Symbolické vs. aproximačné výpočty}
+Nevýhodou výpočtov založených na dátach je chýbajúca kontrola nad smerovaním výpočtu a nemožnosť pochopenia / overenia.
+
+Napr. ChatGPT generuje text, ktorý je \uv{pravdepodobný} (vzhľadom na texty v trénovacích vstupoch). Nijako nevie merať ani overovať správnosť. Preto na začiatku nezvládal ani sčítanie jednociferných čísel. Natrénovaný model umelej inteligencie je niekoľko miliárd reálnych čísel usporiadaných do tabuľky. Z pohľadu naň nik netuší, čo počíta, a sám model nemá žiaden mechanizmus na vysvetlenie toho, čo sa deje.
+\end{frame}
+
+\begin{frame}{AGI: kombinácia symbolických a aproximačných výpočtov}
+Ak chceme závery, pri ktorých možno garantovať správnosť, potrebujeme symbolický výpočet. Ten je však ťažké spraviť: treba \uv{uhádnuť}, ako má vyzerať dôkaz. Potom už ľahko overíme správnosť.\\[3mm]
+
+Na uhádnutie použijeme generatívnu AI:\\
+AlphaProof: navrhuje, ako by mohli vyzerať kroky výpočtu.\\
+AlphaGeometry: navrhuje, aké body, úsečky či kružnice dokresliť do zadania.
+\end{frame}
 
 \end{document}
 
