@@ -1,0 +1,117 @@
+\input slovak.sty
+
+\input amssym
+
+\advance\hsize by 2 cm
+\advance\hoffset by -1 cm
+
+\newcount \uloha
+\uloha = 1
+\def\u{\smallskip\noindent{\bf \the\uloha.\ }\advance\uloha by 1}
+
+\centerline{{\bf Teória èísel}}
+
+Máme tri základné metódy:
+\item{$\bullet$} {\it rozklad na súèin} (bene s vyuitím identít platnıch pre polynómy všeobecne),
+\item{$\bullet$} {\it poèítanie zvyškov} (najmä po delení prvoèíslami, lebo sa ¾ahšie rátajú),
+\item{$\bullet$} {\it nerovnosti a odhady ve¾kosti} (o. i. ak $a\mid b$ a $b\neq 0$, tak $|a|\le |b|$).
+\medskip
+
+Symbolom $(a,b)$ oznaèujeme najväèšieho spoloèného delite¾a èísel $a$ a $b$.
+
+Bezoutova identita: Pre ¾ub. celé èísla $a$ a $b$ existujú celé èísla $x$ a $y$ tak, e $ax+by=(a,b)$.
+
+Malá Fermatova veta: Pre prvoèíslo $p$ a prir. èíslo $a$ nedelite¾né $p$ platí $p\mid a^p-1$.
+
+Eulerova veta: Pre $a$ nesúdelite¾né s $n$ platí $n\mid a^{\varphi(n)}-1$.
+
+Wilsonova veta: Pre prvoèíslo $p$ platí $p\mid (p-1)!+1$.
+
+Bertrandov postulát: Pre kadé prirodzené èíslo $n$ existuje prvoèíslo $p$ také, e $n < p \le 2n$.
+
+Nech $P(n)$ je polynóm s celoèíselnımi koeficientami. Potom pre ¾ub. celé $a$, $b$ platí $a-b\mid P(a)-P(b)$.
+
+Viacej nájdete napr. v {\tt http://thales.doa.fmph.uniba.sk/sleziak/vyuka/2008/tc/tc.pdf} (v slovenèine).
+
+\medskip
+
+\noindent Rozhodnite o platnosti nasledujúcich tvrdení.
+
+\medskip
+
+\u
+Nech $(x,a)=1$. Potom existuje $y$ tak, e $x\mid ay+b$.
+
+\u
+Nech $p$ je prvoèíslo tvaru $4k+3$. Ak $p\mid a^2+b^2$, tak $p\mid a$.
+
+\u
+Èísla $a^p + b^p$ a $(a+b)^p$ dávajú rovnakı zvyšok po delení $p$.
+
+\u
+Pre ¾ub. nepárne prirodzené èísla $p$ a $q$ platí $5\mid pq^5-p^5q$; ak navyše $|p-q|=2$, tak $p+q\mid p^q + q^p$.
+
+\u
+Zistite, pre ktoré $n$ je aspoò jedno z èísel $n^2-1$ a $n^2+1$ mocninou dvojky.
+
+\u
+Platí $343\mid 2^{147}-1$.
+
+\u
+Nájdite všetky dvojice $x$, $y$ také, e $3^x=y\cdot 2^x + 1$.
+
+\u
+Nájdite najväèšie prirodzené èíslo $m$, pre ktoré je èíslo $1978^m-1$ delite¾né èíslom $1000^m-1$.
+
+
+
+\u
+Ktoré èísla zapísané v desiatkovej sústave len pomocou jednotiek sú druhımi mocninami?
+
+\u
+Nech $f(n)=n^4+n^2+1$. Môu by èísla $f(n)$ a $f(n+1)$ nesúdelite¾né?
+
+\u
+Ak $2^n-1$ je prvoèíslo, tak $n$ je prvoèíslo.
+
+\u
+Nech $P$ je polynóm s celoèíselnımi koeficientami, pre ktorı platí $P(5)=2005$. Môe by èíslo $P(2005)$ druhou mocninou?
+
+\u
+Ak $2^n+1$ je prvoèíslo, tak $n$ je mocnina dvojky.
+
+\u
+Pre ¾ub. nesúdelite¾né èísla $a$ a $b$ existuje najväèšie celé èíslo, ktoré sa nedá vyjadri ako súèet $a$-èok a $b$-èok.
+
+\u
+Pre všetky prirodzené èísla $n>1$ je èíslo $n^4+n^2+1$ zloené.
+
+\u
+Nech $n$ je prirodzené èíslo. Akı zvyšok dostaneme, keï èíslo $n^{n+1}+(n+1)^n$ vydelíme èíslom $n(n+1)$?
+
+\u
+Nech $a$, $b$, $c$, $a + b - c$, $b + c - a$, $a + c - b$, $a + b + c$ je sedem rôznych prvoèísel. Súèet nejakıch dvoch z èísel $a$, $b$,
+$c$ je $1000$. Oznaème najväèšie, resp. najmenšie zo spomínanıch siedmich èísel ako $M$, resp. $m$. Nájdite najväèšiu
+monú hodnotu èísla $M - m$.
+
+\u
+Urète všetky prirodzené èísla, ktoré sú nesúdelite¾né so všetkımi èlenmi postupnosti $a_n = 2^n+3^n+6^n-1$, $n\ge 1$.
+
+(Návod: uvaujte o zvyškoch po delení prvoèíslami; pomôe niektorá z viet uvedenıch hore?)
+
+\u
+Nech $a_1, a_2, \dots$ je postupnos celıch èísel, ktorá obsahuje nekoneène ve¾a kladnıch aj zápornıch èlenov. Predpokladajme,
+e pre kadé prirodzené èíslo $n$ dávajú èísla $a_1, a_2, \dots, a_n$ navzájom rôzne zvyšky po delení $n$. Dokáte,
+e kadé prirodzené èíslo sa v postupnosti $(a_n)$ vyskytuje práve raz.
+
+\u
+Dokáte, e pre $n>1$ nie je súèet $\sum_{i=1}^n 1/i$ celé èíslo.
+
+\u
+Èíslo $n!$ je druhou mocninou len pre $n = 1$.
+
+\u
+Nech $p$ je nepárne prvoèíslo. Èísla $1^2\cdot 3^2\cdot \cdots \cdot (p-2)^2$, $2^2\cdot 4^2\cdot \cdots \cdot (p-1)^2$ a $(-1)^{(p+1)/2}$
+dávajú rovnakı zvyšok po delení $p$.
+
+\end

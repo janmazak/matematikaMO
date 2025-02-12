@@ -1,0 +1,102 @@
+\input slovak.sty
+
+\input amssym
+
+\advance\hsize by 2 cm
+\advance\hoffset by -1 cm
+\advance\vsize by 2 cm
+\advance\voffset by -1 cm
+\parindent = 0 pt
+\parskip = .4\baselineskip
+\nopagenumbers
+
+\newcount \uloha
+\uloha = 1
+\def\u{\smallskip\noindent{\bf \the\uloha.\ }\advance\uloha by 1}
+
+\centerline{{\bf Geometria}}
+
+Kreslite si dostatok ve¾kıch, preh¾adnıch obrázkov. Na nasledovnıch úlohách si ukáeme toto:
+\item{$\bullet$} Cie¾avedomé poèítanie uhlov.
+\item{$\bullet$} Práca \uv{odzadu} -- dôkaz ašej implikácie s vyuitím ¾ahšej.
+\item{$\bullet$} Ako ukáza, e úseèka má rovnakú dåku ako súèet dvoch inıch dåok -- prenesieme tie dve dåky ved¾a seba na priamku a budeme h¾ada zhodné trojuholníky.
+
+\smallskip
+
+{\it Veta o stredovom a obvodovom uhle:\/}
+Nech $S$ je stred krunice $k$ prechádzajúcej dvomi rôznymi bodmi $A$ a $B$ a nech $C$ je bod vnútri polroviny $ABS$.
+Bod $C$ leí na krunici $k$ práve vtedy, keï $|\angle ASB|=2|\angle ACB|$. 
+
+Navzájom rôzne body $A$, $B$, $C$, $D$ leia na krunici, ak $|\angle ACB|=|\angle ADB|$ a body $C$ a $D$ leia v rovnakej polrovine vzh¾adom na priamku $AB$.
+
+Štvoruholník je tetivovı práve vtedy, keï súèet ve¾kostí proti¾ahlıch uhlov je $180^\circ$.
+
+{\it Veta o úsekovom uhle:\/}
+Nech $TA$ je tetiva krunice $k$. Priamka $TX$ je dotyènicou krunice $k$ práve vtedy, keï ve¾kos uhla $ATX$ je rovnaká ako ve¾kos obvodového uhla nad tetivou $TA$.
+
+{\it Mocnos bodu ku krunici:\/}
+Nech body $A$, $B$, $C$, $D$ leia krunici $k$, nech $M$ je prieseèník priamok $AB$ a $CD$ a nech $T$ je dotykovı bod dotyènice z bodu $M$ ku krunici $k$.
+Potom platí $|MA|\cdot |MB| = |MC|\cdot |MD| = |MT^2|$.
+
+Ak pre prieseèník $M$ priamok $AB$ a $CD$ platí $|MA|\cdot |MB| = |MC|\cdot |MD|$ a bod $M$ je buï vnútri úseèiek $AB$ a $CD$, alebo mimo oboch tıchto úseèiek, tak body $A$, $B$, $C$, $D$ leia na krunici.
+
+Viac: pošlem na poiadanie e-mailom ({\tt mazak@dcs.fmph.uniba.sk}).
+
+\smallskip\hrule\smallskip
+
+\u
+Dve krunice sa pretínajú v dvoch rôznych bodoch $A$ a $B$. Nech $C$ a $D$ sú prieseèníky priamky $p$ prechádzajúcej bodom $B$ s danım krunicami (rôzne od bodu $B$).
+Dokáte, e ve¾kos uhla $CAD$ nezávisí od vo¾by priamky $p$.
+
+\u
+Krunice $k_1$ a $k_2$ sa pretínajú v dvoch rôznych bodoch $A$, $B$. Bodom $A$ prechádza priamka, ktorá pretína krunice $k_1$ a $k_2$ po druhıkrát v bodoch $C$ a $E$ (v tomto poradí).
+Bodom $B$ prechádza priamka, ktorá pretína krunice $k_1$ a $k_2$ po druhıkrát v bodoch $D$ a $F$ (v tomto poradí).
+Dokáte, e priamky $CD$ a $EF$ sú rovnobené.
+
+\u
+V rovine je danı pravouhlı lichobeník $ABCD$ s dlhšou základòou $AB$ a pravım
+uhlom pri vrchole $A$. Oznaème $k_1$ krunicu zostrojenú nad stranou $AD$
+ako nad priemerom a $k_2$ krunicu, ktorá prechádza bodmi $B$, $C$ a dotıka sa priamky $AB$. Ak majú
+krunice $k_1$, $k_2$ vonkajší dotyk v bode $P$, je priamka $BC$ dotyènicou krunice opísanej
+trojuholníku $CDP$. Dokáte.
+
+\smallskip
+\hrule
+
+\u
+Do krunice $k$ je vpísanı štvoruholník $ABCD$, ktorého uhloprieèka $BD$ nie je priemerom. Dokáte, e prieseèník priamok, ktoré sa krunice $k$ dotıkajú v bodoch $B$ a $D$, leí na priamke $AC$ práve vtedy, keï platí $|AB|\cdot |CD| = |AD| \cdot |BC|$.
+
+\u
+Dokáte, e vıšky v trojuholníku sa pretínajú v jednom bode. (Návod: nech $V$ je prieseèník vıšok z vrcholov $A$ a $B$, cie¾avedomım poèítaním uhlov s vyuitím tetivovıch štvoruholníkov dokáte, e $CV \perp AB$.)
+
+\u
+Nech body $K$, $L$, $M$ leia v tomto poradí vnútri strán $BC$, $CA$, $AB$ trojuholníka $ABC$.
+Dokáte, e ak platí ${AM\over BM}\cdot {BK\over CK}\cdot {CL\over AL}=1$, tak sa priamky $AK$, $BL$, $CM$ pretínajú v jednom bode.
+(Návod: vyuite opaènú implikáciu. Dôkaz opaènej implikácie spravte cez pomery obsahov vhodnıch trojuholníkov alebo si pozrite Cevovu vetu.)
+
+\smallskip
+\hrule
+
+\u
+Na kratšom oblúku $BC$ krunice opísanej rovnostrannému trojuholníku $ABC$ zvolíme bod $P$. Dokáte, e $|AP|=|BP|+|CP|$.
+
+\u
+Nech $ABCD$ je tetivovı štvoruholník, ktorého vnútornı uhol pri vrchole $B$ má
+ve¾kos $60^\circ$.\hfil\break
+a) Ak $|BC| = |CD|$, potom platí $|CD| + |DA| = |AB|$; dokáte.\hfil\break
+b) Rozhodnite, èi platí opaèná implikácia.
+
+\smallskip
+\hrule
+
+\u
+V rovine je daná krunica $k$ a tetiva $AB$. Po jednom z oblúkov $AB$ krunice $K$ sa pohybuje bod $C$. Dokáte, e os uhla $ACB$ prechádza pevnım bodom
+nezávislım od polohy bodu $C$. Nájdite mnoiny bodov, ktoré opíšu stred vpísanej krunice trojuholníka $ABC$, aisko trojuholníka $ABC$ a prieseèník vıšok trojuholníka $ABC$.
+
+\u
+Vnútri oblúka $BC$ krunice opísanej trojuholníku $ABC$, ktorı neobsahuje bod $A$, zvo¾me bod $P$.
+Na polpriamkach $AP$, $BP$ zvolíme postupne body $X$, $Y$ tak, aby platilo $|AX| = |AC|$
+a $|BY | = |BC|$. Ukáte, e kadá takáto priamka $XY$ prechádza pevnım bodom, ktorého poloha nezávisí od vo¾by bodu $P$.
+
+
+\end
