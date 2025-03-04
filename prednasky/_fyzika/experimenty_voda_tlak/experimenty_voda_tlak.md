@@ -16,7 +16,9 @@ Materiál:
 * Nástroje na robenie dierok do plastovej fľaše (klinec, vrták, rôzne priemery) --- E8, E9.
 * Kuchynská váha, kus kovu (napr. masívna lyžica, kladivo, sekáč), drevená palička alebo vzduchom naplnená striekačka --- E10.
 
-_Poznámka_ (vhodné zaradiť po prvom experimente): Čo vieme dokázať experimentom? Nič. Na rozdiel od matematiky, kde robíme nespochybniteľné dôkazy, experimenty slúžia na *vyvracanie* teórií. Pre daný experiment máme hocikoľko iných vysvetlení. Skúsme napr. hľadať alternatívne vysvetlenia toho, že vzduch v striekačke nemožno úplne stlačiť. Pre každé z nich navrhnime experiment alebo postup, ktorý toto vysvetlenie spochybní:
+### Vedecká metóda
+
+_Poznámka_ (vhodné zaradiť po E2): Čo vieme dokázať experimentom? Nič. Na rozdiel od matematiky, kde robíme nespochybniteľné dôkazy, experimenty slúžia na *vyvracanie* teórií. Pre daný experiment máme hocikoľko iných vysvetlení. Skúsme napr. hľadať alternatívne vysvetlenia toho, že vzduch v striekačke nemožno úplne stlačiť. Pre každé z nich navrhnime experiment alebo postup, ktorý toto vysvetlenie spochybní:
 * Priemer striekačky sa nenápadne zužuje, preto je čím ďalej, tým ťažšie tlačiť piest. [Premeriame, vyrobíme inú starostlivejšie.]
 * Pri vývode striekačky je niečo, čo piest odpudzuje (napr. na princípe magnetizmu). [Skúsime iné materiály, rôzne pre piest a striekačku.]
 * Gravitácia či iná vonkajšia sila bráni pohybu piestu. [Zmeníme polohu striekačky, zopakujeme experiment v beztiažovom stave.]
@@ -26,6 +28,16 @@ _Poznámka_ (vhodné zaradiť po prvom experimente): Čo vieme dokázať experim
 
 Podobne funguje aj matematická štatistika: hypotézy _zamietame_, nie potvrdzujeme.
 Sú dva možné výstupy štatistického spracovania zozbieraných dát: _reject_, _failed to reject_. Nikdy nie _confirm_.
+
+_Vedecká metóda_ spoznávania sveta prebieha vo fyzike zhruba takto:
+1. Pozorovanie: niečo zaujímavé si všimneme.
+2. Formulácia otázky: ďalšími pozorovaniami (v prirodzenom či umelom prostredí) sa snažíme spresniť otázku, napr. izolujeme faktory, ktoré majú či nemajú vplyv na pozorovaný jav.
+3. Hypotéza: vytvoríme falzifikovateľné vysvetlenie či predpoveď.
+4. Experimenty: navrhneme experimenty, ktoré môžu spochybniť hypotézu.
+5. Teória: ak niečo dlho napriek snahe nevieme spochybniť, prijmeme to ako možné vysvetlenie javu.
+Po desaťročiach až storočiach sa z toho stane "fyzikálny zákon" (a zároveň priebežne zisťujeme jeho obmedzenia, napr. Newtonova mechanika nefunguje pri rýchlostiach blízkych rýchlosti svetla).
+
+Uvedené experimenty slúžia na ilustráciu diskutovaných javov, nemôžu však byť ich dôkazom.
 
 ### Experimenty
 
