@@ -73,9 +73,9 @@ Počet hviezd je nepárny.
 \end{frame}
 
 \begin{frame}
-Zajtra dva atómy vodíka vytvoria jadro hélia.\\[5mm]
+Zajtra vznikne jadro hélia.\\[5mm]
 \pause
-Odteraz až navždy každú sekundu dva atómy vodíka vytvoria jadro hélia.
+Odteraz až navždy každú sekundu vznikne jadro hélia.
 \end{frame}
 
 \begin{frame}
@@ -307,7 +307,7 @@ Dokazovač potom skúsi postupne generovať všetky možné dôkazy (napr. od na
 V praxi je tento postup prekvapivo úspešný (používajú sa iné metódy, nie priame dôkazy).
 \end{frame}
 
-\begin{frame}{Symbolické vs. numerické výpočty}
+\begin{frame}{Symbolické vs. aproximačné výpočty}
 \begin{minipage}[t]{0.45\textwidth}
 Symbolický výpočet:
 \begin{align*}
@@ -319,7 +319,7 @@ Symboly majú jasný význam, výpočet pozostáva z overiteľných krokov, ktor
 \end{minipage}
 \quad
 \begin{minipage}[t]{0.45\textwidth}
-Numerický výpočet:
+Aproximačný výpočet:
 \begin{align*}
 	x^2 &= 2\\
 	x &\in (1, 2)\\
@@ -346,18 +346,22 @@ Aproximačné / data-driven:
 \begin{itemize}
 	\item numerická optimalizácia
 	\item strojové učenie
+	\item neurónové siete
 	\item LLM (ChatGPT)
 \end{itemize}
 \end{minipage}
 \end{frame}
 
 \begin{frame}{Symbolické vs. aproximačné výpočty}
-Nevýhodou výpočtov založených na dátach je chýbajúca kontrola nad smerovaním výpočtu a nemožnosť pochopenia / overenia.
+Nevýhodou výpočtov založených na dátach je chýbajúca kontrola nad smerovaním výpočtu a nemožnosť pochopenia / overenia.\\[3mm]
 
-Napr. ChatGPT generuje text, ktorý je \uv{pravdepodobný} (vzhľadom na texty v trénovacích vstupoch). Nijako nevie merať ani overovať správnosť. Preto na začiatku nezvládal ani sčítanie jednociferných čísel. Natrénovaný model umelej inteligencie je niekoľko miliárd reálnych čísel usporiadaných do tabuľky. Z pohľadu naň nik netuší, čo počíta, a sám model nemá žiaden mechanizmus na vysvetlenie toho, čo sa deje.
+Napr. ChatGPT generuje text, ktorý je \uv{pravdepodobný} (vzhľadom na texty v trénovacích vstupoch). Nevie merať ani overovať správnosť.
+Na začiatku nezvládal ani sčítanie jednociferných čísel; užitočnosť a spoľahlivosť LLM výrazne stúpne, ak majú prístup ku kalkulačke, ktorá vie robiť symbolickú aritmetiku.\\[3mm]
+
+V kontraste s tým symbolické kalkuly garantujú správnosť. Ukážeme si dva (tablá a rezolvenciu), existuje mnoho ďalších (napr. AlphaProof používa Lean).
 \end{frame}
 
-\begin{frame}{AGI: kombinácia symbolických a aproximačných výpočtov}
+\begin{frame}{AGI: kombinácia symbolického a aproximačného}
 Ak chceme závery, pri ktorých možno garantovať správnosť, potrebujeme symbolický výpočet. Ten je však ťažké spraviť: treba \uv{uhádnuť}, ako má vyzerať dôkaz. Potom už ľahko overíme správnosť.\\[3mm]
 
 Na uhádnutie použijeme generatívnu AI:\\
