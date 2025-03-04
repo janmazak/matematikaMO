@@ -99,6 +99,15 @@ Na kuchynskú váhu postavíme pohár do 2/3 naplnený vodou a do vody ponoríme
 * Hmotnosť, ktorú váha ukazuje, vždy stúpne (nezáleží teda na tom, či daný predmet na vode pláva alebo by sa ponoril, keby sme ho nedržali). Cítime, že vložený predmet je vytláčaný smerom nahor (ak je dostatočne veľký).
 [Voda nadľahčuje všetky predmety, niektoré vďaka tomu plávajú na hladine, iné klesnú ku dnu, lebo gravitácia na nich pôsobí oveľa viac ako nadnášanie vodou (na vysvetlenie vztlakovej sily viď doplňujúcu otázku nižšie). Keď však voda pôsobí silou na prst, musí aj prst pôsobiť presne opačnou silou na vodu. A tá cez pohár prenesie toto pôsobenie na váhu (váha ukazuje vlastne súčet gravitačnej sily pôsobiacej na pohár a vodu a sily, ktorou pôsobí naša ruka proti vztlakovej sile vody pôsobiacej na daný predmet). Všimnite si, že v pohári stúpne ponorením predmetu hladina, to však nemá vplyv na hmotnosť vody.]
 
+### Torricelliho barometer (1644)
+
+V E7 atmosférický tlak zabezpečil, že voda nevytečie z pohára: vyváži tlak vodného stĺpca v pohári. Keby sme však miesto pohára použili nádobu s hĺbkou viac ako 11 metrov, voda sa už neudrží a čiastočne z nej vytečie. Hore by ostalo vákuum (resp. riedka vodná para). Podobný experiment možno realizovať s ortuťou. Tá má výrazne vyššiu hustotu ako voda, preto [vznikne stĺpec vysoký cca 75 cm](https://www.chemedx.org/video/torricelli-barometer).
+
+Pomocou výšky tohto stĺpca možno merať tlak: čím vyšší tlak, tým vyšší stĺpec (a menej vákua). Je to však dosť nepraktický dizajn (o.i. ortuť je jedovatá). Máme lepší, [vystačíme si s vodou](https://www.youtube.com/watch?v=9SQ2FPHCZJk). Pri meraní je veľmi výhodná linearita (dvakrát taký stĺpec, dvakrát väčšia jeho hmotnosť, čiže dvakrát väčšia gravitačná sila, a dvojnásobný tlak) --- stupnica je tak rovnomerná.
+
+
+
+
 ### Plyny
 
 Pre plyny sú podstatné tri veličiny: _teplota_, _tlak_, _objem_. Tie sú zviazané vzťahom **pV/T = konštanta**
@@ -112,11 +121,6 @@ Využitie: vznetový motor (nafta sa vznieti po stlačení vzduchu, ktorému st�
 Predstavme si, že zväčšujeme objem plynu.
 * Ak postupujeme pomaly, teplota sa nebude meniť, stihne sa vyrovnať s okolím. Tlak klesne.
 * Ak postupujeme rýchlo, teplota bude klesať spolu s tlakom. Príklad: chladnička by mohla prudko roztiahnuť plyn, ochladiť pomocou neho jedlo, potom kdesi v kompresore plyn znova stlačiť a vzniknuté teplo rozptýliť do okolia, stlačený plyn znova expandovať atď.
-
-### TODO Torricelli barometer
-
-Ak by sme miesto pohára použili skúmavku dlhú cca 11 m, voda sa už neudrží a čiastočne z nej vytečie; hore by ostalo vákuum, resp. vodná para. Takto funguje ortuťový tlakomer: vďaka vyššej hustote ortuti stačí skúmavka dlhá 76 cm, a so zmenou atmosférického tlaku sa mení výška ortuťového stĺpca v skúmavke --- čím vyšší tlak, tým vyšší stĺpec (a menej vákua).
-
 
 
 
