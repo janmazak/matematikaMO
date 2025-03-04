@@ -1,17 +1,76 @@
 Fyzika --- experimenty s tlakom vzduchu a vody
 
-**E1.** Plastovú priehľadnú striekačku s piestom naplníme do polovice vzduchom a zapcháme prstom otvor.
+Príprava experimentov (závisí od počtu účastníkov, povedzme že cca 10).
+Materiál:
+1. Suchá plastová fľaša cca 1.5 l
+2. Priehľadná malá plastová striekačka
+3. Plastová fľaša plná vody, pevne uzavretá, ponechaná malá bublinka vzduchu
+4. Plastový pohárik, dostatočne veľký hrniec či vedro
+5. Plastová fľaša cca 2 l, vrták na vytvorenie dierok, lepiaca páska
+6. Kuchynská váha, pohár s vodou, kovová lyžica či iný predmet vložiteľný do pohára, drevená palička či striekačka naplnená vzduchom
+lievik na naplnenie flase
+TODO hustilka bike
+
+_Poznámka_: Čo vieme dokázať experimentom? Nič. Na rozdiel od matematiky, kde robíme nespochybniteľné dôkazy, experimenty slúžia na *vyvracanie* teórií. Pre daný experiment máme hocikoľko iných vysvetlení. Skúsme napr. hľadať alternatívne vysvetlenia toho, že vzduch v striekačke nemožno úplne stlačiť. Pre každé z nich navrhnime experiment alebo postup, ktorý toto vysvetlenie spochybní:
+* Priemer striekačky sa nenápadne zužuje, preto je čím ďalej, tým ťažšie tlačiť piest. [Premeriame, vyrobíme inú starostlivejšie.]
+* Pri vývode striekačky je niečo, čo piest odpudzuje (napr. na princípe magnetizmu). [Skúsime iné materiály, rôzne pre piest a striekačku.]
+* Gravitácia či iná vonkajšia sila bráni pohybu piestu. [Zmeníme polohu striekačky, zopakujeme experiment v beztiažovom stave.]
+* Striekačka má netesnosti, niečo niekde uniká či naopak vchádza. [Experimentujeme vo vákuu, prípadne v kontrolovanom prostredí, kde vieme detegovať úniky.]
+* Medzi piestom a striekačkou rastie odpor, napr. kvôli tomu, že sa pri pohybe piest zahrieva. [Znížime trenie mazivom.]
+* Pri pohybe piestu dochádza ku chemickej reakcii (napr. tam žiaden plyn nebol, ale vznikol pri šúchaní piesta o stenu striekačky).
+
+Podobne funguje aj matematická štatistika: hypotézy _zamietame_, nie potvrdzujeme.
+Sú dva možné výstupy štatistického spracovania zozbieraných dát: _reject_ / _failed to reject_. Nikdy nie _confirm_.
+
+**E1.**
+Do suchej plastovej fľaše nadýchame teplý vlhký vzduch (alebo nad hrncom naberieme paru) a vyložíme ju na minútu von do chladného vzduchu, prípadne vložíme do ľadovej vody.
+* Fľaša sa scvrkne. [Pri fixnom tlaku (atmosférický) sa pri poklese teploty musí zmenšiť objem.]
+* Fľaša sa zarosí. [Studený vzduch nemá kapacitu absorbovať toľko vlhkosti, preto sa pri ochladení časť vyzráža. Demonštrovať to možno tiež otvorením okna v zime (zarosí sa), podobne kapacita vody absorbovať soľ či cukor závisí teploty (teplejšia viac, pri ochladení sa vyzráža rozpustená látka z roztoku).]
+
+**E2.**
+Plastovú priehľadnú striekačku s piestom naplníme do polovice vzduchom a zapcháme prstom otvor.
 * Piest možno zatlačiť, ale nie úplne: hoci vzduch nevidno, stlačeniu sa bráni; pri zmenšovaní objemu stúpa tlak.
 * Zatlačme piest úplne a zapchajme otvor. Piest možno povytiahnuť, ale čím viac ho vytiahneme, tým ťažšie to ide.
 Ak piest pustíme, rýchlo sa vráti do pôvodnej polohy.
 [Vzduch je aj vnútri, aj vonku, tlačí tak na piest z oboch strán. Podľa toho, kde je tlak väčší, sa piest posúva.]
 
-**E2.** Zopakujeme so striekačkou naplnenou vodou: piest sa ani nepohne.
+**E3.**
+Zopakujeme E2 so striekačkou naplnenou vodou: piest sa ani nepohne.
 [Kvapaliny sú na rozdiel od plynov nestlačiteľné a teda aj neroztiahnuteľné.]
 
-**E3.** Naplníme hrniec vodou, ponoríme plastový pohár a vypustíme z neho vzduch. Pohár obrátime hore dnom a nadvihneme (aby spodný okraj zostal ponorený). Vytečie z neho voda?
+**E4.**
+Striekačku bez piesta otočíme vývodom nadol, zapcháme ho prstom a naplníme úplne vodou.
+Navrch položíme kus papiera tak, aby prekryl celý otvor a trocha trčal naokolo.
+Čo sa stane, keď striekačku otočíme? A čo ak uvoľníme vývod?
+* Nič, až kým sa papier nerozmočí. Po uvoľnení vývodu však voda hneď vytečie.
+[Atmosférický tlak pôsobiaci na papier bráni vode vytiecť.]
+
+**E5.**
+Blízko vývodu striekačky plnej vzduchu položí dobrovoľník prst. Zapcháme vývod prstom a prudko stlačíme piest (nejaký silný dospelý).
+Ochladí alebo zohreje sa striekačka? Vezmeme hustilku a fúkame koleso na bicykli.
+Ako sa zmení teplota hustilky (najlepšie kovové časti blízko vývodu)?
+Vypustíme z kolesa bicykla vzduch. Ako sa zmení teplota ventilu?
+[Prudké rozpínanie plyn ochladzuje, prudké stláčanie zahrieva.]
+
+**E6.**
+Naplníme hrniec vodou, ponoríme plastový pohár a vypustíme z neho vzduch. Pohár obrátime hore dnom a nadvihneme (aby spodný okraj zostal ponorený). Vytečie z neho voda?
 * Voda nevytečie. [Nedovolí jej to atmosférický tlak. Na vodu v pohári pôsobia dve sily: gravitačná, smerom nadol, a sila smerom nahor vyvolaná atmosférickým tlakom na hladinu kvapaliny, ktorá vďaka nestlačiteľnosti tlak prenáša do každého svojho bodu. Čím vyšší pohár, tým väčšia gravitačná sila. Ak by sme miesto pohára použili skúmavku dlhú cca 11 m, voda sa už neudrží a čiastočne z nej vytečie; hore by ostalo vákuum, resp. vodná para. Takto funguje ortuťový tlakomer: vďaka vyššej hustote ortuti stačí skúmavka dlhá 76 cm, a so zmenou atmosférického tlaku sa mení výška ortuťového stĺpca v skúmavke --- čím vyšší tlak, tým vyšší stĺpec (a menej vákua).]
 
+**E7.**
+Zboku spravíme zdola nahor do plastovej fľaše zhruba 4 dierky. Prelepíme ich páskou a fľašu naplníme vodou. Potom pásku prudko odlepíme.
+* Voda z dierok strieka rôzne ďaleko, tým ďalej, čím nižšia dierka. [Tlak vody s otvorenou hladinou (hydrostatický) je vyšší naspodku, lebo ten tlak vytvára voda nad dierkou + gravitácia Zeme + atmosférický tlak (opäť vzduch plus gravitácia).]
+
+**E8.**
+Zboku plastovej fľaše, blízko ku spodku, spravíme dierku, a naplníme fľašu vodou. Ak nemá vrchnák, voda vyteká. Čo sa stane po zavretí fľaše? A čo by sa stalo, keby diera bola veľmi malá alebo veľmi veľká?
+[Primalou dierkou voda nebude vytekať vôbec kvôli povrchovému napätiu.
+Priveľkou vojde dnu vzduch, čiže sa to bude správať ako pri otvorenom vrchnáku.
+Ak máme otvor vhodnej veľkosti, pri zavretej fľaši zabráni vode vytekať atmosférický tlak:
+voda prestane vytekať v momente, keď sa tlak vodného stĺpca nad dierkou + vzduchu vo fľaši nad vodou vyrovná vonkajšiemu atmosférickému.
+Ideálne by bolo mať miesto dierky jednosmerný ventil umožňujúci výtok vody.]
+
+**E9.**
+6. Na kuchynskú váhu postavíme pohár do 2/3 naplnený vodou a do vody ponoríme najprv prst, potom kovový predmet, potom drevenú paličku či striekačku naplnenú vzduchom (vložený predmet pevne držíme v ruke). Zmení sa číslo na váhe?
+* Hmotnosť, ktorú váha ukazuje, vždy stúpne (nezáleží teda na tom, či daný predmet na vode pláva alebo by sa ponoril, keby sme ho nedržali). Cítime, že prst je vytláčaný smerom nahor. Aj príbor, ale na ňom môže byť efekt slabý až nerozoznateľný. [Voda nadľahčuje všetky predmety, niektoré vďaka tomu plávajú na hladine, iné klesnú ku dnu, lebo gravitácia na nich pôsobí oveľa viac ako nadnášanie vodou (na vysvetlenie vztlakovej sily viď doplňujúcu otázku nižšie). Keď však voda pôsobí silou na prst, musí aj prst pôsobiť presne opačnou silou na vodu. A tá cez pohár prenesie toto pôsobenie na váhu (váha ukazuje vlastne súčet gravitačnej sily pôsobiacej na pohár a vodu a sily, ktorou pôsobí naša ruka proti vztlakovej sile vody pôsobiacej na daný predmet). Všimnite si, že v pohári stúpne ponorením predmetu hladina, to však nemá vplyv na hmotnosť vody.]
 
 
 Pre plyny sú podstatné tri veličiny: teplota, tlak, objem. Tie sú zviazané vzťahom **pV/T = konštanta**
@@ -26,35 +85,9 @@ Predstavme si, že zväčšujeme objem plynu.
 * Ak postupujeme pomaly, teplota sa nebude meniť, stihne sa vyrovnať s okolím. Tlak klesne.
 * Ak postupujeme rýchlo, teplota bude klesať spolu s tlakom. Príklad: chladnička by mohla prudko roztiahnuť plyn, ochladiť pomocou neho jedlo, potom kdesi v kompresore plyn znova stlačiť a vzniknuté teplo rozptýliť do okolia, stlačený plyn znova expandovať atď.
 
-_Poznámka_: Čo vieme dokázať experimentom? Nič. Na rozdiel od matematiky experimenty slúžia na *vyvracanie* teórií. Pre daný experiment máme hocikoľko iných vysvetlení. Skúsme napr. hľadať alternatívne vysvetlenia toho, že vzduch v striekačke nemožno úplne stlačiť. Pre každé z nich navrhnime experiment alebo postup, ktorý toto vysvetlenie spochybní:
-* Priemer striekačky sa nenápadne zužuje, preto je čím ďalej, tým ťažšie tlačiť piest. [Premeriame, vyrobíme inú starostlivejšie.]
-* Pri vývode striekačky je niečo, čo piest odpudzuje (napr. na princípe magnetizmu). [Skúsime iné materiály, rôzne pre piest a striekačku.]
-* Gravitácia či iná vonkajšia sila bráni pohybu piestu. [Zmeníme polohu striekačky, zopakujeme experiment v beztiažovom stave.]
-* Striekačka má netesnosti, niečo niekde uniká či naopak vchádza. [Experimentujeme vo vákuu, prípadne v kontrolovanom prostredí, kde vieme detegovať úniky.]
-* Medzi piestom a striekačkou rastie odpor, napr. kvôli tomu, že sa pri pohybe piest zahrieva. [Znížime trenie mazivom.]
-* Pri pohybe piestu dochádza ku chemickej reakcii (napr. tam žiaden plyn nebol, ale vznikol pri šúchaní piesta o stenu striekačky).
 
 
-**E1.**
-1. Do suchej plastovej fľaše nadýchame teplý vlhký vzduch (alebo nad hrncom naberieme paru) a vyložíme ju na niekoľko minút von do chladného vzduchu.
--> Fľaša sa scvrkne. [Pri fixnom tlaku (atmosférický) sa pri poklese teploty musí zmenšiť objem. Presnejšie, pV/T = konštanta, hoci to neplatí v extrémnych prípadoch a sú tam mierne odchýlky pre jednotlivé plyny.]
--> Fľaša sa zarosí. [Studený vzduch nemá kapacitu absorbovať toľko vlhkosti, preto sa pri ochladení časť vyzráža. Demonštrovať to možno tiež otvorením okna v zime (zarosí sa), podobne kapacita vody absorbovať soľ či cukor závisí teploty (teplejšia viac, pri ochladení sa vyzráža rozpustená látka z roztoku).]
 
-
-5. Zboku spravíme zdola nahor do plastovej fľaše zhruba 4 dierky. Prelepíme ich páskou a fľašu naplníme vodou. Potom pásku prudko odlepíme.
--> Voda z dierok strieka rôzne ďaleko, tým ďalej, čím nižšia dierka. [Tlak vody s otvorenou hladinou (hydrostatický) je vyšší naspodku, lebo ten tlak vytvára voda nad dierkou + gravitácia Zeme + atmosférický tlak (opäť vzduch plus gravitácia).]
-
-6. Na kuchynskú váhu postavíme pohár do 2/3 naplnený vodou a do vody ponoríme najprv prst, potom kovový predmet, potom drevenú paličku či striekačku naplnenú vzduchom (vložený predmet pevne držíme v ruke). Zmení sa číslo na váhe?
--> Hmotnosť, ktorú váha ukazuje, vždy stúpne (nezáleží teda na tom, či daný predmet na vode pláva alebo by sa ponoril, keby sme ho nedržali). Cítime, že prst je vytláčaný smerom nahor. Aj príbor, ale na ňom môže byť efekt slabý až nerozoznateľný. [Voda nadľahčuje všetky predmety, niektoré vďaka tomu plávajú na hladine, iné klesnú ku dnu, lebo gravitácia na nich pôsobí oveľa viac ako nadnášanie vodou (na vysvetlenie vztlakovej sily viď doplňujúcu otázku nižšie). Keď však voda pôsobí silou na prst, musí aj prst pôsobiť presne opačnou silou na vodu. A tá cez pohár prenesie toto pôsobenie na váhu (váha ukazuje vlastne súčet gravitačnej sily pôsobiacej na pohár a vodu a sily, ktorou pôsobí naša ruka proti vztlakovej sile vody pôsobiacej na daný predmet). Všimnite si, že v pohári stúpne ponorením predmetu hladina, to však nemá vplyv na hmotnosť vody.]
-
-Materiál:
-1. Suchá plastová fľaša cca 1.5 l
-2. Priehľadná malá plastová striekačka
-3. Plastová fľaša plná vody, pevne uzavretá, ponechaná malá bublinka vzduchu
-4. Plastový pohárik, dostatočne veľký hrniec či vedro
-5. Plastová fľaša cca 2 l, vrták na vytvorenie dierok, lepiaca páska
-6. Kuchynská váha, pohár s vodou, kovová lyžica či iný predmet vložiteľný do pohára, drevená palička či striekačka naplnená vzduchom
-TODO hustilka bike
 
 
 Doplňujúce otázky:
