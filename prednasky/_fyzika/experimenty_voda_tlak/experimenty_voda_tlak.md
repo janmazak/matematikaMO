@@ -10,20 +10,11 @@ Materiál:
 * Vedro či hrniec s čistou vodou cca izbovej teploty, naplnené do 2/3, 2 ks --- E3, E4, E7.
 * Papierové štvorčeky, ktorými možno s rezervou prekryť veľký otvor na striekačke, 10 ks --- E4.
 * Plastová fľaša plná vody (s maličkou bublinkou) a rovnaká fľaša naplnená vzduchom, po 2-3 ks --- E5.
-* Duša na bicykel, hustilka, po 2-3 ks. Môže byť celý bicykel --- E6.
-* Plastový pohárik, 2 ks --- E7.
+* Duša na bicykel, kompatibilná hustilka, po 2-3 ks. Môže byť celý bicykel --- E6.
+* Plastový pohárik, 2 ks --- E7, E10.
 * Plastová fľaša s vrchnákom, lievik na jej naplnenie --- E8, E9.
 * Nástroje na robenie dierok do plastovej fľaše (klinec, vrták, rôzne priemery) --- E8, E9.
-
-
-
-3. Plastová fľaša plná vody, pevne uzavretá, ponechaná malá bublinka vzduchu
-4. Plastový pohárik, dostatočne veľký hrniec či vedro
-5. Plastová fľaša cca 2 l, vrták na vytvorenie dierok, lepiaca páska
-6. Kuchynská váha, pohár s vodou, kovová lyžica či iný predmet vložiteľný do pohára, drevená palička či striekačka naplnená vzduchom
-lievik na naplnenie flase
-TODO hustilka bike
-TODO sada vrtakov roznej velkosti na dierky
+* Kuchynská váha, kus kovu (napr. masívna lyžica, kladivo, sekáč), drevená palička alebo vzduchom naplnená striekačka --- E10.
 
 _Poznámka_ (vhodné zaradiť po prvom experimente): Čo vieme dokázať experimentom? Nič. Na rozdiel od matematiky, kde robíme nespochybniteľné dôkazy, experimenty slúžia na *vyvracanie* teórií. Pre daný experiment máme hocikoľko iných vysvetlení. Skúsme napr. hľadať alternatívne vysvetlenia toho, že vzduch v striekačke nemožno úplne stlačiť. Pre každé z nich navrhnime experiment alebo postup, ktorý toto vysvetlenie spochybní:
 * Priemer striekačky sa nenápadne zužuje, preto je čím ďalej, tým ťažšie tlačiť piest. [Premeriame, vyrobíme inú starostlivejšie.]
@@ -81,10 +72,10 @@ Naplníme hrniec vodou, ponoríme plastový pohár a vypustíme z neho vzduch. P
 
 **E8.**
 Zboku plastovej fľaše, blízko ku spodku, spravíme dierku, a naplníme fľašu vodou. Ak nemá vrchnák, voda vyteká. Čo sa stane po zavretí fľaše? A čo by sa stalo, keby diera bola veľmi malá alebo veľmi veľká?
-[Primalou dierkou voda nebude vytekať vôbec kvôli povrchovému napätiu.
-Priveľkou vojde dnu vzduch, čiže sa to bude správať ako pri otvorenom vrchnáku.
-Ak máme otvor vhodnej veľkosti, pri zavretej fľaši zabráni vode vytekať atmosférický tlak:
-voda prestane vytekať v momente, keď sa tlak vodného stĺpca nad dierkou + vzduchu vo fľaši nad vodou vyrovná vonkajšiemu atmosférickému.
+* Primalou dierkou voda nebude vytekať vôbec kvôli povrchovému napätiu.
+* Priveľkou vojde dnu vzduch, čiže sa to bude správať ako pri otvorenom vrchnáku a voda nad dierkou vytečie (mení sa rýchlosť vytekania?).
+* Ak máme otvor vhodnej veľkosti, pri zavretej fľaši zabráni vode vytekať atmosférický tlak.
+[Voda prestane vytekať v momente, keď sa tlak vodného stĺpca nad dierkou + vzduchu vo fľaši nad vodou vyrovná vonkajšiemu atmosférickému.
 Ideálne by bolo mať miesto dierky jednosmerný ventil umožňujúci výtok vody.]
 
 **E9.**
@@ -92,8 +83,9 @@ Zboku spravíme zdola nahor do plastovej fľaše zhruba 4 rovnaké dierky, zapch
 * Voda z dierok strieka rôzne ďaleko, tým ďalej, čím nižšia dierka. [Tlak vody s otvorenou hladinou (hydrostatický) je vyšší naspodku, lebo ten tlak vytvára voda nad dierkou + gravitácia Zeme + atmosférický tlak (opäť vzduch plus gravitácia).]
 
 **E10.**
-Na kuchynskú váhu postavíme pohár do 2/3 naplnený vodou a do vody ponoríme najprv prst, potom kovový predmet, potom drevenú paličku či striekačku naplnenú vzduchom (vložený predmet pevne držíme v ruke). Zmení sa číslo na váhe?
-* Hmotnosť, ktorú váha ukazuje, vždy stúpne (nezáleží teda na tom, či daný predmet na vode pláva alebo by sa ponoril, keby sme ho nedržali). Cítime, že prst je vytláčaný smerom nahor. Aj príbor, ale na ňom môže byť efekt slabý až nerozoznateľný. [Voda nadľahčuje všetky predmety, niektoré vďaka tomu plávajú na hladine, iné klesnú ku dnu, lebo gravitácia na nich pôsobí oveľa viac ako nadnášanie vodou (na vysvetlenie vztlakovej sily viď doplňujúcu otázku nižšie). Keď však voda pôsobí silou na prst, musí aj prst pôsobiť presne opačnou silou na vodu. A tá cez pohár prenesie toto pôsobenie na váhu (váha ukazuje vlastne súčet gravitačnej sily pôsobiacej na pohár a vodu a sily, ktorou pôsobí naša ruka proti vztlakovej sile vody pôsobiacej na daný predmet). Všimnite si, že v pohári stúpne ponorením predmetu hladina, to však nemá vplyv na hmotnosť vody.]
+Na kuchynskú váhu postavíme pohár do 2/3 naplnený vodou a do vody ponoríme najprv prst, potom kovový predmet, potom drevenú paličku či striekačku naplnenú vzduchom (vložený predmet pevne držíme v ruke, ktorou nehýbeme). Zmení sa číslo na váhe?
+* Hmotnosť, ktorú váha ukazuje, vždy stúpne (nezáleží teda na tom, či daný predmet na vode pláva alebo by sa ponoril, keby sme ho nedržali). Cítime, že vložený predmet je vytláčaný smerom nahor (ak je dostatočne veľký).
+[Voda nadľahčuje všetky predmety, niektoré vďaka tomu plávajú na hladine, iné klesnú ku dnu, lebo gravitácia na nich pôsobí oveľa viac ako nadnášanie vodou (na vysvetlenie vztlakovej sily viď doplňujúcu otázku nižšie). Keď však voda pôsobí silou na prst, musí aj prst pôsobiť presne opačnou silou na vodu. A tá cez pohár prenesie toto pôsobenie na váhu (váha ukazuje vlastne súčet gravitačnej sily pôsobiacej na pohár a vodu a sily, ktorou pôsobí naša ruka proti vztlakovej sile vody pôsobiacej na daný predmet). Všimnite si, že v pohári stúpne ponorením predmetu hladina, to však nemá vplyv na hmotnosť vody.]
 
 ### Plyny
 
