@@ -142,6 +142,7 @@ Predstavme si, že zmenšujeme objem plynu.
 * Ak postupujeme pomaly, teplota sa nebude meniť, stihne sa vyrovnať s okolím. Tlak stúpne.
 * Ak postupujeme rýchlo, teplota bude rásť spolu s tlakom. Príklad: prudko stlačíme piest striekačky plnej vzduchu, alebo hustilka.
 Využitie: vznetový motor (nafta sa vznieti po stlačení vzduchu, ktorému stúpne teplota).
+Čo sa stane po [rýchlom stlačení piestu](https://www.youtube.com/watch?v=ttz-CzEDXwI)?
 
 Predstavme si, že zväčšujeme objem plynu.
 * Ak postupujeme pomaly, teplota sa nebude meniť, stihne sa vyrovnať s okolím. Tlak klesne.
