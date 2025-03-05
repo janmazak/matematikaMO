@@ -10,7 +10,7 @@ Materiál:
 * Vedro či hrniec s čistou vodou cca izbovej teploty, naplnené do 2/3, 2 ks --- E3, E4, E7.
 * Papierové štvorčeky, ktorými možno s rezervou prekryť veľký otvor na striekačke, 10 ks --- E4.
 * Plastová fľaša plná vody (s maličkou bublinkou) a rovnaká fľaša naplnená vzduchom, po 2-3 ks --- E5.
-* Duša na bicykel, kompatibilná hustilka, po 2-3 ks. Môže byť celý bicykel --- E6.
+* Duša na bicykel, kompatibilná hustilka, po 2-3 ks (môže byť celý bicykel) --- E6.
 * Plastový pohárik, 2 ks --- E7, E10.
 * Plastová fľaša s vrchnákom, lievik na jej naplnenie --- E8, E9.
 * Nástroje na robenie dierok do plastovej fľaše (klinec, vrták, rôzne priemery) --- E8, E9.
@@ -18,7 +18,8 @@ Materiál:
 
 ### Vedecká metóda
 
-_Poznámka_ (vhodné zaradiť po E2): Čo vieme dokázať experimentom? Nič. Na rozdiel od matematiky, kde robíme nespochybniteľné dôkazy, experimenty slúžia na *vyvracanie* teórií. Pre daný experiment máme hocikoľko iných vysvetlení. Skúsme napr. hľadať alternatívne vysvetlenia toho, že vzduch v striekačke nemožno úplne stlačiť. Pre každé z nich navrhnime experiment alebo postup, ktorý toto vysvetlenie spochybní:
+_Poznámka_ (vhodné zaradiť po E2): Čo vieme dokázať experimentom? Nič. Na rozdiel od matematiky, kde robíme nespochybniteľné dôkazy, experimenty slúžia na *vyvracanie* teórií. Pre daný experiment máme hocikoľko iných vysvetlení. Skúsme napr. hľadať alternatívne vysvetlenia toho, že vzduch v striekačke nemožno úplne stlačiť, a čím ďalej, tým ťažšie sa stláča. Pre každé z nich navrhnime experiment alebo postup, ktorý toto vysvetlenie spochybní:
+* V striekačke je neviditeľná pružina.
 * Priemer striekačky sa nenápadne zužuje, preto je čím ďalej, tým ťažšie tlačiť piest. [Premeriame, vyrobíme inú starostlivejšie.]
 * Pri vývode striekačky je niečo, čo piest odpudzuje (napr. na princípe magnetizmu). [Skúsime iné materiály, rôzne pre piest a striekačku.]
 * Gravitácia či iná vonkajšia sila bráni pohybu piestu. [Zmeníme polohu striekačky, zopakujeme experiment v beztiažovom stave.]
@@ -37,7 +38,16 @@ _Vedecká metóda_ spoznávania sveta prebieha vo fyzike zhruba takto:
 5. Teória: ak niečo dlho napriek snahe nevieme spochybniť, prijmeme to ako možné vysvetlenie javu.
 Po desaťročiach až storočiach sa z toho stane "fyzikálny zákon" (a zároveň priebežne zisťujeme jeho obmedzenia, napr. Newtonova mechanika nefunguje pri rýchlostiach blízkych rýchlosti svetla).
 
-Uvedené experimenty slúžia na ilustráciu diskutovaných javov, nemôžu však byť ich dôkazom.
+Uvedené experimenty slúžia na ilustráciu diskutovaných javov, nemôžu však byť ich dôkazom. Ani v prípade, že sú replikovateľné (zakaždým dopadnú rovnako, bez ohľadu na čas či miesto prevedenia). Niektoré veci navonok môžu vyzerať, že rozumieme, čo sa deje, a pritom vôbec nie. Napr. možno vieme vysvetliť experimenty uvedené nižšie. Domorodci v Oceánii pozorujúci pristávajúce lietadlá, ktoré vozili užitočné veci, tak vytvorili [cargo cult](https://calteches.library.caltech.edu/51/2/CargoCult.htm) --- majú pristávaciu dráhu, pozdĺž nej ohne, chlapíka s drevenými slúchadlami a paličkami ako anténkami --- len tie lietadlá akosi nechodia. Preto pri teóriách a vysvetleniach hľadáme predikcie (zovšeobecnenia), ktoré následne možno falzifikovať, a čím viac predikcií, ktoré sa nám falzifikovať nedarí, tým dôveryhodnejšia je teória (vysvetlenie).
+
+Mnohé javy sa zdajú jednoduché, ale doteraz im úplne nerozumejú neraz ani najlepší vedci, a ľudské pochopenie sa postupne prehlbuje. Príklady javov ťažkých na vysvetlenie:
+* šmykľavosť ľadu,
+* vznik dúhy či meniaca sa farba oblohy,
+* prečo letí lietadlo (aj otočené naopak),
+* prečo bzučia drôty vysokého napätia,
+* prečo je tenký plátok zlata pri pohľade proti svetlu práve zelený.
+
+Budeme preto akceptovať, že podané vysvetlenia majú istú mieru nedokonalosti a neplatia za každých okolností (občas tieto okrajové prípady spomenieme; to už je lepšie než bežné učebnice, ktoré o sebe tvrdia, že "poučky" v nich sú na 100% správne či úplné).
 
 ### Experimenty
 
@@ -47,7 +57,7 @@ Pokrok nenastáva opakovaním známych vecí, ale rozvíjaním šibnutých nápa
 **E1.**
 Do suchej plastovej fľaše nadýchame teplý vlhký vzduch (alebo nad hrncom naberieme paru) a vyložíme ju na minútu von do chladného vzduchu, prípadne vložíme do ľadovej vody.
 * Fľaša sa scvrkne. [Pri fixnom tlaku (atmosférický) sa pri poklese teploty musí zmenšiť objem.]
-* Fľaša sa zarosí. [Studený vzduch nemá kapacitu absorbovať toľko vlhkosti, preto sa pri ochladení časť vyzráža. Demonštrovať to možno tiež otvorením okna v zime (zarosí sa), podobne kapacita vody absorbovať soľ či cukor závisí teploty (teplejšia viac, pri ochladení sa vyzráža rozpustená látka z roztoku).]
+* Fľaša sa z vnútornej strany zarosí. [Studený vzduch nemá kapacitu absorbovať toľko vlhkosti, preto sa pri ochladení časť vyzráža. Demonštrovať to možno tiež otvorením okna v zime (zarosí sa), podobne kapacita vody absorbovať soľ či cukor závisí teploty (teplejšia viac, pri ochladení sa vyzráža rozpustená látka z roztoku).]
 
 **E2.**
 Plastovú priehľadnú striekačku s piestom naplníme do polovice vzduchom a zapcháme prstom otvor.
@@ -64,9 +74,9 @@ Zopakujeme E2 so striekačkou naplnenou vodou.
 **E4.**
 Striekačku bez piesta otočíme vývodom nadol, zapcháme ho prstom a naplníme úplne vodou.
 Navrch položíme kus papiera tak, aby prekryl celý otvor a trocha trčal naokolo.
-Čo sa stane, keď striekačku otočíme? A čo ak uvoľníme vývod?
+Čo sa stane, keď striekačku otočíme? A čo ak uvoľníme vývod? Fungovalo by to bez papiera?
 * Nič, až kým sa papier nerozmočí. Po uvoľnení vývodu však voda hneď vytečie.
-[Atmosférický tlak pôsobiaci na papier bráni vode vytiecť.]
+[Atmosférický tlak pôsobiaci na papier bráni vode vytiecť. Bez papiera však voda vytečie (hladina neudrží tvar).]
 
 **E5.**
 V jednej ruke držíme plastovú fľašu naplnenú vzduchom, v druhej vodou. Obe fľaše rovnako silno stlačíme. 
@@ -143,6 +153,7 @@ Predstavme si, že zmenšujeme objem plynu.
 * Ak postupujeme rýchlo, teplota bude rásť spolu s tlakom. Príklad: prudko stlačíme piest striekačky plnej vzduchu, alebo hustilka.
 Využitie: vznetový motor (nafta sa vznieti po stlačení vzduchu, ktorému stúpne teplota).
 Čo sa stane po [rýchlom stlačení piestu](https://www.youtube.com/watch?v=ttz-CzEDXwI)?
+[Verzia s naftou.](https://youtu.be/k7JKJF3NrHE?t=331)
 
 Predstavme si, že zväčšujeme objem plynu.
 * Ak postupujeme pomaly, teplota sa nebude meniť, stihne sa vyrovnať s okolím. Tlak klesne.
@@ -155,17 +166,19 @@ Príklad pary unikajúcej z tlakového hrnca: https://youtu.be/6S88XeA6fbM?t=44 
 
 Ak je plyn veľmi horúci, môže sa pri expanzii miesto ochladenia naopak ešte ohriať. Napr. dusík pri 300 C, hélium už pri izbovej teplote; je to spôsobené odchýlkou reálneho plynu od ideálneho (v ktorom na seba jednotlivé molekuly nepôsobia). Je fascinujúce, ako aj fyzikálne zákony majú výnimky, resp. prestanú za špeciálnych okolností platiť. Na rozdielnom správaní plynov je založený jeden spôsob liečby rakoviny: najprv cez ihlu vstrekneme argón, ktorý nádor ochladí na cca -150 C, a vzápätí prejdeme na hélium, ktoré zase teplotu vráti na cca 30 C. Zmena teploty zabije (nádorové) bunky v mieste vpichu, bez poškodenia okolitého tkaniva, ktoré by vzniklo, keby sme nevedeli ochladené tkanivo rýchlo zohriať.
 
+Zmenou objemu vieme dosiahnuť zmenu tlaku, prípadne aj teploty, ak je zmena objemu rýchla. Dá sa to aj naopak: zmenou teploty zmeníme tlak či objem.
+* Výbušniny: veľké množstvo horúceho plynu [prudko expanduje](https://www.nacinc.com/applications/explosion/methane-propane-gas-explosion/).
+* Prečo je na sprejoch zákaz hádzania do ohňa? [Kvapalina vnútri spreja sa zvýšením teploty zmení na plyn, tomu stúpne tlak, plechovka sa roztrhne a horľavý plyn sa vznieti a vybuchne; navyše dookola letia kovové úlomky vysokou rýchlosťou, podobne ako pri granátoch.]
+
 ### Ďalšie podnety na diskusiu
 
-* Prečo ľudom trvalo tak dlho pozrieť sa na dno Mariánskej priekopy? [Vysoký tlak, ktorý zničí ponorku, cca 1000x atmosferický.]
-* Ako je možné, že niektoré ryby žijú až do hĺbky 8000 m, keď človek zvládne len 200 m a tuniaky cca 1000 m? [Hlbinné ryby nemajú plávací mechúr, miesto toho používajú rôzne tukové a želatínové štruktúry. Čokoľvek naplnené plynom by vysoký tlak vody rozdrvil, napr. ľudské pľúca a plávací mechúr tuniakov.]
+* Ak chcete, aby vám v aute bolo teplo, nastavíte fúkanie teplého vzduchu na nohy alebo na hlavu? [Nohy, teplý vzduch stúpa nahor, lebo dané množstvo vzduchu (merané počtom častíc alebo hmotnosťou) zaberá menej miesta, ak je teplý, ako studený, t.j. teplý vzduch má menšiu hustotu.]
+* Prečo je v dome najchladnejšie pri podlahe na spodnom poschodí? [Studený vzduch klesá nadol.]
+* Ako je možné, že v ľadovej jaskyni je ľad po celý rok, aj keď vonku je teplo? [Studený vzduch klesá nadol.]
 * Ako možno pomocou slamky prenášať vodu? [Veľa možností, napr. ju ohnúť do U, upchať oba konce, upchať spodný, upchať vrchný.]
 * Prečo stačí v okruhu s kvapalinou jediné čerpadlo? Napr. ľudské srdce pre krvný obeh. [Tlak sa v kvapaline prenáša.]
+* Prečo ľudom trvalo tak dlho pozrieť sa na dno Mariánskej priekopy? [Vysoký tlak, ktorý zničí ponorku, cca 1000x atmosferický.]
+* Ako je možné, že niektoré ryby žijú až do hĺbky 8000 m, keď človek zvládne len 200 m a tuniaky cca 1000 m? [Hlbinné ryby nemajú plávací mechúr, miesto toho používajú rôzne tukové a želatínové štruktúry. Čokoľvek naplnené plynom by vysoký tlak vody rozdrvil, napr. ľudské pľúca a plávací mechúr tuniakov.]
 * Ako vedia ponorky dosiahnuť, že ich voda ani nevytláča k hladine, ani neťahá ku dnu? [Zmenou hustoty. Do balastných nádrží vpustia vodu, čím sa vzduch, ktorý tam bol pôvodne, stlačí a ponorke pri nezmenenom celkovom objeme stúpne hmotnosť, čiže vzrastie hustota a môže sa ponoriť aj bez ďalšieho použitia motora. Naopak, keď stlačeným vzduchom vytlačia vodu von, hustota zase klesne a ponorka začne stúpať k hladine.]
-* Ako funguje hydraulický lis či zdvihák?
-TODO nakresliť schematický obrázok, šípky rovnomerne rozmiestnene na ploche naznacuju, ze sila je tlak krat plocha
 
-TODO
-kargo kult
-jednotlive experimenty vela nedokazuju, aj ked su replikovatelne
 
