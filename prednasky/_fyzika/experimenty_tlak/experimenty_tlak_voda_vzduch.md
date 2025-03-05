@@ -60,7 +60,7 @@ Do suchej plastovej fľaše nadýchame teplý vlhký vzduch (alebo nad hrncom na
 * Fľaša sa z vnútornej strany zarosí. [Studený vzduch nemá kapacitu absorbovať toľko vlhkosti, preto sa pri ochladení časť vyzráža. Demonštrovať to možno tiež otvorením okna v zime (zarosí sa), podobne kapacita vody absorbovať soľ či cukor závisí teploty (teplejšia viac, pri ochladení sa vyzráža rozpustená látka z roztoku).]
 
 **E2.**
-Plastovú priehľadnú striekačku s piestom naplníme do polovice vzduchom a zapcháme prstom otvor.
+Plastovú priehľadnú striekačku s piestom naplníme do polovice vzduchom a zapcháme prstom otvor. Tlačíme a ťaháme piest.
 * Piest možno zatlačiť, ale nie úplne: hoci vzduch nevidno, stlačeniu sa bráni; pri zmenšovaní objemu stúpa tlak.
 * Zatlačme piest úplne a zapchajme otvor. Piest možno povytiahnuť, ale čím viac ho vytiahneme, tým ťažšie to ide.
 Ak piest pustíme, rýchlo sa vráti do pôvodnej polohy.
@@ -92,7 +92,7 @@ Vypustíme z kolesa bicykla vzduch. Ako sa zmení teplota ventilu?
 [Prudké rozpínanie plyn ochladzuje, prudké stláčanie zahrieva.]
 
 **E7.**
-Naplníme hrniec vodou, ponoríme plastový pohár a vypustíme z neho vzduch. Pohár obrátime hore dnom a nadvihneme (aby spodný okraj zostal ponorený). Vytečie z neho voda?
+Naplníme vedro vodou, ponoríme plastový pohár a vypustíme z neho vzduch. Pohár obrátime hore dnom a nadvihneme (aby spodný okraj zostal ponorený). Vytečie z neho voda?
 * Voda nevytečie. [Nedovolí jej to atmosférický tlak. Na vodu v pohári pôsobia dve sily: gravitačná, smerom nadol, a sila smerom nahor vyvolaná atmosférickým tlakom na hladinu kvapaliny, ktorý sa prenáša do každého bodu kvapaliny vďaka nestlačiteľnosti. Čím vyšší pohár, tým väčšia gravitačná sila.]
 
 **E8.**
@@ -108,7 +108,7 @@ Zboku spravíme zdola nahor do plastovej fľaše zhruba 4 rovnaké dierky, zapch
 * Voda z dierok strieka rôzne ďaleko, tým ďalej, čím nižšia dierka. [Tlak vody s otvorenou hladinou (hydrostatický) je vyšší naspodku, lebo ten tlak vytvára voda nad dierkou + gravitácia Zeme + atmosférický tlak (opäť vzduch plus gravitácia).]
 
 **E10.**
-Na kuchynskú váhu postavíme pohár do 2/3 naplnený vodou a do vody ponoríme najprv prst, potom kovový predmet, potom drevenú paličku či striekačku naplnenú vzduchom (vložený predmet pevne držíme v ruke, ktorou nehýbeme). Zmení sa číslo na váhe?
+Na kuchynskú váhu postavíme pohár do 2/3 naplnený vodou a do vody postupne (jednotlivo, osobitne) ponoríme najprv prst, potom kovový predmet, potom drevenú paličku či striekačku naplnenú vzduchom (vložený predmet pevne držíme v ruke, ktorou nehýbeme). Zmení sa číslo na váhe?
 * Hmotnosť, ktorú váha ukazuje, vždy stúpne (nezáleží teda na tom, či daný predmet na vode pláva alebo by sa ponoril, keby sme ho nedržali). Cítime, že vložený predmet je vytláčaný smerom nahor (ak je dostatočne veľký).
 [Voda nadľahčuje všetky predmety, niektoré vďaka tomu plávajú na hladine, iné klesnú ku dnu, lebo gravitácia na nich pôsobí oveľa viac ako nadnášanie vodou (na vysvetlenie vztlakovej sily viď doplňujúcu otázku nižšie). Keď však voda pôsobí silou na prst, musí aj prst pôsobiť presne opačnou silou na vodu. A tá cez pohár prenesie toto pôsobenie na váhu (váha ukazuje vlastne súčet gravitačnej sily pôsobiacej na pohár a vodu a sily, ktorou pôsobí naša ruka proti vztlakovej sile vody pôsobiacej na daný predmet). Všimnite si, že v pohári stúpne ponorením predmetu hladina, to však nemá vplyv na hmotnosť vody.]
 
