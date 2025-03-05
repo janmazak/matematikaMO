@@ -18,14 +18,14 @@ Materiál:
 
 ### Vedecká metóda
 
-_Poznámka_ (vhodné zaradiť po E2): Čo vieme dokázať experimentom? Nič. Na rozdiel od matematiky, kde robíme nespochybniteľné dôkazy, experimenty slúžia na *vyvracanie* teórií. Pre daný experiment máme hocikoľko iných vysvetlení. Skúsme napr. hľadať alternatívne vysvetlenia toho, že vzduch v striekačke nemožno úplne stlačiť, a čím ďalej, tým ťažšie sa stláča. Pre každé z nich navrhnime experiment alebo postup, ktorý toto vysvetlenie spochybní:
+_Poznámka_ (vhodné zaradiť po E3): Čo vieme dokázať experimentom? Nič. Na rozdiel od matematiky, kde robíme nespochybniteľné dôkazy, experimenty slúžia na *vyvracanie* teórií. Pre daný experiment máme hocikoľko iných vysvetlení. Skúsme napr. hľadať alternatívne vysvetlenia toho, že vzduch v striekačke nemožno úplne stlačiť, a čím ďalej, tým ťažšie sa stláča. Pre každé z nich navrhnime experiment alebo postup, ktorý toto vysvetlenie spochybní:
 * V striekačke je neviditeľná pružina.
 * Priemer striekačky sa nenápadne zužuje, preto je čím ďalej, tým ťažšie tlačiť piest. [Premeriame, vyrobíme inú starostlivejšie.]
 * Pri vývode striekačky je niečo, čo piest odpudzuje (napr. na princípe magnetizmu). [Skúsime iné materiály, rôzne pre piest a striekačku.]
 * Gravitácia či iná vonkajšia sila bráni pohybu piestu. [Zmeníme polohu striekačky, zopakujeme experiment v beztiažovom stave.]
 * Striekačka má netesnosti, niečo niekde uniká či naopak vchádza. [Experimentujeme vo vákuu, prípadne v kontrolovanom prostredí, kde vieme detegovať úniky.]
 * Medzi piestom a striekačkou rastie odpor, napr. kvôli tomu, že sa pri pohybe piest zahrieva. [Znížime trenie mazivom.]
-* Pri pohybe piestu dochádza ku chemickej reakcii (napr. tam žiaden plyn nebol, ale vznikol pri šúchaní piesta o stenu striekačky).
+* Pri pohybe piestu dochádza k chemickej reakcii (napr. tam žiaden plyn nebol, ale vznikol pri šúchaní piesta o stenu striekačky).
 
 Podobne funguje aj matematická štatistika: hypotézy _zamietame_, nie potvrdzujeme.
 Sú dva možné výstupy štatistického spracovania zozbieraných dát: _reject_, _failed to reject_. Nikdy nie _confirm_.
