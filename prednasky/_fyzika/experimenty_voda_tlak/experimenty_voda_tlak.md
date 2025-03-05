@@ -84,8 +84,8 @@ Zvyčajne pri napĺňaní vodou vznikne malá bublinka, pozorujeme ju a veľmi s
 * Voda je nestlačiteľná, fľaša s vodou tak nanajvýš mierne zmení tvar. Fľaša so vzduchom je čiastočne stlačiteľná. Bublinka sa zmenší.
 
 **E6.**
-Blízko vývodu striekačky plnej vzduchu položí dobrovoľník prst. Zapcháme vývod prstom a prudko stlačíme piest (nejaký silný dospelý).
-Ochladí alebo zohreje sa striekačka? Vezmeme hustilku a fúkame koleso na bicykli.
+Blízko vývodu striekačky plnej vzduchu položí dobrovoľník prst. Niekto iný (silný dospelý) zapchá prstom vývod a prudko stlačí piest.
+Zmení sa teplota striekačky? Ako? Vezmeme hustilku a fúkame koleso na bicykli.
 Ako sa zmení teplota hustilky (najlepšie kovové časti blízko vývodu)?
 Vypustíme z kolesa bicykla vzduch. Ako sa zmení teplota ventilu?
 * Pri hustení sa pumpa zohreje, podobne striekačka pri stlačení (ale efekt pri striekačke je slabo pozorovateľný). Naopak ventil sa pri vypustení vzduchu ochladí.
@@ -93,7 +93,7 @@ Vypustíme z kolesa bicykla vzduch. Ako sa zmení teplota ventilu?
 
 **E7.**
 Naplníme hrniec vodou, ponoríme plastový pohár a vypustíme z neho vzduch. Pohár obrátime hore dnom a nadvihneme (aby spodný okraj zostal ponorený). Vytečie z neho voda?
-* Voda nevytečie. [Nedovolí jej to atmosférický tlak. Na vodu v pohári pôsobia dve sily: gravitačná, smerom nadol, a sila smerom nahor vyvolaná atmosférickým tlakom na hladinu kvapaliny, ktorá vďaka nestlačiteľnosti tlak prenáša do každého svojho bodu. Čím vyšší pohár, tým väčšia gravitačná sila.]
+* Voda nevytečie. [Nedovolí jej to atmosférický tlak. Na vodu v pohári pôsobia dve sily: gravitačná, smerom nadol, a sila smerom nahor vyvolaná atmosférickým tlakom na hladinu kvapaliny, ktorý sa prenáša do každého bodu kvapaliny vďaka nestlačiteľnosti. Čím vyšší pohár, tým väčšia gravitačná sila.]
 
 **E8.**
 Zboku plastovej fľaše, blízko ku spodku, spravíme dierku, a naplníme fľašu vodou. Ak nemá vrchnák, voda vyteká. Čo sa stane po zavretí fľaše? A čo by sa stalo, keby diera bola veľmi malá alebo veľmi veľká?
@@ -160,11 +160,11 @@ Predstavme si, že zväčšujeme objem plynu.
 * Ak postupujeme rýchlo, teplota bude klesať spolu s tlakom. Príklad: chladnička by mohla prudko roztiahnuť plyn, ochladiť pomocou neho jedlo, potom kdesi v kompresore plyn znova stlačiť a vzniknuté teplo rozptýliť do okolia, stlačený plyn znova expandovať atď.
 
 Dýchnite si na (suchú) ruku tak, aby ste mali pocit (a) tepla, (b) chladu. Ako je taký rozdiel možný, keď dych je vždy ten istý?
-[Dýchanie pomaly široko otvorenými ústami: teplota sa nemení, zodpovedá teplote v pľúcach, čiže cca 37 C vs. cca 33 C teplota pokožky.
+[Dýchanie pomaly široko otvorenými ústami: teplota sa nemení, zodpovedá vnútornej teplote, čiže cca 36 C vs. cca 33 C teplota pokožky.
 Dýchanie rýchlo cez malý otvor: vzduch pri opustení úst expanduje a klesne mu teplota.
 Príklad pary unikajúcej z tlakového hrnca: https://youtu.be/6S88XeA6fbM?t=44 --- neskúšať, hrozí popálenie!]
 
-Ak je plyn veľmi horúci, môže sa pri expanzii miesto ochladenia naopak ešte ohriať. Napr. dusík pri 300 C, hélium už pri izbovej teplote; je to spôsobené odchýlkou reálneho plynu od ideálneho (v ktorom na seba jednotlivé molekuly nepôsobia). Je fascinujúce, ako aj fyzikálne zákony majú výnimky, resp. prestanú za špeciálnych okolností platiť. Na rozdielnom správaní plynov je založený jeden spôsob liečby rakoviny: najprv cez ihlu vstrekneme argón, ktorý nádor ochladí na cca -150 C, a vzápätí prejdeme na hélium, ktoré zase teplotu vráti na cca 30 C. Zmena teploty zabije (nádorové) bunky v mieste vpichu, bez poškodenia okolitého tkaniva, ktoré by vzniklo, keby sme nevedeli ochladené tkanivo rýchlo zohriať.
+Ak je plyn veľmi horúci, môže sa pri expanzii miesto ochladenia naopak ešte ohriať. Napr. dusík pri 300 C, hélium už pri izbovej teplote; je to spôsobené odchýlkou reálneho plynu od ideálneho (v ktorom na seba jednotlivé molekuly nepôsobia). Je fascinujúce, ako aj fyzikálne zákony majú výnimky, resp. prestanú za špeciálnych okolností platiť. Na rozdielnom správaní plynov je založený jeden spôsob liečby rakoviny: najprv cez ihlu vstrekneme argón, ktorý nádor ochladí na -150 C, a vzápätí prejdeme na hélium, ktoré zase teplotu vráti na 30 C. Zmena teploty zabije (nádorové) bunky v mieste vpichu, bez poškodenia okolitého tkaniva, ktoré by vzniklo, keby sme nevedeli ochladené tkanivo rýchlo zohriať.
 
 Zmenou objemu vieme dosiahnuť zmenu tlaku, prípadne aj teploty, ak je zmena objemu rýchla. Dá sa to aj naopak: zmenou teploty zmeníme tlak či objem.
 * Výbušniny: veľké množstvo horúceho plynu [prudko expanduje](https://www.nacinc.com/applications/explosion/methane-propane-gas-explosion/).
@@ -173,11 +173,11 @@ Zmenou objemu vieme dosiahnuť zmenu tlaku, prípadne aj teploty, ak je zmena ob
 ### Ďalšie podnety na diskusiu
 
 * Ak chcete, aby vám v aute bolo teplo, nastavíte fúkanie teplého vzduchu na nohy alebo na hlavu? [Nohy, teplý vzduch stúpa nahor, lebo dané množstvo vzduchu (merané počtom častíc alebo hmotnosťou) zaberá menej miesta, ak je teplý, ako studený, t.j. teplý vzduch má menšiu hustotu.]
-* Prečo je v dome najchladnejšie pri podlahe na spodnom poschodí? [Studený vzduch klesá nadol.]
+* Kde je v dome najchladnejšie? [Pri podlahe na spodnom poschodí; studený vzduch klesá nadol.]
 * Ako je možné, že v ľadovej jaskyni je ľad po celý rok, aj keď vonku je teplo? [Studený vzduch klesá nadol.]
 * Ako možno pomocou slamky prenášať vodu? [Veľa možností, napr. ju ohnúť do U, upchať oba konce, upchať spodný, upchať vrchný.]
 * Prečo stačí v okruhu s kvapalinou jediné čerpadlo? Napr. ľudské srdce pre krvný obeh. [Tlak sa v kvapaline prenáša.]
-* Prečo ľudom trvalo tak dlho pozrieť sa na dno Mariánskej priekopy? [Vysoký tlak, ktorý zničí ponorku, cca 1000x atmosferický.]
+* Prečo sme sa nepozreli na dno Mariánskej priekopy už v staroveku? [Vysoký tlak, ktorý zničí ponorku, cca 1000x atmosferický.]
 * Ako je možné, že niektoré ryby žijú až do hĺbky 8000 m, keď človek zvládne len 200 m a tuniaky cca 1000 m? [Hlbinné ryby nemajú plávací mechúr, miesto toho používajú rôzne tukové a želatínové štruktúry. Čokoľvek naplnené plynom by vysoký tlak vody rozdrvil, napr. ľudské pľúca a plávací mechúr tuniakov.]
 * Ako vedia ponorky dosiahnuť, že ich voda ani nevytláča k hladine, ani neťahá ku dnu? [Zmenou hustoty. Do balastných nádrží vpustia vodu, čím sa vzduch, ktorý tam bol pôvodne, stlačí a ponorke pri nezmenenom celkovom objeme stúpne hmotnosť, čiže vzrastie hustota a môže sa ponoriť aj bez ďalšieho použitia motora. Naopak, keď stlačeným vzduchom vytlačia vodu von, hustota zase klesne a ponorka začne stúpať k hladine.]
 
