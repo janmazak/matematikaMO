@@ -61,6 +61,7 @@ Využitie: vznetový motor (nafta sa vznieti po stlačení vzduchu, ktorému st�
 Predstavme si, že zväčšujeme objem plynu.
 * Ak postupujeme pomaly, teplota sa nebude meniť, stihne sa vyrovnať s okolím. Tlak klesne.
 * Ak postupujeme rýchlo, teplota bude klesať spolu s tlakom. Príklad: deodorant v spreji pod pazuchu je pri aplikácii studený.
+Expanzia môže dokonca viesť k [zamrznutiu](https://youtu.be/4GL2jj6XJGk?t=208).
 
 **Úloha** pre skupinky: vymyslite chladničku založenú na expanzii plynu.
 [Chladnička by mohla prudko roztiahnuť vzduch, ochladiť pomocou neho jedlo, potom mimo vnútorného priestoru v kompresore plyn znova stlačiť a vzniknuté teplo rozptýliť do okolia, stlačený plyn znova expandovať atď.]
@@ -72,7 +73,7 @@ Zmenou objemu vieme dosiahnuť zmenu tlaku, prípadne aj teploty, ak je zmena ob
 * Prečo je na sprejoch zákaz hádzania do ohňa? 
 [Kvapalina vnútri spreja sa zvýšením teploty zmení na plyn, tomu stúpne tlak, plechovka sa roztrhne a horľavý plyn sa vznieti a vybuchne; navyše dookola letia kovové úlomky vysokou rýchlosťou, podobne ako pri granátoch.]
 
-**Úloha** pre skupinky: vymyslite parný stroj, ktorý premení energiu uloženú v uhlí na pohyb (je nám jedno aký pohyb, či už točenie, posun, ...).
+**Úloha** pre skupinky: vymyslite parný stroj, ktorý premení energiu uloženú v uhlí na pohyb (točenie, posun, ...).
 
 Prvé pokusy: vytvoriť veľa pary pod veľkým tlakom, uvoľniť ventil a nechať paru niečo roztočiť.
 Tento princíp bol známy už Grékom pred 2000 rokmi:
