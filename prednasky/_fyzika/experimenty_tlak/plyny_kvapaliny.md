@@ -48,8 +48,9 @@ Dýchnite si na (suchú) ruku tak, aby ste mali pocit (a) tepla, (b) chladu. Ako
 Dýchanie rýchlo cez malý otvor: vzduch pri opustení úst expanduje a klesne mu teplota.
 Príklad [pary unikajúcej z tlakového hrnca](https://youtu.be/6S88XeA6fbM?t=44) --- neskúšať, hrozí popálenie!]
 
-Pre plyny sú podstatné tri veličiny: _teplota_, _tlak_, _objem_. Tie sú zviazané vzťahom **pV/T = konštanta**
-(neplatí v extrémnych prípadoch a sú tam mierne odchýlky pre jednotlivé plyny).
+Pre plyny sú podstatné tri veličiny: _teplota_, _tlak_, _objem_. Tie sú zviazané vzťahom **pV/T = konštanta**.
+Ten platí úplne len pre ideálny plyn, skutočné plyny vykazujú mierne odchýlky, najmä v extrémnych podmienkach (napr. pri veľmi vysokej teplote).
+Správanie tohto zlomku možno ilustrovať na číslach: trebárs 10 * 12 / 2 = 120; čo ak zvýšim teplotu 2x, 3x či 4x? Diskusia o zmene p, V, T, keď jedna z týchto hodnôt je zafixovaná (plyn v pevnej uzavretej nádobe / pomalá zmena, keď sa ta T stíha vyrovnať s okolím / plyn v otvorenej nádobe pod atmosférickým tlakom, alebo pod zaťaženým piestom, ktorý pôsobí stále rovnakou silou a vytvára tak konštantný tlak).
 
 Predstavme si, že zmenšujeme objem plynu.
 * Ak postupujeme pomaly, teplota sa nebude meniť, stihne sa vyrovnať s okolím. Tlak stúpne.
@@ -63,14 +64,14 @@ Predstavme si, že zväčšujeme objem plynu.
 * Ak postupujeme rýchlo, teplota bude klesať spolu s tlakom. Príklad: deodorant v spreji pod pazuchu je pri aplikácii studený.
 Expanzia môže dokonca viesť k [zamrznutiu](https://youtu.be/4GL2jj6XJGk?t=208).
 
-**Úloha** pre skupinky: vymyslite chladničku založenú na expanzii plynu.
+**Úloha** pre skupinky: vymyslite chladničku.
 [Chladnička by mohla prudko roztiahnuť vzduch, ochladiť pomocou neho jedlo, potom mimo vnútorného priestoru v kompresore plyn znova stlačiť a vzniknuté teplo rozptýliť do okolia, stlačený plyn znova expandovať atď.]
 
 Ak je plyn veľmi horúci, môže sa pri expanzii miesto ochladenia naopak ešte ohriať. Napr. dusík pri 300 C, hélium už pri izbovej teplote; je to spôsobené odchýlkou reálneho plynu od ideálneho (v ktorom na seba jednotlivé molekuly nepôsobia). Je fascinujúce, ako aj fyzikálne zákony majú výnimky, resp. prestanú za špeciálnych okolností platiť. Na rozdielnom správaní plynov je založený jeden spôsob liečby rakoviny: najprv cez ihlu vstrekneme argón, ktorý nádor ochladí na -150 C, a vzápätí prejdeme na hélium, ktoré zase teplotu vráti na 30 C. Zmena teploty zabije (nádorové) bunky v mieste vpichu, bez poškodenia okolitého tkaniva, ktoré by vzniklo, keby sme nevedeli ochladené tkanivo rýchlo zohriať.
 
 Zmenou objemu vieme dosiahnuť zmenu tlaku, prípadne aj teploty, ak je zmena objemu rýchla. Dá sa to aj naopak: zmenou teploty zmeníme tlak či objem.
 * Výbušniny: veľké množstvo horúceho plynu [prudko expanduje](https://www.nacinc.com/applications/explosion/methane-propane-gas-explosion/).
-* Prečo je na sprejoch zákaz hádzania do ohňa? 
+* Prečo je na sprejoch zákaz hádzania do ohňa a môže byť nebezpečné nechať sprej na slnku či v rozhorúčenom aute?
 [Kvapalina vnútri spreja sa zvýšením teploty zmení na plyn, tomu stúpne tlak, plechovka sa roztrhne a horľavý plyn sa vznieti a vybuchne; navyše dookola letia kovové úlomky vysokou rýchlosťou, podobne ako pri granátoch.]
 
 **Úloha** pre skupinky: vymyslite parný stroj, ktorý premení energiu uloženú v uhlí na pohyb (točenie, posun, ...).
@@ -79,21 +80,21 @@ Prvé pokusy: vytvoriť veľa pary pod veľkým tlakom, uvoľniť ventil a necha
 Tento princíp bol známy už Grékom pred 2000 rokmi:
 * [Video1](https://youtu.be/xo_bNl447o4?t=27) --- rotačná nádoba s dýzami
 * [Video2](https://youtu.be/xo_bNl447o4?t=88) --- dvíhame fľašu (výkon pod 1 W, čiže ako slúchadlá; účinnosť teoreticky 1%, ale v praxi ešte 100x nižšia)
-* Prvé parné stroje často vybuchovali, lebo boli založené na maximalizácii tlaku; v 18. storočí nemali vhodné materiály.
+Prvé parné stroje často vybuchovali, lebo boli založené na maximalizácii tlaku; v 18. storočí nemali vhodné materiály.
 * [Video3](https://youtu.be/1VjzGagyyWw?t=78) --- Newcomen beam engine, využíva trik so vstrekovaním studenej vody a vákuom
 * [Video4](https://youtu.be/Caqf4hQBYBI?t=144) --- demonštrácia podtlaku
-
-
 
 ### Ďalšie podnety na diskusiu
 
 * Kde je v dome najchladnejšie? [Pri podlahe na spodnom poschodí; studený vzduch klesá nadol. Vysvetlenie: _pV/T_ pri nezmenenom _p_ (atmosférický).]
 * Ako je možné, že v ľadovej jaskyni je ľad po celý rok, aj keď vonku je teplo? [Studený vzduch klesá nadol.]
 * Ak chcete, aby vám v aute bolo teplo, nastavíte fúkanie teplého vzduchu na nohy alebo na hlavu? [Nohy, teplý vzduch stúpa nahor, lebo dané množstvo vzduchu (merané počtom častíc alebo hmotnosťou) zaberá menej miesta, ak je teplý, ako studený, t.j. teplý vzduch má menšiu hustotu.]
+* Prečo je v lete nebezpečenstvo z prehustených pneumatík (na aute či bicykli) väčšie? [Ponechanie pneumatiky na ostrom slnku zvýši tlak v nej, môže prasknúť.]
 * Ako možno pomocou slamky prenášať vodu? [Veľa možností, napr. ju ohnúť do U, upchať oba konce, upchať spodný, upchať vrchný.]
 * Prečo stačí v okruhu s kvapalinou jediné čerpadlo? Napr. ľudské srdce pre krvný obeh. [Tlak sa v kvapaline prenáša.]
+* Prečo nedávame do mikrovlnky veci v pevne uzavretých nádobách? (Ani vajce nie je dobrý nápad.) [Nárast teploty spôsobí zvýšenie tlaku, hrozí výbuch. Dokonca aj po vybratí nádoby z mikrovlnky: [video](https://youtu.be/Q1PodcURi8w?t=1).]
 * Prečo sme sa nepozreli na dno Mariánskej priekopy už v staroveku? [Vysoký tlak, ktorý zničí ponorku, cca 1000x atmosferický.]
 * Ako je možné, že niektoré ryby žijú až do hĺbky 8000 m, keď človek zvládne len 200 m a tuniaky cca 1000 m? [Hlbinné ryby nemajú plávací mechúr, miesto toho používajú rôzne tukové a želatínové štruktúry. Čokoľvek naplnené plynom by vysoký tlak vody rozdrvil, napr. ľudské pľúca a plávací mechúr tuniakov.]
 * Ako vedia ponorky dosiahnuť, že ich voda ani nevytláča k hladine, ani neťahá ku dnu? [Zmenou hustoty. Do balastných nádrží vpustia vodu, čím sa vzduch, ktorý tam bol pôvodne, stlačí a ponorke pri nezmenenom celkovom objeme stúpne hmotnosť, čiže vzrastie hustota a môže sa ponoriť aj bez ďalšieho použitia motora. Naopak, keď stlačeným vzduchom vytlačia vodu von, hustota zase klesne a ponorka začne stúpať k hladine. [Video.](https://youtu.be/xbaNe48j3KE?t=27)]
-
+* Dá sa vodou rezať? [Áno, pri tlaku asi 1000x väčšom ako v pneumatike aj kovy: waterjet cutter, [vyrezanie turbíny](https://youtu.be/sIEqXbXxpfg?t=279), [rez nákovou](https://youtu.be/quL14Csmi_Y?t=132).]
 
