@@ -1,0 +1,96 @@
+1. Na prvom stretnutí sme robili niekoľko pokusov so striekačkou.
+Nakresli a vysvetli jeden z nich.
+
+2. Keď sme nafúkali koleso na bicykli, pumpa sa zahriala.
+Prečo? A v ktorej časti sa zohrieva najviac?
+
+3. Keď plechový sud naplníme horúcou parou, pevne uzavrieme a potom
+postriekame dostatočným množstvom studenej vody, spľasne a pokrčí sa.
+Čím je to spôsobené?
+
+4. Predstav si, že chceš kamarátom ukázať, že hlboko pod vodou je
+tlak vyšší ako pri hladine (bez toho, aby sme do tej veľkej hĺbky
+išli, či niečo poslali). Popíš pokus (experiment),
+ktorý by ich o tom mohol presvedčiť.
+
+Popis by mal zahŕňať:
+(a) jednotlivé kroky, ktoré treba vykonať pri pokuse;
+(b) popis očakávaného výsledku (čo sa stane);
+(c) stručné vysvetlenie pozorovaného javu (ako to súvisí s tlakom pod hladinou).
+
+
+
+Pokus s dierkami na fľaši: naozaj pri nižšom otvore je vyšší tlak, pri
+vysvetlení však nesmieme zabudnúť na príčinu toho vyššieho tlaku:
+gravitácia priťahuje vodu k Zemi. V beztiažovom stave by experiment
+prebiehal inak (voda, miesto toho, aby zaujala najnižšiu možnú polohu
+s rovnou hladinou, má sklon nadobúdať tvar gule kvôli povrchovému
+napätiu).
+https://www.youtube.com/watch?v=o8TssbmY-GM
+TODO este nejake lepsie
+
+
+Para v sude sa po ochladení scvrkne a potiahne steny suda za sebou.
+* To by znamenalo, že experiment prebehne rovnako aj na Mesiaci, kde
+nie je atmosféra. Ale tam by sud nespľasol. Ako je to možné?
+[Para skondenzuje na vodu, tá zaberá oveľa menej miesta ako para. Ale
+treba atmosférický tlak zvonku, aby zdeformoval sud.]
+
+Para v sude sa po ochladení zmení na vodu a nemôže tam ostať nič, tak
+sud spľasne.
+* Odkiaľ vieme, že tam nemôže ostať nič? Napr. v žiarovkách máme
+volfrámové vlákno a okolo neho takmer vákuum, takže tam môže ostať
+"nič" --- stačí, aby oddeľujúci predmet (napr. stena suda či sklo
+žiarovky) odolala rozdielu tlakov.
+
+Sud spľasne, lebo pri rozdielnych teplotách vnútri a vonku sa vyvinie
+rôzny tlak.
+* Nie celkom, vonku je vzduch voľný a aj keď sa zohreje, tlak sa
+viac-menej nezmení, je určený vrstvou atmosféry a gravitáciou.
+
+Pumpa sa zohreje, lebo sa to tam veľmi rýchlo šúcha.
+* Nevysvetľuje, prečo sa pumpa zohreje len v dolnej časti.
+
+Pumpa sa zohreje, lebo molekuly vzduchu idú rýchlejšie.
+* Časticový model: pri prudkom stlačení vzrastie tlak aj teplota, lebo
+piest zrýchľuje častice, čo doň narazia, a tlak je väčší, lebo častice
+sú nahusto a veľakrát narazia do stien nádoby (pumpy).
+
+Molekuly plynu sa trením o seba zohrejú.
+* Nie, len do seba narážajú, a pri dokonalej pružnosti tie odrazy
+nemenia ich rýchlosť či kinetickú energiu, teda ani teplotu.
+Priblíženie vedie ku rastu tlaku (nie teploty), čo vidíme pri pomalom
+stláčaní, keď sa teplota stíha vyrovnať s okolím (ale k priblíženiu
+molekúl dochádza).
+
+Other points:
+pochopiteľná fyzika je zo 16. až 19. storočia, cca do 1850: mechanika,
+tlak, teplo, optika
+1850 až 1900 elektromagnetizmus, rýchlosť svetla, vlny, jadrá atómov
+to, čo prišlo v 20., je ťažké a neoveriteľné jednoduchými
+experimentmi: relativita, kvantová fyzika, jadrová fyzika, astrofyzika
+(čierne diery apod.) --- o objektoch a javoch, ktoré "existujú len vo
+svete rovníc a nepriamych pozorovaní, nedajú sa priamo ohmatať"
+
+je to nekončiaca cesta: aj vy teraz viete vyvrátiť teórie, ktorým
+ľudia verili stovky rokov, napr. bola teória "horror vacui" od
+Aristotela 400 p.n.l.,
+že vákuum nemôže existovať, lebo príroda ho neznáša, a chybné
+vysvetlenie nasávania --- v
+baniach zistili, že vodu nevedia vytvorením podtlaku vytiahnuť vyššie
+ako 10.3 metra, Torricelliho barometer 1643 (t.j. 2000 rokov) ---
+teraz viete, že to zato, že vyššie ju atmosférický tlak nedokáže
+vytlačiť (nie vákuum ju ťahá, ale atmosféra tlačí nahor)
+
+krása fyziky je v tom, že viete robiť experimenty, veci sa s istotou
+zopakujú, je to extrémne užitočné (viac-menej všetko komfort moderného
+života je založený na dostatočne správnych fyzikálnych vysvetleniach,
+od zdrojov energie po kuchynské spotrebiče a počítače a umelú
+inteligenciu)
+ak ste ľudia, ktorí majú radi tento druh pravidelnosti...
+
+
+vzduch sa ochladením stlačí: nie, vzduch sa aj pri nízkom tlaku
+rozpína, kam dočiahne, napr. do celého suda --- zastaví ho až
+protitlak
+
